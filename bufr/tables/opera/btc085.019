@@ -1,0 +1,812 @@
+ 001192  16  0 [C8 ] Identificateur des composites
+          0  1 Composite complete
+          1  1 Composite francaise
+          2  1 Composite experimentale
+          3  1 Composite Grande Europe
+         10  1 Composite metropole pre-operationnelle
+         11  1 Composite France TEST
+         12  1 Composite Rhytmme
+         20  1 Composite La Reunion
+         21  1 Composite Nouvelle Caledonie
+         22  1 Composite Caraibe
+         23  1 Composite Antilles
+        100  1 Composite Royaume-Uni Irlande
+        120  1 Composite suisse
+        140  1 Composite allemande
+        160  1 Composite espagnole
+        255  1 Valeur manquante
+ 001193   9  0 [C8 ]IDENTIFICATEUR DES DONNEES COMBINEES
+          0  1 VISIBLE METEOSAT
+          5  1 INFRA ROUGE METEOSAT
+         10  1 VAPEUR D'EAU METEOSAT
+         15  1 DONNEES FOUDRE METEORAGE
+         20  1 CARTE DE SELECTION DES RADARS
+         25  1 DONNEES SOL
+         30  1 CHAMP DE MODELE
+         35  1 CARTE ECHOS FIXES
+        255  1 VALEUR MANQUANTE
+ 001198   4  0 [C2 ] TYPE DE SPEMET
+          0  1 MMM                                                             
+          1  1 BBB                                                             
+          2  1 EN RESERVE                                                      
+          3  1 VALEUR MANQUANTE                                                
+ 001199  11  0 [C4 ] OBJET PRINCIPAL DU SPEMET
+          0  1 VITESSE MAXIMALE DU VENT                                        
+          1  1 VENT MOYEN                                                      
+          2  1 VISIBILITE                                                      
+          3  1 NON UTILISE                                                     
+          4  1 PRECIPITATIONS                                                  
+          5  1 PRESSION                                                        
+          6  1 ETAT DE LA MER OU DE LA HOULE                                   
+          7  1 TEMPETE DE POUSSIERE OU DE SABLE OU CHASSE NEIGE                
+          8  1 ORAGE AVEC OU SANS PRECIPITATIONS                               
+          9  1 GRAIN OU TROMBE                                                 
+         15  1 VALEUR MANQUANTE                                                
+ 001223   4  0 [C3 ]IDENTIFICATEUR DES CARTES DE RISQUE PLUVIOMETRIQUE
+	      0  1 RISQUE PLUVIOMETRIQUE POUR UNE DUREE DE CUMUL DONNEE
+	      1  1 RISQUE PLUVIOMETRIQUE MAX AIGA PLUVIO POUR UN ENSEMBLE DE DUREES DE CUMUL (<=72h)
+	      2  1 RISQUE PLUVIOMETRIQUE MAX APIC POUR UN ENSEMBLE DE DUREES DE CUMUL (<=24h)
+	      7  1 VALEUR MANQUANTE
+ 002193   5  0 [C8 ]TYPE DE CALCULATEUR RADAR
+          0  1 THOMSON MT750
+          1  1 METEO-FRANCE SAPHYR
+          2  1 METEO-FRANCE CASTOR
+          3  1 METEO-FRANCE CASTOR2
+        255  1 VALEUR MANQUANTE
+ 002194  11  1 [C8 ]INDICATEUR DU DERNIER ETALONNAGE
+          0  1 ETALONNAGE CORRECT
+          1  1 REGLAGE NIVEAU BAS IMPOSSIBLE
+          2  1 REGLAGE NIVEAU HAUT IMPOSSIBLE
+          3  1 REGLAGES NIVEAUX BAS ET HAUT IMPOSSIBLES
+          4  1 FREQUENCE NON TROUVEE
+          5  1 VALEUR INTERMEDIAIRE HORS NORME
+          6  1 ABSENCE OU PANNE DU GENERATEUR HYPERFREQUENCE
+          7  1 RADAR HORS TENSION
+          8  1 POSITIONNEMENT EN SITE IMPOSSIBLE
+          9  1 POSITIONNEMENT EN SITE INHIBE
+        255  1 VALEUR MANQUANTE
+ 002198   6  0 [C8 ] Indicateur d'arret ou de panne
+          0  1 Rien a signaler
+          1  1 Radar hors tension
+          2  1 Arret beau temps
+         10  1 Decrochage du controle automatique de frequence
+         11  1 Absence de la THT emetteur
+        255  1 Valeur manquante
+ 002200   4  0 [C2 ] Indicateur de fonctionnement de l eliminateur echos fixes
+          0  1 FONCTIONNEMENT CORRECT VERIFIE
+          1  1 FONCTIONNEMENT INCORRECT
+          2  1 FONCTIONNEMENT NON VERIFIE
+          3  1 VALEUR MANQUANTE
+ 002201   6  0 [C4 ] INDICATOR FOR METHOD OF CALCULATION OF SPECTRAL DATA
+          0  1 RESERVED
+          1  1 LONGUET-HIGGINS(1964)
+          2  1 LONGUET-HIGGINS(F3 METHOD)
+          3  1 MAXIMUM LIKELIHOOD METHOD
+          4  1 MAXIMUM ENTROPY METHOD
+         15  1 MISSING
+ 002202   5  0 [C3 ] INDICATOR FOR TYPE OF PLATFORM
+          0  1 SEA STATION
+          1  1 AUTOMATIC DATA BUOY
+          2  1 AIRCRAFT
+          3  1 SATELLITE
+          7  1 MISSING
+ 002203   4  0 [C2 ] WAVE MEASUREMENT INSTRUMENTATION
+          0  1 RESERVED
+          1  1 HEAVE SENSOR
+          2  1 SLOPE SENSOR
+          3  1 MISSING
+ 002204   5  0 [C3 ] INDICATEUR DES UNITES VITESSE VENT ET TYPE D'INSTRUM
+          0  2 METRES PAR SECONDE.STATIONS TERRESTRES ET NAVIRES POURVUS 
+               D'INSTRUMENTS HOMOLOGUES
+          1  2 NOEUDS. STATIONS TERRESTRES ET NAVIRES POURVUS D'INSTRUMENTS
+               HOMOLOGUES
+          2  1 METRES PAR SECONDE. NAVIRES POURVUS D'INSTRUMENTS NON HOMOLOGUES
+          3  1 NOEUDS. NAVIRES POURVUS D'INSTRUMENTS NON HOMOLOGUES
+          7  1 MISSING
+ 002205   7  0 [C8 ]TYPE DE RADAR
+          0  1 THOMSON-RODIN
+          1  1 OMERA-MELODI
+          2  1 PLESSEY 46C
+          3  1 OMERA-RAVEL
+          4  1 GEMATRONIK METEOR300AC
+          5  1 THOMSON-MTO2000
+        255  1 VALEUR MANQUANTE
+ 002206   4  0 [C2 ]INDICATEUR DE POSITIONNEMENT EN SITE
+          0  1 POSITIONNEMENT EN SITE AUTORISE
+          1  1 POSITIONNEMENT EN SITE INHIBE
+          2  1 RESERVE
+          3  1 VALEUR MANQUANTE
+ 002207   4  0 [C2 ]SENS DE BALAYAGE EN AZIMUT
+          0  1 SENS TRIGONOMETRIQUE VU DE DESSUS
+          1  1 SENS INVERSE TRIGONOMETRIQUE VU DE DESSUS
+          2  1 RESERVE
+          3  1 VALEUR MANQUANTE
+ 004201   5  0 [C3 ]PERIODE D'OBSERVATION
+          0  1 RESERVE
+          1  1 J 06h01 a J+1 06h00
+          2  1 J-1 18h01 a J 18h00
+          3  1 J-1 06h01 a J 06h00
+          7  1 VALEUR MANQUANTE
+ 005194   3  0 [C8 ] Indicateur du centre de projection
+          0  1 Le pole nord est sur le plan de projection
+          1  1 Le pole sud est sur le plan de projection
+        255  1 Valeur manquante
+ 008192  10  0 [C4 ] Indicateur de changement d'une prevision
+          0  1 NOSIG
+          1  1 BECMG
+          2  1 TEMPO
+          3  1 FM
+          4  1 PROB30
+          5  1 PROB40
+          6  1 PROB30 TEMPO
+          7  1 PROB40 TEMPO
+          8  1 BASE
+         15  1 VALEUR MANQUANTE
+ 008193   6  0 [C5 ] Phase of the life cycle of the cloud system
+          0  1 Triggering
+          1  1 Growing
+          2  1 Mature
+          3  1 Decaying
+          4  1 Triggering from a split of a pre-existing system
+         31  1 VALEUR MANQUANTE
+ 008194  12  0 [B23] CARACTERISTIQUE DE L'ALERTE
+          1  1 VITESSE MOYENNE DU VENT 10MN SUPERIEUR A
+          2  1 VITESSE INSTANTANEE DU VENT SUPERIEUR A
+          3  1 GRAIN
+          4  1 TEMPERATURE DE L'AIR SUPERIEURE A
+          5  1 TEMPERATURE DE L'AIR INFERIEURE A
+          6  1 TEMPERATURE DU SOL INFERIEURE A
+          7  1 CUMUL DE PLUIE SUR 6MN SUPERIEUR A
+          8  1 PRESSION MER INFERIEURE A
+          9  1 VISIBILITE INFERIEURE A
+         10  1 HAUTEUR DE LA BASE DES NUAGES INFERIEURE A
+         22  1 OCCURRENCE DE BROUILLARD GIVRANT
+         23  1 VALEUR MANQUANTE (23 bits mis a 1)
+ 008195   3  0 [C2 ]Caracteristique de la donnee qui suit
+          0  1 Valeur mesuree
+          1  1 Seuil franchi
+          3  1 VALEUR MANQUANTE
+ 008200   4  0 [C2 ]Nature (convective or not) of the cloud system
+          0  1 Convective cloud system
+          1  2 Cloud system originating from the split of a previous
+               convective cloud system
+          2  1 Other cloud system
+          3  1 VALEUR MANQUANTE
+ 008201   5  0 [C3 ]Qualitative value
+          0  1 Very high
+          1  1 High
+          2  1 Moderate
+          3  1 Low
+          7  1 VALEUR MANQUANTE
+ 008202  15  0 [C5 ] Type de prevision
+          0  1 Brute
+          1  1 Adaptation statistique
+          2  1 Prevision reactualisee
+          3  1 Prevision validee par un previ
+          4  1 Interpolation spatiale filtree
+          5  1 Adaptation statistique filtree
+          9  1 Prevision "AS BEST"
+         16  1 Safran/Arpege
+         17  1 Safran/Aladin
+         18  1 Safran
+         19  1 Safran analogue
+         20  1 Sympo horaire
+         21  1 Sympo quotidienne
+         22  1 Safran/Arome
+         31  1 VALEUR MANQUANTE 
+ 008203   4  0 [C5 ]Caracteristique temporelle MF
+          0  1 Extreme climatologique
+          1  1 Periode 0h-24h locales
+          2  1 Periode H-1h30 / H+1h30
+         31  1 VALEUR MANQUANTE
+ 008204   3  0 [C5 ]Caracteristique meteorologique
+          0  1 Limite pluie-neige
+          1  1 Isotherme 0
+         31  1 VALEUR MANQUANTE
+ 008205   5  0 [C3 ]Caracteristique systeme convectif
+          0  1 Systeme convectif
+          1  1 Systeme issu d'une fission d'un systeme convectif
+          2  1 Autres systemes
+	      3  1 Systeme convectif declassifie	  
+          7  1 VALEUR MANQUANTE	 
+ 020192   5  0 [C3 ]Classes de nebulosite SYMPO
+          0  1 Nebulosite comprise entre 0 et 2 octas
+          1  1 Nebulosite 3 ou 4 octas
+          2  1 Nebulosite 5 ou 6 octas
+          3  1 Nebulosite 7 ou 8 octas
+          7  1 VALEUR MANQUANTE
+ 020194  11  0 [C4 ] ETAT DE LA NEIGE
+          0  1 NEIGE FRAICHE (OU RECENTE) SECHE                                
+          1  1 NEIGE FRAICHE (OU RECENTE) SECHE AVEC GIVRE DE SURFACE          
+          2  1 NEIGE FRAICHE (OU RECENTE) HUMIDE                               
+          3  1 NEIGE SOUFFLEE NON PORTANTE                                     
+          4  1 NEIGE SOUFFLEE PORTANTE                                         
+          5  1 VIEILLE NEIGE HUMIDE NON PORTANTE (POURRIE)                     
+          6  1 VIEILLE NEIGE HUMIDE PORTANTE (NON CROUTEE)                     
+          7  1 CROUTE DE REGEL NON PORTANTE                                    
+          8  1 CROUTE DE REGEL PORTANTE                                        
+          9  1 SURFACE LISSE ET GLACEE                                         
+         15  1 VALEUR MANQUANTE
+ 020196  11  0 [C4 ] NUAGES DANS LA VALLEE
+          0  1 PAS DE NUAGE                                                    
+          1  1 NUAGES ISOLES, ALTITUDE DES SOMMETS < 1000M                     
+          2  1 NUAGES ISOLES, ALTITUDE DES SOMMETS ENTRE 1000M ET 1500M        
+          3  1 NUAGES ISOLES, ALTITUDE DES SOMMETS > 1500M                     
+          4  1 MER DE NUAGES PARTIELLE, ALTITUDE DES SOMMETS < 1000M           
+          5  2 MER DE NUAGES PARTIELLE, ALTITUDE DES SOMMETS ENTRE 1000 ET     
+               1500M                                                           
+          6  1 MER DE NUAGES PARTIELLE, ALTITUDE DES SOMMETS > 1500M           
+          7  1 MER DE NUAGES COMPLETE, ALTITUDE DES SOMMETS < 1000M            
+          8  2 MER DE NUAGES COMPLETE, ALTITUDE DES SOMMETS ENTRE 1000 ET      
+               1500M                                                           
+          9  1 MER DE NUAGES COMPLETE, ALTITUDE DES SOMMETS > 1500M            
+         15  1 VALEUR MANQUANTE
+ 020197  11  0 [C4 ] CHASSE-NEIGE EN ALTITUDE
+          0  1 PAS DE CHASSE-NEIGE       
+          1  2 IL Y A EU DE LA CHASSE-NEIGE DEPUIS LA DERNIERE OBSERVATION 
+               ET PAS DE CHASSE-NEIGE EN ALTITUDE AU MOMENT DE L'OBSERVATION
+          2  1 CHASSE-NEIGE MODEREE D'EST    
+          3  1 CHASSE-NEIGE MODEREE DU SUD    
+          4  1 CHASSE-NEIGE MODEREE D'OUEST    
+          5  1 CHASSE-NEIGE MODEREE DE NORD     
+          6  1 CHASSE-NEIGE FORTE D'EST          
+          7  1 CHASSE-NEIGE FORTE DU SUD          
+          8  1 CHASSE-NEIGE FORTE D'OUEST          
+          9  1 CHASSE-NEIGE FORTE DE NORD           
+         15  1 VALEUR MANQUANTE
+ 020198  11  0 [C4 ] DESCRIPTION AVALANCHES OBSERVEES
+          0  1 RIEN A SIGNALER 
+          1  1 DECLENCHEMENT ACCIDENTEL.PAS D'AVALANCHES NATURELLES 
+          2  1 DECLENCHEMENT ARTIFICIEL POSITIF.PAS D'AVALANCHES NATURELLES  
+          3  1 FISSURES DANS LE MANTEAU NEIGEUX                 
+          4  1 COULEES SUPERFICIELLES (UNE OU PLUSIEURS)         
+          5  1 UNE SEULE AVALANCHE OBSERVEE. AVALANCHES NATURELLES
+          6  1 DEUX AVALANCHES OBSERVEES. AVALANCHES NATURELLES
+          7  1 TROIS A CINQ AVALANCHES OBSERVEES. AVALANCHES NATURELLES  
+          8  1 CINQ A DIX AVALANCHES OBSERVEES. AVALANCHES NATURELLES
+          9  1 PLUS DE DIX AVALANCHES OBSERVEES.AVALANCHES NATURELLES
+         15  1 VALEUR MANQUANTE
+ 020199  11  0 [C4 ] GENRE D'AVALANCHES
+          0  1 RIEN A SIGNALER          
+          1  1 AVALANCHE DE NEIGE RECENTE, SECHE, DEPART PONCTUEL 
+          2  1 AVALANCHE DE NEIGE RECENTE, HUMIDE, DEPART PONCTUEL 
+          3  1 AVALANCHE DE NEIGE RECENTE, DEPART LINEAIRE
+          4  1 AVALANCHE DE PLAQUE DE SURFACE   
+          5  1 AVALANCHE DE PLAQUE A VENT        
+          6  1 AVALANCHE DE PLAQUE DE FOND        
+          7  1 AVALANCHE DE FONTE DE SURFACE       
+          8  1 AVALANCHE DE FONTE DE FOND           
+          9  1 PLUSIEURS AVALANCHES DE TYPE DIFFERENT
+         15  1 VALEUR MANQUANTE
+ 020200  11  0 [C4 ] ALTITUDE DEPART DE L'AVALANCHE
+          0  1 RIEN A SIGNALER      
+          1  1 INFERIEURE A 1750 M   
+          2  1 ENTRE 1750 M ET 2000 M 
+          3  1 ENTRE 2000 M ET 2250 M  
+          4  1 ENTRE 2250 M ET 2500 M   
+          5  1 ENTRE 2500 M ET 2750 M    
+          6  1 ENTRE 2750 M ET 3000 M     
+          7  1 ENTRE 3000 M ET 3500 M      
+          8  1 SUPERIEURE A 3500 M          
+          9  1 DEPART A PLUSIEURS ALTITUDES  
+         15  1 VALEUR MANQUANTE
+ 020201  11  0 [C4 ] EXPOSITION DE L'AVALANCHE
+          0  1 RIEN A SIGNALER             
+          1  1 NORD-EST                     
+          2  1 EST                           
+          3  1 SUD-EST                        
+          4  1 SUD                             
+          5  1 SUD-OUEST                        
+          6  1 OUEST                             
+          7  1 NORD-OUEST                         
+          8  1 NORD                                
+          9  1 DEPART A PLUSIEURS EXPOSITIONS       
+         15  1 VALEUR MANQUANTE
+ 020202   6  0 [C4 ] ESTIMATION DU RISQUE D'AVALANCHE
+          1  1 FAIBLE
+          2  1 LIMITE 
+          3  1 MARQUE  
+          4  1 FORT     
+          5  1 TRES FORT 
+         15  1 VALEUR MANQUANTE
+ 020203  10  0 [C4 ] TYPE DES GRAINS DE SURFACE PREDOMINANT DANS LA COUCHE
+          1  1 NEIGE FRAICHE
+          2  1 PARTICULES RECONNAISSABLES   
+          3  1 GRAINS FINS        
+          4  1 FACES PLANES        
+          5  1 GOBELETS             
+          6  1 GRAINS RONDS          
+          7  1 CROUTES                
+          8  1 GIVRE DE SURFACE        
+          9  1 NEIGE ROULEE             
+         15  1 VALEUR MANQUANTE
+ 020204  10  0 [C4 ]TYPE DES GRAINS DE SURFACE LES PLUS NBREUX APRES LES GRAINS PREDOMINANTS
+          1  1 NEIGE FRAICHE             
+          2  1 PARTICULES RECONNAISSABLES 
+          3  1 GRAINS FINS      
+          4  1 FACES PLANES      
+          5  1 GOBELETS           
+          6  1 GRAINS RONDS        
+          7  1 CROUTES              
+          8  1 GIVRE DE SURFACE      
+          9  1 NEIGE ROULEE           
+         15  1 VALEUR MANQUANTE
+ 020206   4  0 [C2 ] INDICATEUR D'HOMOGENEITE DE LA COUCHE
+          0  2 IL A NEIGE PLUS DE 5 CM DEPUIS LA  DERNIERE OBSERVATION.
+               CAROTTAGE VERTICAL SUR LA PLANCHE 
+          1  3 IL N'A PAS NEIGE (OU MOINS DE 5 CM) ET LA COUCHE DE 10 CM
+               SOUS LA SURFACE EST HOMOGENE. CAROTTAGE HORIZONTAL ENTRE
+               LA SURFACE DE LA NEIGE ET LE NIVEAU -10 CM             
+          2  4 IL N'A PAS NEIGE (OU MOINS DE 5 CM) ET LA COUCHE DE 10 CM
+               SOUS LA SURFACE EST CONSTITUEE D'UNE OU PLUSIEURS STRATES
+               DE NATURE OU DE DURETE DIFFERENTE. PAS DE MESURE DE MASSE
+               VOLUMIQUE
+          3  1 VALEUR MANQUANTE
+ 020207  11  0 [C ] Epaisseur de la couche
+          0  1 Jusqu'au sommet des nuages
+          1  1 300 m
+          2  1 600 m
+          3  1 900 m 
+          4  1 1200 m
+          5  1 1500 m
+          6  1 1800 m
+          7  1 2100 m
+          8  1 2400 m
+          9  1 2700 m
+         15  1 VALEUR MANQUANTE
+ 020209   6  0 [C3 ]Classes de nebulosite pour Approche
+          0  1 0 octa
+          1  1 Nebulosite 1 et 2 octas
+          2  1 Nebulosite 3 et 4 octas
+          3  1 Nebulosite 5, 6 et 7 octas
+          4  1 Nebulosite 8 octas
+          7  1 VALEUR MANQUANTE
+ 020210   9  0 [B16] OCCURENCE DE PHENOMENE
+          1  1 NEIGE
+          2  1 BROUILLARD
+          3  1 ORAGE
+          4  1 GRESIL
+          5  1 GRELE
+          6  1 ROSEE
+          7  1 GELEE BLANCHE
+          8  1 BRUME
+         16  1 VALEUR MANQUANTE (16 bits mis a 1)
+ 020211  10  0 [C4 ] NEBULOSITE MAXIMALE > 4/8 POUR UNE HAUTEUR < 300M
+          0  1 RESERVE
+          1  1 RESERVE
+          2  1 RESERVE
+          3  1 RESERVE
+          4  1 RESERVE
+          5  1 5 OCTAS
+          6  1 6 OCTAS
+          7  1 7 OCTAS
+          8  1 8 OCTAS
+         15  1 VALEUR MANQUANTE
+ 020215   4  0 [C2 ] INDICATEUR DE GRAIN
+          0  1 PAS DE GRAIN DETECTE
+          1  1 GRAIN DETECTE
+          2  1 RESERVE
+          3  1 VALEUR MANQUANTE
+ 021196  12  0 [B12] UWA PRODUCT CONFIDENCE DATA
+          1  1 EQUIPMENT NOT WORKING
+          2  1 EQUIPMENT FAILED
+          3  1 PRF CODE CHANGED
+          4  1 SAMPLING WINDOW CHANGED
+          5  1 GAIN CHANGED
+          6  1 EXCEEDS SPECIFIED VALUES (CHIRP REPLICA QUALITY)
+          7  1 MEAN AND STANDARD DEVIATION OF I & Q NOT OK (INPUT DATA)
+          8  1 CONFIDENCE MEASURE > MMCC VALUE (DOPPLER CENTROID)
+          9  1 CENTROID ABSOLUTE VALUE > PRF/2 (DOPPLER CENTROID)
+         10  1 CONFIDENCE MEASURE < MMCC VALUE (DOPPLER AMBIGUITY)
+         11  1 MEAN AND STANDARD DEVIATION > MMCC VALUE (OUTPUT DATA)
+         12  1 MISSING VALUE
+ 021197  12  0 [B12] UWI PRODUCT CONFIDENCE DATA
+          1  1 NO FOREBEAM CALCULATION
+          2  1 NO MIDBEAM CALCULATION
+          3  1 NO AFTBEAM CALCULATION
+          4  1 FOREBEAM ARCING DETECTED
+          5  1 MIDBEAM ARCING DETECTED
+          6  1 AFTBEAM ARCING DETECTED
+          7  1 ANY BEAM ABOVE OR EQUAL TO THRESHOLD (LIMIT OF KP VALUE 20%)
+          8  1 LAND (LAND/SEA FLAG)
+          9  1 AUTONOMOUS AMBIGUITY REMOVAL NOT USED
+         10  1 METEOROLOGICAL BACKGROUND NOT USED
+         11  1 CHECKSUM ERROR DETECTED (FRAME CHECKSUM FLAG)
+         12  1 MISSING VALUE
+ 021198   8  0 [B8 ] URA PRODUCT CONFIDENCE DATA
+          1  1 BAD WIND
+          2  1 BAD SWH
+          3  1 BAD ALTITUDE
+          4  1 BAD PEAKINESS
+          5  1 CHECKSUM ERROR DETECTED
+          6  1 HTL CORRECTION NOT PERFORMED
+          7  1 NOT ENOUGH MEASUREMENTS N<10
+          8  1 MISSING VALUE
+ 021199   7  0 [B7 ] UAT QUALITY ANALYSIS TESTS
+          1  1 ASST V MOSST  COMPARISON ASST AGAINST MO SST ANALYSIS
+          2  1 ASST V WEEKA  COMPARISON ASST V WEEKLY AVERAGE UKMO ANALYSIS
+          3  1 ASST V PREVP  COMPARISON ASST V PREVIOUS EQUIVALENT PASS
+          4  1 ASST V WKAVE  COMPARISON ASST V WEEKLY AVERAGE ASST
+          5  1 ROCASSTVANAL  RATE OF CHANGE OF ASST V  R O C OF UKMO SST ANAL.
+          6  1 ASST V ASST   COMPARISON OF R O C OF ASST V STATIC THRESHOLD
+          7  1 MISSING       ALL BITS SET ON FOR MISSING DATA
+ 021200  15  0 [B15] MWI PRODUCT CONFIDENCE DATA
+          1  1 NO FOREBEAM CALCULATION
+          2  1 NO MIDBEAM CALCULATION
+          3  1 NO AFTBEAM CALCULATION
+          4  1 FOREBEAM ARCING DETECTED
+          5  1 MIDBEAM ARCING DETECTED
+          6  1 AFTBEAM ARCING DETECTED
+          7  1 ANY BEAM ABOVE OR EQUAL TO THRESHOLD (LIMIT OF KP VALUE 20%)
+          8  1 LAND (LAND/SEA FLAG)
+          9  1 AUTONOMOUS AMBIGUITY REMOVAL NOT USED
+         10  1 METEOROLOGICAL BACKGROUND NOT USED
+         11  1 CHECKSUM ERROR DETECTED (FRAME CHECKSUM FLAG)
+         12  1 NO RETRIEVAL MADE
+         13  1 RETRIEVED WIND <4 OR >24M/S
+         14  1 RETRIEVED-BACKGROUND WIND SPEED >4M/S AND/OR DIR >40 DEGREES
+         15  1 MISSING VALUE
+ 021202   4  0 [B4 ] ALTIMETER CALIBRATION STATUS
+          1  1 HEIGHT ERROR   CORRECTION
+          2  1 STL DISCRIMINATOR CORRECTION
+          3  1 AGC OUTPUT     CORRECTION
+          4  1 MISSING VALUE
+ 021203   9  0 [B9 ] ALTIMETER INSTRUMENT MODE
+          1  1 BLANK DATA RECORD
+          2  1 TEST
+          3  1 CALIBRATION
+          4  1 BITE
+          5  1 AQUISITION ON ICE
+          6  1 AQUISITION ON SEA
+          7  1 TRACKING ON ICE
+          8  1 TRACKING ON SEA
+          9  1 MISSING VALUE
+ 021206   4  0 [C3 ] REPRESENTATION OF INTENSITIES
+          0  1 LINEAR
+          1  1 LOG (BASE E)
+          2  1 LOG (BASE 10)
+          7  1 MISSING VALUE
+ 020222  39  0 [C6 ] Temps sensible
+          0  1 Soleil (0, 1 ou 2 octas)
+          1  1 Voile
+          2  1 Peu nuageux (3 ou 4 octas)
+          3  1 Traine
+          4  1 Tres nuageux (5 ou 6 octas)
+          5  1 Couvert (7 ou 8 octas)
+          6  1 Nuages sur le relief, soleil predominant en vallee
+          7  1 Mer de nuages
+          8  1 Bancs de brouillard en plaine
+          9  1 Brume ou brouillard peu dense
+         10  1 Brouillard dense
+         11  1 Brume ou brouillard givrant peu dense
+         12  1 Brouillard givrant dense
+         13  1 Bruine
+         14  1 Bruine ou pluie verglacantes
+         15  1 Pluie faible
+         16  1 Pluie moderee
+         17  1 Pluie forte
+         18  1 Pluie localement orageuse
+         19  1 Neige faible
+         20  1 Pluie et neige melee
+         21  1 Neige collante
+         22  1 Neige moderee
+         23  1 Neige forte
+         24  1 Rares averses de pluie
+         25  1 Averses de pluie
+         26  1 Averses sur le relief
+         27  1 Averses de pluie et neige melee
+         28  1 Rares averses de neige
+         29  1 Averses de neige
+         30  1 Averses localement orageuses
+         31  1 Averses de grele
+         32  1 Risque d'orages
+         33  1 Orages sur le relief
+         34  1 Orages
+         35  1 Risque de violents orages
+         36  1 Violents orages
+         37  1 Tempete de sable
+         63  1 VALEUR MANQUANTE
+ 020224  22  0 [B5 ] Cloud classification over cloud cell
+          0  1 nopn traite 
+          1  1 terre claire
+          2  1 mer claire
+          3  1 neige sur terre
+          4  1 glace sur mer
+          5  1 tres bas CU
+          6  1 tres bas ST
+          7  1 bas CU
+          8  1 bas ST
+          9  1 moyen CU
+         10  1 moyen ST
+         11  1 haut CU
+         12  1 haut ST
+         13  1 tres haut CU
+         14  1 tres haut ST
+         15  1 1/2 transp fin
+         16  1 1/2 transp moy epais
+         17  1 1/2 transp epais
+         18  1 1/2 transp sur nuage
+         19  1 fractionne
+         20  1 non classe
+         31  1 MISSING
+ 021225   5  0 [B10] PRESCAT PRODUCT CONFIDENCE
+          1  1 Forebeam measurements rejected
+          2  1 Midbeam measurements rejected
+          3  1 Aftbeam measurements rejected
+          4  1 Minimisation residual too high
+         10  1 MISSING       ALL BITS SET ON FOR MISSING DATA
+ 022228   3  0 [C2 ] INDICATEUR DE FOND
+          0  1 FOND ATTEINT
+          1  1 FOND NON ATTEINT
+          3  1 MISSING
+ 025192   7  0 [C8 ] Methode de composition dans les zones de recouvrement
+          1  1 Maximum
+          2  1 Moyenne
+          3  1 Carte de selection
+          4  1 Filtre recursif du premier ordre
+          5  1 Site le plus bas
+          6  1 Methode Panthere
+        255  1 Valeur manquante
+ 025196   4  0 [C8 ] Methode de cumul
+          0  1 Cumul simple
+          1  1 Cumul avec advection y compris sur echos fixes
+          2  1 Cumul avec advection hors echos fixes
+        255  1 Valeur manquante
+ 025199   4  0 [C4 ]METHODE D'INTEGRATION DISTANCE
+          0  1 MAXIMUM
+          1  1 MOYENNE ARITHMETIQUE
+          2  1 AVANT PLUS GRAND
+         15  1 VALEUR MANQUANTE
+ 025200   3  0 [C4 ]METHODE D'INTEGRATION AZIMUT
+          0  1 MOYENNE ARITHMETIQUE
+          1  1 FILTRE RECURSIF DU PREMIER ORDRE
+         15  1 VALEUR MANQUANTE
+ 025217   4  0 [C3 ]Mode de fonctionnement du filtrage des echos non meteorologiques
+          0  1 Filtrage hors service
+          1  1 Filtrage seuil IR manuel
+          2  1 Filtrage seuil IR automatique
+          7  1 MISSING
+ 025218   3  0 [C4 ]CORRECTION PAR UN PROFIL VERTICAL DE REFLECTIVITE
+          0  1 AUCUNE
+          1  1 EN SERVICE
+         15  1 VALEUR MANQUANTE
+ 025219   3  0 [C3 ]Methode d'elaboration du masque
+          0  1 CUMUL D'OCCURENCES
+          1  1 METHODE HYDRO
+          7  1 VALEUR MANQUANTE          
+ 025221   8  0 [C4 ] Type de facteur correctif (pluviometre/radar) applique a la lame d'eau
+          0  1 Pas de correction
+          1  1 Facteur scalaire calcule mensuellement
+          2  1 Facteur scalaire calcule chaque heure
+          3  1 Facteur scalaire calcule chaque demi-heure
+          4  1 Facteur matriciel calcule mensuellement
+          5  1 Facteur matriciel calcule chaque heure
+          6  1 Facteur matriciel calcule chaque demi-heure
+          15 1 VALEUR MANQUANTE          
+ 025228   5  0 [C5 ]
+          0  1 Satellite data
+          1  1 Radar data
+          2  1 Lightning data
+         30  1 Other data
+         31  1 VALEUR MANQUANTE
+ 029192   2  0 [C6 ] Systeme geodesique
+	      0  1 WGS84
+	     63  1 Valeur manquante
+ 030192   4  0 [B8 ] Mode de balayage
+          1  1 Balayage d'ouest en est le long d'un parallele
+          2  1 Balayage nord-sud le long d'un meridien
+          3  1 Balayage par lignes
+          8  1 Valeur manquante (8 bits mis a 1)
+ 033192   5  0 [C3 ] FLAG DE QUALITE SUR PARAMETRE
+          0  1 QUALITE CORRECTE           
+          1  1 QUALITE DOUTEUSE          
+          2  1 QUALITE MAUVAISE         
+          3  1 NON CONTROLE            
+          7  1 VALEUR MANQUANTE
+ 033193   4  0 [C2 ] ATTRIBUT DE LA VALEUR QUI SUIT
+          0  1 LA VALEUR QUI SUIT EST A UTILISER TELLE QUELLE
+          1  1 LA VALEUR QUI SUIT EST BORNEE ELLE EST SUPERIEURE A LA VALEUR REELLE
+          2  1 LA VALEUR QUI SUIT EST BORNEE ELLE EST INFERIEURE A LA VALEUR REELLE
+          3  1 VALEUR MANQUANTE
+ 033212   4  0 [C2 ] QUALITE DE LA MESURE DE PRESSION
+          0  1 VALEUR COMPRISE DANS LES LIMITES SPECIFIEES  
+          1  1 VALEUR SORTANT DES LIMITES SPECIFIEES       
+          2  1 NON UTILISE                                
+          3  1 MASQUE              
+ 033213   4  0 [C2 ] QUALITE DU PARAMETRE TECHNOLOGIQUE(DEUXIEME VARIABLE DU PREMIERBLOC DE DONNEES CAPTEURS DES PLATES-FORMES ARGOS)
+          0  1 VALEUR COMPRISE DANS LES LIMITES 
+          1  1 VALEUR SORTANT DES LIMITES      
+          2  1 NON UTILISE                    
+          3  1 MASQUE                        
+ 033214   4  0 [C2 ] QUALITE DE LA MESURE DE LA TEMPERATURE DE L'EAU EN SURFACE
+          0  1 VALEUR COMPRISE DANS LES LIMITES      
+          1  1 VALEUR SORTANT DES LIMITES           
+          2  1 NON UTILISE                         
+          3  1 MASQUE                             
+ 033215   4  0 [C2 ] VALEUR DE LA MESURE DE LA TEMPERATURE DE L'AIR
+          0  1 VALEUR COMPRISE DANS LES LIMITES  
+          1  1 VALEUR SORTANT DES LIMITES       
+          2  1 NON UTILISE                     
+          3  1 MASQUE                         
+ 033216   4  0 [C2 ] QUALITE DES TRANSMISSIONS ENTRE LA BOUEE ET LE SATELLITE
+          0  1 BONNE QUALITE(PLUSIEURS MESSAGES IDENTIQUES ONT ETE RECUS)
+          1  1 QUALITE DOUTEUSE(PAS DE MESSAGES IDENTIQUES)             
+          2  1 NON UTILISE                                             
+          3  1 MASQUE                                                 
+ 033217   4  0 [C2 ] QUALITE DE LA POSITION
+          0  2 LA VALEUR TRANSMISE AU DEBUT DU MESSAGE EST FIABLE (POSITION
+               DETERMINEE SUR LA BASE DE 2 PASSAGES DU SATELLITE)
+          1  3 LES VALEURS DU DEBUT DU MESSAGE SONT LES DERNIERES VALEURS
+               CONNUES (PAS DE DONNEES DE POSITION A L'OCCASION DU PASSAGE
+               CORRESPONDANT)                                   
+          2  3 QUALITE DOUTEUSE. LA POSITION A ETE DETERMINEE SUR LA BASE
+               D'UN SEUL PASSAGE. UNE SECONDE SOLUTION EST POSSIBLE DANS
+               5% DES CAS            
+          3  1 MASQUE               
+ 033218   7  0 [C3 ] INDICATEUR CONTROLE DE QUAL DES DONNEES RELATIVES A LA POSITION
+          0  1 DONNEES NON VERIFIEES            
+          1  1 DONNEES BONNES                  
+          2  1 MANQUE DE CONCORDANCE          
+          3  1 DONNEES DOUTEUSES             
+          4  1 DONNEES ERRONEES             
+          5  1 LA VALEUR DES DONNEES A ETE MODIFIEE   
+          7  1 VALEUR MANQUANTE                      
+ 033219   7  0 [C3 ] INDICATEUR CONTROLE DE QUAL DES DONNEES RELATIVES A L'HEURE
+          0  1 DONNEES NON VERIFIEES         
+          1  1 DONNEES BONNES               
+          2  1 MANQUE DE CONCORDANCE       
+          3  1 DONNEES DOUTEUSES          
+          4  1 DONNEES ERRONEES          
+          5  1 LA VALEUR DES DONNEES A ETE MODIFIEE
+          7  1 VALEUR MANQUANTE                   
+ 033220   7  0 [C3 ] INDICATEUR CONTROLE DE QUAL DES DONNEES METEOROLOGIQUES
+          0  1 DONNEES NON VERIFIEES            
+          1  1 DONNEES BONNES                  
+          2  1 MANQUE DE CONCORDANCE          
+          3  1 DONNEES DOUTEUSES             
+          4  1 DONNEES ERRONEES             
+          5  1 LA VALEUR DES DONNEES A ETE MODIFIEE   
+          7  1 VALEUR MANQUANTE                      
+ 033221  13  0 [C4 ] INDICATEUR DE POSITION DU GROUPE
+          0  1 VENT   
+          1  1 TEMPERATURE DE L'AIR   
+          2  1 TEMPERATURE DU POINT DE ROSEE OU HUMIDITE   
+          3  1 PRESSION STATION                           
+          4  1 PRESSION MER                              
+          5  1 TENDANCE BAROMETRIQUE                    
+          6  1 PARAMETRE INDETERMINE DONNEES METEO     
+          7  1 TEMPERATURE MER                        
+          8  1 PERIODE ET HAUTEUR DES VAGUES         
+          9  1 PERIODE DES VAGUES                   
+         10  1 HAUTEUR DES VAGUES                  
+         11  1 PARAMETRE INDETERMINE DONNEES MARINES
+         15  1 VALEUR MANQUANTE                    
+ 033222   7  0 [C3 ] INDICATEUR CONTROLE DE QUAL DES DONNEES MARINES
+          0  1 DONNEES NON VERIFIEES            
+          1  1 DONNEES BONNES                  
+          2  1 MANQUE DE CONCORDANCE          
+          3  1 DONNEES DOUTEUSES             
+          4  1 DONNEES ERRONEES             
+          5  1 LA VALEUR DES DONNEES A ETE MODIFIEE   
+          7  1 VALEUR MANQUANTE                      
+ 033223   7  0 [C3 ] INDICATEUR DE CONTROLE DE QUAL DES DONNEES RELATIVES AUX PROFILS DE TEMPERATURE ET DE SALINITE
+          0  1 DONNEES NON VERIFIEES               
+          1  1 DONNEES BONNES                     
+          2  1 MANQUE DE CONCORDANCE             
+          3  1 DONNEES DOUTEUSES                
+          4  1 DONNEES ERRONEES                
+          5  1 LA VALEUR DES DONNEES A ETE MODIFIEE
+          7  1 VALEUR MANQUANTE                   
+ 033224   7  0 [C3 ] INDICATEUR CONTROLE DE QUAL DES DONNEES RELATIVES AUX PROFILS DES COURANTS
+          0  1 DONNEES NON VERIFIEES   
+          1  1 DONNEES BONNES         
+          2  1 MANQUE DE CONCORDANCE 
+          3  1 DONNEES DOUTEUSES    
+          4  1 DONNEES ERRONEES    
+          5  1 LA VALEUR DES DONNEES A ETE MODIFIEE
+          7  1 VALEUR MANQUANTE                   
+ 033230   5  0 [C3 ] Spatial quality indicator of the cloud system
+          0  1 Nominal 
+          1  1 The edge of the cloud system is cut by an edge of the domain
+          2  1 The edge of the cloud system is cut by missing datz pixels
+          3  1 Both (1 and 2)
+          7  1 VALEUR MANQUANTE
+ 033231   9  0 [C4 ] Temporal quality indicator of the tracking of the cloud system
+          0  1 Nominal
+          1  2 The cloud system was first detected in a satellite image
+               received just after a missing image
+          2  5 A sequence of consecutive missing images, longer than 1h30
+               and shorter than 2h30, took place during the tracking of the
+               cloud system, the tracking "over crossed" this sequence of 
+               non-available images because the size of the cloud system 
+               just before it was larger than 7000 km**2
+          3  2 The spatial quality indicator of the cloud system was not 
+               nominal in at least one image
+          4  1 Both (1 and 2)
+          5  1 Both (1 and 3)
+          6  1 Both (2 and 3)
+          7  1 1, 2 and 3
+         15  1 VALEUR MANQUANTE
+ 033232   6  0 [C3 ] Quality indicator of the height of top of the clous system
+          0  1 Very good
+          1  1 Good
+          2  1 Medium
+          3  1 Low
+          4  1 Very low
+          7  1 VALEUR MANQUANTE
+ 049192   3  0 [C4 ] CODE DE QUALITE INTEGRITE DU MESSAGE
+          0  1 BON
+          1  1 INCOHERENCE DANS LES LONGUEURS
+         15  1 VALEUR MANQUANTE
+ 049193   4  0 [C4 ] Code de qualite arret-panne
+          0  1 Bon (Si 0 02 198 = 0)
+          1  1 Douteux (si 0 02 198 = 2 ou 10)
+          2  1 A rejeter (si 0 02 198 = 1 ou 11)
+         15  1 Valeur manquante
+ 049194   4  0 [C4 ] Code de qualite etalonnage
+          0  1 Bon (Si 0 02 194 = 0)
+          1  1 Le dernier etalonnage n'a pas eu lieu (si 0 02 194 = 6,7,8 ou 9)
+          2  1 Etalonnage incorrect (si 0 02 194 = 1,2,3,4 ou 5)
+         15  1 Valeur manquante
+ 049195   4  0 [C4 ] Code de qualite eliminateur d'echos fixes
+          0  1 Bon
+          1  1 Pas de controle
+          2  1 Fonctionnement incorrect
+         15  1 Valeur manquante
+ 049196   4  0 [C4 ] CODE DE QUALITE CONTROLE TEMPOREL
+          0  1 BON
+          1  1 PAS DE CONTROLE
+          2  1 DOUTEUX
+         15  1 VALEUR MANQUANTE
+ 049197   4  0 [C4 ] CODE DE QUALITE CONTROLE SPATIAL
+          0  1 BON
+          1  1 PAS DE CONTROLE
+          2  1 DOUTEUX
+         15  1 VALEUR MANQUANTE
+ 049198   4  0 [C4 ] CODE DE QUALITE. CONTROLE DE COHERENCE DES ECHOS FIXES
+          0  1 BON
+          1  1 PAS DE CONTROLE
+          2  1 INCOHERENCE
+         15  1 VALEUR MANQUANTE
+ 049199   4  0 [C4 ] CODE DE QUALITE DE COMPARAISON AVEC LES DONNEES SATELLITAIRES
+          0  1 BON
+          1  1 PAS DE CONTROLE
+          2  1 INCOHERENCE
+         15  1 VALEUR MANQUANTE
+ 049201   4  0 [C2 ] Code de detection de propagation anormale
+          0  1 Pas de propagation anormale
+          1  1 Propagation anormale
+          2  1 Indeterminee
+          3  1 Valeur manquante
+ 049209   4  0 [C2 ] Code pour l'unite de mesure de la lame d'eau
+          0  1 En centiemes de mm
+          1  1 En dixiemes de mm
+          2  1 En mm
+          3  1 Valeur manquante
+ 049210   4  0 [C2 ] Numero de PVR
+          0  1 PVR stratiforme
+          1  1 PVR convectif
+          2  1 PVR "mixte"
+          3  1 Valeur manquante
+ 055192   3  0 [C2 ]FILTRAGE ELEPHANT
+          0  1 HORS SERVICE
+          1  1 EN SERVICE
+          3  1 VALEUR MANQUANTE
+ 055200   4  0 [C3 ] SIGNALISATION DES VALEURS ABERRANTES DETECTEES
+          0  1 AUCUNE
+          1  1 PAR VALEUR
+          2  1 PAR BIT
+          7  1 VALEUR MANQUANTE
+ 055203   3  0 [C4 ]ETAT DE L'ELIMINATEUR D'ECHOS FIXES LORS DE LA CONSTITUTION DU MASQUE
+          0  1 ARRET
+          1  1 MARCHE
+         15  1 VALEUR MANQUANTE
+ 055226   4  0 [C3 ]SIGNALISATION DES VALEURS MODIFIEES
+          0  1 AUCUNE
+          1  1 PAR VALEUR
+          2  1 PAR BIT
+          7  1 VALEUR MANQUANTE
+ 055232   3  0 [C3 ]MODE DE CONSTITUTION DU MASQUE D'ECHOS FIXES
+          0  1 CUMUL SIMPLE DE TOUTES LES IMAGES
+          1  1 CUMUL SIMPLE DES IMAGES SANS LES IMAGES ABERRANTES
+          7  1 VALEUR MANQUANTE

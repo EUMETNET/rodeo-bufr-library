@@ -15,7 +15,6 @@
 0;01;220;Identification mark of a cloud system ( format YYYYMMDDhhmm_Tb_lat_lon or ``FIRST'');CCITT IA;0;0;248
 0;01;221;Modele de reference - reference producteur;CCITT IA;0;0;104
 0;01;222;Numero identification objet;Numeric;0;0;16
-0;01;223;Identificateur des cartes de risque pluviometrique;Code table;0;0;3
 0;02;192;SAR azimuth angle;Degree;0;0;9
 0;02;193;Type de calculateur;Code table;0;0;8
 0;02;194;Indicateur du dernier etalonnage;Code table;0;0;8
@@ -34,23 +33,21 @@
 0;02;207;Sens de balayage en azimut;Code table;0;0;2
 0;02;210;TYPE DE SITE (pour les SYNOR);Numeric;0;0;6
 0;02;211;TEMPS DE BON FONCTIONNEMENT DE LA STATION;HEURE;0;0;8
-0;02;212;TEMPS DE BON FONCTIONNEMENT DE LA STATION;Minute;0;0;8
+0;02;212;TEMPS DE BON FONCTIONNEMENT DE LA STATION;MINUTE;0;0;8
 0;02;213;PRECISION DE MESURE DE TEMPERA  TURE AMDAR;K;0;0;2
 0;02;214;RENSEIGNEMENTS SUR L'ETAT DE    FONCTIONNEMENT DE LA BOUEE;Numeric;0;0;14
 0;02;215;INDICATEUR DU TYPE D'ANCRE FLOT TANTE;Code table;0;0;1
 0;02;216;Resolution du pluviometre;m;4;0;3
-0;04;192;PERIODE A LAQUELLE SE RAPPORTE  LA VALEUR SUIVANTE;Minute;0;0;8
+0;04;192;PERIODE A LAQUELLE SE RAPPORTE  LA VALEUR SUIVANTE;MINUTE;0;0;8
 0;04;193;HEURE EFFECTIVE DU LANCEMENT DE LA RADIOSONDE;HOUR;0;0;5
-0;04;194;MINUTES EFFECTIVES DU LANCEMENT DE LA RADIOSONDE;Minute;0;0;6
+0;04;194;MINUTES EFFECTIVES DU LANCEMENT DE LA RADIOSONDE;MINUTES;0;0;6
 0;04;195;NOMBRE D'HEURES ECOULEES ENTRE  L'HEURE D'OBSERVATION GGgg ET   L'HEURE A LAQUELLE SE REFERE LA DERNIERE POSITION;HEURE;0;0;4
 0;04;196;Duree des phenomenes;Code table;0;0;7
-0;04;197;Periode de reference pour les cumuls et extremums;Minute;0;-1440;12
-0;04;198;Duree pendant laquelle l'humidite est >= 80%;Minute;0;0;11
-0;04;199;Duree pendant laquelle l'humidite est <= 40%;Minute;0;0;11
-0;04;200;Duree de gel sous abri;Minute;0;0;11
+0;04;197;Periode de reference pour les cumuls et extremums;MINUTE;0;-1440;12
+0;04;198;Duree pendant laquelle l'humidite est >= 80%;MINUTE;0;0;11
+0;04;199;Duree pendant laquelle l'humidite est <= 40%;MINUTE;0;0;11
+0;04;200;Duree de gel sous abri;MINUTE;0;0;11
 0;04;201;Periode d'observation;Code table;0;0;3
-0;04;202;Borne inferieure d'intervalle de duree de retour;Year;0;0;8
-0;04;204;Duree de cumul effective hors donnees manquantes;Minute;0;-4320;16
 0;05;192;Distance Ouest-Est du coin Nord-Ouest de l'image au radar;m;0;-1024000;24
 0;05;193;Distance w-e sur le plan de projection du coin nw de l'image;m;0;-1024000;24
 0;05;194;Indicateur du centre de projection;Code table;0;0;8
@@ -82,7 +79,6 @@
 0;08;203;Caracteristique temporelle MF;Code table;0;0;5
 0;08;204;Caracteristique meteorologique MF;Code table;0;0;5
 0;08;205;Nature objet nuage;Code table;0;0;3
-0;08;210;Quantile retenu au sein d'un voisinage;%;0;0;7
 0;10;192;Pression minimum reduite au niveau de la mer;Pa;-1;0;14
 0;10;193;Pression maximum reduite au niveau de la mer;Pa;-1;0;14
 0;11;195;FORCE MAXI DU VENT PENDANT W1W2;BEAUFORT;0;0;4
@@ -138,7 +134,6 @@
 0;13;202;Humidite relative maximale;%;0;0;7
 0;13;204;Hauteur maximale de neige au sol mesuree ou estimee;M;2;-2;12
 0;13;209;Pourcentage de neige dans les precipitations;%;0;0;7
-0;13;210;Indice de classe de risque pluviometrique;Numeric;0;0;4
 0;14;192;INSOLATION HORAIRE;MINUTES;0;0;6
 0;14;193;Insolation sur la periode definie;MINUTES;0;0;11
 0;14;194;Rayonnement global (tres precis) integre sur une periode determinee;J/m**2;-2;0;16
@@ -205,7 +200,6 @@
 0;21;217;Reflectivite theorique;dBZ;1;0;16
 0;21;218;Reflectivite mesuree;dBZ;1;0;16
 0;21;219;Reflectivite minimale pour la valeur du pixel;dBZ;0;-127;8
-0;21;220;Reflectivite horizontale;dBZ;1;-400;11
 0;21;222;DOPPLER SPECTRUM 0 TH MOMENT (AMPLITUDE);dB;0;0;7
 0;21;225;PRESCAT PRODUCT CONFIDENCE;Flag table;0;0;10
 0;21;226;Pourcentage de masque;%;0;0;7
@@ -267,7 +261,6 @@
 0;25;228;Data used for diagnostic;Code table;0;0;5
 0;25;229;Method used to diagnose the nature of a cloud system;CCITT IA;0;0;24
 0;26;192;Duree d'humectation;MINUTE;0;0;11
-0;29;192;Systeme geodesique;Code table;0;0;6
 0;30;192;Mode de balayage;Flag table;0;0;8
 0;31;192;Facteur super elargi de repetition differe du descripteur;Numeric;0;0;32
 0;33;192;FLAG DE QUALITE SUR PARAMETRE;Code table;0;0;3

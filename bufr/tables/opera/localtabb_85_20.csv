@@ -1,7 +1,7 @@
 0;01;192;Indicateur des composites;Code table;0;0;8
 0;01;193;Table des identificateurs des donnees combinees;Code table;0;0;8
-0;01;194;CARRIER BALLOON/DROP TEMP;CCITT IA;0;0;72
-0;01;195;MOBIL LAND STATION IDENTIFIER;CCITT IA;0;0;72
+0;01;194;CARRIER BALLOON/DROP TEMP;CCITT IA5;0;0;72
+0;01;195;MOBIL LAND STATION IDENTIFIER;CCITT IA5;0;0;72
 0;01;196;NUMERO DE DEPARTEMENT;Numeric;0;0;8
 0;01;197;NUMERO DE COMMUNE ET NUMERO DE  STATION DANS LA COMMUNE;Numeric;0;0;21
 0;01;198;TYPE DE SPEMET;Code table;0;0;2
@@ -12,8 +12,8 @@
 0;01;208;X-velocity from earth's centre in direction 0 est;m/s;5;-1073741824;31
 0;01;209;Y-velocity from earth's centre in direction 90 est;m/s;5;-1073741824;31
 0;01;210;Z-velocity from earth's centre in direction north pole;m/s;5;-1073741824;31
-0;01;220;Identification mark of a cloud system ( format YYYYMMDDhhmm_Tb_lat_lon or ``FIRST'');CCITT IA;0;0;248
-0;01;221;Modele de reference - reference producteur;CCITT IA;0;0;104
+0;01;220;Identification mark of a cloud system ( format YYYYMMDDhhmm_Tb_lat_lon or ``FIRST'');CCITT IA5;0;0;248
+0;01;221;Modele de reference - reference producteur;CCITT IA5;0;0;104
 0;01;222;Numero identification objet;Numeric;0;0;16
 0;01;223;Identificateur des cartes de risque pluviometrique;Code table;0;0;3
 0;02;192;SAR azimuth angle;Degree;0;0;9
@@ -179,6 +179,7 @@
 0;20;221;W2 (W1 SYMPO simplifie);Code table;0;0;5
 0;20;222;Temps sensible;Code table;0;0;6
 0;20;223;Etendue de la couche nuageuse en octas;Numeric;1;0;7
+0;20;224;Cloud classification value over cloud cell extension;Code table;0;0;5
 0;21;192;Radar back scatter;dB;2;-5000;13
 0;21;193;Noise figure;%;0;0;7
 0;21;194;Background noise level;Numeric;0;0;8
@@ -205,7 +206,6 @@
 0;21;217;Reflectivite theorique;dBZ;1;0;16
 0;21;218;Reflectivite mesuree;dBZ;1;0;16
 0;21;219;Reflectivite minimale pour la valeur du pixel;dBZ;0;-127;8
-0;21;220;Reflectivite horizontale;dBZ;1;-400;11
 0;21;222;DOPPLER SPECTRUM 0 TH MOMENT (AMPLITUDE);dB;0;0;7
 0;21;225;PRESCAT PRODUCT CONFIDENCE;Flag table;0;0;10
 0;21;226;Pourcentage de masque;%;0;0;7
@@ -251,6 +251,7 @@
 0;25;198;Nombre de portes par tir;Numeric;0;0;16
 0;25;199;Methode d'integration distance;Code table;0;0;4
 0;25;200;Methode d'integration azimut;Code table;0;0;4
+0;25;201;Niveau de bruit par radiale;dBZ;2;-2000;12
 0;25;207;Correction d'intensite de precipitation;Kg/M**2;3;0;18
 0;25;208;SAMPLING INTERVAL (TIME);S;4;0;15
 0;25;209;SAMPLING INTERVAL (SPACE);M;2;0;12
@@ -264,10 +265,14 @@
 0;25;217;Mode de fonctionnement du filtrage des echos non meteorologiques;Code table;0;0;3
 0;25;218;Correction par un profil vertical de reflectivite;Code table;0;0;4
 0;25;219;Methode d'elaboration du masque d'echos fixes;Code table;0;0;3
+0;25;220;Facteur de correction de lame d'eau calcule par pixel (pluviometre/radar);Numeric;2;0;16
+0;25;221;Type de facteur correctif (pluviometre/radar) applique a la lame d'eau;Code table;0;0;4
 0;25;228;Data used for diagnostic;Code table;0;0;5
-0;25;229;Method used to diagnose the nature of a cloud system;CCITT IA;0;0;24
+0;25;229;Method used to diagnose the nature of a cloud system;CCITT IA5;0;0;24
+0;25;239;Facteur mensuel de correction globale de la lame d'eau (pluviometre/radar);Numeric;2;0;10
 0;26;192;Duree d'humectation;MINUTE;0;0;11
 0;29;192;Systeme geodesique;Code table;0;0;6
+0;29;205;Geographic projection as PROJ initialisation string;CCITT IA5;0;0;800
 0;30;192;Mode de balayage;Flag table;0;0;8
 0;31;192;Facteur super elargi de repetition differe du descripteur;Numeric;0;0;32
 0;33;192;FLAG DE QUALITE SUR PARAMETRE;Code table;0;0;3
@@ -323,7 +328,7 @@
 0;49;223;Facteur du renforcement du PVR;Numeric;1;0;7
 0;49;224;Indicateur radar DOPPLER;Flag table;0;0;2
 0;49;225;Indicateur radar double polarisation;Flag table;0;0;2
-0;49;227;Statut de la donnee dans les fichiers pour la prévision numerique;Code table;0;0;8
+0;49;227;Statut de la donnee dans les fichiers pour la prevision numerique;Code table;0;0;8
 0;49;228;Code vitesse radiale;Numeric;0;0;8
 0;49;229;Valeur minimale de la vitesse radiale en m/s;m/s;1;-600;11
 0;49;230;Valeur maximale de la vitesse radiale en m/s;m/s;1;-600;11
@@ -364,7 +369,7 @@
 0;55;216;Duree de constitution du masque d'echos fixes (Jours);Day;0;-1024;11
 0;55;217;Duree de constitution du masque d'echos fixes (Heures);Hour;0;-1024;11
 0;55;218;Duree de constitution du masque d'echos fixes (Minutes);Minute;0;-2048;12
-0;55;219;Nom du fichier contenant le masque d'echos fixes;CCITT IA;0;0;80
+0;55;219;Nom du fichier contenant le masque d'echos fixes;CCITT IA5;0;0;80
 0;55;220;Duree utilisee pour le calcul duprofil vertical de reflectivite;Minute;0;-2048;12
 0;55;221;Pourcentage d'images valides necessaire au calcul du profil vertical de reflectivite;Numeric;0;0;8
 0;55;222;Seuil de reflectivite utilise pour le calcul du champ de deplacement;dBZ;0;-64;7
