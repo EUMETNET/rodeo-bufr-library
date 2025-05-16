@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
     ss << schema.rdbuf();
     esoh_schema = ss.str();
   }
-  
+
   // Default tables: eccodes
   std::string Btable_dir("/usr/share/eccodes/definitions/bufr/tables/0/wmo");
   std::string Ctable_dir("/usr/share/eccodes/definitions/bufr/tables/0/wmo");
@@ -289,26 +289,12 @@ int main(int argc, char *argv[]) {
           }
         }
 
-      /*  
-        if (tb.size()) std::cerr << (bufr->getVersionMaster() &&
-        tb.find(bufr->getVersionMaster()*v_mul) != tb.end() ?
-        bufr->getVersionMaster()*v_mul : tb.rbegin()->first) << "\n"; else
-        std::cout << "TableB NULL\n";
-        // std::cerr << "TableC index: ";
-        if (tc.size()) std::cerr << (bufr->getVersionMaster() &&
-        tc.find(bufr->getVersionMaster()*v_mul) != tc.end() ?
-        bufr->getVersionMaster()*v_mul : tc.rbegin()->first) << "\n"; else
-        std::cout << "TableC NULL\n";
-        // std::cerr << "TableD index: ";
-        if (td.size()) std::cerr << (bufr->getVersionMaster() &&
-        td.find(bufr->getVersionMaster()*v_mul) != td.end() ?
-        bufr->getVersionMaster()*v_mul : td.rbegin()->first) << "\n"; else
-        std::cout << "TableD NULL\n";
-      */
-        if (tc.size()) bufr->setTableC(tc.at(bufr->getVersionMaster() &&
-        tc.find(bufr->getVersionMaster()*v_mul) != tc.end() ?
-        bufr->getVersionMaster()*v_mul : tc.rbegin()->first));
-      
+        if (tc.size())
+          bufr->setTableC(tc.at(
+              bufr->getVersionMaster() &&
+                      tc.find(bufr->getVersionMaster() * v_mul) != tc.end()
+                  ? bufr->getVersionMaster() * v_mul
+                  : tc.rbegin()->first));
 
         if (!tb.size() || !td.size()) {
           std::cerr << "Missing tables\n";
@@ -320,9 +306,8 @@ int main(int argc, char *argv[]) {
         if (esoh_schema.size()) {
           bufr->setMsgTemplate(esoh_schema);
         }
-        for( auto msg : bufr->msg() )
-        {
-            std::cout << msg << "\n" ;
+        for (auto msg : bufr->msg()) {
+          std::cout << msg << "\n";
         }
 
         bufr->logToCsvList(log, ';', LogLevel::WARN);

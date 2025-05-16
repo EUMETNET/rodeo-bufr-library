@@ -36,7 +36,9 @@ bool LogBuffer::addLogEntry(LogEntry e) {
   buffer.push_back(e);
   std::cerr << "LOG: " << e.toCsv() << "\n";
   if (max_size && (buffer.size() + 1 == max_size)) {
-    LogEntry log_full_entry("LogBuffer is full" + std::to_string(max_size) + "->" + std::to_string(buffer.size()), LogLevel::FATAL, __func__);
+    LogEntry log_full_entry("LogBuffer is full" + std::to_string(max_size) +
+                                "->" + std::to_string(buffer.size()),
+                            LogLevel::FATAL, __func__);
     buffer.push_back(log_full_entry);
   }
 

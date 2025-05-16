@@ -108,7 +108,6 @@ std::list<std::string> ESOHBufr::msg() const {
 
   rapidjson::Document::AllocatorType &message_allocator =
       message.GetAllocator();
-  
 
   // pubtime
   rapidjson::Value pubtime;
@@ -125,7 +124,8 @@ std::list<std::string> ESOHBufr::msg() const {
   // Radar default value unit
   if (data_category == 6) {
     properties["content"]["unit"] = "%";
-    if (properties.HasMember("radar_meta")) setRadarMeta("'format': 'BUFR'", message);
+    if (properties.HasMember("radar_meta"))
+      setRadarMeta("'format': 'BUFR'", message);
   }
   // subsets
   int subsetnum = 0;
@@ -1211,14 +1211,16 @@ std::list<std::string> ESOHBufr::msg() const {
         obj_key += "COMP/";
       obj_key += rad_key + "@" + date_file_key + data_key;
       if (mm["properties"].HasMember("content")) {
-        if (mm["properties"]["content"].HasMember("data_link") && data_category == 6 && local_data_subcategory == 20) {
+        if (mm["properties"]["content"].HasMember("data_link") &&
+            data_category == 6 && local_data_subcategory == 20) {
           rapidjson::Value &dl = mm["properties"]["content"]["data_link"];
           dl.SetString(obj_key.c_str(), mm_allocator);
         } else {
           rapidjson::Value dl;
           dl.SetString(obj_key.c_str(), mm_allocator);
           if (data_category == 6 && local_data_subcategory == 20) {
-            mm["properties"]["content"].AddMember("data_link", dl, mm_allocator);
+            mm["properties"]["content"].AddMember("data_link", dl,
+                                                  mm_allocator);
           }
         }
       }
@@ -1364,10 +1366,9 @@ bool ESOHBufr::setRadarMeta(std::string value,
       message_properties.AddMember("radar_meta", radar_meta, message_allocator);
     }
     return true;
-  }
-  else {
-    lb.addLogEntry(LogEntry("radar_meta is missing", LogLevel::INFO,
-      __func__, bufr_id));
+  } else {
+    lb.addLogEntry(
+        LogEntry("radar_meta is missing", LogLevel::INFO, __func__, bufr_id));
   }
   std::cerr << "MEGVAN ? NINCS\n";
 
