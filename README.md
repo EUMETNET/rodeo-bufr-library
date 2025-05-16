@@ -57,3 +57,13 @@ export BUFR_TABLE_DIR=path_to_the_repo/rodeo-bufr-library/bufr/tables/opera/
 ```shell
 ./printbufr log_print path_to_the_bufr_file(s) 
 ```
+#### Make E-SOH json message
+```shell
+make bufresohmsg
+./bufresohmsg path_to_the_bufr_file(s) 
+```
+#### Change default E-SOH json schema
+```shell
+export ESOH_SCHEMA=/path_to_my_custom_schemas/my_schema.json
+./bufresohmsg path_to_the_bufr_file(s) 
+```

@@ -1,0 +1,686 @@
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 43.38,
+            "lon": 7.83
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T22:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT0S",
+        "period_int": 0,
+        "platform": "0-578-2024-6100001_BOUEE_CO",
+        "platform_name": "BOUEE_COTE_D_AZUR",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "air_pressure",
+            "unit": "Pa",
+            "size": 6,
+            "value": "101460"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 43.38,
+            "lon": 7.83
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T22:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT0S",
+        "period_int": 0,
+        "platform": "0-578-2024-6100001_BOUEE_CO",
+        "platform_name": "BOUEE_COTE_D_AZUR",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "air_pressure_at_mean_sea_level",
+            "unit": "Pa",
+            "size": 6,
+            "value": "101480"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 43.38,
+            "lon": 7.83
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T22:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "2.0",
+        "function": "point",
+        "period": "PT0S",
+        "period_int": 0,
+        "platform": "0-578-2024-6100001_BOUEE_CO",
+        "platform_name": "BOUEE_COTE_D_AZUR",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "air_temperature",
+            "unit": "K",
+            "size": 6,
+            "value": "300.95"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 43.38,
+            "lon": 7.83
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T22:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "2.0",
+        "function": "point",
+        "period": "PT0S",
+        "period_int": 0,
+        "platform": "0-578-2024-6100001_BOUEE_CO",
+        "platform_name": "BOUEE_COTE_D_AZUR",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "dew_point_temperature",
+            "unit": "K",
+            "size": 6,
+            "value": "298.55"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 43.38,
+            "lon": 7.83
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T22:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "10.0",
+        "function": "point",
+        "period": "PT0S",
+        "period_int": 0,
+        "platform": "0-578-2024-6100001_BOUEE_CO",
+        "platform_name": "BOUEE_COTE_D_AZUR",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "relative_humidity",
+            "unit": "1",
+            "size": 2,
+            "value": "87"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 43.38,
+            "lon": 7.83
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T21:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "10.0",
+        "function": "point",
+        "period": "PT10M",
+        "period_int": 600,
+        "platform": "0-578-2024-6100001_BOUEE_CO",
+        "platform_name": "BOUEE_COTE_D_AZUR",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "250"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 43.38,
+            "lon": 7.83
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T21:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "10.0",
+        "function": "point",
+        "period": "PT10M",
+        "period_int": 600,
+        "platform": "0-578-2024-6100001_BOUEE_CO",
+        "platform_name": "BOUEE_COTE_D_AZUR",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 3,
+            "value": "1.6"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 41.74,
+            "lon": 7.59
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T22:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT0S",
+        "period_int": 0,
+        "platform": "0-578-2024-6101031_BOUEE_AJ",
+        "platform_name": "BOUEE_AJACCIO",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "air_pressure",
+            "unit": "Pa",
+            "size": 6,
+            "value": "101530"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 41.74,
+            "lon": 7.59
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T22:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT0S",
+        "period_int": 0,
+        "platform": "0-578-2024-6101031_BOUEE_AJ",
+        "platform_name": "BOUEE_AJACCIO",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "air_pressure_at_mean_sea_level",
+            "unit": "Pa",
+            "size": 6,
+            "value": "101550"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 41.74,
+            "lon": 7.59
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T22:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "2.0",
+        "function": "point",
+        "period": "PT0S",
+        "period_int": 0,
+        "platform": "0-578-2024-6101031_BOUEE_AJ",
+        "platform_name": "BOUEE_AJACCIO",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "air_temperature",
+            "unit": "K",
+            "size": 6,
+            "value": "299.85"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 41.74,
+            "lon": 7.59
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T22:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "2.0",
+        "function": "point",
+        "period": "PT0S",
+        "period_int": 0,
+        "platform": "0-578-2024-6101031_BOUEE_AJ",
+        "platform_name": "BOUEE_AJACCIO",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "dew_point_temperature",
+            "unit": "K",
+            "size": 6,
+            "value": "298.05"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 41.74,
+            "lon": 7.59
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T22:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "10.0",
+        "function": "point",
+        "period": "PT0S",
+        "period_int": 0,
+        "platform": "0-578-2024-6101031_BOUEE_AJ",
+        "platform_name": "BOUEE_AJACCIO",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "relative_humidity",
+            "unit": "1",
+            "size": 2,
+            "value": "90"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 41.74,
+            "lon": 7.59
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T21:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "10.0",
+        "function": "point",
+        "period": "PT10M",
+        "period_int": 600,
+        "platform": "0-578-2024-6101031_BOUEE_AJ",
+        "platform_name": "BOUEE_AJACCIO",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "330"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 41.74,
+            "lon": 7.59
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-22T21:00:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "10.0",
+        "function": "point",
+        "period": "PT10M",
+        "period_int": 600,
+        "platform": "0-578-2024-6101031_BOUEE_AJ",
+        "platform_name": "BOUEE_AJACCIO",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 3,
+            "value": "1.6"
+        },
+        "pubtime": "2025-05-16T12:52:07+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}

@@ -1,0 +1,2600 @@
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 1004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "223"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 1004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 1,
+            "value": "8"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 1504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "225"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 1504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 3,
+            "value": "8.4"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 2004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "229"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 2004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 3,
+            "value": "9.2"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 2504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "233"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 2504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 3,
+            "value": "9.9"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 3004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "237"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 3004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "10.3"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 3504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "239"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 3504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "10.8"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 4004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "239"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 4004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "11.6"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 4504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "235"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 4504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "11.8"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 5004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "227"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 5004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 2,
+            "value": "11"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 5504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "220"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 5504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "10.3"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 6004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "217"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 6004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "10.1"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 6504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "220"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 6504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "10.6"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 7004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "225"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 7004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "11.8"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 7504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "225"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 7504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "12.4"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 8004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "223"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 8004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "12.6"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 8504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "223"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 8504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "12.8"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 9004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "227"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 9004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "14.2"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 9504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "233"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 9504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "16.6"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 10004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "236"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 10004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "19.1"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 10504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "238"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 10504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "20.9"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 11004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "240"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 11004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "20.9"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 11504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "239"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 11504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "19.8"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 12004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "237"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 12004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "18.9"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 12504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "237"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 12504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "17.2"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 13004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "240"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 13004.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "15.7"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 13504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_from_direction",
+            "unit": "degree",
+            "size": 3,
+            "value": "242"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
+{
+    "id": "",
+    "version": "v4.0",
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": {
+            "lat": 57.35,
+            "lon": -7.37,
+            "hei": 13504.0
+        }
+    },
+    "properties": {
+        "data_id": "data_id",
+        "metadata_id": "metatata_id",
+        "datetime": "2023-08-23T01:45:00+00:00",
+        "Conventions": "CF-1.8",
+        "summary": "Observation data from GTS network.",
+        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+        "naming_authority": "no.met",
+        "level": "0.0",
+        "function": "point",
+        "period": "PT15M",
+        "period_int": 900,
+        "platform": "0-20000-0-03021",
+        "platform_name": "LOCHBOISDALE",
+        "content": {
+            "encoding": "utf-8",
+            "standard_name": "wind_speed",
+            "unit": "m s-1",
+            "size": 4,
+            "value": "14.7"
+        },
+        "pubtime": "2025-05-16T12:52:11+00:00"
+    },
+    "links": [
+        {
+            "href": "https:/eumetnet.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "EUMETNET"
+        },
+        {
+            "href": "https://observations.meteogate.eu/",
+            "rel": "canonical",
+            "type": "text/html",
+            "title": "E-SOH"
+        }
+    ]
+}
