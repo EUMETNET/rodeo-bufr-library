@@ -15,5 +15,45 @@ This tool handles the BUFR messages:
 * ecoding the messages for E-SOH/openradardata ingestion
 * providing E-SOH API output in BUFR format
 
-## Usage
-...
+The library suports [ECMWF ecCodes](https://confluence.ecmwf.int/display/ECC), [WMO](https://github.com/wmo-im/BUFR4/) and OPERA BUFR tables.
+
+## Installation
+### Clone the repo
+```shell 
+git clone https://github.com/EUMETNET/rodeo-bufr-library.git
+```
+### Compiling
+```shell
+cd rodeo-bufr-library/bufr/src
+make
+```
+### Usage
+### Set up BUFR table directory
+#### ecCodes tables
+To use the ecCodes table definitions you need to install libeccodes-data package on Debian based systems. In this case you don't have to set the BUFR_TABLE_DIR environment variable. 
+
+#### WMO tables
+Download WMO tables with the script:
+```shell
+cd rodeo-bufr-library/bufr/tables/wmo
+./get_wmo_tables.sh
+export BUFR_TABLE_DIR=path_to_the_repo/rodeo-bufr-library/bufr/tables/wmo/
+```
+#### OPERA tables
+```shell
+export BUFR_TABLE_DIR=path_to_the_repo/rodeo-bufr-library/bufr/tables/opera/
+```
+
+### Print BUFR content
+#### Basic print
+```shell
+./printbufr path_to_the_bufr_file(s) 
+```
+#### Detail print
+```shell
+./printbufr detail path_to_the_bufr_file(s) 
+```
+#### Log print 
+```shell
+./printbufr log_print path_to_the_bufr_file(s) 
+```
