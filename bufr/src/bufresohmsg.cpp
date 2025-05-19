@@ -15,6 +15,9 @@
 #include <iterator>
 #include <sstream>
 
+#include "rapidjson/document.h"
+#include "rapidjson/prettywriter.h"
+
 #include "Descriptor.h"
 
 #include "Tables.h"
@@ -207,7 +210,9 @@ int main(int argc, char *argv[]) {
   }
 
   std::list<std::string> log;
-
+  bool firstmsg = true;
+  std::stringstream ss;
+  ss << "[\n";
   for (int i = 1; i < argc; i++) {
     if (std::string(argv[i]) == "log_print") {
       log_print = true;
@@ -307,13 +312,31 @@ int main(int argc, char *argv[]) {
           bufr->setMsgTemplate(esoh_schema);
         }
         for (auto msg : bufr->msg()) {
-          std::cout << msg << "\n";
+          if (firstmsg && msg.size()) {
+            firstmsg = false;
+          }
+          else {
+            ss << ",\n";
+          }
+          ss << msg << "\n";
         }
 
         bufr->logToCsvList(log, ';', LogLevel::WARN);
       }
     }
   }
+  ss << "]\n";
+
+  rapidjson::Document msg;
+  rapidjson::Document::AllocatorType &msg_allocator = msg.GetAllocator();
+  msg.Parse(ss.str().c_str());
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  writer.SetIndent(' ', 4);
+  writer.SetMaxDecimalPlaces(6);
+  msg.Accept(writer);
+  std::cout << sb.GetString() << "\n";
+
   // Print log
   if (log_print) {
     if (log.size()) {
