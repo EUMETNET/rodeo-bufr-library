@@ -314,8 +314,7 @@ int main(int argc, char *argv[]) {
         for (auto msg : bufr->msg()) {
           if (firstmsg && msg.size()) {
             firstmsg = false;
-          }
-          else {
+          } else {
             ss << ",\n";
           }
           ss << msg << "\n";
