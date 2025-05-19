@@ -38,11 +38,8 @@ from bufresohmsg_py import init_bufr_schema_py  # noqa: E402
 from bufresohmsg_py import init_bufrtables_py  # noqa: E402
 from bufresohmsg_py import init_oscar_py  # noqa: E402
 
-BUFR_TABLE_DIR = getEnvValue(
-    "BUFR_TABLE_DIR",
-    "/usr/share/eccodes/definitions/bufr/tables/0/wmo/")
-ESOH_SCHEMA = getEnvValue("ESOH_SCHEMA",
-                          "bufr/schemas/bufr_to_e_soh_message.json")
+BUFR_TABLE_DIR = getEnvValue("BUFR_TABLE_DIR", "/usr/share/eccodes/definitions/bufr/tables/0/wmo/")
+ESOH_SCHEMA = getEnvValue("ESOH_SCHEMA", "bufr/schemas/bufr_to_e_soh_message.json")
 OSCAR_DUMP = getEnvValue("OSCAR_DUMP", "bufr/oscar/oscar_stations_all.json")
 
 init_bufrtables_py(BUFR_TABLE_DIR)
