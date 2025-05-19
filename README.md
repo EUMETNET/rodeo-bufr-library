@@ -97,8 +97,17 @@ export ESOH_SCHEMA=/path_to_my_custom_schemas/my_schema.json
 ./bufresohmsg path_to_the_bufr_file(s)
 ```
 ### Python interface
+#### Compile
 ```shell
 make esoh
+```
+#### Print E-SOH message
+```shell
 export RODEO_BUFR_DIR=/path_to_the_rodeo-bufr-rootdir/
 python3 ./bufr2esohmsg.py path_to_the_bufr_file(s)
+```
+#### Dump BUFR content
+```shell
+export OSCAR_DUMP=path_to_the_repo/rodeo-bufr-library/bufr/oscar/oscar_stations_all.json
+python3 ./bufr2txt.py path_to_the_bufr_file(s)
 ```
