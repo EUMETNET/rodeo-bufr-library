@@ -1,2548 +1,2550 @@
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 38.1,
-            "lon": -130.0
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46059_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure",
-            "unit": "Pa",
-            "size": 6,
-            "value": "102110"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 38.1,
-            "lon": -130.0
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46059_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure_at_mean_sea_level",
-            "unit": "Pa",
-            "size": 6,
-            "value": "102140"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 38.1,
-            "lon": -130.0
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46059_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "292.55"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 38.1,
-            "lon": -130.0
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46059_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "dew_point_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "287.65"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 38.1,
-            "lon": -130.0
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46059_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "sea_water_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "293.35"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 38.1,
-            "lon": -130.0
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46059_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_from_direction",
-            "unit": "degree",
-            "size": 2,
-            "value": "20"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 38.1,
-            "lon": -130.0
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46059_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_speed",
-            "unit": "m s-1",
-            "size": 1,
-            "value": "7"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": -14.3,
-            "lon": -170.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:26:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-51209_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "sea_water_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "301.45"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure",
-            "unit": "Pa",
-            "size": 6,
-            "value": "101840"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure_at_mean_sea_level",
-            "unit": "Pa",
-            "size": 6,
-            "value": "101870"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "290.75"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "sea_water_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "291.45"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_from_direction",
-            "unit": "degree",
-            "size": 3,
-            "value": "300"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_speed",
-            "unit": "m s-1",
-            "size": 1,
-            "value": "6"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure",
-            "unit": "Pa",
-            "size": 6,
-            "value": "101860"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure_at_mean_sea_level",
-            "unit": "Pa",
-            "size": 6,
-            "value": "101890"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "290.75"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "sea_water_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "291.45"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_from_direction",
-            "unit": "degree",
-            "size": 3,
-            "value": "300"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 45.9,
-            "lon": -125.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46089_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_speed",
-            "unit": "m s-1",
-            "size": 1,
-            "value": "6"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure",
-            "unit": "Pa",
-            "size": 6,
-            "value": "101380"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure_at_mean_sea_level",
-            "unit": "Pa",
-            "size": 6,
-            "value": "101410"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "292.55"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "dew_point_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "291.65"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "sea_water_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "293.95"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_from_direction",
-            "unit": "degree",
-            "size": 3,
-            "value": "310"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_speed",
-            "unit": "m s-1",
-            "size": 1,
-            "value": "6"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure",
-            "unit": "Pa",
-            "size": 6,
-            "value": "101370"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure_at_mean_sea_level",
-            "unit": "Pa",
-            "size": 6,
-            "value": "101400"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "292.55"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "dew_point_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "291.45"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "sea_water_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "293.85"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_from_direction",
-            "unit": "degree",
-            "size": 3,
-            "value": "310"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 32.4,
-            "lon": -119.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46047_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_speed",
-            "unit": "m s-1",
-            "size": 1,
-            "value": "7"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 13.4,
-            "lon": 144.8
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:26:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-52200_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "sea_water_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "302.95"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 33.2,
-            "lon": -119.9
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:26:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46219_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "sea_water_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "292.55"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46002_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure",
-            "unit": "Pa",
-            "size": 6,
-            "value": "102170"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46002_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure_at_mean_sea_level",
-            "unit": "Pa",
-            "size": 6,
-            "value": "102200"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46002_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "291.75"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46002_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "dew_point_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "287.45"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46002_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_from_direction",
-            "unit": "degree",
-            "size": 3,
-            "value": "350"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:20:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46002_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_speed",
-            "unit": "m s-1",
-            "size": 1,
-            "value": "6"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46002",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure",
-            "unit": "Pa",
-            "size": 6,
-            "value": "102170"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46002",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_pressure_at_mean_sea_level",
-            "unit": "Pa",
-            "size": 6,
-            "value": "102200"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46002",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "291.95"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-46002",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "dew_point_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "287.35"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46002",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_from_direction",
-            "unit": "degree",
-            "size": 3,
-            "value": "340"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 42.7,
-            "lon": -130.5
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T01:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "10.0",
-        "function": "point",
-        "period": "PT10M",
-        "period_int": 600,
-        "platform": "0-578-2024-46002",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "wind_speed",
-            "unit": "m s-1",
-            "size": 1,
-            "value": "6"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 7.1,
-            "lon": 171.4
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:00:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-52201_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "301.15"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 7.1,
-            "lon": 171.4
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:00:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-52201_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "sea_water_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "303.05"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 7.1,
-            "lon": 171.4
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "2.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-52201_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "air_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "300.65"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
-{
-    "id": "",
-    "version": "v4.0",
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": {
-            "lat": 7.1,
-            "lon": 171.4
-        }
-    },
-    "properties": {
-        "data_id": "data_id",
-        "metadata_id": "metatata_id",
-        "datetime": "2023-08-23T02:30:00+00:00",
-        "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
-        "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
-        "naming_authority": "no.met",
-        "level": "0.0",
-        "function": "point",
-        "period": "PT0S",
-        "period_int": 0,
-        "platform": "0-578-2024-52201_0",
-        "platform_name": "",
-        "content": {
-            "encoding": "utf-8",
-            "standard_name": "sea_water_temperature",
-            "unit": "K",
-            "size": 6,
-            "value": "302.95"
-        },
-        "pubtime": "2025-05-16T12:52:05+00:00"
-    },
-    "links": [
-        {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
-        },
-        {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
-        }
-    ]
-}
+[
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 38.1,
+                "lon": -130.0
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46059_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure",
+                "unit": "Pa",
+                "size": 6,
+                "value": "102110"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 38.1,
+                "lon": -130.0
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46059_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure_at_mean_sea_level",
+                "unit": "Pa",
+                "size": 6,
+                "value": "102140"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 38.1,
+                "lon": -130.0
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46059_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "292.55"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 38.1,
+                "lon": -130.0
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46059_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "dew_point_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "287.65"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 38.1,
+                "lon": -130.0
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46059_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "sea_water_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "293.35"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 38.1,
+                "lon": -130.0
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46059_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_from_direction",
+                "unit": "degree",
+                "size": 2,
+                "value": "20"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 38.1,
+                "lon": -130.0
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46059_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_speed",
+                "unit": "m s-1",
+                "size": 1,
+                "value": "7"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": -14.3,
+                "lon": -170.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:26:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-51209_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "sea_water_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "301.45"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure",
+                "unit": "Pa",
+                "size": 6,
+                "value": "101840"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure_at_mean_sea_level",
+                "unit": "Pa",
+                "size": 6,
+                "value": "101870"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "290.75"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "sea_water_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "291.45"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_from_direction",
+                "unit": "degree",
+                "size": 3,
+                "value": "300"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_speed",
+                "unit": "m s-1",
+                "size": 1,
+                "value": "6"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure",
+                "unit": "Pa",
+                "size": 6,
+                "value": "101860"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure_at_mean_sea_level",
+                "unit": "Pa",
+                "size": 6,
+                "value": "101890"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "290.75"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "sea_water_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "291.45"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_from_direction",
+                "unit": "degree",
+                "size": 3,
+                "value": "300"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 45.9,
+                "lon": -125.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46089_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_speed",
+                "unit": "m s-1",
+                "size": 1,
+                "value": "6"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure",
+                "unit": "Pa",
+                "size": 6,
+                "value": "101380"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure_at_mean_sea_level",
+                "unit": "Pa",
+                "size": 6,
+                "value": "101410"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "292.55"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "dew_point_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "291.65"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "sea_water_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "293.95"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_from_direction",
+                "unit": "degree",
+                "size": 3,
+                "value": "310"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_speed",
+                "unit": "m s-1",
+                "size": 1,
+                "value": "6"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure",
+                "unit": "Pa",
+                "size": 6,
+                "value": "101370"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure_at_mean_sea_level",
+                "unit": "Pa",
+                "size": 6,
+                "value": "101400"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "292.55"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "dew_point_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "291.45"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "sea_water_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "293.85"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_from_direction",
+                "unit": "degree",
+                "size": 3,
+                "value": "310"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 32.4,
+                "lon": -119.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46047_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_speed",
+                "unit": "m s-1",
+                "size": 1,
+                "value": "7"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 13.4,
+                "lon": 144.8
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:26:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-52200_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "sea_water_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "302.95"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 33.2,
+                "lon": -119.9
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:26:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46219_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "sea_water_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "292.55"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46002_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure",
+                "unit": "Pa",
+                "size": 6,
+                "value": "102170"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46002_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure_at_mean_sea_level",
+                "unit": "Pa",
+                "size": 6,
+                "value": "102200"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46002_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "291.75"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46002_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "dew_point_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "287.45"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46002_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_from_direction",
+                "unit": "degree",
+                "size": 3,
+                "value": "350"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:20:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46002_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_speed",
+                "unit": "m s-1",
+                "size": 1,
+                "value": "6"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46002",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure",
+                "unit": "Pa",
+                "size": 6,
+                "value": "102170"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46002",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_pressure_at_mean_sea_level",
+                "unit": "Pa",
+                "size": 6,
+                "value": "102200"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46002",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "291.95"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-46002",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "dew_point_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "287.35"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46002",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_from_direction",
+                "unit": "degree",
+                "size": 3,
+                "value": "340"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 42.7,
+                "lon": -130.5
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T01:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "10.0",
+            "function": "point",
+            "period": "PT10M",
+            "period_int": 600,
+            "platform": "0-578-2024-46002",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "wind_speed",
+                "unit": "m s-1",
+                "size": 1,
+                "value": "6"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 7.1,
+                "lon": 171.4
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:00:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-52201_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "301.15"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 7.1,
+                "lon": 171.4
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:00:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-52201_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "sea_water_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "303.05"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 7.1,
+                "lon": 171.4
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "2.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-52201_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "air_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "300.65"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    },
+    {
+        "id": "",
+        "version": "v4.0",
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": {
+                "lat": 7.1,
+                "lon": 171.4
+            }
+        },
+        "properties": {
+            "data_id": "data_id",
+            "metadata_id": "metatata_id",
+            "datetime": "2023-08-23T02:30:00+00:00",
+            "Conventions": "CF-1.8",
+            "summary": "Observation data from GTS network.",
+            "license": "http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)",
+            "naming_authority": "no.met",
+            "level": "0.0",
+            "function": "point",
+            "period": "PT0S",
+            "period_int": 0,
+            "platform": "0-578-2024-52201_0",
+            "platform_name": "",
+            "content": {
+                "encoding": "utf-8",
+                "standard_name": "sea_water_temperature",
+                "unit": "K",
+                "size": 6,
+                "value": "302.95"
+            },
+            "pubtime": "2025-05-19T07:50:58+00:00"
+        },
+        "links": [
+            {
+                "href": "https:/eumetnet.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "EUMETNET"
+            },
+            {
+                "href": "https://observations.meteogate.eu/",
+                "rel": "canonical",
+                "type": "text/html",
+                "title": "E-SOH"
+            }
+        ]
+    }
+]
