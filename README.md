@@ -15,11 +15,11 @@ This tool handles the BUFR messages:
 * ecoding the messages for E-SOH/openradardata ingestion
 * providing E-SOH API output in BUFR format
 
-The library suports [ECMWF ecCodes](https://confluence.ecmwf.int/display/ECC), [WMO](https://github.com/wmo-im/BUFR4/) and OPERA BUFR tables.
+The library suports [ECMWF ecCodes](https://confluence.ecmwf.int/display/ECC), [WMO](https://github.com/wmo-im/BUFR4/) and [OPERA](https://www.eumetnet.eu/observations/weather-radar-network/) BUFR tables.
 
 ## Installation
 ### Clone the repo
-```shell 
+```shell
 git clone https://github.com/EUMETNET/rodeo-bufr-library.git
 ```
 ### Compiling
@@ -30,7 +30,7 @@ make
 ### Usage
 ### Set up BUFR table directory
 #### ecCodes tables
-To use the ecCodes table definitions you need to install libeccodes-data package on Debian based systems. In this case you don't have to set the BUFR_TABLE_DIR environment variable. 
+To use the ecCodes table definitions you need to install libeccodes-data package on Debian based systems. In this case you don't have to set the BUFR_TABLE_DIR environment variable.
 
 #### WMO tables
 Download WMO tables with the script:
@@ -47,23 +47,47 @@ export BUFR_TABLE_DIR=path_to_the_repo/rodeo-bufr-library/bufr/tables/opera/
 ### Print BUFR content
 #### Basic print
 ```shell
-./printbufr path_to_the_bufr_file(s) 
+./bufrprint path_to_the_bufr_file(s)
 ```
 #### Detail print
 ```shell
-./printbufr detail path_to_the_bufr_file(s) 
+./printbufr detail path_to_the_bufr_file(s)
 ```
-#### Log print 
+#### Log print
 ```shell
-./printbufr log_print path_to_the_bufr_file(s) 
+./printbufr log_print path_to_the_bufr_file(s)
 ```
-#### Make E-SOH json message
+### Make E-SOH json message
+#### Compiling
+Requirment: rapidjson
 ```shell
 make bufresohmsg
-./bufresohmsg path_to_the_bufr_file(s) 
 ```
-#### Change default E-SOH json schema
+#### Set Time interval
+The default time interval is the last 24 hours. See the error message:
+```shell
+$ ./src/bufresohmsg ./test/test_data/SurfaceLand_subset_1.buf
+LOG: 2025-05-19T09:31:44.773387+00:00,Warning,msg,SurfaceLand_subset_1.buf,Skip subset 0, datetime too late or too early: 2023-08-22T22:00:00+00:00
+```
+Set the following environmental variables to disable the 24h interval:
+```shell
+export DYNAMICTIME=false
+export LOTIME=1000-01-01T00:00:00Z
+export HITIME=9999-12-31T23:59:59Z
+```
+
+#### Set OSCAR Stations Database
+```shell
+export OSCAR_DUMP=path_to_the_repo/rodeo-bufr-library/bufr/oscar/oscar_stations_all.json
+```
+
+#### Print E-SOH message
+```shell
+./bufresohmsg path_to_the_bufr_file(s)
+```
+
+#### Change default E-SOH json schema [Optional]
 ```shell
 export ESOH_SCHEMA=/path_to_my_custom_schemas/my_schema.json
-./bufresohmsg path_to_the_bufr_file(s) 
+./bufresohmsg path_to_the_bufr_file(s)
 ```
