@@ -45,6 +45,11 @@ export BUFR_TABLE_DIR=path_to_the_repo/rodeo-bufr-library/bufr/tables/opera/
 ```
 
 ### Print BUFR content
+Set Timezone to UTC
+```shell
+export TZ=UTC
+```
+
 #### Basic print
 ```shell
 ./bufrprint path_to_the_bufr_file(s)
