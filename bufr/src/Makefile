@@ -13,7 +13,7 @@ CXX := g++
 CXXFLAGS := -c -Wall -Wextra -O2 -std=c++17 -fPIC
 LDFLAGS := -shared
 
-.PHONY: clean all 
+.PHONY: clean all
 
 objs := Sections.o NorBufrIO.o Tables.o Descriptor.o NorBufr.o LogBuffer.o LogEntry.o
 eobjs := ESOHBufr.o WSI.o Oscar.o

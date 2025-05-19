@@ -282,10 +282,12 @@ int main(int argc, char *argv[]) {
           }
         }
 
-        if (tc.size()) bufr->setTableC(tc.at(bufr->getVersionMaster() &&
-        tc.find(bufr->getVersionMaster()*v_mul) != tc.end() ?
-        bufr->getVersionMaster()*v_mul : tc.rbegin()->first));
-      
+        if (tc.size())
+          bufr->setTableC(tc.at(
+              bufr->getVersionMaster() &&
+                      tc.find(bufr->getVersionMaster() * v_mul) != tc.end()
+                  ? bufr->getVersionMaster() * v_mul
+                  : tc.rbegin()->first));
 
         if (!tb.size() || !td.size()) {
           std::cerr << "Missing tables\n";
