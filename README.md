@@ -96,3 +96,9 @@ export OSCAR_DUMP=path_to_the_repo/rodeo-bufr-library/bufr/oscar/oscar_stations_
 export ESOH_SCHEMA=/path_to_my_custom_schemas/my_schema.json
 ./bufresohmsg path_to_the_bufr_file(s)
 ```
+### Python interface
+```shell
+make esoh
+export RODEO_BUFR_DIR=/path_to_the_rodeo-bufr-rootdir/
+python3 ./bufr2esohmsg.py path_to_the_bufr_file(s)
+```
