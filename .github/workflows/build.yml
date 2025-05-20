@@ -34,7 +34,7 @@ jobs:
         shell: bash
       - uses: actions/upload-artifact@v4
         with:
-          name: rodeo-bufr-library
+          name: rodeo-bufr-library-${{ github.ref }}
           path: |
             bufr/src/bufresohmsg_py.so
             bufr/src/*.py
