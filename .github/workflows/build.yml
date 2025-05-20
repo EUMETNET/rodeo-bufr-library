@@ -22,8 +22,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-        with:
-          apt: g++ rapidjson-dev pybind11-dev
+      - name: Install packages
+        run: |
+          sudo apt-get -y update
+          sudo apt-get install -y g++ rapidjson-dev pybind11-dev
       - name: Build
         run: cd bufr/src && make esoh
         shell: bash
