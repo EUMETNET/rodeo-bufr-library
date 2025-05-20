@@ -38,6 +38,6 @@ jobs:
           path: |
             bufr/src/bufresohmsg_py.so
             bufr/src/*.py
-            bufr/oscar/
-            schemas/
+            bufr/oscar/oscar_stations_all.json
+            bufr/schemas/
 
