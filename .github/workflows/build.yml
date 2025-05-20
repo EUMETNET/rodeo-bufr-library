@@ -1,4 +1,4 @@
-name: CI
+name: Build
 
 defaults:
   run:
@@ -37,4 +37,3 @@ jobs:
             bufr/src/*.py
             bufr/oscar/oscar_stations_all.json
             bufr/schemas/
-
