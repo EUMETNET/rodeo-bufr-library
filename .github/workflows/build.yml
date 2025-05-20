@@ -1,0 +1,29 @@
+name: CI
+
+defaults:
+  run:
+    shell: bash
+
+on:
+  push:
+    branches:
+      - "workflow-test"
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build packages
+        run: apt install -y make g++ rapidjson-dev pybind11-dev
+      - name: Build
+        run: cd bufr/src && make esoh
+        shell: bash
