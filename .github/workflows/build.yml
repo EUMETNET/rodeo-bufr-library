@@ -35,4 +35,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: bufresohmsg_py.so
-          path: bufr/src
+          path: bufr/src/bufresohmsg_py.so
