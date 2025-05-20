@@ -34,5 +34,5 @@ jobs:
         shell: bash
       - uses: actions/upload-artifact@v4
         with:
-          name: upl/bufresohmsg_py.so
-          path: bufresohmsg_py.so
+          name: bufresohmsg_py.so
+          path: bufr/src
