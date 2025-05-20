@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install build packages
-        run: apt install -y make g++ rapidjson-dev pybind11-dev
+        with:
+          apt: g++ rapidjson-dev pybind11-dev
       - name: Build
         run: cd bufr/src && make esoh
         shell: bash
