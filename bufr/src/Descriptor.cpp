@@ -124,6 +124,11 @@ int DescriptorId::toInt() const {
   return ret;
 }
 
+int DescriptorId::fxy() const {
+  int ret = (F << 14) + (X << 8) + Y;
+  return ret;
+}
+
 std::string DescriptorId::toString() const {
   std::stringstream ss;
   ss << std::setw(1) << "[ " << std::setfill('0') << static_cast<int>(F) << " "

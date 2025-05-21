@@ -94,6 +94,21 @@ uint64_t NorBufrIO::getBytes(uint8_t *buffer, int size) {
   return ret;
 }
 
+bool NorBufrIO::setBytes(uint8_t *buffer, uint64_t value, int size) {
+  if (!size)
+    return true;
+  if (size > 8 || size < 0) {
+    std::cerr << "::getBytes: ERROR, size: " << size << "\n";
+    return false;
+  }
+  for (int i = size - 1; i >= 0; --i) {
+    buffer[i] = value & 0xff;
+    value >>= 8;
+  }
+
+  return true;
+}
+
 std::vector<bool> NorBufrIO::valueToBitVec(uint64_t value, int datawidth) {
   std::vector<bool> ret;
   std::bitset<64> bs(value);

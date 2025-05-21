@@ -723,6 +723,42 @@ uint64_t NorBufr::fromBuffer(char *ext_buf, u_int64_t ext_buf_pos,
   return ext_buf_pos + len;
 }
 
+uint8_t *NorBufr::toBuffer() const {
+  size_t total_length = 12; // "BUFR" + Section0 + "7777"
+
+  total_length += Section1::length();
+
+  if (getOptionalSelection())
+    total_length += Section2::length();
+  total_length += Section3::length() + Section4::length();
+
+  uint8_t *retbuf = new uint8_t[total_length];
+  memset(retbuf, 0, total_length);
+  size_t bufpos = 0;
+
+  memcpy(reinterpret_cast<char *>(retbuf), "BUFR", 4);
+  NorBufrIO::setBytes(retbuf + 4, len, 3);
+  NorBufrIO::setBytes(retbuf + 7, edition, 1);
+
+  bufpos += 8;
+  Section1::toBuffer(retbuf + bufpos);
+  bufpos += Section1::len;
+  if (Section1::getOptionalSelection()) {
+    Section2::toBuffer(retbuf + bufpos);
+    bufpos += Section2::len;
+  }
+
+  Section3::toBuffer(retbuf + bufpos);
+  bufpos += Section3::len;
+  Section4::toBuffer(retbuf + bufpos);
+  bufpos += Section4::len;
+
+  memcpy(retbuf + bufpos, "7777", 4);
+  return retbuf;
+  // TODO: buffer -> retbuf;
+  // return buffer;
+}
+
 std::istream &operator>>(std::istream &is, NorBufr &bufr) {
   bufr.clear();
   if (bufr.buffer) {

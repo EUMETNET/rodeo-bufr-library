@@ -25,6 +25,7 @@ uint64_t findBytes(char *, unsigned int buf_size, const char *seq,
                    unsigned int size);
 
 uint64_t getBytes(uint8_t *buffer, int size);
+bool setBytes(uint8_t *buffer, uint64_t value, int size);
 
 std::vector<bool> valueToBitVec(const uint64_t value, const int datawidth);
 

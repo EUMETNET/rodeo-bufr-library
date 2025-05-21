@@ -37,6 +37,8 @@ class Section1 : public SectionBase {
 public:
   Section1();
   bool fromBuffer(uint8_t *buffer, int size, uint8_t edition = 4);
+  size_t bufSize() const;
+  bool toBuffer(uint8_t *buffer, uint8_t edition = 4) const;
 
   bool optSection() const;
   int getMasterTable() const;
@@ -73,6 +75,8 @@ class Section2 : public SectionBase {
 public:
   Section2();
   bool fromBuffer(uint8_t *buffer, int size);
+  size_t bufSize() const;
+  bool toBuffer(uint8_t *buffer) const;
 
 protected:
   void clear();
@@ -85,6 +89,7 @@ class Section3 : public SectionBase {
 public:
   Section3();
   bool fromBuffer(uint8_t *buffer, int size);
+  bool toBuffer(uint8_t *buffer) const;
 
   bool isObserved() const;
   bool isCompressed() const;
@@ -105,6 +110,7 @@ public:
   Section4();
   bool fromBuffer(uint8_t *buffer, int size);
   uint64_t bitSize() const;
+  bool toBuffer(uint8_t *buffer) const;
 
 protected:
   void clear();

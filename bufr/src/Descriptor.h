@@ -65,6 +65,7 @@ public:
   uint8_t x() const;
   uint8_t y() const;
   int toInt() const;
+  int fxy() const;
   std::string toString() const;
 
   friend bool operator<(const DescriptorId &lhs, const DescriptorId &rhs);
