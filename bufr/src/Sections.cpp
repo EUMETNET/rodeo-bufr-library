@@ -52,7 +52,19 @@ void SectionBase::clear() {
 /***************************************** SECTION 1
  * **********************************************/
 
-Section1::Section1() {}
+Section1::Section1(uint8_t edition) {
+  clear();
+  switch (edition) {
+  case 2:
+    len = 18;
+    break;
+  case 3:
+    len = 18;
+    break;
+  case 4:
+    len = 22;
+  }
+}
 
 bool Section1::optSection() const { return optional_section; }
 
@@ -315,7 +327,11 @@ std::ostream &operator<<(std::ostream &os, Section2 &sec) {
 /***************************************** SECTION 3
  * **********************************************/
 
-Section3::Section3() {}
+Section3::Section3() {
+  len = 7;
+  subsets = 1;
+  obs_comp = 0;
+}
 
 void Section3::clear() {
   SectionBase::clear();
@@ -365,8 +381,7 @@ std::ostream &operator<<(std::ostream &os, Section3 &sec) {
      << "\n";
   os << "Subsets: " << sec.subsets << "\n";
   os << "Observed: " << sec.isObserved() << "\n";
-  os << "Compressed:" << sec.isCompressed() << " "
-     << "\n";
+  os << "Compressed:" << sec.isCompressed() << " " << "\n";
 
   os << "Descriptors:\n";
 
@@ -382,7 +397,7 @@ std::ostream &operator<<(std::ostream &os, Section3 &sec) {
 /***************************************** SECTION 4
  * **********************************************/
 
-Section4::Section4() {}
+Section4::Section4() { len = 4; }
 
 bool Section4::fromBuffer(uint8_t *buf, int size) {
   clear();
@@ -426,6 +441,41 @@ uint64_t Section4::bitSize() const { return bits.size(); }
 void Section4::clear() {
   SectionBase::clear();
   bits.clear();
+}
+
+void Section4::setValue(uint64_t value, unsigned int datawidth) {
+  if (bits.capacity() < bits.size() + datawidth)
+    bits.reserve(bits.capacity() * 2);
+  const size_t s = sizeof(value) * 8;
+  std::bitset<s> bs(value);
+  for (int i = datawidth - 1; i >= 0; --i) {
+    bits.push_back(bs[i]);
+  }
+  len = 4 + (bitSize() + 7) / 8;
+}
+
+void Section4::setMissingValue(unsigned int datawidth) {
+  if (bits.capacity() < bits.size() + datawidth)
+    bits.reserve(bits.capacity() * 2);
+  for (int i = datawidth - 1; i >= 0; --i) {
+    bits.push_back(true);
+  }
+  len = 4 + (bitSize() + 7) / 8;
+}
+
+uint64_t Section4::getValue(unsigned long startbit, int datawidth,
+                            bool missingbits) const {
+  unsigned long ret = 0;
+  bool missing = true;
+  for (int i = 0; i < datawidth; ++i) {
+    ret *= 2;
+    ret += bits[startbit + i];
+    if (bits[startbit + i] == 0)
+      missing = false;
+  }
+  if (missing && missingbits && datawidth > 1)
+    return ULONG_MAX;
+  return ret;
 }
 
 std::ostream &operator<<(std::ostream &os, Section4 &sec) {

@@ -27,7 +27,7 @@ NorBufr::NorBufr() {
   tabD = 0;
 
   len = 0;
-  edition = 0;
+  edition = 4;
   lb.setLogLevel(norbufr_default_loglevel);
 }
 
@@ -723,7 +723,7 @@ uint64_t NorBufr::fromBuffer(char *ext_buf, u_int64_t ext_buf_pos,
   return ext_buf_pos + len;
 }
 
-uint8_t *NorBufr::toBuffer() const {
+uint8_t *NorBufr::toBuffer() {
   size_t total_length = 12; // "BUFR" + Section0 + "7777"
 
   total_length += Section1::length();
@@ -754,6 +754,7 @@ uint8_t *NorBufr::toBuffer() const {
   bufpos += Section4::len;
 
   memcpy(retbuf + bufpos, "7777", 4);
+  NorBufr::len = total_length;
   return retbuf;
   // TODO: buffer -> retbuf;
   // return buffer;
@@ -902,6 +903,329 @@ long NorBufr::checkBuffer() {
   }
 
   return offset;
+}
+
+bool NorBufr::fromText(std::istream &is) {
+
+  encode_descriptors.clear();
+
+  int f, x, y;
+  while (is >> f >> x >> y) {
+    if (f || x || y) {
+      encodeDescriptor(DescriptorId(f, x, y), is);
+    } else {
+      encodeSubsets(is);
+      break;
+    }
+  }
+
+  len = 8 + Section1::len + Section2::len + Section3::len + Section4::len + 4;
+
+  return true;
+}
+
+bool NorBufr::fromCovJson(std::string) { return true; }
+
+uint64_t NorBufr::encodeSubsets(std::istream &is) {
+  std::string v;
+  uint64_t add_subset_size = 0;
+  const size_t line_max = 1000;
+  char line[line_max];
+
+  for (int i = 1; i < Section3::subsets; ++i) {
+    for (typename std::list<std::pair<DescriptorId, std::vector<int>>>::iterator
+             it = encode_descriptors.begin();
+         it != encode_descriptors.end(); ++it) {
+
+      is >> v;
+      if (v == "missing" || v == "MISSING" || v == "Missing") {
+        Section4::setMissingValue(it->second[0]);
+        add_subset_size += it->second[0];
+        continue;
+      }
+      if (tabB->at(it->first).unit() == "CCITTIA5") {
+        is.getline(line, line_max);
+        std::string line_str(line);
+        v += line_str;
+
+        for (int ii = 0; ii < it->second[0] / 8; ++ii) {
+          if (ii < static_cast<int>(v.size()))
+            Section4::setValue(v[ii], 8);
+          else
+            Section4::setValue(' ', 8); // space
+          add_subset_size++;
+        }
+      } else {
+        long double dvalue;
+        std::stringstream ss;
+        ss << v;
+        ss >> dvalue;
+        unsigned long value = dvalue;
+
+        if (it->second.size() > 1) {
+          int sc = it->second[1];
+          int ref = it->second[2];
+          if (sc != 0)
+            dvalue = dvalue * (pow(10.0, sc));
+          if (ref != 0)
+            dvalue -= ref;
+          value = dvalue;
+        }
+        Section4::setValue(value, it->second[0]);
+        add_subset_size += it->second[0];
+      }
+    }
+  }
+
+  return add_subset_size;
+}
+
+bool NorBufr::encodeDescriptor(DescriptorId D, std::istream &is, int level,
+                               DescriptorId *parent, int index) {
+
+  if (level == 0)
+    Section3::addDescriptor(D);
+  const size_t line_max = 1000;
+  char line[line_max];
+
+  switch (D.f()) {
+  case 0: {
+    if (D.x() != 31) {
+      std::string v;
+      is >> v;
+      std::transform(v.begin(), v.end(), v.begin(), ::toupper);
+      if (v == "MISSING") {
+        int cdatawidth = tabB->at(D).datawidth() + enc_mod_datawidth;
+        if (tabB->at(D).unit().find("CODE TABLE") != std::string::npos)
+          cdatawidth -= enc_mod_datawidth;
+        Section4::setMissingValue(cdatawidth);
+        std::vector<int> datamod;
+        datamod.push_back(cdatawidth);
+        encode_descriptors.push_back(std::make_pair(D, datamod));
+        is.getline(line, line_max);
+
+        break;
+      }
+      if (tabB->at(D).unit().substr(0, 8) == "CCITTIA5") {
+        unsigned int dw = enc_mod_str_datawidth
+                              ? enc_mod_str_datawidth
+                              : tabB->at(D).datawidth() + enc_mod_datawidth;
+        if (v.size() < dw / 8) {
+          is.getline(line, dw / 8);
+          std::string line_str(line);
+          v += line_str;
+        }
+        for (unsigned int i = 0; i < dw / 8; ++i) {
+          Section4::setValue(i < v.size() ? v[i] : ' ', 8);
+        }
+        std::vector<int> datamod;
+        datamod.push_back(dw);
+        encode_descriptors.push_back(std::make_pair(D, datamod));
+
+      } else {
+        std::string::size_type sz;
+        long double dvalue = std::stold(v, &sz);
+
+        int sc = tabB->at(D).scale() + enc_mod_scale;
+        if (sc != 0)
+          dvalue = dvalue * (pow(10.0, sc));
+        if (enc_mod_refvalue_mul != 0)
+          dvalue -= enc_mod_refvalue_mul;
+        else {
+          if (tabB->at(D).reference() != 0)
+            dvalue -= tabB->at(D).reference();
+        }
+        uint64_t value = dvalue;
+        Section4::setValue(value, tabB->at(D).datawidth() + enc_mod_datawidth);
+        std::vector<int> datamod;
+        datamod.push_back(tabB->at(D).datawidth() + enc_mod_datawidth);
+        int ref = 0;
+        if (enc_mod_refvalue_mul != 0)
+          ref = enc_mod_refvalue_mul;
+        if (tabB->at(D).reference() != 0) {
+          ref += tabB->at(D).reference();
+        }
+        if (sc != 0 || ref != 0) {
+          datamod.push_back(sc);
+          datamod.push_back(ref);
+        }
+
+        encode_descriptors.push_back(std::make_pair(D, datamod));
+
+        // Set BUFR Date and Time (Section1)
+        if (auto_date) {
+          if ((D.x() == 4) && (D.y() < 7)) {
+            switch (D.y()) {
+            case 1:
+              Section1::setYear(value);
+              break;
+            case 2:
+              Section1::setMonth(value);
+              break;
+            case 3:
+              Section1::setDay(value);
+              break;
+            case 4:
+              Section1::setHour(value);
+              break;
+            case 5:
+              Section1::setMinute(value);
+              if (edition < 4)
+                auto_date = false;
+              break;
+            case 6:
+              Section1::setSecond(value);
+              auto_date = false;
+              break;
+            }
+          }
+        }
+      }
+    } else {
+      long value;
+      is >> value;
+
+      Section4::setValue(value, tabB->at(D).datawidth() + enc_mod_datawidth);
+      std::vector<int> datamod;
+      datamod.push_back(tabB->at(D).datawidth() + enc_mod_datawidth);
+      encode_descriptors.push_back(std::make_pair(D, datamod));
+    }
+    break;
+  }
+  case 1: {
+    int f, x, y;
+    int descnum = D.x();
+    long repeatnum;
+    std::list<DescriptorId> ddtree;
+    typename std::list<DescriptorId>::iterator it;
+    if (D.y() != 0)
+      repeatnum = D.y();
+    else {
+      DescriptorId d;
+      if (level == 0) {
+        is >> f >> x >> y;
+        DescriptorId dd(f, x, y);
+        d = dd;
+      } else {
+        if (parent->f() == 0) {
+          d = *parent;
+        } else {
+          ddtree = tabD->expandDescriptor(*parent);
+          it = ddtree.begin();
+          for (int i = 0; i <= index + 1; ++i) {
+            d = *it;
+            ++it;
+          }
+        }
+      }
+      encodeDescriptor(d, is, level);
+      unsigned long urep =
+          Section4::getValue(Section4::bitSize() - tabB->at(d).datawidth(),
+                             tabB->at(d).datawidth() + enc_mod_datawidth);
+      repeatnum = urep;
+    }
+    std::vector<DescriptorId> dv(descnum);
+    std::vector<std::string> dvalue(descnum);
+    std::vector<std::streampos> position(descnum);
+    std::streampos endpos;
+    for (int i = 0; i < descnum; ++i) {
+      if (level == 0) {
+        f = x = y = 0;
+
+        char line[1024];
+        is.getline(line, 1024);
+        std::istringstream iss(line);
+        if (!(iss >> f >> x >> y)) {
+          --i;
+          continue;
+        }
+        position[i] = is.tellg();
+
+        DescriptorId d(f, x, y);
+        dv[i] = d;
+        if (d.f() == 0 && repeatnum > 0) {
+          is >> dvalue[i];
+        }
+      } else {
+        if (parent->f() == 1 || parent->f() == 0) {
+          dv[i] = *(parent + i + 1);
+        } else {
+          dv[i] = *it;
+          ++it;
+        }
+        position[i] = is.tellg();
+        if (dv[i].f() == 0 && repeatnum > 0) {
+          is >> dvalue[i];
+        }
+      }
+      if (0 == repeatnum) {
+        Section3::addDescriptor(dv[i]);
+      }
+    }
+    endpos = is.tellg();
+
+    if (repeatnum > 0) {
+      for (int i = 0; i < descnum; ++i) {
+        is.seekg(position[i], std::ios_base::beg);
+        encodeDescriptor(dv[i], is, level);
+        if (dv[i].f() == 1) {
+          std::streampos retpos = is.tellg();
+          for (int ii = 0; ii < descnum; ++ii) {
+            if (position[ii] > retpos) {
+              i = ii - 1;
+              break;
+            }
+          }
+        }
+      }
+
+      for (int j = 1; j < repeatnum; ++j) {
+        for (int i = 0; i < descnum; ++i) {
+          if (dv[i].f() == 1) {
+            if (dv[i].y())
+              encodeDescriptor(dv[i], is, level + 1, &(dv[i]));
+            else
+              encodeDescriptor(dv[i], is, level + 1, &(dv[i + 1]));
+          } else
+            encodeDescriptor(dv[i], is, level + 1);
+
+          if (dv[i].f() == 1) {
+            i += dv[i].x() + 1;
+          }
+        }
+      }
+    }
+
+    break;
+
+    break;
+  }
+  case 2: {
+    std::cerr << "Descriptor mod: " << D << " Not yet implemented!!!\n";
+    break;
+  }
+  case 3: {
+    std::list<DescriptorId> dtree = tabD->expandDescriptor(D);
+    int subindex = 0;
+    for (typename std::list<DescriptorId>::iterator it = dtree.begin();
+         it != dtree.end(); ++it) {
+      encodeDescriptor(*it, is, level + 1, &D, subindex++);
+      if (it->f() == 1) {
+        int skip = it->x();
+        if (it->y() == 0)
+          ++skip;
+        for (int i = 0; i < skip; ++i) {
+          ++it;
+          if (it == dtree.end())
+            break;
+        }
+      }
+    }
+
+    break;
+  }
+  }
+  return true;
 }
 
 void NorBufr::print(DescriptorId df, std::string filter,
