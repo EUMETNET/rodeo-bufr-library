@@ -17,6 +17,7 @@
 #include "Tables.h"
 
 #include <pybind11/pybind11.h>
+#include <pybind11/pytypes.h>
 #include <pybind11/stl.h>
 
 static std::map<int, TableB> tb;
@@ -41,6 +42,7 @@ bool norbufr_init_bufrtables(std::string tables_dir);
 bool norbufr_update_bufrtables(std::string tables_dir);
 std::list<std::string> norbufr_bufresohmsg(std::string fname);
 std::list<std::string> norbufr_bufresohmsgmem(char *buf, int size);
+pybind11::bytes norbufr_covjson2bufr(std::string json_str);
 std::list<std::string> norbufr_log();
 void norbufr_log_clear();
 
