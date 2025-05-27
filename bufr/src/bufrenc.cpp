@@ -172,7 +172,7 @@ int main(int argc, char *argv[]) {
 
   bufr->addDescriptor("103000");
   bufr->addDescriptor("031001");
-  bufr->addValue(3);             // DELAYED DESCRIPTOR REPLICATION FACTOR
+  bufr->addValue(2);             // DELAYED DESCRIPTOR REPLICATION FACTOR
   bufr->addDescriptor("007032"); // HEIGHT OF SENSOR ABOVE LOCAL GROUND (OR DECK
                                  // OF MARINE PLATFORM)
   bufr->addValue(10);
@@ -185,12 +185,12 @@ int main(int argc, char *argv[]) {
       20); // HEIGHT OF SENSOR ABOVE LOCAL GROUND (OR DECK OF MARINE PLATFORM)
   bufr->addValue(182); // WIND DIRECTION
   bufr->addValue(6.2); // WIND SPEED
-
-  bufr->addValue(
-      50); // HEIGHT OF SENSOR ABOVE LOCAL GROUND (OR DECK OF MARINE PLATFORM)
-  bufr->addValue(212); // WIND DIRECTION
-  bufr->addValue(8.3); // WIND SPEED
-
+                       /*
+                         bufr->addValue(
+                             50); // HEIGHT OF SENSOR ABOVE LOCAL GROUND (OR DECK OF MARINE PLATFORM)
+                         bufr->addValue(212); // WIND DIRECTION
+                         bufr->addValue(8.3); // WIND SPEED
+                       */
   /****** REPEAT 103000 END ******/
 
   /* ======================= END of SUBSET 1 ======================== */
@@ -239,7 +239,7 @@ int main(int argc, char *argv[]) {
 
   bufr->addValue(1); // STATE OF THE GROUND (WITH OR WITHOUT SNOW
 
-  bufr->addValue(32); // TOTAL SNOW DEPTH
+  bufr->addValue(2); // TOTAL SNOW DEPTH
 
   /****** REPEAT 103000 ******/
 

@@ -1097,7 +1097,7 @@ bool NorBufr::encodeDescriptor(DescriptorId D, std::istream &is, int level,
     int descnum = D.x();
     long repeatnum;
     std::list<DescriptorId> ddtree;
-    typename std::list<DescriptorId>::iterator it;
+    typename std::list<DescriptorId>::iterator it; // = ddtree.begin();
     if (D.y() != 0)
       repeatnum = D.y();
     else {
@@ -1137,6 +1137,8 @@ bool NorBufr::encodeDescriptor(DescriptorId D, std::istream &is, int level,
         std::istringstream iss(line);
         if (!(iss >> f >> x >> y)) {
           --i;
+          if (!is.good())
+            break;
           continue;
         }
         position[i] = is.tellg();
@@ -1150,6 +1152,22 @@ bool NorBufr::encodeDescriptor(DescriptorId D, std::istream &is, int level,
         if (parent->f() == 1 || parent->f() == 0) {
           dv[i] = *(parent + i + 1);
         } else {
+          if (D.f() == 1 && ddtree.size() == 0) {
+            ddtree = tabD->expandDescriptor(*parent);
+            it = ddtree.begin();
+            int ii_ndx = 0;
+            for (size_t dt_elem = 0; dt_elem < ddtree.size(); ++dt_elem) {
+              if (ii_ndx < index - 2) {
+                ++it;
+              }
+              ++ii_ndx;
+            }
+            for (size_t i = 0; i < dv.size(); ++i) {
+              ++it;
+              dv[i] = *it;
+            }
+          }
+
           dv[i] = *it;
           ++it;
         }
