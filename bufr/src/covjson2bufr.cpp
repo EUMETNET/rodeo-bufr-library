@@ -364,9 +364,7 @@ int main(int argc, char *argv[]) {
                          return t.first.substr(0, 17) == "relative_humidity";
                        });
       if (hum != t->second.end()) {
-        // test workaround
         hum_value = std::to_string(hum->second / 100);
-        // hum_value = std::to_string(hum->second);
       }
       bufr->addValue(hum_value);
 
