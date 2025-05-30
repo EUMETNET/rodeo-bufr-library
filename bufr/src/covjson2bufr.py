@@ -49,7 +49,7 @@ def covjson2bufr(cov_json: str = "", bufr_schema: str = "default"):
     ---
     """
     if bufr_schema == "default":
-        return covjson2bufr_py(cov_json)
+        return covjson2bufr_py(cov_json, bufr_schema)
     return None
 
 

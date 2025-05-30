@@ -8,6 +8,7 @@
  */
 
 #include <algorithm>
+#include <cmath>
 #include <cstdlib>
 #include <cstring>
 #include <filesystem>
@@ -20,96 +21,36 @@
 #include "rapidjson/prettywriter.h"
 
 #include "Descriptor.h"
-
+#include "NorBufr.h"
 #include "Tables.h"
 
-#include "NorBufr.h"
+#include "covjson2bufr.h"
 
-int main(int argc, char *argv[]) {
+struct ret_bufr covjson2bufr(std::string covjson_str, std::string bufr_template,
+                             NorBufr *bufr) {
+  struct ret_bufr ret;
+  if (bufr_template == "default")
+    return covjson2bufr_default(covjson_str, bufr);
+  std::cerr << "Unknown BUFR template name: " << bufr_template << "\n";
+  return ret;
+}
 
-  bool stream_print = false;
-  std::string bufr_file_name("test_encoded_out.bufr");
-  std::string covjson_str;
-  if (argc > 1) {
-    std::ifstream covjson_file(argv[1],
-                               std::ios_base::in | std::ios_base::binary);
-    std::stringstream ss;
-    ss << covjson_file.rdbuf();
-    covjson_str = ss.str();
-    if (argc > 2)
-      bufr_file_name = std::string(argv[2]);
-  } else {
-    std::cerr << "E-SOH covjson to bufr converter\n";
-    std::cerr << "Usage: covjson2bufr input.json [output.bufr]\n";
+struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr) {
+
+  bool delete_bufr = false;
+  if (bufr == nullptr) {
+    bufr = new NorBufr;
+    delete_bufr = true;
   }
+
+  struct ret_bufr ret = {nullptr, 0};
 
   rapidjson::Document covjson;
 
   if (covjson.Parse(covjson_str.c_str()).HasParseError()) {
     std::cerr << "E-SOH covjson message parsing Error!!!\n";
-    return 20;
+    return ret;
   }
-
-  TableB *tb = nullptr;
-  // TableC *tc = nullptr;
-  TableD *td = nullptr;
-
-  // Default tables: eccodes
-  std::string Btable_dir("/usr/share/eccodes/definitions/bufr/tables/0/wmo");
-  std::string Ctable_dir("/usr/share/eccodes/definitions/bufr/tables/0/wmo");
-  std::string Dtable_dir("/usr/share/eccodes/definitions/bufr/tables/0/wmo");
-  std::string Btable_file;
-  std::string Ctable_file;
-  std::string Dtable_file;
-
-  if (const char *table_dir = std::getenv("BUFR_TABLE_DIR")) {
-    Btable_dir = std::string(table_dir);
-    Ctable_dir = Dtable_dir = Btable_dir;
-  }
-  if (const char *table_dir = std::getenv("BUFR_BTABLE_FILE")) {
-    Btable_file = std::string(table_dir);
-  }
-  if (const char *table_dir = std::getenv("BUFR_CTABLE_FILE")) {
-    Ctable_file = std::string(table_dir);
-  }
-  if (const char *table_dir = std::getenv("BUFR_DTABLE_FILE")) {
-    Dtable_file = std::string(table_dir);
-  }
-
-  NorBufr *bufr = new NorBufr;
-
-  int vers_master = 34;
-  bufr->setVersionMaster(vers_master);
-
-  bufr->setLocalDataSubCategory(0);
-  bufr->setCentre(0);
-  bufr->setObserved(true);
-
-  // Set B Table
-  if (!Btable_file.size()) {
-    Btable_file =
-        Btable_dir + "/" + std::to_string(vers_master) + "/element.table";
-  }
-  if (!(std::filesystem::is_regular_file(Btable_file) ||
-        std::filesystem::is_symlink(Btable_file))) {
-    std::cerr << "Table file B not exists: " << Btable_file << "\n";
-    return 10;
-  }
-  tb = new TableB(Btable_file);
-  bufr->setTableB(tb);
-
-  // Set D Table
-  if (!Dtable_file.size()) {
-    Dtable_file =
-        Dtable_dir + "/" + std::to_string(vers_master) + "/sequence.def";
-  }
-  if (!(std::filesystem::is_regular_file(Dtable_file) ||
-        std::filesystem::is_symlink(Dtable_file))) {
-    std::cerr << "Table file D not exists:" << Dtable_file << "\n";
-    return 10;
-  }
-  td = new TableD(Dtable_file);
-  bufr->setTableD(td);
 
   // meas[rodeo:wigosId][time][parameter] = value
   std::map<std::string, std::map<std::string, std::map<std::string, double>>>
@@ -199,20 +140,6 @@ int main(int argc, char *argv[]) {
             }
           }
         }
-        /*
-        for( auto time_list : axis_t) {
-          std::cerr << "Lat: " << axis_x << " Lon: " << axis_y << " Time: " <<
-        time_list << "\n";
-        }
-
-        if (!strcmp(cov_it->name.GetString(), "parameters")) {
-          std::cerr << "\t\tParameters\n";
-        }
-
-        if (!strcmp(cov_it->name.GetString(), "range")) {
-          std::cerr << "\t\tRange\n";
-        }
-        */
       }
     }
   }
@@ -272,42 +199,37 @@ int main(int argc, char *argv[]) {
         bufr->addDescriptor("302031");
       }
 
-      // Pressure
-      auto press = t->second.find("air_pressure:0.0:point:PT0S");
-      double d_press = 0;
-      if (press != t->second.end()) {
-        d_press = press->second;
-        if (unit[w->first]["air_pressure:0.0:point:PT0S"] == "hPa") {
-          d_press *= 100;
+      std::string press_value = "MISSING";
+      struct val_lev press =
+          find_standard_value(*t, "air_pressure", "", "point", "PT0S");
+      if (press.level.size()) {
+        if (!std::isnan(press.value)) {
+          if (unit[w->first]["air_pressure:0.0:point:PT0S"] == "hPa") {
+            press.value *= 100;
+          }
+          press_value = std::to_string(press.value);
         }
-        bufr->addValue(d_press);
-      } else {
-        bufr->addValue("MISSING");
       }
+      bufr->addValue(press_value);
 
-      // Pressure reduced to mean sea level
-      auto press_msl =
-          t->second.find("air_pressure_at_mean_sea_level:0.0:point:PT0S");
-      if (press_msl != t->second.end()) {
-        double d_press_msl = press_msl->second;
-        if (unit[w->first]["air_pressure_at_mean_sea_level:0.0:point:PT0S"] ==
-            "hPa") {
-          d_press_msl *= 100;
+      std::string press_msl_value = "MISSING";
+      struct val_lev press_msl = find_standard_value(
+          *t, "air_pressure_at_mean_sea_level", "", "point", "PT0S");
+      if (press_msl.level.size()) {
+        if (!std::isnan(press_msl.value)) {
+          if (unit[w->first]["air_pressure:0.0:point:PT0S"] == "hPa") {
+            press_msl.value *= 100;
+          }
+          press_msl_value = std::to_string(press_msl.value);
         }
-        bufr->addValue(d_press_msl);
-      } else {
-        bufr->addValue("MISSING");
       }
+      bufr->addValue(press_msl_value);
 
       bufr->addValue("MISSING"); // 3-HOUR PRESSURE CHANGE
       bufr->addValue("MISSING"); // CHARACTERISTIC OF PRESSURE TENDENCY
       bufr->addValue("MISSING"); // 24-HOUR PRESSURE CHANGE
       // PRESSURE
-      if (d_press > 0) {
-        bufr->addValue(d_press);
-      } else {
-        bufr->addValue("MISSING");
-      }
+      bufr->addValue(press_value);
       bufr->addValue("MISSING"); // GEOPOTENTIAL HEIGHT
 
       // Temperature
@@ -318,53 +240,41 @@ int main(int argc, char *argv[]) {
       std::string temp_value = "MISSING";
       std::string temp_sensor_level = "MISSING";
 
-      auto temp =
-          std::find_if(t->second.begin(), t->second.end(),
-                       [](const std::pair<std::string, double> &t) -> bool {
-                         return t.first.substr(0, 15) == "air_temperature";
-                       });
-      if (temp != t->second.end()) {
-        auto level_str_beg = temp->first.find(':');
-        if (level_str_beg != std::string::npos) {
-          auto level_str_end = temp->first.find(':', level_str_beg + 1);
-          if (level_str_end != std::string::npos) {
-            temp_sensor_level = temp->first.substr(
-                level_str_beg + 1, level_str_end - level_str_beg - 1);
-          }
+      struct val_lev temp =
+          find_standard_value(*t, "air_temperature", "", "point", "PT0S");
+      if (temp.level.size()) {
+        temp_sensor_level = temp.level;
+        if (!std::isnan(temp.value)) {
+          double kelvin_value = unit[w->first]["air_temperature"] == "K"
+                                    ? temp.value
+                                    : temp.value + 273.16;
+          temp_value = std::to_string(kelvin_value);
         }
-        // Unit Conversion
-        double kelvin_value = unit[w->first][temp->first] == "K"
-                                  ? temp->second
-                                  : temp->second + 273.16;
-        temp_value = std::to_string(kelvin_value);
       }
 
       bufr->addValue(temp_sensor_level);
       bufr->addValue(temp_value);
 
       std::string dew_value = "MISSING";
-      auto dew = std::find_if(
-          t->second.begin(), t->second.end(),
-          [](const std::pair<std::string, double> &t) -> bool {
-            return t.first.substr(0, 21) == "dew_point_temperature";
-          });
-      if (dew != t->second.end()) {
-        // Unit Conversion
-        double kelvin_value = unit[w->first][temp->first] == "K"
-                                  ? dew->second
-                                  : dew->second + 273.16;
-        dew_value = std::to_string(kelvin_value);
+      struct val_lev dew =
+          find_standard_value(*t, "dew_point_temperature", "", "point", "PT0S");
+      if (dew.level.size()) {
+        if (!std::isnan(dew.value)) {
+          double kelvin_value = unit[w->first]["dew_point_temperature"] == "K"
+                                    ? dew.value
+                                    : dew.value + 273.16;
+          dew_value = std::to_string(kelvin_value);
+        }
       }
       bufr->addValue(dew_value);
 
       std::string hum_value = "MISSING";
-      auto hum =
-          std::find_if(t->second.begin(), t->second.end(),
-                       [](const std::pair<std::string, double> &t) -> bool {
-                         return t.first.substr(0, 17) == "relative_humidity";
-                       });
-      if (hum != t->second.end()) {
-        hum_value = std::to_string(hum->second / 100);
+      struct val_lev hum =
+          find_standard_value(*t, "relative_humidity", "", "point", "PT0S");
+      if (hum.level.size()) {
+        if (!std::isnan(hum.value)) {
+          hum_value = std::to_string(hum.value);
+        }
       }
       bufr->addValue(hum_value);
 
@@ -375,26 +285,14 @@ int main(int argc, char *argv[]) {
       // 24-H precipitation
       std::string prec24_value = "MISSING";
       std::string prec24_sensor_level = "MISSING";
-
-      // precipitation_amount:0.0:sum:PT24H
-      auto prec24 = std::find_if(
-          t->second.begin(), t->second.end(),
-          [](const std::pair<std::string, double> &t) -> bool {
-            return (t.first.substr(0, 20) == "precipitation_amount" &&
-                    t.first.substr(t.first.size() - 10, 10) == ":sum:PT24H");
-          });
-      if (prec24 != t->second.end()) {
-        auto level_str_beg = prec24->first.find(':');
-        if (level_str_beg != std::string::npos) {
-          auto level_str_end = prec24->first.find(':', level_str_beg + 1);
-          if (level_str_end != std::string::npos) {
-            prec24_sensor_level = prec24->first.substr(
-                level_str_beg + 1, level_str_end - level_str_beg - 1);
-          }
+      struct val_lev prec24 =
+          find_standard_value(*t, "precipitation_amount", "", "sum", "PT24H");
+      if (prec24.level.size()) {
+        prec24_sensor_level = prec24.level;
+        if (!std::isnan(prec24.value)) {
+          prec24_value = std::to_string(prec24.value);
         }
-        prec24_value = std::to_string(prec24->second);
       }
-
       bufr->addValue(prec24_sensor_level);
       bufr->addValue(prec24_value);
 
@@ -435,42 +333,21 @@ int main(int argc, char *argv[]) {
 
       std::string wind_speed_value = "MISSING";
       std::string wind_sensor_level = "MISSING";
-
-      auto wind_s =
-          std::find_if(t->second.begin(), t->second.end(),
-                       [](const std::pair<std::string, double> &t) -> bool {
-                         return t.first.substr(0, 10) == "wind_speed";
-                       });
-      if (wind_s != t->second.end()) {
-        auto level_str_beg = wind_s->first.find(':');
-        if (level_str_beg != std::string::npos) {
-          auto level_str_end = wind_s->first.find(':', level_str_beg + 1);
-          if (level_str_end != std::string::npos) {
-            wind_sensor_level = wind_s->first.substr(
-                level_str_beg + 1, level_str_end - level_str_beg - 1);
-          }
+      struct val_lev wind_s =
+          find_standard_value(*t, "wind_speed", "", "point", "PT10M");
+      if (wind_s.level.size()) {
+        wind_sensor_level = wind_s.level;
+        if (!std::isnan(wind_s.value)) {
+          wind_speed_value = std::to_string(wind_s.value);
         }
-        wind_speed_value = std::to_string(wind_s->second);
       }
-
       std::string wind_dir_value = "MISSING";
-
-      auto wind_d =
-          std::find_if(t->second.begin(), t->second.end(),
-                       [](const std::pair<std::string, double> &t) -> bool {
-                         return t.first.substr(0, 19) == "wind_from_direction";
-                       });
-      if (wind_d != t->second.end()) {
-        /*        auto level_str_beg = wind->first.find(':');
-                if (level_str_beg != std::string::npos) {
-                  auto level_str_end = wind->first.find(':', level_str_beg + 1);
-                  if (level_str_end != std::string::npos) {
-                    wind_sensor_level = wind->first.substr(
-                        level_str_beg + 1, level_str_end - level_str_beg - 1);
-                  }
-                }
-                  */
-        wind_dir_value = std::to_string(wind_d->second);
+      struct val_lev wind_d =
+          find_standard_value(*t, "wind_from_direction", "", "point", "PT10M");
+      if (wind_d.level.size()) {
+        if (!std::isnan(wind_d.value)) {
+          wind_dir_value = std::to_string(wind_d.value);
+        }
       }
 
       bufr->addValue(wind_sensor_level); // HEIGHT OF SENSOR ABOVE LOCAL GROUND
@@ -495,29 +372,20 @@ int main(int argc, char *argv[]) {
       }
 
       std::string prec1_value = "MISSING";
-
-      // precipitation_amount:0.0:sum:PT1H
-      auto prec1 = std::find_if(
-          t->second.begin(), t->second.end(),
-          [](const std::pair<std::string, double> &t) -> bool {
-            return (t.first.substr(0, 20) == "precipitation_amount" &&
-                    t.first.substr(t.first.size() - 9, 9) == ":sum:PT1H");
-          });
-      if (prec1 != t->second.end()) {
-        prec1_value = std::to_string(prec1->second);
-      }
-
       std::string prec12_value = "MISSING";
-
-      // precipitation_amount:0.0:sum:PT12H
-      auto prec12 = std::find_if(
-          t->second.begin(), t->second.end(),
-          [](const std::pair<std::string, double> &t) -> bool {
-            return (t.first.substr(0, 20) == "precipitation_amount" &&
-                    t.first.substr(t.first.size() - 10, 10) == ":sum:PT12H");
-          });
-      if (prec12 != t->second.end()) {
-        prec12_value = std::to_string(prec12->second);
+      struct val_lev prec1 =
+          find_standard_value(*t, "precipitation_amount", "", "sum", "PT1H");
+      if (prec1.level.size()) {
+        if (!std::isnan(prec1.value)) {
+          prec1_value = std::to_string(prec1.value);
+        }
+      }
+      struct val_lev prec12 =
+          find_standard_value(*t, "precipitation_amount", "", "sum", "PT12H");
+      if (prec12.level.size()) {
+        if (!std::isnan(prec12.value)) {
+          prec12_value = std::to_string(prec12.value);
+        }
       }
 
       bufr->addValue(prec24_sensor_level);
@@ -539,34 +407,27 @@ int main(int argc, char *argv[]) {
         bufr->addDescriptor("302045");
       }
 
+      // LONG-WAVE RADIATION PT1H
+      std::string ldrad1_value = "MISSING";
+      // LONG-WAVE RADIATION PT12H
       std::string ldrad12_value = "MISSING";
 
-      // LONG-WAVE RADIATION PT12H
-      auto ldrad12 = std::find_if(
-          t->second.begin(), t->second.end(),
-          [](const std::pair<std::string, double> &t) -> bool {
-            return (t.first.substr(0, 61) ==
-                        "integral_wrt_time_of_surface_downwelling_longwave_"
-                        "flux_in_air" &&
-                    t.first.substr(t.first.size() - 10, 10) == ":sum:PT12H");
-          });
-      if (ldrad12 != t->second.end()) {
-        ldrad12_value = std::to_string(ldrad12->second);
+      struct val_lev ldrad12 = find_standard_value(
+          *t, "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
+          "", "sum", "PT12H");
+      if (ldrad12.level.size()) {
+        if (!std::isnan(ldrad12.value)) {
+          ldrad12_value = std::to_string(ldrad12.value);
+        }
       }
 
-      std::string ldrad1_value = "MISSING";
-
-      // LONG-WAVE RADIATION PT1H
-      auto ldrad1 = std::find_if(
-          t->second.begin(), t->second.end(),
-          [](const std::pair<std::string, double> &t) -> bool {
-            return (t.first.substr(0, 61) ==
-                        "integral_wrt_time_of_surface_downwelling_longwave_"
-                        "flux_in_air" &&
-                    t.first.substr(t.first.size() - 9, 9) == ":sum:PT1H");
-          });
-      if (ldrad1 != t->second.end()) {
-        ldrad1_value = std::to_string(ldrad1->second);
+      struct val_lev ldrad1 = find_standard_value(
+          *t, "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
+          "", "sum", "PT1H");
+      if (ldrad1.level.size()) {
+        if (!std::isnan(ldrad1.value)) {
+          ldrad1_value = std::to_string(ldrad1.value);
+        }
       }
 
       bufr->addValue(-1);           // TIME PERIOD OR DISPLACEMENT
@@ -604,21 +465,61 @@ int main(int argc, char *argv[]) {
 
 stream_end:
 
-  // print the encoding stream
-  if (stream_print) {
-    // if (1) {
-    std::cout << "===========> STREAM: \n";
-    std::cout << bufr->getEncStream() << "\n<===========\n";
-  }
-
   bufr->encodeBufr();
   uint8_t *rbe = bufr->toBuffer();
 
-  auto bsize = bufr->length();
-  std::ofstream os_test(bufr_file_name.c_str());
-  for (size_t p = 0; p < bsize; ++p) {
-    os_test.put(rbe[p]);
+  if (delete_bufr) {
+    ret.buffer = new char[bufr->length()];
+    memcpy(ret.buffer, reinterpret_cast<char *>(rbe), bufr->length());
+    delete bufr;
+  } else {
+    ret.buffer = reinterpret_cast<char *>(rbe);
+  }
+  ret.size = bufr->length();
+
+  return ret;
+}
+
+struct val_lev
+find_standard_value(std::pair<std::string, std::map<std::string, double>> t,
+                    std::string standard_name, std::string level,
+                    std::string method, std::string period) {
+  struct val_lev ret;
+
+  auto range = std::find_if(
+      t.second.begin(), t.second.end(),
+      [standard_name, method,
+       period](const std::pair<std::string, double> &tt) -> bool {
+        bool retr =
+            (tt.first.substr(0, standard_name.size()) == standard_name &&
+             tt.first.substr(tt.first.size() - method.size() - period.size() -
+                                 2,
+                             method.size() + period.size() + 2) ==
+                 (":" + method + ":" + period));
+        return retr;
+      });
+
+  if (range != t.second.end()) {
+    // std::cerr << "TEMP VALUE: " << prec24->second << "\n";
+    auto level_str_beg = range->first.find(':');
+    if (level_str_beg != std::string::npos) {
+      auto level_str_end = range->first.find(':', level_str_beg + 1);
+      if (level_str_end != std::string::npos) {
+        ret.level = range->first.substr(level_str_beg + 1,
+                                        level_str_end - level_str_beg - 1);
+      } else {
+        ret.level = "";
+      }
+    }
+    // Different level ?
+    if (level.size() && ret.level != level) {
+      ret.value = std::numeric_limits<double>::quiet_NaN();
+    } else {
+      ret.value = range->second;
+    }
+  } else {
+    ret.value = std::numeric_limits<double>::quiet_NaN();
   }
 
-  return 0;
+  return ret;
 }
