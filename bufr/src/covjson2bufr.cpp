@@ -409,14 +409,14 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr) {
       // LONG-WAVE RADIATION PT1H
       std::string ldrad1_value = "MISSING";
       // LONG-WAVE RADIATION PT12H
-      std::string ldrad12_value = "MISSING";
+      std::string ldrad24_value = "MISSING";
 
-      struct val_lev ldrad12 = find_standard_value(
+      struct val_lev ldrad24 = find_standard_value(
           *t, "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
-          "", "sum", "PT12H");
-      if (ldrad12.level.size()) {
-        if (!std::isnan(ldrad12.value)) {
-          ldrad12_value = std::to_string(ldrad12.value);
+          "", "sum", "PT24H");
+      if (ldrad24.level.size()) {
+        if (!std::isnan(ldrad24.value)) {
+          ldrad24_value = std::to_string(ldrad24.value);
         }
       }
 
@@ -442,8 +442,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr) {
       bufr->addValue("MISSING"); // DIRECT SOLAR RADIATION (HIGH ACCURACY),
                                  // INTEGRATED OVER PERIOD SPECIFIED
 
-      bufr->addValue(-12);           // TIME PERIOD OR DISPLACEMENT
-      bufr->addValue(ldrad12_value); // LONG-WAVE RADIATION INTEGRATED OVER 12H
+      bufr->addValue(-24);           // TIME PERIOD OR DISPLACEMENT
+      bufr->addValue(ldrad24_value); // LONG-WAVE RADIATION INTEGRATED OVER 12H
       bufr->addValue("MISSING");
       bufr->addValue("MISSING");
       bufr->addValue("MISSING");
