@@ -111,3 +111,9 @@ python3 ./bufr2esohmsg.py path_to_the_bufr_file(s)
 export OSCAR_DUMP=path_to_the_repo/rodeo-bufr-library/bufr/oscar/oscar_stations_all.json
 python3 ./bufr2txt.py path_to_the_bufr_file(s)
 ```
+#### Encode BUFR content from Coverage json
+```shell
+export RODEO_BUFR_DIR=path_to_the_repo/rodeo-bufr-library/
+python3 ./covjson2bufr.py path_to_the_coverage_json_file(s)
+```
+The encoded BUFR file name is test_out.bufr.
