@@ -19,10 +19,18 @@ The library suports [ECMWF ecCodes](https://confluence.ecmwf.int/display/ECC), [
 
 ## Installation
 ### Clone the repo
+
 ```shell
 git clone https://github.com/EUMETNET/rodeo-bufr-library.git
 ```
 ### Compiling
+Install requirements:
+- make
+- g++
+- rapidjson-dev
+- libeccodes-data
+- pybind11-dev
+
 ```shell
 cd rodeo-bufr-library/bufr/src
 make
@@ -63,11 +71,6 @@ export TZ=UTC
 ./printbufr log_print path_to_the_bufr_file(s)
 ```
 ### Make E-SOH json message
-#### Compiling
-Requirment: rapidjson
-```shell
-make bufresohmsg
-```
 #### Set Time interval
 The default time interval is the last 24 hours. See the error message:
 ```shell
@@ -97,10 +100,6 @@ export ESOH_SCHEMA=/path_to_my_custom_schemas/my_schema.json
 ./bufresohmsg path_to_the_bufr_file(s)
 ```
 ### Python interface
-#### Compile
-```shell
-make esoh
-```
 #### Print E-SOH message
 ```shell
 export RODEO_BUFR_DIR=/path_to_the_rodeo-bufr-rootdir/
