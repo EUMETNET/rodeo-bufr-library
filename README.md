@@ -24,6 +24,7 @@ The library suports [ECMWF ecCodes](https://confluence.ecmwf.int/display/ECC), [
 git clone https://github.com/EUMETNET/rodeo-bufr-library.git
 ```
 ### Compiling
+
 Install requirements:
 - make
 - g++
@@ -36,8 +37,10 @@ cd rodeo-bufr-library/bufr/src
 make
 ```
 ### Usage
-### Set up BUFR table directory
+
+### Setting up BUFR table directory
 #### ecCodes tables
+
 To use the ecCodes table definitions you need to install libeccodes-data package on Debian based systems. In this case you don't have to set the BUFR_TABLE_DIR environment variable.
 
 #### WMO tables
@@ -52,7 +55,7 @@ export BUFR_TABLE_DIR=path_to_the_repo/rodeo-bufr-library/bufr/tables/wmo/
 export BUFR_TABLE_DIR=path_to_the_repo/rodeo-bufr-library/bufr/tables/opera/
 ```
 
-### Print BUFR content
+### Printing BUFR content
 Set Timezone to UTC
 ```shell
 export TZ=UTC
@@ -70,9 +73,9 @@ export TZ=UTC
 ```shell
 ./printbufr log_print path_to_the_bufr_file(s)
 ```
-### Make E-SOH json message
+### Making E-SOH json message
 #### Set Time interval
-The default time interval is the last 24 hours. See the error message:
+The default time interval is the last 24 hours. The program skips the subsets from this interval. See the error message:
 ```shell
 $ ./src/bufresohmsg ./test/test_data/SurfaceLand_subset_1.buf
 LOG: 2025-05-19T09:31:44.773387+00:00,Warning,msg,SurfaceLand_subset_1.buf,Skip subset 0, datetime too late or too early: 2023-08-22T22:00:00+00:00
@@ -115,4 +118,17 @@ python3 ./bufr2txt.py path_to_the_bufr_file(s)
 export RODEO_BUFR_DIR=path_to_the_repo/rodeo-bufr-library/
 python3 ./covjson2bufr.py path_to_the_coverage_json_file(s)
 ```
+The "default" BUFR unexpanded descriptors: 
+- 301150: WIGOS identifier
+- 301090: Surface station identification; time, horizontal and vertical coordinates
+- 302031: Pressure information
+- 302035: Basic synoptic “instantaneous” data
+- 302036: Clouds with bases below station leve
+- 302042: Precipitation measurement
+- 302040: Wind data
+- 101000
+  - 31001:
+  - 302045: Radiation data
+
+
 The encoded BUFR file name is test_out.bufr.
