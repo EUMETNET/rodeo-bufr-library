@@ -466,6 +466,19 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr) {
 stream_end:
 
   bufr->encodeBufr();
+
+  // Set Section1 datetime
+  time_t now = time(0);
+  struct tm curr_dt;
+  memset(&curr_dt, 0, sizeof(curr_dt));
+  gmtime_r(&now, &curr_dt);
+  bufr->setYear(curr_dt.tm_year + 1900);
+  bufr->setMonth(curr_dt.tm_mon + 1);
+  bufr->setDay(curr_dt.tm_mday);
+  bufr->setHour(curr_dt.tm_hour);
+  bufr->setMinute(curr_dt.tm_min);
+  bufr->setSecond(curr_dt.tm_sec);
+
   uint8_t *rbe = bufr->toBuffer();
 
   if (delete_bufr) {
