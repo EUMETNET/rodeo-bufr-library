@@ -1,30 +1,7 @@
 import os
 import sys
 
-
-def getEnvValue(val_name: str, default_suffix: str = "") -> str:
-
-    val = os.getcwd() + default_suffix
-    val_env = ""
-    try:
-        val_env = os.environ[val_name]
-    except Exception:
-        pass
-
-    if len(val_env):
-        val = val_env
-        if val_name == "RODEO_BUFR_DIR" and val[-1:] != "/":
-            val += "/"
-    else:
-        if val_name != "RODEO_BUFR_DIR" and len(RODEO_BUFR_DIR):
-            if default_suffix[:1] == "/":
-                val = default_suffix
-            else:
-                val = RODEO_BUFR_DIR + "/" + default_suffix
-
-    # print("ENV: {0} -> {1}".format(val_name, val))
-    return val
-
+from getenvvalue import getEnvValue
 
 RODEO_BUFR_DIR = getEnvValue("RODEO_BUFR_DIR")
 
