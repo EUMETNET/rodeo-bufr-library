@@ -228,8 +228,7 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr) {
       bufr->addValue("MISSING"); // 3-HOUR PRESSURE CHANGE
       bufr->addValue("MISSING"); // CHARACTERISTIC OF PRESSURE TENDENCY
       bufr->addValue("MISSING"); // 24-HOUR PRESSURE CHANGE
-      // PRESSURE
-      bufr->addValue(press_value);
+      bufr->addValue("MISSING"); // PRESSURE
       bufr->addValue("MISSING"); // GEOPOTENTIAL HEIGHT
 
       // Temperature
