@@ -965,10 +965,12 @@ uint64_t NorBufr::encodeSubsets(std::istream &is) {
         if (it->second.size() > 1) {
           int sc = it->second[1];
           int ref = it->second[2];
-          if (sc != 0)
+          if (sc != 0) {
             dvalue = dvalue * (pow(10.0, sc));
-          if (ref != 0)
+          }
+          if (ref != 0) {
             dvalue -= ref;
+          }
           value = dvalue;
         }
         Section4::setValue(value, it->second[0]);
@@ -990,6 +992,15 @@ bool NorBufr::encodeDescriptor(DescriptorId D, std::istream &is, int level,
 
   switch (D.f()) {
   case 0: {
+
+    int sc = tabB->at(D).scale() + enc_mod_scale;
+    int ref = 0;
+    if (enc_mod_refvalue_mul != 0)
+      ref = enc_mod_refvalue_mul;
+    if (tabB->at(D).reference() != 0) {
+      ref += tabB->at(D).reference();
+    }
+
     if (D.x() != 31) {
       std::string v;
       is >> v;
@@ -1001,6 +1012,11 @@ bool NorBufr::encodeDescriptor(DescriptorId D, std::istream &is, int level,
         Section4::setMissingValue(cdatawidth);
         std::vector<int> datamod;
         datamod.push_back(cdatawidth);
+        if (sc != 0 || ref != 0) {
+          datamod.push_back(sc);
+          datamod.push_back(ref);
+        }
+
         encode_descriptors.push_back(std::make_pair(D, datamod));
         is.getline(line, line_max);
 
@@ -1026,7 +1042,6 @@ bool NorBufr::encodeDescriptor(DescriptorId D, std::istream &is, int level,
         std::string::size_type sz;
         long double dvalue = std::stold(v, &sz);
 
-        int sc = tabB->at(D).scale() + enc_mod_scale;
         if (sc != 0)
           dvalue = dvalue * (pow(10.0, sc));
         if (enc_mod_refvalue_mul != 0)
@@ -1039,12 +1054,6 @@ bool NorBufr::encodeDescriptor(DescriptorId D, std::istream &is, int level,
         Section4::setValue(value, tabB->at(D).datawidth() + enc_mod_datawidth);
         std::vector<int> datamod;
         datamod.push_back(tabB->at(D).datawidth() + enc_mod_datawidth);
-        int ref = 0;
-        if (enc_mod_refvalue_mul != 0)
-          ref = enc_mod_refvalue_mul;
-        if (tabB->at(D).reference() != 0) {
-          ref += tabB->at(D).reference();
-        }
         if (sc != 0 || ref != 0) {
           datamod.push_back(sc);
           datamod.push_back(ref);
@@ -1204,9 +1213,9 @@ bool NorBufr::encodeDescriptor(DescriptorId D, std::istream &is, int level,
               encodeDescriptor(dv[i], is, level + 1, &(dv[i]));
             else
               encodeDescriptor(dv[i], is, level + 1, &(dv[i + 1]));
-          } else
+          } else {
             encodeDescriptor(dv[i], is, level + 1);
-
+          }
           if (dv[i].f() == 1) {
             i += dv[i].x() + 1;
           }
