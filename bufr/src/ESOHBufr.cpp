@@ -38,6 +38,7 @@ ESOHBufr::ESOHBufr() {
             \"license\" : \"http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)\", \
             \"naming_authority\" : \"no.met\", \
             \"level\" : 0.0, \
+            \"hamsl\" : 0, \
             \"function\": \"point\", \
             \"period\": \"PT0S\", \
             \"period_int\": 0, \
@@ -1428,7 +1429,14 @@ bool ESOHBufr::setLocation(double lat, double lon, double hei,
     location.AddMember("lat", lat, message_allocator);
     location.AddMember("lon", lon, message_allocator);
     if (!std::isnan(hei)) {
-      location.AddMember("hei", hei, message_allocator);
+      // location.AddMember("hei", hei, message_allocator);
+      rapidjson::Value &properties = message["properties"];
+      if (properties.HasMember("hamsl")) {
+        properties["hamsl"].SetDouble(hei);
+      } else {
+        rapidjson::Value hamsl(rapidjson::kObjectType);
+        properties.AddMember("hamsl", hei, message_allocator);
+      }
     }
     geometry["coordinates"] = location;
   }
