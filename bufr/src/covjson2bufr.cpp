@@ -396,11 +396,11 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr) {
       bufr->addValue(prec12_value);
 
       if (!subsets) {
-        bufr->addDescriptor("101000");
-        bufr->addDescriptor("031001");
+        bufr->addDescriptor("101002");
+        // bufr->addDescriptor("031001");
       }
 
-      bufr->addValue(2); // DELAYED DESCRIPTOR REPLICATION FACTOR
+      // bufr->addValue(2); // DELAYED DESCRIPTOR REPLICATION FACTOR
 
       if (!subsets) {
         bufr->addDescriptor("302045");
