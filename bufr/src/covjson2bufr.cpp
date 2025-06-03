@@ -287,7 +287,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr) {
       struct val_lev prec24 =
           find_standard_value(*t, "precipitation_amount", "", "sum", "PT24H");
       if (prec24.level.size()) {
-        prec24_sensor_level = prec24.level;
+        if (prec24.level != 0.0)
+          prec24_sensor_level = prec24.level;
         if (!std::isnan(prec24.value)) {
           prec24_value = std::to_string(prec24.value);
         }
