@@ -16,7 +16,9 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
 ]
 
-dependencies = []
+dependencies = [
+  "pybind11 ~= 2.11.1",
+]
 
 [tool.hatch.build.targets.wheel]
 package-dir = "./bufr"
