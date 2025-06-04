@@ -1568,7 +1568,8 @@ WSI ESOHBufr::genShadowWigosId(
         if (bufr_state_id != std::numeric_limits<int>::max()) {
           int iso_cc = bufrToIsocc(bufr_state_id);
           if (iso_cc) {
-            ss << iso_cc << "_";
+            // ss << iso_cc << "_";
+            tmp_id.setWigosIssuerId(iso_cc);
           }
         }
       } else {

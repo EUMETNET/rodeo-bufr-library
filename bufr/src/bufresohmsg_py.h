@@ -36,7 +36,7 @@ static std::string bufr_input_schema;
 
 static std::list<std::string> esoh_bufr_log;
 static std::map<std::string, std::string> radar_cf_st;
-static std::string default_shadow_wigos_py("0-578-2024-");
+static std::string default_shadow_wigos_py("0-0-0-");
 
 bool norbufr_init_bufrtables(std::string tables_dir);
 bool norbufr_update_bufrtables(std::string tables_dir);

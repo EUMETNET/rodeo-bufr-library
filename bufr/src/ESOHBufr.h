@@ -64,7 +64,7 @@ static std::map<DescriptorId, std::pair<std::string, std::string>> cf_names = {
     {DescriptorId(321008, true),
      {"radar_equivalent_reflectivity_factor_h", "dBz"}}};
 
-static std::string default_shadow_wigos("0-578-2024-");
+static std::string default_shadow_wigos("0-0-0-");
 
 static std::list<std::pair<char, char>> repl_chars = {
     {' ', '_'}, {'-', '_'}, {'\'', '_'}};
