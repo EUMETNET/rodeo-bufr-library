@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "json-bufr-tools"
+description = "Tools for working with JSON-BUFR conversion in the E-SOH proejct."
+readme = "README.md"
+requires-python = ">=3.11.*"
+version = "0.1.0"
+package = "json_bufr_tools"
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+
+dependencies = []
+
+[tool.hatch.build.targets.wheel]
+package-dir = "./bufr"
+
+[too.hatch.build.targets.sdist]
+include = "./bufr"
+
+
+[tool.uv]
+dev-dependencies = ['coverage', 'pre-commit', 'pytest', 'debugpy', 'ipython']
