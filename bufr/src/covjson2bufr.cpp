@@ -68,8 +68,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr) {
          it != covjson["coverages"].End(); ++it) {
 
       std::string wigosId;
-      if (it->HasMember("rodeo:wigosId")) {
-        wigosId = (*it)["rodeo:wigosId"].GetString();
+      if (it->HasMember("metocean:wigosId")) {
+        wigosId = (*it)["metocean:wigosId"].GetString();
       }
 
       for (rapidjson::Value::ConstMemberIterator cov_it = it->MemberBegin();
@@ -160,7 +160,7 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr) {
     }
   }
 
-  int test_max_subset = 3000;
+  int test_max_subset = 30000;
   bufr->setSubset(subsets);
   subsets = 0;
   for (auto w = meas.begin(); w != meas.end(); ++w) {
