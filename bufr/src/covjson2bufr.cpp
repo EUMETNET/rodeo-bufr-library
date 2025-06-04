@@ -479,14 +479,13 @@ stream_end:
   bufr->setMinute(curr_dt.tm_min);
   bufr->setSecond(curr_dt.tm_sec);
 
-  uint8_t *rbe = bufr->toBuffer();
+  const uint8_t *rbe = bufr->toBuffer();
+
+  ret.buffer = new char[bufr->length()];
+  memcpy(ret.buffer, reinterpret_cast<const char *>(rbe), bufr->length());
 
   if (delete_bufr) {
-    ret.buffer = new char[bufr->length()];
-    memcpy(ret.buffer, reinterpret_cast<char *>(rbe), bufr->length());
     delete bufr;
-  } else {
-    ret.buffer = reinterpret_cast<char *>(rbe);
   }
   ret.size = bufr->length();
 

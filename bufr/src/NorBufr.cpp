@@ -723,7 +723,7 @@ uint64_t NorBufr::fromBuffer(char *ext_buf, u_int64_t ext_buf_pos,
   return ext_buf_pos + len;
 }
 
-uint8_t *NorBufr::toBuffer() {
+const uint8_t *NorBufr::toBuffer() {
   size_t total_length = 12; // "BUFR" + Section0 + "7777"
 
   total_length += Section1::length();

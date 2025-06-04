@@ -259,7 +259,7 @@ int main(int argc, char *argv[]) {
   /* ======================= END of SUBSET 2 ======================== */
 
   bufr->encodeBufr();
-  uint8_t *rbe = bufr->toBuffer();
+  const uint8_t *rbe = bufr->toBuffer();
 
   // print the encoding stream
   if (stream_print) {
