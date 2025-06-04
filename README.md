@@ -126,8 +126,7 @@ The "default" BUFR unexpanded descriptors:
 - 302036: Clouds with bases below station leve
 - 302042: Precipitation measurement
 - 302040: Wind data
-- 101000
-  - 31001:
+- 101002:
   - 302045: Radiation data
 
 
