@@ -19,39 +19,43 @@
                     },
                     "t": {
                         "values": [
-                            "2025-05-29T10:00:00Z",
-                            "2025-05-29T11:00:00Z",
-                            "2025-05-29T12:00:00Z",
-                            "2025-05-29T13:00:00Z",
-                            "2025-05-29T14:00:00Z",
-                            "2025-05-29T15:00:00Z",
-                            "2025-05-29T16:00:00Z",
-                            "2025-05-29T17:00:00Z",
-                            "2025-05-29T18:00:00Z",
-                            "2025-05-29T19:00:00Z",
-                            "2025-05-29T20:00:00Z",
-                            "2025-05-29T21:00:00Z",
-                            "2025-05-29T22:00:00Z",
-                            "2025-05-29T23:00:00Z",
-                            "2025-05-30T00:00:00Z",
-                            "2025-05-30T01:00:00Z",
-                            "2025-05-30T02:00:00Z",
-                            "2025-05-30T03:00:00Z",
-                            "2025-05-30T04:00:00Z",
-                            "2025-05-30T05:00:00Z",
-                            "2025-05-30T06:00:00Z"
+                            "2025-06-03T09:00:00Z",
+                            "2025-06-03T10:00:00Z",
+                            "2025-06-03T11:00:00Z",
+                            "2025-06-03T12:00:00Z",
+                            "2025-06-03T13:00:00Z",
+                            "2025-06-03T14:00:00Z",
+                            "2025-06-03T15:00:00Z",
+                            "2025-06-03T16:00:00Z",
+                            "2025-06-03T17:00:00Z",
+                            "2025-06-03T18:00:00Z",
+                            "2025-06-03T19:00:00Z",
+                            "2025-06-03T20:00:00Z",
+                            "2025-06-03T21:00:00Z",
+                            "2025-06-03T22:00:00Z",
+                            "2025-06-03T23:00:00Z",
+                            "2025-06-04T00:00:00Z",
+                            "2025-06-04T01:00:00Z",
+                            "2025-06-04T02:00:00Z",
+                            "2025-06-04T03:00:00Z",
+                            "2025-06-04T04:00:00Z",
+                            "2025-06-04T05:00:00Z",
+                            "2025-06-04T06:00:00Z",
+                            "2025-06-04T07:00:00Z",
+                            "2025-06-04T08:00:00Z",
+                            "2025-06-04T09:00:00Z"
                         ]
                     }
                 },
                 "referencing": [
                     {
                         "coordinates": [
-                            "y",
-                            "x"
+                            "x",
+                            "y"
                         ],
                         "system": {
                             "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
                         }
                     },
                     {
@@ -69,186 +73,218 @@
                 "air_pressure:0.0:point:PT0S": {
                     "type": "Parameter",
                     "description": {
-                        "en": "air_pressure at 0.0m, aggregated over PT0S with method 'point'"
+                        "en": "Air pressure at 0.0m, aggregated over PT0S with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/air_pressure",
                         "label": {
-                            "en": "air_pressure:0.0:point:PT0S"
+                            "en": "Air pressure"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "hPa"
+                        },
+                        "symbol": {
+                            "value": "hPa",
+                            "type": "https://qudt.org/vocab/unit/HectoPA"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT0S"
+                        "duration": "PT0S"
                     },
-                    "rodeo:standard_name": "air_pressure",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "air_pressure",
+                    "metocean:level": 0.0
                 },
                 "air_pressure_at_mean_sea_level:0.0:point:PT0S": {
                     "type": "Parameter",
                     "description": {
-                        "en": "air_pressure_at_mean_sea_level at 0.0m, aggregated over PT0S with method 'point'"
+                        "en": "Air pressure at mean sea level at 0.0m, aggregated over PT0S with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/air_pressure_at_mean_sea_level",
                         "label": {
-                            "en": "air_pressure_at_mean_sea_level:0.0:point:PT0S"
+                            "en": "Air pressure at mean sea level"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "hPa"
+                        },
+                        "symbol": {
+                            "value": "hPa",
+                            "type": "https://qudt.org/vocab/unit/HectoPA"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT0S"
+                        "duration": "PT0S"
                     },
-                    "rodeo:standard_name": "air_pressure_at_mean_sea_level",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "air_pressure_at_mean_sea_level",
+                    "metocean:level": 0.0
                 },
                 "air_temperature:1.5:point:PT0S": {
                     "type": "Parameter",
                     "description": {
-                        "en": "air_temperature at 1.5m, aggregated over PT0S with method 'point'"
+                        "en": "Air temperature at 1.5m, aggregated over PT0S with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/air_temperature",
                         "label": {
-                            "en": "air_temperature:1.5:point:PT0S"
+                            "en": "Air temperature"
                         }
                     },
                     "unit": {
                         "label": {
-                            "en": "degC"
+                            "en": "Cel"
+                        },
+                        "symbol": {
+                            "value": "\u00b0C",
+                            "type": "https://qudt.org/vocab/unit/DEG_C"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT0S"
+                        "duration": "PT0S"
                     },
-                    "rodeo:standard_name": "air_temperature",
-                    "rodeo:level": 1.5
+                    "metocean:standard_name": "air_temperature",
+                    "metocean:level": 1.5
                 },
                 "dew_point_temperature:2.0:point:PT0S": {
                     "type": "Parameter",
                     "description": {
-                        "en": "dew_point_temperature at 2.0m, aggregated over PT0S with method 'point'"
+                        "en": "Dew point temperature at 2.0m, aggregated over PT0S with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/dew_point_temperature",
                         "label": {
-                            "en": "dew_point_temperature:2.0:point:PT0S"
+                            "en": "Dew point temperature"
                         }
                     },
                     "unit": {
                         "label": {
-                            "en": "degC"
+                            "en": "Cel"
+                        },
+                        "symbol": {
+                            "value": "\u00b0C",
+                            "type": "https://qudt.org/vocab/unit/DEG_C"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT0S"
+                        "duration": "PT0S"
                     },
-                    "rodeo:standard_name": "dew_point_temperature",
-                    "rodeo:level": 2.0
+                    "metocean:standard_name": "dew_point_temperature",
+                    "metocean:level": 2.0
                 },
                 "precipitation_amount:0.0:sum:PT1H": {
                     "type": "Parameter",
                     "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT1H with method 'sum'"
+                        "en": "Precipitation amount at 0.0m, aggregated over PT1H with method 'sum'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                         "label": {
-                            "en": "precipitation_amount:0.0:sum:PT1H"
+                            "en": "Precipitation amount"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "sum",
-                        "period": "PT1H"
+                        "duration": "PT1H"
                     },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
                 },
                 "relative_humidity:2.0:point:PT0S": {
                     "type": "Parameter",
                     "description": {
-                        "en": "relative_humidity at 2.0m, aggregated over PT0S with method 'point'"
+                        "en": "Relative humidity at 2.0m, aggregated over PT0S with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/relative_humidity",
                         "label": {
-                            "en": "relative_humidity:2.0:point:PT0S"
+                            "en": "Relative humidity"
                         }
                     },
                     "unit": {
                         "label": {
-                            "en": "percent"
+                            "en": "%"
+                        },
+                        "symbol": {
+                            "value": "%",
+                            "type": "https://qudt.org/vocab/unit/PERCENT"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT0S"
+                        "duration": "PT0S"
                     },
-                    "rodeo:standard_name": "relative_humidity",
-                    "rodeo:level": 2.0
+                    "metocean:standard_name": "relative_humidity",
+                    "metocean:level": 2.0
                 },
                 "wind_from_direction:10.0:point:PT10M": {
                     "type": "Parameter",
                     "description": {
-                        "en": "wind_from_direction at 10.0m, aggregated over PT10M with method 'point'"
+                        "en": "Wind from direction at 10.0m, aggregated over PT10M with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/wind_from_direction",
                         "label": {
-                            "en": "wind_from_direction:10.0:point:PT10M"
+                            "en": "Wind from direction"
                         }
                     },
                     "unit": {
                         "label": {
-                            "en": "degrees"
+                            "en": "deg"
+                        },
+                        "symbol": {
+                            "value": "\u00b0",
+                            "type": "https://qudt.org/vocab/unit/DEG"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT10M"
+                        "duration": "PT10M"
                     },
-                    "rodeo:standard_name": "wind_from_direction",
-                    "rodeo:level": 10.0
+                    "metocean:standard_name": "wind_from_direction",
+                    "metocean:level": 10.0
                 },
                 "wind_speed:10.0:point:PT10M": {
                     "type": "Parameter",
                     "description": {
-                        "en": "wind_speed at 10.0m, aggregated over PT10M with method 'point'"
+                        "en": "Wind speed at 10.0m, aggregated over PT10M with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/wind_speed",
                         "label": {
-                            "en": "wind_speed:10.0:point:PT10M"
+                            "en": "Wind speed"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "m/s"
+                        },
+                        "symbol": {
+                            "value": "m/s",
+                            "type": "https://qudt.org/vocab/unit/M-PER-SEC"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT10M"
+                        "duration": "PT10M"
                     },
-                    "rodeo:standard_name": "wind_speed",
-                    "rodeo:level": 10.0
+                    "metocean:standard_name": "wind_speed",
+                    "metocean:level": 10.0
                 }
             },
             "ranges": {
@@ -257,36 +293,40 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        1020.0,
-                        1020.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1018.0,
-                        1019.0,
-                        1019.0,
-                        1019.0
+                        1010.0,
+                        1010.0,
+                        1009.0,
+                        1009.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1007.0,
+                        1007.0,
+                        1007.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1007.0,
+                        1007.0,
+                        1006.0,
+                        1006.0,
+                        1005.0,
+                        1005.0,
+                        1005.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1006.0
                     ]
                 },
                 "air_pressure_at_mean_sea_level:0.0:point:PT0S": {
@@ -294,36 +334,40 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        1020.0,
-                        1020.0,
-                        1020.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1020.0
+                        1010.0,
+                        1010.0,
+                        1010.0,
+                        1009.0,
+                        1009.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1007.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1007.0
                     ]
                 },
                 "air_temperature:1.5:point:PT0S": {
@@ -331,36 +375,40 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        14.7,
-                        15.3,
-                        16.3,
-                        16.4,
-                        17.5,
                         18.7,
-                        19.0,
-                        19.3,
-                        19.4,
-                        18.6,
-                        18.1,
-                        17.2,
+                        20.8,
+                        21.2,
+                        21.6,
+                        22.1,
+                        22.0,
+                        21.9,
+                        21.5,
+                        19.7,
+                        18.8,
+                        17.7,
+                        16.9,
                         16.7,
-                        16.6,
-                        16.1,
+                        16.4,
+                        15.4,
+                        14.8,
                         15.6,
+                        16.0,
+                        15.8,
+                        15.5,
+                        15.3,
+                        14.0,
+                        14.3,
                         15.2,
-                        14.8,
-                        14.7,
-                        14.8,
-                        15.1
+                        16.3
                     ]
                 },
                 "dew_point_temperature:2.0:point:PT0S": {
@@ -368,36 +416,40 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        13.4,
-                        12.5,
-                        12.8,
-                        12.5,
-                        13.4,
-                        14.5,
-                        14.9,
-                        15.1,
-                        15.4,
-                        14.5,
-                        14.5,
-                        14.6,
-                        14.2,
-                        14.1,
-                        13.8,
-                        13.7,
-                        13.6,
-                        13.6,
-                        13.6,
-                        13.7,
-                        13.8
+                        9.9,
+                        8.3,
+                        7.1,
+                        7.4,
+                        7.3,
+                        7.1,
+                        7.5,
+                        9.9,
+                        9.6,
+                        7.5,
+                        8.5,
+                        11.7,
+                        12.1,
+                        11.9,
+                        12.0,
+                        12.3,
+                        12.0,
+                        11.1,
+                        10.4,
+                        10.4,
+                        11.1,
+                        12.2,
+                        11.6,
+                        11.6,
+                        10.7
                     ]
                 },
                 "precipitation_amount:0.0:sum:PT1H": {
@@ -405,32 +457,36 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
                         0.1,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
                         0.0,
                         0.0,
                         0.0,
@@ -442,36 +498,40 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        91.0,
-                        83.0,
-                        79.0,
-                        77.0,
-                        77.0,
-                        76.0,
-                        77.0,
-                        77.0,
-                        77.0,
-                        77.0,
-                        79.0,
+                        56.0,
+                        44.0,
+                        40.0,
+                        39.0,
+                        38.0,
+                        38.0,
+                        39.0,
+                        47.0,
+                        52.0,
+                        47.0,
+                        54.0,
+                        71.0,
+                        74.0,
+                        74.0,
+                        80.0,
                         84.0,
-                        85.0,
-                        85.0,
-                        86.0,
+                        79.0,
+                        73.0,
+                        70.0,
+                        71.0,
+                        76.0,
                         88.0,
-                        90.0,
-                        92.0,
-                        92.0,
-                        93.0,
-                        92.0
+                        83.0,
+                        78.0,
+                        69.0
                     ]
                 },
                 "wind_from_direction:10.0:point:PT10M": {
@@ -479,36 +539,40 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        181.0,
-                        204.0,
-                        202.0,
-                        221.0,
+                        182.0,
+                        194.0,
+                        213.0,
+                        208.0,
+                        205.0,
+                        217.0,
+                        211.0,
+                        248.0,
+                        264.0,
+                        267.0,
+                        256.0,
+                        238.0,
+                        232.0,
+                        217.0,
+                        164.0,
+                        188.0,
+                        208.0,
+                        177.0,
+                        175.0,
+                        180.0,
+                        207.0,
+                        234.0,
+                        229.0,
                         227.0,
-                        222.0,
-                        220.0,
-                        232.0,
-                        232.0,
-                        233.0,
-                        226.0,
-                        218.0,
-                        227.0,
-                        232.0,
-                        233.0,
-                        231.0,
-                        233.0,
-                        226.0,
-                        226.0,
-                        228.0,
-                        232.0
+                        227.0
                     ]
                 },
                 "wind_speed:10.0:point:PT10M": {
@@ -516,40 +580,44 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        4.0,
-                        5.0,
+                        6.0,
+                        6.0,
+                        6.0,
                         7.0,
-                        6.0,
-                        6.0,
-                        5.0,
-                        6.0,
-                        6.0,
-                        4.0,
-                        6.0,
-                        4.0,
-                        4.0,
-                        4.0,
-                        5.0,
+                        8.0,
+                        7.0,
                         5.0,
                         4.0,
+                        3.0,
+                        3.0,
+                        3.0,
                         4.0,
+                        3.0,
+                        2.0,
+                        2.0,
+                        1.0,
+                        5.0,
+                        3.0,
+                        3.0,
+                        3.0,
+                        3.0,
+                        3.0,
                         4.0,
-                        4.0,
-                        4.0,
+                        5.0,
                         4.0
                     ]
                 }
             },
-            "rodeo:wigosId": "0-20000-0-06260"
+            "metocean:wigosId": "0-20000-0-06260"
         },
         {
             "type": "Coverage",
@@ -569,20 +637,20 @@
                     },
                     "t": {
                         "values": [
-                            "2025-05-29T12:00:00Z",
-                            "2025-05-30T00:00:00Z"
+                            "2025-06-03T12:00:00Z",
+                            "2025-06-04T00:00:00Z"
                         ]
                     }
                 },
                 "referencing": [
                     {
                         "coordinates": [
-                            "y",
-                            "x"
+                            "x",
+                            "y"
                         ],
                         "system": {
                             "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
                         }
                     },
                     {
@@ -600,25 +668,29 @@
                 "precipitation_amount:0.0:sum:PT6H": {
                     "type": "Parameter",
                     "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT6H with method 'sum'"
+                        "en": "Precipitation amount at 0.0m, aggregated over PT6H with method 'sum'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                         "label": {
-                            "en": "precipitation_amount:0.0:sum:PT6H"
+                            "en": "Precipitation amount"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "sum",
-                        "period": "PT6H"
+                        "duration": "PT6H"
                     },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
                 }
             },
             "ranges": {
@@ -627,8 +699,8 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
                         2,
@@ -636,12 +708,12 @@
                         1
                     ],
                     "values": [
-                        0.8,
+                        0.0,
                         0.0
                     ]
                 }
             },
-            "rodeo:wigosId": "0-20000-0-06260"
+            "metocean:wigosId": "0-20000-0-06260"
         },
         {
             "type": "Coverage",
@@ -661,20 +733,20 @@
                     },
                     "t": {
                         "values": [
-                            "2025-05-29T18:00:00Z",
-                            "2025-05-30T06:00:00Z"
+                            "2025-06-03T18:00:00Z",
+                            "2025-06-04T06:00:00Z"
                         ]
                     }
                 },
                 "referencing": [
                     {
                         "coordinates": [
-                            "y",
-                            "x"
+                            "x",
+                            "y"
                         ],
                         "system": {
                             "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
                         }
                     },
                     {
@@ -692,25 +764,29 @@
                 "precipitation_amount:0.0:sum:PT12H": {
                     "type": "Parameter",
                     "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT12H with method 'sum'"
+                        "en": "Precipitation amount at 0.0m, aggregated over PT12H with method 'sum'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                         "label": {
-                            "en": "precipitation_amount:0.0:sum:PT12H"
+                            "en": "Precipitation amount"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "sum",
-                        "period": "PT12H"
+                        "duration": "PT12H"
                     },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
                 }
             },
             "ranges": {
@@ -719,8 +795,8 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
                         2,
@@ -728,12 +804,12 @@
                         1
                     ],
                     "values": [
-                        0.8,
-                        0.0
+                        0.0,
+                        0.1
                     ]
                 }
             },
-            "rodeo:wigosId": "0-20000-0-06260"
+            "metocean:wigosId": "0-20000-0-06260"
         },
         {
             "type": "Coverage",
@@ -753,19 +829,19 @@
                     },
                     "t": {
                         "values": [
-                            "2025-05-30T06:00:00Z"
+                            "2025-06-04T06:00:00Z"
                         ]
                     }
                 },
                 "referencing": [
                     {
                         "coordinates": [
-                            "y",
-                            "x"
+                            "x",
+                            "y"
                         ],
                         "system": {
                             "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
                         }
                     },
                     {
@@ -783,25 +859,29 @@
                 "precipitation_amount:0.0:sum:PT24H": {
                     "type": "Parameter",
                     "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT24H with method 'sum'"
+                        "en": "Precipitation amount at 0.0m, aggregated over PT24H with method 'sum'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                         "label": {
-                            "en": "precipitation_amount:0.0:sum:PT24H"
+                            "en": "Precipitation amount"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "sum",
-                        "period": "PT24H"
+                        "duration": "PT24H"
                     },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
                 }
             },
             "ranges": {
@@ -810,8 +890,8 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
                         1,
@@ -819,11 +899,11 @@
                         1
                     ],
                     "values": [
-                        0.8
+                        0.1
                     ]
                 }
             },
-            "rodeo:wigosId": "0-20000-0-06260"
+            "metocean:wigosId": "0-20000-0-06260"
         },
         {
             "type": "Coverage",
@@ -843,39 +923,43 @@
                     },
                     "t": {
                         "values": [
-                            "2025-05-29T10:00:00Z",
-                            "2025-05-29T11:00:00Z",
-                            "2025-05-29T12:00:00Z",
-                            "2025-05-29T13:00:00Z",
-                            "2025-05-29T14:00:00Z",
-                            "2025-05-29T15:00:00Z",
-                            "2025-05-29T16:00:00Z",
-                            "2025-05-29T17:00:00Z",
-                            "2025-05-29T18:00:00Z",
-                            "2025-05-29T19:00:00Z",
-                            "2025-05-29T20:00:00Z",
-                            "2025-05-29T21:00:00Z",
-                            "2025-05-29T22:00:00Z",
-                            "2025-05-29T23:00:00Z",
-                            "2025-05-30T00:00:00Z",
-                            "2025-05-30T01:00:00Z",
-                            "2025-05-30T02:00:00Z",
-                            "2025-05-30T03:00:00Z",
-                            "2025-05-30T04:00:00Z",
-                            "2025-05-30T05:00:00Z",
-                            "2025-05-30T06:00:00Z"
+                            "2025-06-03T09:00:00Z",
+                            "2025-06-03T10:00:00Z",
+                            "2025-06-03T11:00:00Z",
+                            "2025-06-03T12:00:00Z",
+                            "2025-06-03T13:00:00Z",
+                            "2025-06-03T14:00:00Z",
+                            "2025-06-03T15:00:00Z",
+                            "2025-06-03T16:00:00Z",
+                            "2025-06-03T17:00:00Z",
+                            "2025-06-03T18:00:00Z",
+                            "2025-06-03T19:00:00Z",
+                            "2025-06-03T20:00:00Z",
+                            "2025-06-03T21:00:00Z",
+                            "2025-06-03T22:00:00Z",
+                            "2025-06-03T23:00:00Z",
+                            "2025-06-04T00:00:00Z",
+                            "2025-06-04T01:00:00Z",
+                            "2025-06-04T02:00:00Z",
+                            "2025-06-04T03:00:00Z",
+                            "2025-06-04T04:00:00Z",
+                            "2025-06-04T05:00:00Z",
+                            "2025-06-04T06:00:00Z",
+                            "2025-06-04T07:00:00Z",
+                            "2025-06-04T08:00:00Z",
+                            "2025-06-04T09:00:00Z"
                         ]
                     }
                 },
                 "referencing": [
                     {
                         "coordinates": [
-                            "y",
-                            "x"
+                            "x",
+                            "y"
                         ],
                         "system": {
                             "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
                         }
                     },
                     {
@@ -893,186 +977,218 @@
                 "air_pressure:0.0:point:PT0S": {
                     "type": "Parameter",
                     "description": {
-                        "en": "air_pressure at 0.0m, aggregated over PT0S with method 'point'"
+                        "en": "Air pressure at 0.0m, aggregated over PT0S with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/air_pressure",
                         "label": {
-                            "en": "air_pressure:0.0:point:PT0S"
+                            "en": "Air pressure"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "hPa"
+                        },
+                        "symbol": {
+                            "value": "hPa",
+                            "type": "https://qudt.org/vocab/unit/HectoPA"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT0S"
+                        "duration": "PT0S"
                     },
-                    "rodeo:standard_name": "air_pressure",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "air_pressure",
+                    "metocean:level": 0.0
                 },
                 "air_pressure_at_mean_sea_level:0.0:point:PT0S": {
                     "type": "Parameter",
                     "description": {
-                        "en": "air_pressure_at_mean_sea_level at 0.0m, aggregated over PT0S with method 'point'"
+                        "en": "Air pressure at mean sea level at 0.0m, aggregated over PT0S with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/air_pressure_at_mean_sea_level",
                         "label": {
-                            "en": "air_pressure_at_mean_sea_level:0.0:point:PT0S"
+                            "en": "Air pressure at mean sea level"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "hPa"
+                        },
+                        "symbol": {
+                            "value": "hPa",
+                            "type": "https://qudt.org/vocab/unit/HectoPA"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT0S"
+                        "duration": "PT0S"
                     },
-                    "rodeo:standard_name": "air_pressure_at_mean_sea_level",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "air_pressure_at_mean_sea_level",
+                    "metocean:level": 0.0
                 },
                 "air_temperature:1.5:point:PT0S": {
                     "type": "Parameter",
                     "description": {
-                        "en": "air_temperature at 1.5m, aggregated over PT0S with method 'point'"
+                        "en": "Air temperature at 1.5m, aggregated over PT0S with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/air_temperature",
                         "label": {
-                            "en": "air_temperature:1.5:point:PT0S"
+                            "en": "Air temperature"
                         }
                     },
                     "unit": {
                         "label": {
-                            "en": "degC"
+                            "en": "Cel"
+                        },
+                        "symbol": {
+                            "value": "\u00b0C",
+                            "type": "https://qudt.org/vocab/unit/DEG_C"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT0S"
+                        "duration": "PT0S"
                     },
-                    "rodeo:standard_name": "air_temperature",
-                    "rodeo:level": 1.5
+                    "metocean:standard_name": "air_temperature",
+                    "metocean:level": 1.5
                 },
                 "dew_point_temperature:2.0:point:PT0S": {
                     "type": "Parameter",
                     "description": {
-                        "en": "dew_point_temperature at 2.0m, aggregated over PT0S with method 'point'"
+                        "en": "Dew point temperature at 2.0m, aggregated over PT0S with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/dew_point_temperature",
                         "label": {
-                            "en": "dew_point_temperature:2.0:point:PT0S"
+                            "en": "Dew point temperature"
                         }
                     },
                     "unit": {
                         "label": {
-                            "en": "degC"
+                            "en": "Cel"
+                        },
+                        "symbol": {
+                            "value": "\u00b0C",
+                            "type": "https://qudt.org/vocab/unit/DEG_C"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT0S"
+                        "duration": "PT0S"
                     },
-                    "rodeo:standard_name": "dew_point_temperature",
-                    "rodeo:level": 2.0
+                    "metocean:standard_name": "dew_point_temperature",
+                    "metocean:level": 2.0
                 },
                 "precipitation_amount:0.0:sum:PT1H": {
                     "type": "Parameter",
                     "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT1H with method 'sum'"
+                        "en": "Precipitation amount at 0.0m, aggregated over PT1H with method 'sum'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                         "label": {
-                            "en": "precipitation_amount:0.0:sum:PT1H"
+                            "en": "Precipitation amount"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "sum",
-                        "period": "PT1H"
+                        "duration": "PT1H"
                     },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
                 },
                 "relative_humidity:2.0:point:PT0S": {
                     "type": "Parameter",
                     "description": {
-                        "en": "relative_humidity at 2.0m, aggregated over PT0S with method 'point'"
+                        "en": "Relative humidity at 2.0m, aggregated over PT0S with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/relative_humidity",
                         "label": {
-                            "en": "relative_humidity:2.0:point:PT0S"
+                            "en": "Relative humidity"
                         }
                     },
                     "unit": {
                         "label": {
-                            "en": "percent"
+                            "en": "%"
+                        },
+                        "symbol": {
+                            "value": "%",
+                            "type": "https://qudt.org/vocab/unit/PERCENT"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT0S"
+                        "duration": "PT0S"
                     },
-                    "rodeo:standard_name": "relative_humidity",
-                    "rodeo:level": 2.0
+                    "metocean:standard_name": "relative_humidity",
+                    "metocean:level": 2.0
                 },
                 "wind_from_direction:10.0:point:PT10M": {
                     "type": "Parameter",
                     "description": {
-                        "en": "wind_from_direction at 10.0m, aggregated over PT10M with method 'point'"
+                        "en": "Wind from direction at 10.0m, aggregated over PT10M with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/wind_from_direction",
                         "label": {
-                            "en": "wind_from_direction:10.0:point:PT10M"
+                            "en": "Wind from direction"
                         }
                     },
                     "unit": {
                         "label": {
-                            "en": "degrees"
+                            "en": "deg"
+                        },
+                        "symbol": {
+                            "value": "\u00b0",
+                            "type": "https://qudt.org/vocab/unit/DEG"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT10M"
+                        "duration": "PT10M"
                     },
-                    "rodeo:standard_name": "wind_from_direction",
-                    "rodeo:level": 10.0
+                    "metocean:standard_name": "wind_from_direction",
+                    "metocean:level": 10.0
                 },
                 "wind_speed:10.0:point:PT10M": {
                     "type": "Parameter",
                     "description": {
-                        "en": "wind_speed at 10.0m, aggregated over PT10M with method 'point'"
+                        "en": "Wind speed at 10.0m, aggregated over PT10M with method 'point'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/wind_speed",
                         "label": {
-                            "en": "wind_speed:10.0:point:PT10M"
+                            "en": "Wind speed"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "m/s"
+                        },
+                        "symbol": {
+                            "value": "m/s",
+                            "type": "https://qudt.org/vocab/unit/M-PER-SEC"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "point",
-                        "period": "PT10M"
+                        "duration": "PT10M"
                     },
-                    "rodeo:standard_name": "wind_speed",
-                    "rodeo:level": 10.0
+                    "metocean:standard_name": "wind_speed",
+                    "metocean:level": 10.0
                 }
             },
             "ranges": {
@@ -1081,36 +1197,40 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        1020.0,
-                        1020.0,
-                        1020.0,
-                        1019.0,
-                        1019.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1019.0,
-                        1020.0
+                        1011.0,
+                        1010.0,
+                        1010.0,
+                        1010.0,
+                        1009.0,
+                        1009.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1007.0,
+                        1007.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1007.0,
+                        1007.0
                     ]
                 },
                 "air_pressure_at_mean_sea_level:0.0:point:PT0S": {
@@ -1118,36 +1238,40 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        1020.0,
-                        1019.0,
-                        1019.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1017.0,
-                        1017.0,
-                        1017.0,
-                        1017.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1018.0,
-                        1019.0,
-                        1019.0
+                        1010.0,
+                        1009.0,
+                        1009.0,
+                        1009.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1008.0,
+                        1007.0,
+                        1007.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1005.0,
+                        1005.0,
+                        1006.0,
+                        1006.0,
+                        1006.0,
+                        1006.0
                     ]
                 },
                 "air_temperature:1.5:point:PT0S": {
@@ -1155,36 +1279,40 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        14.8,
-                        15.0,
-                        14.6,
-                        15.5,
-                        16.1,
-                        17.7,
-                        20.4,
                         19.4,
-                        19.0,
-                        18.1,
-                        16.7,
-                        16.7,
-                        16.2,
-                        16.1,
-                        15.9,
-                        15.1,
-                        14.3,
-                        14.1,
-                        13.9,
+                        20.8,
+                        21.6,
+                        22.0,
+                        22.8,
+                        22.5,
+                        21.7,
+                        20.0,
+                        18.9,
+                        18.2,
+                        17.2,
+                        15.6,
+                        15.4,
+                        14.5,
                         15.0,
-                        15.8
+                        14.9,
+                        14.5,
+                        15.2,
+                        15.1,
+                        15.3,
+                        15.2,
+                        13.7,
+                        14.4,
+                        16.2,
+                        16.5
                     ]
                 },
                 "dew_point_temperature:2.0:point:PT0S": {
@@ -1192,36 +1320,40 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        13.0,
-                        13.0,
-                        13.4,
+                        10.4,
+                        10.3,
+                        7.3,
+                        8.4,
+                        8.5,
+                        8.6,
+                        8.0,
+                        11.3,
+                        10.3,
+                        9.5,
+                        7.3,
+                        11.6,
+                        12.6,
+                        12.5,
+                        12.0,
+                        11.6,
+                        11.7,
+                        11.7,
+                        12.0,
+                        11.0,
+                        11.3,
+                        12.6,
                         13.1,
                         13.2,
-                        14.1,
-                        16.0,
-                        15.5,
-                        14.7,
-                        14.7,
-                        14.0,
-                        13.9,
-                        14.0,
-                        14.1,
-                        14.1,
-                        13.8,
-                        13.4,
-                        13.3,
-                        13.3,
-                        13.8,
-                        14.3
+                        11.2
                     ]
                 },
                 "precipitation_amount:0.0:sum:PT1H": {
@@ -1229,18 +1361,15 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        0.2,
-                        0.0,
-                        0.2,
                         0.0,
                         0.0,
                         0.0,
@@ -1257,6 +1386,13 @@
                         0.0,
                         0.0,
                         0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.1,
+                        0.4,
+                        0.1,
                         0.0,
                         0.0
                     ]
@@ -1266,36 +1402,40 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        88.0,
-                        88.0,
-                        92.0,
-                        85.0,
+                        55.0,
+                        50.0,
+                        39.0,
+                        41.0,
+                        39.0,
+                        40.0,
+                        41.0,
+                        57.0,
+                        57.0,
+                        56.0,
+                        52.0,
+                        77.0,
+                        83.0,
+                        87.0,
                         82.0,
-                        79.0,
-                        75.0,
-                        78.0,
-                        76.0,
                         80.0,
                         83.0,
-                        83.0,
-                        86.0,
-                        88.0,
-                        88.0,
-                        91.0,
-                        94.0,
-                        95.0,
-                        95.0,
+                        79.0,
+                        81.0,
+                        75.0,
+                        77.0,
+                        93.0,
                         92.0,
-                        90.0
+                        82.0,
+                        70.0
                     ]
                 },
                 "wind_from_direction:10.0:point:PT10M": {
@@ -1303,35 +1443,39 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        176.0,
-                        187.0,
-                        208.0,
-                        207.0,
-                        213.0,
-                        221.0,
-                        233.0,
-                        226.0,
-                        236.0,
+                        186.0,
+                        188.0,
+                        212.0,
+                        215.0,
+                        203.0,
+                        215.0,
+                        222.0,
+                        280.0,
+                        276.0,
+                        258.0,
+                        243.0,
                         232.0,
                         228.0,
-                        229.0,
+                        224.0,
+                        199.0,
+                        195.0,
+                        185.0,
+                        187.0,
+                        190.0,
+                        194.0,
+                        187.0,
+                        253.0,
                         226.0,
-                        227.0,
-                        228.0,
-                        226.0,
-                        225.0,
-                        225.0,
-                        229.0,
-                        227.0,
+                        235.0,
                         233.0
                     ]
                 },
@@ -1340,744 +1484,44 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        21,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        5.0,
-                        6.0,
-                        7.0,
-                        7.0,
-                        7.0,
                         8.0,
                         8.0,
-                        7.0,
+                        8.0,
+                        8.0,
                         9.0,
-                        7.0,
-                        7.0,
                         9.0,
                         8.0,
-                        7.0,
-                        6.0,
-                        5.0,
                         4.0,
                         5.0,
                         4.0,
+                        4.0,
+                        5.0,
+                        5.0,
+                        3.0,
+                        4.0,
+                        4.0,
+                        2.0,
+                        4.0,
+                        3.0,
+                        3.0,
+                        3.0,
+                        5.0,
                         6.0,
-                        6.0
-                    ]
-                }
-            },
-            "rodeo:wigosId": "0-20000-0-06269"
-        },
-        {
-            "type": "Coverage",
-            "domain": {
-                "type": "Domain",
-                "domainType": "PointSeries",
-                "axes": {
-                    "x": {
-                        "values": [
-                            5.51963
-                        ]
-                    },
-                    "y": {
-                        "values": [
-                            52.45728
-                        ]
-                    },
-                    "t": {
-                        "values": [
-                            "2025-05-29T12:00:00Z",
-                            "2025-05-30T00:00:00Z"
-                        ]
-                    }
-                },
-                "referencing": [
-                    {
-                        "coordinates": [
-                            "y",
-                            "x"
-                        ],
-                        "system": {
-                            "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
-                        }
-                    },
-                    {
-                        "coordinates": [
-                            "t"
-                        ],
-                        "system": {
-                            "type": "TemporalRS",
-                            "calendar": "Gregorian"
-                        }
-                    }
-                ]
-            },
-            "parameters": {
-                "precipitation_amount:0.0:sum:PT6H": {
-                    "type": "Parameter",
-                    "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT6H with method 'sum'"
-                    },
-                    "observedProperty": {
-                        "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
-                        "label": {
-                            "en": "precipitation_amount:0.0:sum:PT6H"
-                        }
-                    },
-                    "unit": {
-                        "label": {
-                            "en": "kg/m2"
-                        }
-                    },
-                    "measurementType": {
-                        "method": "sum",
-                        "period": "PT6H"
-                    },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
-                }
-            },
-            "ranges": {
-                "precipitation_amount:0.0:sum:PT6H": {
-                    "type": "NdArray",
-                    "dataType": "float",
-                    "axisNames": [
-                        "t",
-                        "y",
-                        "x"
-                    ],
-                    "shape": [
-                        2,
-                        1,
-                        1
-                    ],
-                    "values": [
-                        1.4,
-                        0.0
-                    ]
-                }
-            },
-            "rodeo:wigosId": "0-20000-0-06269"
-        },
-        {
-            "type": "Coverage",
-            "domain": {
-                "type": "Domain",
-                "domainType": "PointSeries",
-                "axes": {
-                    "x": {
-                        "values": [
-                            5.51963
-                        ]
-                    },
-                    "y": {
-                        "values": [
-                            52.45728
-                        ]
-                    },
-                    "t": {
-                        "values": [
-                            "2025-05-29T18:00:00Z",
-                            "2025-05-30T06:00:00Z"
-                        ]
-                    }
-                },
-                "referencing": [
-                    {
-                        "coordinates": [
-                            "y",
-                            "x"
-                        ],
-                        "system": {
-                            "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
-                        }
-                    },
-                    {
-                        "coordinates": [
-                            "t"
-                        ],
-                        "system": {
-                            "type": "TemporalRS",
-                            "calendar": "Gregorian"
-                        }
-                    }
-                ]
-            },
-            "parameters": {
-                "precipitation_amount:0.0:sum:PT12H": {
-                    "type": "Parameter",
-                    "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT12H with method 'sum'"
-                    },
-                    "observedProperty": {
-                        "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
-                        "label": {
-                            "en": "precipitation_amount:0.0:sum:PT12H"
-                        }
-                    },
-                    "unit": {
-                        "label": {
-                            "en": "kg/m2"
-                        }
-                    },
-                    "measurementType": {
-                        "method": "sum",
-                        "period": "PT12H"
-                    },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
-                }
-            },
-            "ranges": {
-                "precipitation_amount:0.0:sum:PT12H": {
-                    "type": "NdArray",
-                    "dataType": "float",
-                    "axisNames": [
-                        "t",
-                        "y",
-                        "x"
-                    ],
-                    "shape": [
-                        2,
-                        1,
-                        1
-                    ],
-                    "values": [
-                        1.5,
-                        0.0
-                    ]
-                }
-            },
-            "rodeo:wigosId": "0-20000-0-06269"
-        },
-        {
-            "type": "Coverage",
-            "domain": {
-                "type": "Domain",
-                "domainType": "PointSeries",
-                "axes": {
-                    "x": {
-                        "values": [
-                            5.51963
-                        ]
-                    },
-                    "y": {
-                        "values": [
-                            52.45728
-                        ]
-                    },
-                    "t": {
-                        "values": [
-                            "2025-05-30T06:00:00Z"
-                        ]
-                    }
-                },
-                "referencing": [
-                    {
-                        "coordinates": [
-                            "y",
-                            "x"
-                        ],
-                        "system": {
-                            "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
-                        }
-                    },
-                    {
-                        "coordinates": [
-                            "t"
-                        ],
-                        "system": {
-                            "type": "TemporalRS",
-                            "calendar": "Gregorian"
-                        }
-                    }
-                ]
-            },
-            "parameters": {
-                "precipitation_amount:0.0:sum:PT24H": {
-                    "type": "Parameter",
-                    "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT24H with method 'sum'"
-                    },
-                    "observedProperty": {
-                        "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
-                        "label": {
-                            "en": "precipitation_amount:0.0:sum:PT24H"
-                        }
-                    },
-                    "unit": {
-                        "label": {
-                            "en": "kg/m2"
-                        }
-                    },
-                    "measurementType": {
-                        "method": "sum",
-                        "period": "PT24H"
-                    },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
-                }
-            },
-            "ranges": {
-                "precipitation_amount:0.0:sum:PT24H": {
-                    "type": "NdArray",
-                    "dataType": "float",
-                    "axisNames": [
-                        "t",
-                        "y",
-                        "x"
-                    ],
-                    "shape": [
-                        1,
-                        1,
-                        1
-                    ],
-                    "values": [
-                        1.5
-                    ]
-                }
-            },
-            "rodeo:wigosId": "0-20000-0-06269"
-        },
-        {
-            "type": "Coverage",
-            "domain": {
-                "type": "Domain",
-                "domainType": "PointSeries",
-                "axes": {
-                    "x": {
-                        "values": [
-                            5.38333
-                        ]
-                    },
-                    "y": {
-                        "values": [
-                            52.89667
-                        ]
-                    },
-                    "t": {
-                        "values": [
-                            "2025-05-29T10:00:00Z",
-                            "2025-05-29T11:00:00Z",
-                            "2025-05-29T12:00:00Z",
-                            "2025-05-29T13:00:00Z",
-                            "2025-05-29T14:00:00Z",
-                            "2025-05-29T15:00:00Z",
-                            "2025-05-29T16:00:00Z",
-                            "2025-05-29T17:00:00Z",
-                            "2025-05-29T18:00:00Z",
-                            "2025-05-29T19:00:00Z",
-                            "2025-05-29T20:00:00Z",
-                            "2025-05-29T21:00:00Z",
-                            "2025-05-29T22:00:00Z",
-                            "2025-05-29T23:00:00Z",
-                            "2025-05-30T00:00:00Z",
-                            "2025-05-30T01:00:00Z",
-                            "2025-05-30T02:00:00Z",
-                            "2025-05-30T03:00:00Z",
-                            "2025-05-30T04:00:00Z",
-                            "2025-05-30T05:00:00Z",
-                            "2025-05-30T06:00:00Z"
-                        ]
-                    }
-                },
-                "referencing": [
-                    {
-                        "coordinates": [
-                            "y",
-                            "x"
-                        ],
-                        "system": {
-                            "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
-                        }
-                    },
-                    {
-                        "coordinates": [
-                            "t"
-                        ],
-                        "system": {
-                            "type": "TemporalRS",
-                            "calendar": "Gregorian"
-                        }
-                    }
-                ]
-            },
-            "parameters": {
-                "air_temperature:1.5:point:PT0S": {
-                    "type": "Parameter",
-                    "description": {
-                        "en": "air_temperature at 1.5m, aggregated over PT0S with method 'point'"
-                    },
-                    "observedProperty": {
-                        "id": "https://vocab.nerc.ac.uk/standard_name/air_temperature",
-                        "label": {
-                            "en": "air_temperature:1.5:point:PT0S"
-                        }
-                    },
-                    "unit": {
-                        "label": {
-                            "en": "degC"
-                        }
-                    },
-                    "measurementType": {
-                        "method": "point",
-                        "period": "PT0S"
-                    },
-                    "rodeo:standard_name": "air_temperature",
-                    "rodeo:level": 1.5
-                },
-                "dew_point_temperature:2.0:point:PT0S": {
-                    "type": "Parameter",
-                    "description": {
-                        "en": "dew_point_temperature at 2.0m, aggregated over PT0S with method 'point'"
-                    },
-                    "observedProperty": {
-                        "id": "https://vocab.nerc.ac.uk/standard_name/dew_point_temperature",
-                        "label": {
-                            "en": "dew_point_temperature:2.0:point:PT0S"
-                        }
-                    },
-                    "unit": {
-                        "label": {
-                            "en": "degC"
-                        }
-                    },
-                    "measurementType": {
-                        "method": "point",
-                        "period": "PT0S"
-                    },
-                    "rodeo:standard_name": "dew_point_temperature",
-                    "rodeo:level": 2.0
-                },
-                "precipitation_amount:0.0:sum:PT1H": {
-                    "type": "Parameter",
-                    "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT1H with method 'sum'"
-                    },
-                    "observedProperty": {
-                        "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
-                        "label": {
-                            "en": "precipitation_amount:0.0:sum:PT1H"
-                        }
-                    },
-                    "unit": {
-                        "label": {
-                            "en": "kg/m2"
-                        }
-                    },
-                    "measurementType": {
-                        "method": "sum",
-                        "period": "PT1H"
-                    },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
-                },
-                "relative_humidity:2.0:point:PT0S": {
-                    "type": "Parameter",
-                    "description": {
-                        "en": "relative_humidity at 2.0m, aggregated over PT0S with method 'point'"
-                    },
-                    "observedProperty": {
-                        "id": "https://vocab.nerc.ac.uk/standard_name/relative_humidity",
-                        "label": {
-                            "en": "relative_humidity:2.0:point:PT0S"
-                        }
-                    },
-                    "unit": {
-                        "label": {
-                            "en": "percent"
-                        }
-                    },
-                    "measurementType": {
-                        "method": "point",
-                        "period": "PT0S"
-                    },
-                    "rodeo:standard_name": "relative_humidity",
-                    "rodeo:level": 2.0
-                },
-                "wind_from_direction:10.0:point:PT10M": {
-                    "type": "Parameter",
-                    "description": {
-                        "en": "wind_from_direction at 10.0m, aggregated over PT10M with method 'point'"
-                    },
-                    "observedProperty": {
-                        "id": "https://vocab.nerc.ac.uk/standard_name/wind_from_direction",
-                        "label": {
-                            "en": "wind_from_direction:10.0:point:PT10M"
-                        }
-                    },
-                    "unit": {
-                        "label": {
-                            "en": "degrees"
-                        }
-                    },
-                    "measurementType": {
-                        "method": "point",
-                        "period": "PT10M"
-                    },
-                    "rodeo:standard_name": "wind_from_direction",
-                    "rodeo:level": 10.0
-                },
-                "wind_speed:10.0:point:PT10M": {
-                    "type": "Parameter",
-                    "description": {
-                        "en": "wind_speed at 10.0m, aggregated over PT10M with method 'point'"
-                    },
-                    "observedProperty": {
-                        "id": "https://vocab.nerc.ac.uk/standard_name/wind_speed",
-                        "label": {
-                            "en": "wind_speed:10.0:point:PT10M"
-                        }
-                    },
-                    "unit": {
-                        "label": {
-                            "en": "m/s"
-                        }
-                    },
-                    "measurementType": {
-                        "method": "point",
-                        "period": "PT10M"
-                    },
-                    "rodeo:standard_name": "wind_speed",
-                    "rodeo:level": 10.0
-                }
-            },
-            "ranges": {
-                "air_temperature:1.5:point:PT0S": {
-                    "type": "NdArray",
-                    "dataType": "float",
-                    "axisNames": [
-                        "t",
-                        "y",
-                        "x"
-                    ],
-                    "shape": [
-                        21,
-                        1,
-                        1
-                    ],
-                    "values": [
-                        14.5,
-                        14.0,
-                        14.1,
-                        14.2,
-                        15.3,
-                        16.3,
-                        16.6,
-                        16.2,
-                        15.7,
-                        15.6,
-                        14.9,
-                        14.7,
-                        14.5,
-                        14.5,
-                        14.4,
-                        14.4,
-                        14.2,
-                        14.2,
-                        14.2,
-                        14.6,
-                        15.7
-                    ]
-                },
-                "dew_point_temperature:2.0:point:PT0S": {
-                    "type": "NdArray",
-                    "dataType": "float",
-                    "axisNames": [
-                        "t",
-                        "y",
-                        "x"
-                    ],
-                    "shape": [
-                        21,
-                        1,
-                        1
-                    ],
-                    "values": [
-                        13.6,
-                        13.0,
-                        13.3,
-                        13.7,
-                        14.1,
-                        14.6,
-                        14.9,
-                        14.6,
-                        14.4,
-                        14.4,
-                        14.0,
-                        13.9,
-                        13.7,
-                        13.8,
-                        13.7,
-                        13.7,
-                        13.6,
-                        13.6,
-                        13.6,
-                        13.9,
-                        14.6
-                    ]
-                },
-                "precipitation_amount:0.0:sum:PT1H": {
-                    "type": "NdArray",
-                    "dataType": "float",
-                    "axisNames": [
-                        "t",
-                        "y",
-                        "x"
-                    ],
-                    "shape": [
-                        21,
-                        1,
-                        1
-                    ],
-                    "values": [
-                        0.6,
-                        1.0,
-                        1.2,
-                        0.2,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0,
-                        0.0
-                    ]
-                },
-                "relative_humidity:2.0:point:PT0S": {
-                    "type": "NdArray",
-                    "dataType": "float",
-                    "axisNames": [
-                        "t",
-                        "y",
-                        "x"
-                    ],
-                    "shape": [
-                        21,
-                        1,
-                        1
-                    ],
-                    "values": [
-                        93.0,
-                        93.0,
-                        94.0,
-                        96.0,
-                        92.0,
-                        90.0,
-                        89.0,
-                        90.0,
-                        91.0,
-                        92.0,
-                        94.0,
-                        95.0,
-                        94.0,
-                        95.0,
-                        95.0,
-                        95.0,
-                        96.0,
-                        95.0,
-                        96.0,
-                        95.0,
-                        93.0
-                    ]
-                },
-                "wind_from_direction:10.0:point:PT10M": {
-                    "type": "NdArray",
-                    "dataType": "float",
-                    "axisNames": [
-                        "t",
-                        "y",
-                        "x"
-                    ],
-                    "shape": [
-                        21,
-                        1,
-                        1
-                    ],
-                    "values": [
-                        179.0,
-                        184.0,
-                        207.0,
-                        204.0,
-                        221.0,
-                        223.0,
-                        221.0,
-                        226.0,
-                        226.0,
-                        226.0,
-                        221.0,
-                        221.0,
-                        220.0,
-                        218.0,
-                        219.0,
-                        220.0,
-                        226.0,
-                        224.0,
-                        226.0,
-                        224.0,
-                        226.0
-                    ]
-                },
-                "wind_speed:10.0:point:PT10M": {
-                    "type": "NdArray",
-                    "dataType": "float",
-                    "axisNames": [
-                        "t",
-                        "y",
-                        "x"
-                    ],
-                    "shape": [
-                        21,
-                        1,
-                        1
-                    ],
-                    "values": [
-                        8.0,
-                        7.0,
-                        7.0,
-                        7.0,
-                        8.0,
-                        9.0,
-                        9.0,
-                        9.0,
-                        9.0,
-                        8.0,
-                        9.0,
-                        9.0,
-                        8.0,
-                        8.0,
-                        8.0,
-                        7.0,
-                        7.0,
-                        7.0,
-                        7.0,
                         6.0,
                         7.0
                     ]
                 }
             },
-            "rodeo:wigosId": "0-20000-0-06267"
+            "metocean:wigosId": "0-20000-0-06269"
         },
         {
             "type": "Coverage",
@@ -2087,30 +1531,30 @@
                 "axes": {
                     "x": {
                         "values": [
-                            5.38333
+                            5.51963
                         ]
                     },
                     "y": {
                         "values": [
-                            52.89667
+                            52.45728
                         ]
                     },
                     "t": {
                         "values": [
-                            "2025-05-29T12:00:00Z",
-                            "2025-05-30T00:00:00Z"
+                            "2025-06-03T12:00:00Z",
+                            "2025-06-04T00:00:00Z"
                         ]
                     }
                 },
                 "referencing": [
                     {
                         "coordinates": [
-                            "y",
-                            "x"
+                            "x",
+                            "y"
                         ],
                         "system": {
                             "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
                         }
                     },
                     {
@@ -2128,25 +1572,29 @@
                 "precipitation_amount:0.0:sum:PT6H": {
                     "type": "Parameter",
                     "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT6H with method 'sum'"
+                        "en": "Precipitation amount at 0.0m, aggregated over PT6H with method 'sum'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                         "label": {
-                            "en": "precipitation_amount:0.0:sum:PT6H"
+                            "en": "Precipitation amount"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "sum",
-                        "period": "PT6H"
+                        "duration": "PT6H"
                     },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
                 }
             },
             "ranges": {
@@ -2155,8 +1603,8 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
                         2,
@@ -2164,12 +1612,202 @@
                         1
                     ],
                     "values": [
-                        4.0,
+                        0.0,
                         0.0
                     ]
                 }
             },
-            "rodeo:wigosId": "0-20000-0-06267"
+            "metocean:wigosId": "0-20000-0-06269"
+        },
+        {
+            "type": "Coverage",
+            "domain": {
+                "type": "Domain",
+                "domainType": "PointSeries",
+                "axes": {
+                    "x": {
+                        "values": [
+                            5.51963
+                        ]
+                    },
+                    "y": {
+                        "values": [
+                            52.45728
+                        ]
+                    },
+                    "t": {
+                        "values": [
+                            "2025-06-03T18:00:00Z",
+                            "2025-06-04T06:00:00Z"
+                        ]
+                    }
+                },
+                "referencing": [
+                    {
+                        "coordinates": [
+                            "x",
+                            "y"
+                        ],
+                        "system": {
+                            "type": "GeographicCRS",
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+                        }
+                    },
+                    {
+                        "coordinates": [
+                            "t"
+                        ],
+                        "system": {
+                            "type": "TemporalRS",
+                            "calendar": "Gregorian"
+                        }
+                    }
+                ]
+            },
+            "parameters": {
+                "precipitation_amount:0.0:sum:PT12H": {
+                    "type": "Parameter",
+                    "description": {
+                        "en": "Precipitation amount at 0.0m, aggregated over PT12H with method 'sum'"
+                    },
+                    "observedProperty": {
+                        "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
+                        "label": {
+                            "en": "Precipitation amount"
+                        }
+                    },
+                    "unit": {
+                        "label": {
+                            "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
+                        }
+                    },
+                    "metocean:measurementType": {
+                        "method": "sum",
+                        "duration": "PT12H"
+                    },
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
+                }
+            },
+            "ranges": {
+                "precipitation_amount:0.0:sum:PT12H": {
+                    "type": "NdArray",
+                    "dataType": "float",
+                    "axisNames": [
+                        "t",
+                        "x",
+                        "y"
+                    ],
+                    "shape": [
+                        2,
+                        1,
+                        1
+                    ],
+                    "values": [
+                        0.0,
+                        0.6
+                    ]
+                }
+            },
+            "metocean:wigosId": "0-20000-0-06269"
+        },
+        {
+            "type": "Coverage",
+            "domain": {
+                "type": "Domain",
+                "domainType": "PointSeries",
+                "axes": {
+                    "x": {
+                        "values": [
+                            5.51963
+                        ]
+                    },
+                    "y": {
+                        "values": [
+                            52.45728
+                        ]
+                    },
+                    "t": {
+                        "values": [
+                            "2025-06-04T06:00:00Z"
+                        ]
+                    }
+                },
+                "referencing": [
+                    {
+                        "coordinates": [
+                            "x",
+                            "y"
+                        ],
+                        "system": {
+                            "type": "GeographicCRS",
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+                        }
+                    },
+                    {
+                        "coordinates": [
+                            "t"
+                        ],
+                        "system": {
+                            "type": "TemporalRS",
+                            "calendar": "Gregorian"
+                        }
+                    }
+                ]
+            },
+            "parameters": {
+                "precipitation_amount:0.0:sum:PT24H": {
+                    "type": "Parameter",
+                    "description": {
+                        "en": "Precipitation amount at 0.0m, aggregated over PT24H with method 'sum'"
+                    },
+                    "observedProperty": {
+                        "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
+                        "label": {
+                            "en": "Precipitation amount"
+                        }
+                    },
+                    "unit": {
+                        "label": {
+                            "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
+                        }
+                    },
+                    "metocean:measurementType": {
+                        "method": "sum",
+                        "duration": "PT24H"
+                    },
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
+                }
+            },
+            "ranges": {
+                "precipitation_amount:0.0:sum:PT24H": {
+                    "type": "NdArray",
+                    "dataType": "float",
+                    "axisNames": [
+                        "t",
+                        "x",
+                        "y"
+                    ],
+                    "shape": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "values": [
+                        0.6
+                    ]
+                }
+            },
+            "metocean:wigosId": "0-20000-0-06269"
         },
         {
             "type": "Coverage",
@@ -2189,20 +1827,43 @@
                     },
                     "t": {
                         "values": [
-                            "2025-05-29T18:00:00Z",
-                            "2025-05-30T06:00:00Z"
+                            "2025-06-03T09:00:00Z",
+                            "2025-06-03T10:00:00Z",
+                            "2025-06-03T11:00:00Z",
+                            "2025-06-03T12:00:00Z",
+                            "2025-06-03T13:00:00Z",
+                            "2025-06-03T14:00:00Z",
+                            "2025-06-03T15:00:00Z",
+                            "2025-06-03T16:00:00Z",
+                            "2025-06-03T17:00:00Z",
+                            "2025-06-03T18:00:00Z",
+                            "2025-06-03T19:00:00Z",
+                            "2025-06-03T20:00:00Z",
+                            "2025-06-03T21:00:00Z",
+                            "2025-06-03T22:00:00Z",
+                            "2025-06-03T23:00:00Z",
+                            "2025-06-04T00:00:00Z",
+                            "2025-06-04T01:00:00Z",
+                            "2025-06-04T02:00:00Z",
+                            "2025-06-04T03:00:00Z",
+                            "2025-06-04T04:00:00Z",
+                            "2025-06-04T05:00:00Z",
+                            "2025-06-04T06:00:00Z",
+                            "2025-06-04T07:00:00Z",
+                            "2025-06-04T08:00:00Z",
+                            "2025-06-04T09:00:00Z"
                         ]
                     }
                 },
                 "referencing": [
                     {
                         "coordinates": [
-                            "y",
-                            "x"
+                            "x",
+                            "y"
                         ],
                         "system": {
                             "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
                         }
                     },
                     {
@@ -2217,51 +1878,418 @@
                 ]
             },
             "parameters": {
-                "precipitation_amount:0.0:sum:PT12H": {
+                "air_temperature:1.5:point:PT0S": {
                     "type": "Parameter",
                     "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT12H with method 'sum'"
+                        "en": "Air temperature at 1.5m, aggregated over PT0S with method 'point'"
+                    },
+                    "observedProperty": {
+                        "id": "https://vocab.nerc.ac.uk/standard_name/air_temperature",
+                        "label": {
+                            "en": "Air temperature"
+                        }
+                    },
+                    "unit": {
+                        "label": {
+                            "en": "Cel"
+                        },
+                        "symbol": {
+                            "value": "\u00b0C",
+                            "type": "https://qudt.org/vocab/unit/DEG_C"
+                        }
+                    },
+                    "metocean:measurementType": {
+                        "method": "point",
+                        "duration": "PT0S"
+                    },
+                    "metocean:standard_name": "air_temperature",
+                    "metocean:level": 1.5
+                },
+                "dew_point_temperature:2.0:point:PT0S": {
+                    "type": "Parameter",
+                    "description": {
+                        "en": "Dew point temperature at 2.0m, aggregated over PT0S with method 'point'"
+                    },
+                    "observedProperty": {
+                        "id": "https://vocab.nerc.ac.uk/standard_name/dew_point_temperature",
+                        "label": {
+                            "en": "Dew point temperature"
+                        }
+                    },
+                    "unit": {
+                        "label": {
+                            "en": "Cel"
+                        },
+                        "symbol": {
+                            "value": "\u00b0C",
+                            "type": "https://qudt.org/vocab/unit/DEG_C"
+                        }
+                    },
+                    "metocean:measurementType": {
+                        "method": "point",
+                        "duration": "PT0S"
+                    },
+                    "metocean:standard_name": "dew_point_temperature",
+                    "metocean:level": 2.0
+                },
+                "precipitation_amount:0.0:sum:PT1H": {
+                    "type": "Parameter",
+                    "description": {
+                        "en": "Precipitation amount at 0.0m, aggregated over PT1H with method 'sum'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                         "label": {
-                            "en": "precipitation_amount:0.0:sum:PT12H"
+                            "en": "Precipitation amount"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "sum",
-                        "period": "PT12H"
+                        "duration": "PT1H"
                     },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
+                },
+                "relative_humidity:2.0:point:PT0S": {
+                    "type": "Parameter",
+                    "description": {
+                        "en": "Relative humidity at 2.0m, aggregated over PT0S with method 'point'"
+                    },
+                    "observedProperty": {
+                        "id": "https://vocab.nerc.ac.uk/standard_name/relative_humidity",
+                        "label": {
+                            "en": "Relative humidity"
+                        }
+                    },
+                    "unit": {
+                        "label": {
+                            "en": "%"
+                        },
+                        "symbol": {
+                            "value": "%",
+                            "type": "https://qudt.org/vocab/unit/PERCENT"
+                        }
+                    },
+                    "metocean:measurementType": {
+                        "method": "point",
+                        "duration": "PT0S"
+                    },
+                    "metocean:standard_name": "relative_humidity",
+                    "metocean:level": 2.0
+                },
+                "wind_from_direction:10.0:point:PT10M": {
+                    "type": "Parameter",
+                    "description": {
+                        "en": "Wind from direction at 10.0m, aggregated over PT10M with method 'point'"
+                    },
+                    "observedProperty": {
+                        "id": "https://vocab.nerc.ac.uk/standard_name/wind_from_direction",
+                        "label": {
+                            "en": "Wind from direction"
+                        }
+                    },
+                    "unit": {
+                        "label": {
+                            "en": "deg"
+                        },
+                        "symbol": {
+                            "value": "\u00b0",
+                            "type": "https://qudt.org/vocab/unit/DEG"
+                        }
+                    },
+                    "metocean:measurementType": {
+                        "method": "point",
+                        "duration": "PT10M"
+                    },
+                    "metocean:standard_name": "wind_from_direction",
+                    "metocean:level": 10.0
+                },
+                "wind_speed:10.0:point:PT10M": {
+                    "type": "Parameter",
+                    "description": {
+                        "en": "Wind speed at 10.0m, aggregated over PT10M with method 'point'"
+                    },
+                    "observedProperty": {
+                        "id": "https://vocab.nerc.ac.uk/standard_name/wind_speed",
+                        "label": {
+                            "en": "Wind speed"
+                        }
+                    },
+                    "unit": {
+                        "label": {
+                            "en": "m/s"
+                        },
+                        "symbol": {
+                            "value": "m/s",
+                            "type": "https://qudt.org/vocab/unit/M-PER-SEC"
+                        }
+                    },
+                    "metocean:measurementType": {
+                        "method": "point",
+                        "duration": "PT10M"
+                    },
+                    "metocean:standard_name": "wind_speed",
+                    "metocean:level": 10.0
                 }
             },
             "ranges": {
-                "precipitation_amount:0.0:sum:PT12H": {
+                "air_temperature:1.5:point:PT0S": {
                     "type": "NdArray",
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
-                        2,
+                        25,
                         1,
                         1
                     ],
                     "values": [
-                        4.2,
+                        18.3,
+                        19.6,
+                        19.7,
+                        20.7,
+                        20.4,
+                        19.4,
+                        18.9,
+                        17.7,
+                        17.4,
+                        16.8,
+                        15.8,
+                        15.5,
+                        14.5,
+                        15.1,
+                        15.7,
+                        15.4,
+                        15.1,
+                        14.0,
+                        12.7,
+                        13.1,
+                        13.2,
+                        13.7,
+                        14.4,
+                        15.5,
+                        16.3
+                    ]
+                },
+                "dew_point_temperature:2.0:point:PT0S": {
+                    "type": "NdArray",
+                    "dataType": "float",
+                    "axisNames": [
+                        "t",
+                        "x",
+                        "y"
+                    ],
+                    "shape": [
+                        25,
+                        1,
+                        1
+                    ],
+                    "values": [
+                        9.9,
+                        12.1,
+                        10.8,
+                        9.2,
+                        11.5,
+                        11.3,
+                        11.8,
+                        9.9,
+                        9.4,
+                        9.3,
+                        12.2,
+                        12.5,
+                        13.2,
+                        12.8,
+                        12.7,
+                        13.1,
+                        13.4,
+                        13.2,
+                        11.9,
+                        12.3,
+                        12.3,
+                        12.8,
+                        13.1,
+                        12.7,
+                        11.9
+                    ]
+                },
+                "precipitation_amount:0.0:sum:PT1H": {
+                    "type": "NdArray",
+                    "dataType": "float",
+                    "axisNames": [
+                        "t",
+                        "x",
+                        "y"
+                    ],
+                    "shape": [
+                        25,
+                        1,
+                        1
+                    ],
+                    "values": [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.2,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        1.5,
+                        2.6,
+                        1.5,
+                        0.2,
+                        0.6,
+                        0.0,
+                        0.0,
                         0.0
+                    ]
+                },
+                "relative_humidity:2.0:point:PT0S": {
+                    "type": "NdArray",
+                    "dataType": "float",
+                    "axisNames": [
+                        "t",
+                        "x",
+                        "y"
+                    ],
+                    "shape": [
+                        25,
+                        1,
+                        1
+                    ],
+                    "values": [
+                        58.0,
+                        61.0,
+                        56.0,
+                        47.0,
+                        56.0,
+                        59.0,
+                        63.0,
+                        60.0,
+                        59.0,
+                        61.0,
+                        78.0,
+                        82.0,
+                        92.0,
+                        86.0,
+                        81.0,
+                        86.0,
+                        89.0,
+                        94.0,
+                        94.0,
+                        94.0,
+                        94.0,
+                        94.0,
+                        92.0,
+                        83.0,
+                        75.0
+                    ]
+                },
+                "wind_from_direction:10.0:point:PT10M": {
+                    "type": "NdArray",
+                    "dataType": "float",
+                    "axisNames": [
+                        "t",
+                        "x",
+                        "y"
+                    ],
+                    "shape": [
+                        25,
+                        1,
+                        1
+                    ],
+                    "values": [
+                        185.0,
+                        194.0,
+                        189.0,
+                        211.0,
+                        216.0,
+                        232.0,
+                        235.0,
+                        236.0,
+                        232.0,
+                        227.0,
+                        225.0,
+                        223.0,
+                        221.0,
+                        215.0,
+                        213.0,
+                        221.0,
+                        222.0,
+                        235.0,
+                        242.0,
+                        223.0,
+                        225.0,
+                        224.0,
+                        223.0,
+                        236.0,
+                        241.0
+                    ]
+                },
+                "wind_speed:10.0:point:PT10M": {
+                    "type": "NdArray",
+                    "dataType": "float",
+                    "axisNames": [
+                        "t",
+                        "x",
+                        "y"
+                    ],
+                    "shape": [
+                        25,
+                        1,
+                        1
+                    ],
+                    "values": [
+                        9.0,
+                        6.0,
+                        10.0,
+                        8.0,
+                        6.0,
+                        8.0,
+                        9.0,
+                        9.0,
+                        8.0,
+                        10.0,
+                        9.0,
+                        9.0,
+                        9.0,
+                        9.0,
+                        8.0,
+                        8.0,
+                        8.0,
+                        9.0,
+                        8.0,
+                        6.0,
+                        6.0,
+                        6.0,
+                        5.0,
+                        6.0,
+                        8.0
                     ]
                 }
             },
-            "rodeo:wigosId": "0-20000-0-06267"
+            "metocean:wigosId": "0-20000-0-06267"
         },
         {
             "type": "Coverage",
@@ -2281,19 +2309,211 @@
                     },
                     "t": {
                         "values": [
-                            "2025-05-30T06:00:00Z"
+                            "2025-06-03T12:00:00Z",
+                            "2025-06-04T00:00:00Z"
                         ]
                     }
                 },
                 "referencing": [
                     {
                         "coordinates": [
-                            "y",
-                            "x"
+                            "x",
+                            "y"
                         ],
                         "system": {
                             "type": "GeographicCRS",
-                            "id": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+                        }
+                    },
+                    {
+                        "coordinates": [
+                            "t"
+                        ],
+                        "system": {
+                            "type": "TemporalRS",
+                            "calendar": "Gregorian"
+                        }
+                    }
+                ]
+            },
+            "parameters": {
+                "precipitation_amount:0.0:sum:PT6H": {
+                    "type": "Parameter",
+                    "description": {
+                        "en": "Precipitation amount at 0.0m, aggregated over PT6H with method 'sum'"
+                    },
+                    "observedProperty": {
+                        "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
+                        "label": {
+                            "en": "Precipitation amount"
+                        }
+                    },
+                    "unit": {
+                        "label": {
+                            "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
+                        }
+                    },
+                    "metocean:measurementType": {
+                        "method": "sum",
+                        "duration": "PT6H"
+                    },
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
+                }
+            },
+            "ranges": {
+                "precipitation_amount:0.0:sum:PT6H": {
+                    "type": "NdArray",
+                    "dataType": "float",
+                    "axisNames": [
+                        "t",
+                        "x",
+                        "y"
+                    ],
+                    "shape": [
+                        2,
+                        1,
+                        1
+                    ],
+                    "values": [
+                        0.0,
+                        0.3
+                    ]
+                }
+            },
+            "metocean:wigosId": "0-20000-0-06267"
+        },
+        {
+            "type": "Coverage",
+            "domain": {
+                "type": "Domain",
+                "domainType": "PointSeries",
+                "axes": {
+                    "x": {
+                        "values": [
+                            5.38333
+                        ]
+                    },
+                    "y": {
+                        "values": [
+                            52.89667
+                        ]
+                    },
+                    "t": {
+                        "values": [
+                            "2025-06-03T18:00:00Z",
+                            "2025-06-04T06:00:00Z"
+                        ]
+                    }
+                },
+                "referencing": [
+                    {
+                        "coordinates": [
+                            "x",
+                            "y"
+                        ],
+                        "system": {
+                            "type": "GeographicCRS",
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+                        }
+                    },
+                    {
+                        "coordinates": [
+                            "t"
+                        ],
+                        "system": {
+                            "type": "TemporalRS",
+                            "calendar": "Gregorian"
+                        }
+                    }
+                ]
+            },
+            "parameters": {
+                "precipitation_amount:0.0:sum:PT12H": {
+                    "type": "Parameter",
+                    "description": {
+                        "en": "Precipitation amount at 0.0m, aggregated over PT12H with method 'sum'"
+                    },
+                    "observedProperty": {
+                        "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
+                        "label": {
+                            "en": "Precipitation amount"
+                        }
+                    },
+                    "unit": {
+                        "label": {
+                            "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
+                        }
+                    },
+                    "metocean:measurementType": {
+                        "method": "sum",
+                        "duration": "PT12H"
+                    },
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
+                }
+            },
+            "ranges": {
+                "precipitation_amount:0.0:sum:PT12H": {
+                    "type": "NdArray",
+                    "dataType": "float",
+                    "axisNames": [
+                        "t",
+                        "x",
+                        "y"
+                    ],
+                    "shape": [
+                        2,
+                        1,
+                        1
+                    ],
+                    "values": [
+                        0.0,
+                        6.7
+                    ]
+                }
+            },
+            "metocean:wigosId": "0-20000-0-06267"
+        },
+        {
+            "type": "Coverage",
+            "domain": {
+                "type": "Domain",
+                "domainType": "PointSeries",
+                "axes": {
+                    "x": {
+                        "values": [
+                            5.38333
+                        ]
+                    },
+                    "y": {
+                        "values": [
+                            52.89667
+                        ]
+                    },
+                    "t": {
+                        "values": [
+                            "2025-06-04T06:00:00Z"
+                        ]
+                    }
+                },
+                "referencing": [
+                    {
+                        "coordinates": [
+                            "x",
+                            "y"
+                        ],
+                        "system": {
+                            "type": "GeographicCRS",
+                            "id": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
                         }
                     },
                     {
@@ -2311,25 +2531,29 @@
                 "precipitation_amount:0.0:sum:PT24H": {
                     "type": "Parameter",
                     "description": {
-                        "en": "precipitation_amount at 0.0m, aggregated over PT24H with method 'sum'"
+                        "en": "Precipitation amount at 0.0m, aggregated over PT24H with method 'sum'"
                     },
                     "observedProperty": {
                         "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                         "label": {
-                            "en": "precipitation_amount:0.0:sum:PT24H"
+                            "en": "Precipitation amount"
                         }
                     },
                     "unit": {
                         "label": {
                             "en": "kg/m2"
+                        },
+                        "symbol": {
+                            "value": "kg/m\u00b2",
+                            "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
-                    "measurementType": {
+                    "metocean:measurementType": {
                         "method": "sum",
-                        "period": "PT24H"
+                        "duration": "PT24H"
                     },
-                    "rodeo:standard_name": "precipitation_amount",
-                    "rodeo:level": 0.0
+                    "metocean:standard_name": "precipitation_amount",
+                    "metocean:level": 0.0
                 }
             },
             "ranges": {
@@ -2338,8 +2562,8 @@
                     "dataType": "float",
                     "axisNames": [
                         "t",
-                        "y",
-                        "x"
+                        "x",
+                        "y"
                     ],
                     "shape": [
                         1,
@@ -2347,266 +2571,310 @@
                         1
                     ],
                     "values": [
-                        4.2
+                        6.7
                     ]
                 }
             },
-            "rodeo:wigosId": "0-20000-0-06267"
+            "metocean:wigosId": "0-20000-0-06267"
         }
     ],
     "parameters": {
         "air_pressure:0.0:point:PT0S": {
             "type": "Parameter",
             "description": {
-                "en": "air_pressure at 0.0m, aggregated over PT0S with method 'point'"
+                "en": "Air pressure at 0.0m, aggregated over PT0S with method 'point'"
             },
             "observedProperty": {
                 "id": "https://vocab.nerc.ac.uk/standard_name/air_pressure",
                 "label": {
-                    "en": "air_pressure:0.0:point:PT0S"
+                    "en": "Air pressure"
                 }
             },
             "unit": {
                 "label": {
                     "en": "hPa"
+                },
+                "symbol": {
+                    "value": "hPa",
+                    "type": "https://qudt.org/vocab/unit/HectoPA"
                 }
             },
-            "measurementType": {
+            "metocean:measurementType": {
                 "method": "point",
-                "period": "PT0S"
+                "duration": "PT0S"
             },
-            "rodeo:standard_name": "air_pressure",
-            "rodeo:level": 0.0
+            "metocean:standard_name": "air_pressure",
+            "metocean:level": 0.0
         },
         "air_pressure_at_mean_sea_level:0.0:point:PT0S": {
             "type": "Parameter",
             "description": {
-                "en": "air_pressure_at_mean_sea_level at 0.0m, aggregated over PT0S with method 'point'"
+                "en": "Air pressure at mean sea level at 0.0m, aggregated over PT0S with method 'point'"
             },
             "observedProperty": {
                 "id": "https://vocab.nerc.ac.uk/standard_name/air_pressure_at_mean_sea_level",
                 "label": {
-                    "en": "air_pressure_at_mean_sea_level:0.0:point:PT0S"
+                    "en": "Air pressure at mean sea level"
                 }
             },
             "unit": {
                 "label": {
                     "en": "hPa"
+                },
+                "symbol": {
+                    "value": "hPa",
+                    "type": "https://qudt.org/vocab/unit/HectoPA"
                 }
             },
-            "measurementType": {
+            "metocean:measurementType": {
                 "method": "point",
-                "period": "PT0S"
+                "duration": "PT0S"
             },
-            "rodeo:standard_name": "air_pressure_at_mean_sea_level",
-            "rodeo:level": 0.0
+            "metocean:standard_name": "air_pressure_at_mean_sea_level",
+            "metocean:level": 0.0
         },
         "air_temperature:1.5:point:PT0S": {
             "type": "Parameter",
             "description": {
-                "en": "air_temperature at 1.5m, aggregated over PT0S with method 'point'"
+                "en": "Air temperature at 1.5m, aggregated over PT0S with method 'point'"
             },
             "observedProperty": {
                 "id": "https://vocab.nerc.ac.uk/standard_name/air_temperature",
                 "label": {
-                    "en": "air_temperature:1.5:point:PT0S"
+                    "en": "Air temperature"
                 }
             },
             "unit": {
                 "label": {
-                    "en": "degC"
+                    "en": "Cel"
+                },
+                "symbol": {
+                    "value": "\u00b0C",
+                    "type": "https://qudt.org/vocab/unit/DEG_C"
                 }
             },
-            "measurementType": {
+            "metocean:measurementType": {
                 "method": "point",
-                "period": "PT0S"
+                "duration": "PT0S"
             },
-            "rodeo:standard_name": "air_temperature",
-            "rodeo:level": 1.5
+            "metocean:standard_name": "air_temperature",
+            "metocean:level": 1.5
         },
         "dew_point_temperature:2.0:point:PT0S": {
             "type": "Parameter",
             "description": {
-                "en": "dew_point_temperature at 2.0m, aggregated over PT0S with method 'point'"
+                "en": "Dew point temperature at 2.0m, aggregated over PT0S with method 'point'"
             },
             "observedProperty": {
                 "id": "https://vocab.nerc.ac.uk/standard_name/dew_point_temperature",
                 "label": {
-                    "en": "dew_point_temperature:2.0:point:PT0S"
+                    "en": "Dew point temperature"
                 }
             },
             "unit": {
                 "label": {
-                    "en": "degC"
+                    "en": "Cel"
+                },
+                "symbol": {
+                    "value": "\u00b0C",
+                    "type": "https://qudt.org/vocab/unit/DEG_C"
                 }
             },
-            "measurementType": {
+            "metocean:measurementType": {
                 "method": "point",
-                "period": "PT0S"
+                "duration": "PT0S"
             },
-            "rodeo:standard_name": "dew_point_temperature",
-            "rodeo:level": 2.0
+            "metocean:standard_name": "dew_point_temperature",
+            "metocean:level": 2.0
         },
         "precipitation_amount:0.0:sum:PT12H": {
             "type": "Parameter",
             "description": {
-                "en": "precipitation_amount at 0.0m, aggregated over PT12H with method 'sum'"
+                "en": "Precipitation amount at 0.0m, aggregated over PT12H with method 'sum'"
             },
             "observedProperty": {
                 "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                 "label": {
-                    "en": "precipitation_amount:0.0:sum:PT12H"
+                    "en": "Precipitation amount"
                 }
             },
             "unit": {
                 "label": {
                     "en": "kg/m2"
+                },
+                "symbol": {
+                    "value": "kg/m\u00b2",
+                    "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                 }
             },
-            "measurementType": {
+            "metocean:measurementType": {
                 "method": "sum",
-                "period": "PT12H"
+                "duration": "PT12H"
             },
-            "rodeo:standard_name": "precipitation_amount",
-            "rodeo:level": 0.0
+            "metocean:standard_name": "precipitation_amount",
+            "metocean:level": 0.0
         },
         "precipitation_amount:0.0:sum:PT1H": {
             "type": "Parameter",
             "description": {
-                "en": "precipitation_amount at 0.0m, aggregated over PT1H with method 'sum'"
+                "en": "Precipitation amount at 0.0m, aggregated over PT1H with method 'sum'"
             },
             "observedProperty": {
                 "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                 "label": {
-                    "en": "precipitation_amount:0.0:sum:PT1H"
+                    "en": "Precipitation amount"
                 }
             },
             "unit": {
                 "label": {
                     "en": "kg/m2"
+                },
+                "symbol": {
+                    "value": "kg/m\u00b2",
+                    "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                 }
             },
-            "measurementType": {
+            "metocean:measurementType": {
                 "method": "sum",
-                "period": "PT1H"
+                "duration": "PT1H"
             },
-            "rodeo:standard_name": "precipitation_amount",
-            "rodeo:level": 0.0
+            "metocean:standard_name": "precipitation_amount",
+            "metocean:level": 0.0
         },
         "precipitation_amount:0.0:sum:PT24H": {
             "type": "Parameter",
             "description": {
-                "en": "precipitation_amount at 0.0m, aggregated over PT24H with method 'sum'"
+                "en": "Precipitation amount at 0.0m, aggregated over PT24H with method 'sum'"
             },
             "observedProperty": {
                 "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                 "label": {
-                    "en": "precipitation_amount:0.0:sum:PT24H"
+                    "en": "Precipitation amount"
                 }
             },
             "unit": {
                 "label": {
                     "en": "kg/m2"
+                },
+                "symbol": {
+                    "value": "kg/m\u00b2",
+                    "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                 }
             },
-            "measurementType": {
+            "metocean:measurementType": {
                 "method": "sum",
-                "period": "PT24H"
+                "duration": "PT24H"
             },
-            "rodeo:standard_name": "precipitation_amount",
-            "rodeo:level": 0.0
+            "metocean:standard_name": "precipitation_amount",
+            "metocean:level": 0.0
         },
         "precipitation_amount:0.0:sum:PT6H": {
             "type": "Parameter",
             "description": {
-                "en": "precipitation_amount at 0.0m, aggregated over PT6H with method 'sum'"
+                "en": "Precipitation amount at 0.0m, aggregated over PT6H with method 'sum'"
             },
             "observedProperty": {
                 "id": "https://vocab.nerc.ac.uk/standard_name/precipitation_amount",
                 "label": {
-                    "en": "precipitation_amount:0.0:sum:PT6H"
+                    "en": "Precipitation amount"
                 }
             },
             "unit": {
                 "label": {
                     "en": "kg/m2"
+                },
+                "symbol": {
+                    "value": "kg/m\u00b2",
+                    "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                 }
             },
-            "measurementType": {
+            "metocean:measurementType": {
                 "method": "sum",
-                "period": "PT6H"
+                "duration": "PT6H"
             },
-            "rodeo:standard_name": "precipitation_amount",
-            "rodeo:level": 0.0
+            "metocean:standard_name": "precipitation_amount",
+            "metocean:level": 0.0
         },
         "relative_humidity:2.0:point:PT0S": {
             "type": "Parameter",
             "description": {
-                "en": "relative_humidity at 2.0m, aggregated over PT0S with method 'point'"
+                "en": "Relative humidity at 2.0m, aggregated over PT0S with method 'point'"
             },
             "observedProperty": {
                 "id": "https://vocab.nerc.ac.uk/standard_name/relative_humidity",
                 "label": {
-                    "en": "relative_humidity:2.0:point:PT0S"
+                    "en": "Relative humidity"
                 }
             },
             "unit": {
                 "label": {
-                    "en": "percent"
+                    "en": "%"
+                },
+                "symbol": {
+                    "value": "%",
+                    "type": "https://qudt.org/vocab/unit/PERCENT"
                 }
             },
-            "measurementType": {
+            "metocean:measurementType": {
                 "method": "point",
-                "period": "PT0S"
+                "duration": "PT0S"
             },
-            "rodeo:standard_name": "relative_humidity",
-            "rodeo:level": 2.0
+            "metocean:standard_name": "relative_humidity",
+            "metocean:level": 2.0
         },
         "wind_from_direction:10.0:point:PT10M": {
             "type": "Parameter",
             "description": {
-                "en": "wind_from_direction at 10.0m, aggregated over PT10M with method 'point'"
+                "en": "Wind from direction at 10.0m, aggregated over PT10M with method 'point'"
             },
             "observedProperty": {
                 "id": "https://vocab.nerc.ac.uk/standard_name/wind_from_direction",
                 "label": {
-                    "en": "wind_from_direction:10.0:point:PT10M"
+                    "en": "Wind from direction"
                 }
             },
             "unit": {
                 "label": {
-                    "en": "degrees"
+                    "en": "deg"
+                },
+                "symbol": {
+                    "value": "\u00b0",
+                    "type": "https://qudt.org/vocab/unit/DEG"
                 }
             },
-            "measurementType": {
+            "metocean:measurementType": {
                 "method": "point",
-                "period": "PT10M"
+                "duration": "PT10M"
             },
-            "rodeo:standard_name": "wind_from_direction",
-            "rodeo:level": 10.0
+            "metocean:standard_name": "wind_from_direction",
+            "metocean:level": 10.0
         },
         "wind_speed:10.0:point:PT10M": {
             "type": "Parameter",
             "description": {
-                "en": "wind_speed at 10.0m, aggregated over PT10M with method 'point'"
+                "en": "Wind speed at 10.0m, aggregated over PT10M with method 'point'"
             },
             "observedProperty": {
                 "id": "https://vocab.nerc.ac.uk/standard_name/wind_speed",
                 "label": {
-                    "en": "wind_speed:10.0:point:PT10M"
+                    "en": "Wind speed"
                 }
             },
             "unit": {
                 "label": {
                     "en": "m/s"
+                },
+                "symbol": {
+                    "value": "m/s",
+                    "type": "https://qudt.org/vocab/unit/M-PER-SEC"
                 }
             },
-            "measurementType": {
+            "metocean:measurementType": {
                 "method": "point",
-                "period": "PT10M"
+                "duration": "PT10M"
             },
-            "rodeo:standard_name": "wind_speed",
-            "rodeo:level": 10.0
+            "metocean:standard_name": "wind_speed",
+            "metocean:level": 10.0
         }
     }
 }
