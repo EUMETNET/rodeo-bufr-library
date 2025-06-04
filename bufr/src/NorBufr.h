@@ -30,6 +30,7 @@ public:
 
   uint64_t fromBuffer(char *ext_buf, uint64_t ext_buf_pos,
                       uint64_t ext_buf_size);
+  const uint8_t *toBuffer();
   void setTableDir(std::string s);
   ssize_t extractDescriptors(int ss = 0, ssize_t subsb = 0);
   bool saveBuffer(std::string) const;
@@ -57,6 +58,24 @@ public:
                      LogLevel l = LogLevel::UNKNOWN) const;
 
   void setBufrId(std::string);
+
+  // Encoding
+  inline void addDescriptor(DescriptorId d) {
+    encbufr_stream << d.toString(false) << "\n";
+  };
+  template <typename T> void addDescriptor(DescriptorId d, T value) {
+    encbufr_stream << d.toString(false) << " " << value << "\n";
+  };
+  template <typename T> void addValue(T value) {
+    encbufr_stream << value << "\n";
+  };
+  inline std::string getEncStream() const { return encbufr_stream.str(); };
+  inline bool encodeBufr() { return fromText(encbufr_stream); };
+  uint64_t encodeSubsets(std::istream &is);
+  bool encodeDescriptor(DescriptorId d, std::istream &is, int level = 0,
+                        DescriptorId *parent = nullptr, int index = 0);
+  bool fromText(std::istream &is);
+  bool fromCovJson(std::string s);
 
 private:
   bool setSections(int slen);
@@ -91,6 +110,16 @@ protected:
 
   // Section4 uncompressed bits
   std::vector<bool> ucbits;
+
+  // Encode string stream
+  std::stringstream encbufr_stream;
+  ssize_t enc_mod_datawidth = 0;
+  ssize_t enc_mod_str_datawidth = 0;
+  ssize_t enc_local_datawidth = 0;
+  int enc_mod_scale = 0;
+  int enc_mod_refvalue_mul = 0;
+  std::list<std::pair<DescriptorId, std::vector<int>>> encode_descriptors;
+  bool auto_date = true;
 
   mutable LogBuffer lb;
 

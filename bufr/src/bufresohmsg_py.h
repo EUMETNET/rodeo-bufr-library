@@ -17,6 +17,7 @@
 #include "Tables.h"
 
 #include <pybind11/pybind11.h>
+#include <pybind11/pytypes.h>
 #include <pybind11/stl.h>
 
 static std::map<int, TableB> tb;
@@ -35,12 +36,14 @@ static std::string bufr_input_schema;
 
 static std::list<std::string> esoh_bufr_log;
 static std::map<std::string, std::string> radar_cf_st;
-static std::string default_shadow_wigos_py("0-578-2024-");
+static std::string default_shadow_wigos_py("0-0-0-");
 
 bool norbufr_init_bufrtables(std::string tables_dir);
 bool norbufr_update_bufrtables(std::string tables_dir);
 std::list<std::string> norbufr_bufresohmsg(std::string fname);
 std::list<std::string> norbufr_bufresohmsgmem(char *buf, int size);
+pybind11::bytes norbufr_covjson2bufr(std::string json_str,
+                                     std::string bufr_template = "default");
 std::list<std::string> norbufr_log();
 void norbufr_log_clear();
 

@@ -61,11 +61,13 @@ public:
   DescriptorId(int F, int X, int Y);
   DescriptorId(int FXY, bool v = false);
   DescriptorId(std::string s);
+  DescriptorId(const char *c);
   uint8_t f() const;
   uint8_t x() const;
   uint8_t y() const;
   int toInt() const;
-  std::string toString() const;
+  int fxy() const;
+  std::string toString(bool format = true) const;
 
   friend bool operator<(const DescriptorId &lhs, const DescriptorId &rhs);
   friend bool operator==(const DescriptorId &lhs, const DescriptorId &rhs);

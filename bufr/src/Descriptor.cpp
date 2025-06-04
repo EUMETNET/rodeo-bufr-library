@@ -80,6 +80,8 @@ DescriptorId::DescriptorId(int _FXY, bool visible) {
   }
 }
 
+DescriptorId::DescriptorId(const char *c) { fromString(std::string(c)); }
+
 DescriptorId::DescriptorId(std::string s) { fromString(s); }
 
 bool DescriptorId::fromString(std::string s) {
@@ -124,11 +126,25 @@ int DescriptorId::toInt() const {
   return ret;
 }
 
-std::string DescriptorId::toString() const {
+int DescriptorId::fxy() const {
+  int ret = (F << 14) + (X << 8) + Y;
+  return ret;
+}
+
+std::string DescriptorId::toString(bool format) const {
   std::stringstream ss;
-  ss << std::setw(1) << "[ " << std::setfill('0') << static_cast<int>(F) << " "
-     << std::setw(2) << std::setfill('0') << static_cast<int>(X) << " "
-     << std::setw(3) << std::setfill('0') << static_cast<int>(Y) << " ]";
+  ss << std::setw(1);
+  if (format)
+    ss << "[ ";
+  else
+    ss << " ";
+  ss << std::setfill('0') << static_cast<int>(F) << " " << std::setw(2)
+     << std::setfill('0') << static_cast<int>(X) << " " << std::setw(3)
+     << std::setfill('0') << static_cast<int>(Y);
+  if (format)
+    ss << " ]";
+  else
+    ss << " ";
 
   return ss.str();
 }

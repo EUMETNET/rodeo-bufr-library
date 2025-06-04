@@ -38,7 +38,7 @@ static std::map<DescriptorId, std::pair<std::string, std::string>> cf_names = {
     {DescriptorId(12103, true), {"dew_point_temperature", "K"}},
     {DescriptorId(12106, true), {"dew_point_temperature", "K"}},
 
-    {DescriptorId(13003, true), {"relative_humidity", "1"}},
+    {DescriptorId(13003, true), {"relative_humidity", "%"}},
 
     {DescriptorId(13011, true), {"precipitation_amount", "kg m-2"}},
     {DescriptorId(13023, true), {"precipitation_amount", "kg m-2"}},
@@ -64,7 +64,7 @@ static std::map<DescriptorId, std::pair<std::string, std::string>> cf_names = {
     {DescriptorId(321008, true),
      {"radar_equivalent_reflectivity_factor_h", "dBz"}}};
 
-static std::string default_shadow_wigos("0-578-2024-");
+static std::string default_shadow_wigos("0-0-0-");
 
 static std::list<std::pair<char, char>> repl_chars = {
     {' ', '_'}, {'-', '_'}, {'\'', '_'}};

@@ -38,6 +38,7 @@ ESOHBufr::ESOHBufr() {
             \"license\" : \"http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)\", \
             \"naming_authority\" : \"no.met\", \
             \"level\" : 0.0, \
+            \"hamsl\" : 0, \
             \"function\": \"point\", \
             \"period\": \"PT0S\", \
             \"period_int\": 0, \
@@ -811,7 +812,7 @@ std::list<std::string> ESOHBufr::msg() const {
           if (v.y() == 3) {
             if (!sensor_level_active && getDataCategory() <= 1) {
               sensor_level_active = 1;
-              sensor_level = 10.0;
+              sensor_level = 2.0;
             }
             ret.push_back(addMessage(ci, subset_message, sensor_level_active,
                                      sensor_level, "point"));
@@ -1428,7 +1429,14 @@ bool ESOHBufr::setLocation(double lat, double lon, double hei,
     location.AddMember("lat", lat, message_allocator);
     location.AddMember("lon", lon, message_allocator);
     if (!std::isnan(hei)) {
-      location.AddMember("hei", hei, message_allocator);
+      // location.AddMember("hei", hei, message_allocator);
+      rapidjson::Value &properties = message["properties"];
+      if (properties.HasMember("hamsl")) {
+        properties["hamsl"].SetDouble(hei);
+      } else {
+        rapidjson::Value hamsl(rapidjson::kObjectType);
+        properties.AddMember("hamsl", hei, message_allocator);
+      }
     }
     geometry["coordinates"] = location;
   }
@@ -1560,7 +1568,8 @@ WSI ESOHBufr::genShadowWigosId(
         if (bufr_state_id != std::numeric_limits<int>::max()) {
           int iso_cc = bufrToIsocc(bufr_state_id);
           if (iso_cc) {
-            ss << iso_cc << "_";
+            // ss << iso_cc << "_";
+            tmp_id.setWigosIssuerId(iso_cc);
           }
         }
       } else {

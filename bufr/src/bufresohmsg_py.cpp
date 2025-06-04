@@ -20,6 +20,7 @@
 #include "ESOHBufr.h"
 #include "Tables.h"
 #include "bufresohmsg_py.h"
+#include "covjson2bufr.h"
 
 struct vc_struct {
   int version;
@@ -286,6 +287,76 @@ std::list<std::string> norbufr_bufresohmsgmem(char *api_buf, int api_size) {
   return ret;
 }
 
+pybind11::bytes norbufr_covjson2bufr(std::string covjson_str,
+                                     std::string bufr_template) {
+
+  pybind11::bytes ret;
+
+  TableB *tb = nullptr;
+  // TableC *tc = nullptr;
+  TableD *td = nullptr;
+
+  // Default tables: eccodes
+  std::string Btable_dir("/usr/share/eccodes/definitions/bufr/tables/0/wmo");
+  std::string Ctable_dir("/usr/share/eccodes/definitions/bufr/tables/0/wmo");
+  std::string Dtable_dir("/usr/share/eccodes/definitions/bufr/tables/0/wmo");
+  std::string Btable_file;
+  std::string Ctable_file;
+  std::string Dtable_file;
+
+  if (const char *table_dir = std::getenv("BUFR_TABLE_DIR")) {
+    Btable_dir = std::string(table_dir);
+    Ctable_dir = Dtable_dir = Btable_dir;
+  }
+  if (const char *table_dir = std::getenv("BUFR_BTABLE_FILE")) {
+    Btable_file = std::string(table_dir);
+  }
+  if (const char *table_dir = std::getenv("BUFR_CTABLE_FILE")) {
+    Ctable_file = std::string(table_dir);
+  }
+  if (const char *table_dir = std::getenv("BUFR_DTABLE_FILE")) {
+    Dtable_file = std::string(table_dir);
+  }
+
+  NorBufr *bufr = new NorBufr;
+
+  int vers_master = 34;
+  bufr->setVersionMaster(vers_master);
+
+  bufr->setLocalDataSubCategory(0);
+  bufr->setCentre(0);
+  bufr->setObserved(true);
+
+  // Set B Table
+  if (!Btable_file.size()) {
+    Btable_file =
+        Btable_dir + "/" + std::to_string(vers_master) + "/element.table";
+  }
+  if (!(std::filesystem::is_regular_file(Btable_file) ||
+        std::filesystem::is_symlink(Btable_file))) {
+    std::cerr << "Table file B not exists: " << Btable_file << "\n";
+    return ret;
+  }
+  tb = new TableB(Btable_file);
+  bufr->setTableB(tb);
+
+  // Set D Table
+  if (!Dtable_file.size()) {
+    Dtable_file =
+        Dtable_dir + "/" + std::to_string(vers_master) + "/sequence.def";
+  }
+  if (!(std::filesystem::is_regular_file(Dtable_file) ||
+        std::filesystem::is_symlink(Dtable_file))) {
+    std::cerr << "Table file D not exists:" << Dtable_file << "\n";
+    return ret;
+  }
+  td = new TableD(Dtable_file);
+  bufr->setTableD(td);
+  struct ret_bufr ret_b = covjson2bufr(covjson_str, bufr_template, bufr);
+
+  return pybind11::bytes(ret_b.buffer, ret_b.size);
+}
+
 std::string norbufr_bufrprint(std::string fname) {
 
   std::stringstream ret;
@@ -345,6 +416,8 @@ PYBIND11_MODULE(bufresohmsg_py, m) {
   m.def("bufresohmsgmem_py", &norbufr_bufresohmsgmem,
         "bufresoh MQTT message generator");
   m.def("bufrprint_py", &norbufr_bufrprint, "Print bufr message");
+  m.def("covjson2bufr_py", &norbufr_covjson2bufr,
+        "Generate BUFR from Coverage Json");
   m.def("bufrlog_py", &norbufr_log, "Get bufr log messages list");
   m.def("bufrlog_clear_py", &norbufr_log_clear, "Clear log messages list");
 

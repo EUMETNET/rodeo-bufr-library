@@ -52,7 +52,19 @@ void SectionBase::clear() {
 /***************************************** SECTION 1
  * **********************************************/
 
-Section1::Section1() {}
+Section1::Section1(uint8_t edition) {
+  clear();
+  switch (edition) {
+  case 2:
+    len = 18;
+    break;
+  case 3:
+    len = 18;
+    break;
+  case 4:
+    len = 22;
+  }
+}
 
 bool Section1::optSection() const { return optional_section; }
 
@@ -75,6 +87,8 @@ int Section1::getLocalDataSubCategory() const { return local_data_subcategory; }
 int Section1::getVersionMaster() const { return version_master; }
 
 int Section1::getVersionLocal() const { return version_local; }
+
+size_t Section1::bufSize() const { return local_data.size(); }
 
 void Section1::clear() {
   master_table = 0;
@@ -173,6 +187,67 @@ bool Section1::fromBuffer(uint8_t *buf, int size, uint8_t edition) {
   return true;
 }
 
+bool Section1::toBuffer(uint8_t *buffer, uint8_t edition) const {
+  NorBufrIO::setBytes(buffer, len, 3);
+  buffer[4] = master_table;
+  int eshift = 0;
+  switch (edition) {
+  case 2:
+    NorBufrIO::setBytes(buffer + 4, centre, 2);
+    // subcentre = 0;
+    eshift = -2;
+    break;
+  case 3:
+    NorBufrIO::setBytes(buffer + 4, subcentre, 1);
+    NorBufrIO::setBytes(buffer + 5, centre, 1);
+    eshift = -2;
+    break;
+  case 4:
+    NorBufrIO::setBytes(buffer + 4, centre, 2);
+    NorBufrIO::setBytes(buffer + 6, subcentre, 2);
+    break;
+    // default:
+  }
+
+  buffer[8 + eshift] = upd_seq_num;
+  buffer[9 + eshift] = optional_section;
+  buffer[10 + eshift] = data_category;
+
+  if (edition >= 4)
+    buffer[11 + eshift] = int_data_subcategory;
+  else
+    eshift--;
+
+  buffer[12 + eshift] = local_data_subcategory;
+  buffer[13 + eshift] = version_master;
+  buffer[14 + eshift] = version_local;
+
+  int year = bufr_time.tm_year + 1900;
+  if (edition >= 4) {
+    NorBufrIO::setBytes(buffer + 15 + eshift, year, 2);
+  } else {
+    year -= 2000;
+    year = buffer[15 + eshift];
+    eshift--;
+  }
+
+  buffer[17 + eshift] = bufr_time.tm_mon + 1;
+  buffer[18 + eshift] = bufr_time.tm_mday;
+  buffer[19 + eshift] = bufr_time.tm_hour;
+  buffer[20 + eshift] = bufr_time.tm_min;
+
+  if (edition >= 4)
+    buffer[21 + eshift] = bufr_time.tm_sec;
+  else
+    eshift--;
+
+  for (int i = (22 + eshift), j = 0; i < len; i++, j++) {
+    buffer[i] = local_data[j];
+  }
+
+  return true;
+}
+
 std::ostream &operator<<(std::ostream &os, Section1 &sec) {
   os << "=============== Section 1  ===============\n";
   os << "length: " << sec.len << "\n";
@@ -218,6 +293,17 @@ bool Section2::fromBuffer(uint8_t *buf, int size) {
   return false;
 }
 
+bool Section2::toBuffer(uint8_t *buffer) const {
+
+  NorBufrIO::setBytes(buffer, len, 3);
+  buffer[3] = 0;
+  for (size_t i = 0; i < local_data.size(); ++i) {
+    buffer[i + 4] = local_data[i];
+  }
+  return true;
+}
+size_t Section2::bufSize() const { return local_data.size(); }
+
 std::ostream &operator<<(std::ostream &os, Section2 &sec) {
   os << "=============== Section 2  ===============\n";
   os << "length: " << sec.len << " zero: " << static_cast<int>(sec.zero)
@@ -241,7 +327,11 @@ std::ostream &operator<<(std::ostream &os, Section2 &sec) {
 /***************************************** SECTION 3
  * **********************************************/
 
-Section3::Section3() {}
+Section3::Section3() {
+  len = 7;
+  subsets = 1;
+  obs_comp = 0;
+}
 
 void Section3::clear() {
   SectionBase::clear();
@@ -263,6 +353,19 @@ bool Section3::fromBuffer(uint8_t *buf, int size) {
     sec3_desc.push_back(DescriptorId(buffer[i], buffer[i + 1]));
   }
 
+  return true;
+}
+bool Section3::toBuffer(uint8_t *buffer) const {
+  NorBufrIO::setBytes(buffer, len, 3);
+  buffer[3] = 0;
+  NorBufrIO::setBytes(buffer + 4, subsets, 2);
+  NorBufrIO::setBytes(buffer + 6, obs_comp, 1);
+
+  int shift = 7;
+  for (auto d : sec3_desc) {
+    NorBufrIO::setBytes(buffer + shift, d.fxy(), 2);
+    shift += 2;
+  }
   return true;
 }
 
@@ -294,7 +397,7 @@ std::ostream &operator<<(std::ostream &os, Section3 &sec) {
 /***************************************** SECTION 4
  * **********************************************/
 
-Section4::Section4() {}
+Section4::Section4() { len = 4; }
 
 bool Section4::fromBuffer(uint8_t *buf, int size) {
   clear();
@@ -313,11 +416,66 @@ bool Section4::fromBuffer(uint8_t *buf, int size) {
   return true;
 }
 
+bool Section4::toBuffer(uint8_t *buffer) const {
+  NorBufrIO::setBytes(buffer, len, 3);
+  buffer[3] = 0;
+
+  for (unsigned int i = 0; i < bits.size(); i += 8) {
+    std::bitset<8> bs;
+    for (int j = 0; j < 8; ++j) {
+      if (i + j < bits.size())
+        bs.set(7 - j, bits[i + j]);
+      else {
+        bs.set(7 - j, 0);
+      }
+    }
+    unsigned long u = bs.to_ulong();
+    unsigned char c = u;
+    buffer[4 + i / 8] = c;
+  }
+  return true;
+}
+
 uint64_t Section4::bitSize() const { return bits.size(); }
 
 void Section4::clear() {
   SectionBase::clear();
   bits.clear();
+}
+
+void Section4::setValue(uint64_t value, unsigned int datawidth) {
+  if (bits.capacity() < bits.size() + datawidth)
+    bits.reserve(bits.capacity() * 2);
+  const size_t s = sizeof(value) * 8;
+  std::bitset<s> bs(value);
+  for (int i = datawidth - 1; i >= 0; --i) {
+    bits.push_back(bs[i]);
+  }
+  len = 4 + (bitSize() + 7) / 8;
+}
+
+void Section4::setMissingValue(unsigned int datawidth) {
+  if (bits.capacity() < bits.size() + datawidth)
+    bits.reserve(bits.capacity() * 2);
+  for (int i = datawidth - 1; i >= 0; --i) {
+    bits.push_back(true);
+  }
+  len = 4 + (bitSize() + 7) / 8;
+}
+
+uint64_t Section4::getValue(unsigned long startbit, int datawidth,
+                            bool missingbits) const {
+  unsigned long ret = 0;
+  bool missing = true;
+  for (int i = 0; i < datawidth; ++i) {
+    ret *= 2;
+    ret += bits[startbit + i];
+    if (bits[startbit + i] == 0)
+      missing = false;
+  }
+  if (missing && missingbits && datawidth > 1)
+    return ULONG_MAX;
+  return ret;
 }
 
 std::ostream &operator<<(std::ostream &os, Section4 &sec) {
