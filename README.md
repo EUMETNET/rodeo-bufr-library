@@ -30,6 +30,7 @@ Install requirements:
 - g++
 - rapidjson-dev
 - libeccodes-data
+- python3-dev
 - pybind11-dev
 - python3-pybind11
 ```shell
