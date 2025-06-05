@@ -1,3 +1,4 @@
+import copy
 import json
 import os
 import sys
@@ -24,6 +25,30 @@ init_bufr_schema_py(ESOH_SCHEMA)
 init_oscar_py(OSCAR_DUMP)
 
 
+def build_all_json_payloads_from_bufr(bufr_content: object) -> list[dict]:
+    """
+    This function creates the e-soh-message-spec json schema(s) from a BUFR file.
+
+    ### Keyword arguments:
+    bufr_file_path (str) -- A BUFR File Path
+
+    Returns:
+    str -- mqtt message(s)
+
+    Raises:
+    ---
+    """
+    ret_str = []
+
+    msg_str_list = bufresohmsgmem_py(bufr_content, len(bufr_content))
+
+    for json_str in msg_str_list:
+        json_bufr_msg = json.loads(json_str)
+        ret_str.append(copy.deepcopy(json_bufr_msg))
+
+    return ret_str
+
+
 def bufr2mqtt(bufr_file_path: str = "") -> list[str]:
     with open(bufr_file_path, "rb") as file:
         bufr_content = file.read()
@@ -33,7 +58,6 @@ def bufr2mqtt(bufr_file_path: str = "") -> list[str]:
 
 if __name__ == "__main__":
     all_msgs = ""
-
     if len(sys.argv) > 1:
         all_msgs += "["
         first_msg = True

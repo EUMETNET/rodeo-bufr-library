@@ -74,10 +74,25 @@ export TZ=UTC
 ./printbufr log_print path_to_the_bufr_file(s)
 ```
 ### Making E-SOH json message
+#### Set RODEO BUFR library Paths
+Set RODEO BUFR path:
+```shell
+export RODEO_BUFR_DIR=path_to_the_repo/rodeo-bufr-library/
+```
+BUFR_TABLE_DIR is optional the default value is the eccodes: /usr/share/eccodes/definitions/bufr/tables/0/wmo/ .
+
+ESOH_SCHEMA is optional, the default path:
+```shell
+${RODEO_BUFR_DIR}"/bufr/schemas/bufr_to_e_soh_message.json"
+```
+OSCAR_DUMP is the WMO Oscar database in json format. This is optional, the default value is:
+```shell
+${RODEO_BUFR_DIR}/"bufr/oscar/oscar_stations_all.json"
+```
+
 #### Set Time interval
 The default time interval is the last 24 hours. The program skips the subsets from this interval. See the error message:
 ```shell
-$ ./src/bufresohmsg ./test/test_data/SurfaceLand_subset_1.buf
 LOG: 2025-05-19T09:31:44.773387+00:00,Warning,msg,SurfaceLand_subset_1.buf,Skip subset 0, datetime too late or too early: 2023-08-22T22:00:00+00:00
 ```
 Set the following environmental variables to disable the 24h interval:
@@ -87,35 +102,17 @@ export LOTIME=1000-01-01T00:00:00Z
 export HITIME=9999-12-31T23:59:59Z
 ```
 
-#### Set OSCAR Stations Database
-```shell
-export OSCAR_DUMP=path_to_the_repo/rodeo-bufr-library/bufr/oscar/oscar_stations_all.json
-```
-
 #### Print E-SOH message
 ```shell
-./bufresohmsg path_to_the_bufr_file(s)
+python3 ./create_mqtt_message_from_bufr.py path_to_the_bufr_file(s)
 ```
 
-#### Change default E-SOH json schema [Optional]
-```shell
-export ESOH_SCHEMA=/path_to_my_custom_schemas/my_schema.json
-./bufresohmsg path_to_the_bufr_file(s)
-```
-### Python interface
-#### Print E-SOH message
-```shell
-export RODEO_BUFR_DIR=/path_to_the_rodeo-bufr-rootdir/
-python3 ./bufr2esohmsg.py path_to_the_bufr_file(s)
-```
 #### Dump BUFR content
 ```shell
-export OSCAR_DUMP=path_to_the_repo/rodeo-bufr-library/bufr/oscar/oscar_stations_all.json
 python3 ./bufr2txt.py path_to_the_bufr_file(s)
 ```
 #### Encode BUFR content from Coverage json
 ```shell
-export RODEO_BUFR_DIR=path_to_the_repo/rodeo-bufr-library/
 python3 ./covjson2bufr.py path_to_the_coverage_json_file(s)
 ```
 The "default" BUFR unexpanded descriptors:
