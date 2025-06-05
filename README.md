@@ -31,7 +31,7 @@ Install requirements:
 - rapidjson-dev
 - libeccodes-data
 - pybind11-dev
-
+- python3-pybind11
 ```shell
 cd rodeo-bufr-library/bufr/src
 make
