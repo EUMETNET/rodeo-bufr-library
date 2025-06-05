@@ -141,7 +141,7 @@
                             "en": "Cel"
                         },
                         "symbol": {
-                            "value": "\u00b0C",
+                            "value": "°C",
                             "type": "https://qudt.org/vocab/unit/DEG_C"
                         }
                     },
@@ -168,7 +168,7 @@
                             "en": "Cel"
                         },
                         "symbol": {
-                            "value": "\u00b0C",
+                            "value": "°C",
                             "type": "https://qudt.org/vocab/unit/DEG_C"
                         }
                     },
@@ -195,7 +195,7 @@
                             "en": "kg/m2"
                         },
                         "symbol": {
-                            "value": "kg/m\u00b2",
+                            "value": "kg/m²",
                             "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
@@ -249,7 +249,7 @@
                             "en": "deg"
                         },
                         "symbol": {
-                            "value": "\u00b0",
+                            "value": "°",
                             "type": "https://qudt.org/vocab/unit/DEG"
                         }
                     },
@@ -690,7 +690,7 @@
                             "en": "kg/m2"
                         },
                         "symbol": {
-                            "value": "kg/m\u00b2",
+                            "value": "kg/m²",
                             "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
@@ -785,7 +785,7 @@
                             "en": "kg/m2"
                         },
                         "symbol": {
-                            "value": "kg/m\u00b2",
+                            "value": "kg/m²",
                             "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
@@ -958,7 +958,7 @@
                             "en": "Cel"
                         },
                         "symbol": {
-                            "value": "\u00b0C",
+                            "value": "°C",
                             "type": "https://qudt.org/vocab/unit/DEG_C"
                         }
                     },
@@ -985,7 +985,7 @@
                             "en": "Cel"
                         },
                         "symbol": {
-                            "value": "\u00b0C",
+                            "value": "°C",
                             "type": "https://qudt.org/vocab/unit/DEG_C"
                         }
                     },
@@ -1012,7 +1012,7 @@
                             "en": "kg/m2"
                         },
                         "symbol": {
-                            "value": "kg/m\u00b2",
+                            "value": "kg/m²",
                             "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
@@ -1066,7 +1066,7 @@
                             "en": "deg"
                         },
                         "symbol": {
-                            "value": "\u00b0",
+                            "value": "°",
                             "type": "https://qudt.org/vocab/unit/DEG"
                         }
                     },
@@ -1507,7 +1507,7 @@
                             "en": "kg/m2"
                         },
                         "symbol": {
-                            "value": "kg/m\u00b2",
+                            "value": "kg/m²",
                             "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
@@ -1602,7 +1602,7 @@
                             "en": "kg/m2"
                         },
                         "symbol": {
-                            "value": "kg/m\u00b2",
+                            "value": "kg/m²",
                             "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                         }
                     },
@@ -1707,7 +1707,7 @@
                     "en": "Cel"
                 },
                 "symbol": {
-                    "value": "\u00b0C",
+                    "value": "°C",
                     "type": "https://qudt.org/vocab/unit/DEG_C"
                 }
             },
@@ -1734,7 +1734,7 @@
                     "en": "Cel"
                 },
                 "symbol": {
-                    "value": "\u00b0C",
+                    "value": "°C",
                     "type": "https://qudt.org/vocab/unit/DEG_C"
                 }
             },
@@ -1761,7 +1761,7 @@
                     "en": "kg/m2"
                 },
                 "symbol": {
-                    "value": "kg/m\u00b2",
+                    "value": "kg/m²",
                     "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                 }
             },
@@ -1788,7 +1788,7 @@
                     "en": "kg/m2"
                 },
                 "symbol": {
-                    "value": "kg/m\u00b2",
+                    "value": "kg/m²",
                     "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                 }
             },
@@ -1815,7 +1815,7 @@
                     "en": "kg/m2"
                 },
                 "symbol": {
-                    "value": "kg/m\u00b2",
+                    "value": "kg/m²",
                     "type": "https://qudt.org/vocab/unit/KiloGM-PER-M2"
                 }
             },
@@ -1869,7 +1869,7 @@
                     "en": "deg"
                 },
                 "symbol": {
-                    "value": "\u00b0",
+                    "value": "°",
                     "type": "https://qudt.org/vocab/unit/DEG"
                 }
             },
