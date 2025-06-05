@@ -34,7 +34,7 @@ Install requirements:
 - pybind11-dev
 - python3-pybind11
 ```shell
-cd rodeo-bufr-library/bufr/src
+cd rodeo-bufr-library/src/bufr_tools
 make
 ```
 ### Usage
@@ -47,7 +47,7 @@ To use the ecCodes table definitions you need to install libeccodes-data package
 #### WMO tables
 Download WMO tables with the script:
 ```shell
-cd rodeo-bufr-library/bufr/tables/wmo
+cd rodeo-bufr-library/src/tables/wmo
 ./get_wmo_tables.sh
 export BUFR_TABLE_DIR=path_to_the_repo/rodeo-bufr-library/bufr/tables/wmo/
 ```
@@ -84,11 +84,11 @@ BUFR_TABLE_DIR is optional the default value is the eccodes: /usr/share/eccodes/
 
 ESOH_SCHEMA is optional, the default path:
 ```shell
-${RODEO_BUFR_DIR}"/bufr/schemas/bufr_to_e_soh_message.json"
+${RODEO_BUFR_DIR}"/src/schemas/bufr_to_e_soh_message.json"
 ```
 OSCAR_DUMP is the WMO Oscar database in json format. This is optional, the default value is:
 ```shell
-${RODEO_BUFR_DIR}/"bufr/oscar/oscar_stations_all.json"
+${RODEO_BUFR_DIR}/"src/oscar/oscar_stations_all.json"
 ```
 
 #### Set Time interval

@@ -7,7 +7,7 @@ from getenvvalue import getEnvValue
 
 RODEO_BUFR_DIR = getEnvValue("RODEO_BUFR_DIR")
 
-sys.path.append(RODEO_BUFR_DIR + "/bufr/src")
+sys.path.append(RODEO_BUFR_DIR + "/src/bufr_tools")
 
 from bufresohmsg_py import bufresohmsgmem_py  # noqa: E402
 from bufresohmsg_py import bufrlog_clear_py  # noqa: E402
@@ -17,8 +17,8 @@ from bufresohmsg_py import init_oscar_py  # noqa: E402
 
 
 BUFR_TABLE_DIR = getEnvValue("BUFR_TABLE_DIR", "/usr/share/eccodes/definitions/bufr/tables/0/wmo/")
-ESOH_SCHEMA = getEnvValue("ESOH_SCHEMA", "bufr/schemas/bufr_to_e_soh_message.json")
-OSCAR_DUMP = getEnvValue("OSCAR_DUMP", "bufr/oscar/oscar_stations_all.json")
+ESOH_SCHEMA = getEnvValue("ESOH_SCHEMA", "src/schemas/bufr_to_e_soh_message.json")
+OSCAR_DUMP = getEnvValue("OSCAR_DUMP", "src/oscar/oscar_stations_all.json")
 
 init_bufrtables_py(BUFR_TABLE_DIR)
 init_bufr_schema_py(ESOH_SCHEMA)
