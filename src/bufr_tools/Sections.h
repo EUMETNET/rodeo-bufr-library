@@ -14,6 +14,7 @@
 #include <sys/types.h>
 #include <time.h>
 
+#include <cstdint>
 #include <fstream>
 #include <list>
 #include <vector>

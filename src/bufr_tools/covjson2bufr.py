@@ -4,7 +4,7 @@ import sys
 from getenvvalue import getEnvValue
 
 RODEO_BUFR_DIR = getEnvValue("RODEO_BUFR_DIR")
-sys.path.append(RODEO_BUFR_DIR + "/bufr/src")
+sys.path.append(RODEO_BUFR_DIR + "/src/bufr_tools")
 
 from bufresohmsg_py import covjson2bufr_py  # noqa: E402
 

@@ -11,6 +11,7 @@
 #define _NORBUFIO_H_
 
 #include <climits>
+#include <cstdint>
 #include <fstream>
 #include <list>
 #include <vector>

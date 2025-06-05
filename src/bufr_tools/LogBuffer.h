@@ -10,6 +10,7 @@
 #ifndef _LOGBUFFER_H_
 #define _LOGBUFFER_H_
 
+#include <cstdint>
 #include <list>
 #include <string>
 #include <vector>
