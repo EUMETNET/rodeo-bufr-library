@@ -58,7 +58,6 @@ def bufr2mqtt(bufr_file_path: str = "") -> list[str]:
 
 if __name__ == "__main__":
     all_msgs = ""
-
     if len(sys.argv) > 1:
         all_msgs += "["
         first_msg = True
