@@ -11,6 +11,7 @@
 #include <cstring>
 #include <filesystem>
 #include <fstream>
+#include <functional>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
@@ -463,10 +464,10 @@ bool TableC::readOPERA(std::string filename) {
       for (int j = 0; j < element_desc_lines; j++) {
         is.getline(tmp, linesize);
         std::string tmpstr(tmp);
-        tmpstr.erase(
-            tmpstr.begin(),
-            std::find_if(tmpstr.begin(), tmpstr.end(),
-                         std::bind1st(std::not_equal_to<char>(), ' ')));
+        tmpstr.erase(tmpstr.begin(),
+                     std::find_if(tmpstr.begin(), tmpstr.end(),
+                                  std::bind(std::not_equal_to<char>(), ' ',
+                                            std::placeholders::_1)));
         entrystr += " " + tmpstr;
       }
       tableC[d][code] = entrystr;
