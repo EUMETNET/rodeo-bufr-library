@@ -1,20 +1,19 @@
 import os
 import sys
 
-from getenvvalue import getEnvValue
-
-RODEO_BUFR_DIR = getEnvValue("RODEO_BUFR_DIR")
-
-sys.path.append(RODEO_BUFR_DIR + "/src/bufr_tools")
-
-from bufresohmsg_py import bufrprint_py  # noqa: E402
-from bufresohmsg_py import bufrlog_clear_py  # noqa: E402
-from bufresohmsg_py import init_bufrtables_py  # noqa: E402
-from bufresohmsg_py import init_oscar_py  # noqa: E402
+from bufr_tools.getenvvalue import getBufrTableDir, getOscarDumpPath
+from bufr_tools.getenvvalue import getPackeRootDir
 
 
-BUFR_TABLE_DIR = getEnvValue("BUFR_TABLE_DIR", "/usr/share/eccodes/definitions/bufr/tables/0/wmo/")
-OSCAR_DUMP = getEnvValue("OSCAR_DUMP", "src/oscar/oscar_stations_all.json")
+from bufr_tools.bufresohmsg_py import bufrprint_py  # noqa: E402
+from bufr_tools.bufresohmsg_py import bufrlog_clear_py  # noqa: E402
+from bufr_tools.bufresohmsg_py import init_bufrtables_py  # noqa: E402
+from bufr_tools.bufresohmsg_py import init_oscar_py  # noqa: E402
+
+
+BUFR_TABLE_DIR = getBufrTableDir()
+OSCAR_DUMP = getOscarDumpPath()
+RODEO_BUFR_DIR = getPackeRootDir()
 
 init_bufrtables_py(BUFR_TABLE_DIR)
 init_oscar_py(OSCAR_DUMP)
@@ -26,7 +25,6 @@ def bufr2text(bufr_file_path: str = "") -> list[str]:
 
 
 if __name__ == "__main__":
-
     if len(sys.argv) > 1:
         for i, file_name in enumerate(sys.argv):
             if i > 0:

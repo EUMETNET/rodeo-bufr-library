@@ -1,14 +1,13 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools", "setuptools-scm", "pybind11~=2.11.1", "build"]
+build-backend = "setuptools.build_meta"
 
 [project]
-name = "json-bufr-tools"
+name = "bufr-tools"
 description = "Tools for working with JSON-BUFR conversion in the E-SOH proejct."
 readme = "README.md"
-requires-python = ">=3.11.*"
+requires-python = ">=3.11"
 version = "0.1.0"
-package = "json_bufr_tools"
 
 classifiers = [
   "Programming Language :: Python :: 3",
@@ -16,16 +15,24 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
 ]
 
-dependencies = [
-  "pybind11 ~= 2.11.1",
-]
-
-[tool.hatch.build.targets.wheel]
-package-dir = "./bufr"
-
-[too.hatch.build.targets.sdist]
-include = "./bufr"
+#dependencies = ["pybind11 ~= 2.11.1"]
 
 
 [tool.uv]
 dev-dependencies = ['coverage', 'pre-commit', 'pytest', 'debugpy', 'ipython']
+
+[tool.setuptools]
+packages = ["bufr_tools"]                         #, "bufr_tools.data"]
+package-dir = { "bufr_tools" = "src/bufr_tools" }
+include-package-data = true
+
+[tool.setuptools.package-data]
+bufr_tools = ["**.json", "**.txt", "**.csv"]
+
+[tool.cibuildwheel]
+build-frontend = "build"
+build = ["cp310-manylinux_x86_64"]
+
+
+[tool.cibuildwheel.linux]
+before-all = "yum install -y rapidjson-devel"

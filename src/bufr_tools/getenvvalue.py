@@ -1,8 +1,9 @@
 import os
+import pathlib
+from importlib.resources import files
 
 
 def getEnvValue(val_name: str, default_suffix: str = "") -> str:
-
     global RODEO_BUFR_DIR
     val = os.getcwd() + default_suffix
     val_env = ""
@@ -26,3 +27,24 @@ def getEnvValue(val_name: str, default_suffix: str = "") -> str:
 
     # print("ENV: {0} -> {1}".format(val_name, val))
     return val
+
+
+def getBufrTableDir() -> str:
+    """
+    Get BUFR table directory from environment variable or default path.
+    """
+    return getEnvValue(
+        "BUFR_TABLE_DIR", "/usr/share/eccodes/definitions/bufr/tables/0/wmo/"
+    )
+
+
+def getPackageRootDir() -> str:
+    return f"{files("bufr_tools")}"
+
+
+def getOscarDumpPath() -> str:
+    return getPackageRootDir() + "/data/oscar_stations_all.json"
+
+
+def getEsohSchema() -> str:
+    return getPackageRootDir() + "/data/schemas/bufr_to_e_soh_message.json"

@@ -1,14 +1,16 @@
 import os
 import sys
 
-from getenvvalue import getEnvValue
+import pathlib
 
-RODEO_BUFR_DIR = getEnvValue("RODEO_BUFR_DIR")
-sys.path.append(RODEO_BUFR_DIR + "/src/bufr_tools")
+from bufr_tools.getenvvalue import getBufrTableDir, getPackageRootDir
 
-from bufresohmsg_py import covjson2bufr_py  # noqa: E402
 
-BUFR_TABLE_DIR = getEnvValue("BUFR_TABLE_DIR", "/usr/share/eccodes/definitions/bufr/tables/0/wmo/")
+from bufr_tools.bufresohmsg_py import covjson2bufr_py  # noqa: E402
+
+
+BUFR_TABLE_DIR = getBufrTableDir()
+RODEO_BUFR_DIR = getPackageRootDir()
 
 
 def covjson2bufr(cov_json: str = "", bufr_schema: str = "default"):
