@@ -24,13 +24,7 @@ exclude_files_from_build = [
 ext_modules = [
     Pybind11Extension(
         "bufr_tools.bufresohmsg_py",
-        sorted(
-            [
-                i
-                for i in glob("src/bufr_tools/*.cpp")
-                if i not in exclude_files_from_build
-            ]
-        ),
+        sorted([i for i in glob("src/bufr_tools/*.cpp") if i not in exclude_files_from_build]),
         # Example: passing in the version to the compiled code
     ),
 ]

@@ -1,5 +1,4 @@
 import os
-import pathlib
 from importlib.resources import files
 
 
@@ -33,13 +32,12 @@ def getBufrTableDir() -> str:
     """
     Get BUFR table directory from environment variable or default path.
     """
-    return os.getenv(
-        "BUFR_TABLE_DIR", "/usr/share/eccodes/definitions/bufr/tables/0/wmo/"
-    )
+    return os.getenv("BUFR_TABLE_DIR", "/usr/share/eccodes/definitions/bufr/tables/0/wmo/")
 
 
 def getPackageRootDir() -> str:
-    return f"{files("bufr_tools")}"
+    packge_path = files("bufr_tools")
+    return f"{packge_path}"
 
 
 def getOscarDumpPath() -> str:
