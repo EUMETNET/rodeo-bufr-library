@@ -15,12 +15,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [linux-intel]
+        os: [ubuntu-24.04]
         include:
           - archs: auto
             platfrom: auto
-          - os: linux-intel
-            runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
