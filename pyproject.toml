@@ -22,7 +22,13 @@ classifiers = [
 dev-dependencies = ['coverage', 'pre-commit', 'pytest', 'debugpy', 'ipython']
 
 [tool.setuptools]
-packages = ["bufr_tools"]                         #, "bufr_tools.data"]
+packages = [
+  "bufr_tools",
+  "bufr_tools.data.tables.opera",
+  "bufr_tools.data.schemas",
+  "bufr_tools.data.tables.wmo",
+  "bufr_tools.data.oscar",
+] #, "bufr_tools.data"]
 package-dir = { "bufr_tools" = "src/bufr_tools" }
 include-package-data = true
 
