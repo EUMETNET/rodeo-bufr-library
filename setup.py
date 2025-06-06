@@ -26,6 +26,7 @@ ext_modules = [
         "bufr_tools.bufresohmsg_py",
         sorted([i for i in glob("src/bufr_tools/*.cpp") if i not in exclude_files_from_build]),
         # Example: passing in the version to the compiled code
+        extra_compile_args=["-std=c++17"],
     ),
 ]
 
