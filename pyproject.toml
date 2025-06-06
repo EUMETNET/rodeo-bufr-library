@@ -15,7 +15,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
 ]
 
-#dependencies = ["pybind11 ~= 2.11.1"]
+dependencies = ["pybind11 ~= 2.11.1"]
 
 
 [tool.uv]
@@ -42,4 +42,4 @@ archs = ["auto"]
 
 
 [tool.cibuildwheel.linux]
-before-all = "yum install -y rapidjson-devel python3-devel python3.11-pybind11"
+before-all = "yum install -y rapidjson-devel python3-devel" # python3.11-pybind11"
