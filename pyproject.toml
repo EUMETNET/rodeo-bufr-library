@@ -31,7 +31,8 @@ bufr_tools = ["**.json", "**.txt", "**.csv"]
 
 [tool.cibuildwheel]
 build-frontend = "build"
-build = ["cp310-manylinux_x86_64"]
+manylinux-x86_64-image = "manylinux2014"
+archs = ["auto"]
 
 
 [tool.cibuildwheel.linux]
