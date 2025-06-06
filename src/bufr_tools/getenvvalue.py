@@ -33,7 +33,7 @@ def getBufrTableDir() -> str:
     """
     Get BUFR table directory from environment variable or default path.
     """
-    return getEnvValue(
+    return os.getenv(
         "BUFR_TABLE_DIR", "/usr/share/eccodes/definitions/bufr/tables/0/wmo/"
     )
 
@@ -43,7 +43,7 @@ def getPackageRootDir() -> str:
 
 
 def getOscarDumpPath() -> str:
-    return getPackageRootDir() + "/data/oscar_stations_all.json"
+    return getPackageRootDir() + "/data/oscar/oscar_stations_all.json"
 
 
 def getEsohSchema() -> str:

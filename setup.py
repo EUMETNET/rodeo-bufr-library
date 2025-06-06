@@ -3,7 +3,7 @@ from pybind11.setup_helpers import Pybind11Extension
 from setuptools import setup
 from glob import glob
 
-__version__ = "0.0.1"
+# __version__ = "0.0.1"
 
 exclude_files_from_build = [
     "src/bufr_tools/bufresohmsgfrenc.cpp",
@@ -23,7 +23,7 @@ exclude_files_from_build = [
 
 ext_modules = [
     Pybind11Extension(
-        "bufr_tools",
+        "bufr_tools.bufresohmsg_py",
         sorted(
             [
                 i

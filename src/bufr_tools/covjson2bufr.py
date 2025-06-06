@@ -1,13 +1,8 @@
 import os
 import sys
 
-import pathlib
-
 from bufr_tools.getenvvalue import getBufrTableDir, getPackageRootDir
-
-
 from bufr_tools.bufresohmsg_py import covjson2bufr_py  # noqa: E402
-
 
 BUFR_TABLE_DIR = getBufrTableDir()
 RODEO_BUFR_DIR = getPackageRootDir()
