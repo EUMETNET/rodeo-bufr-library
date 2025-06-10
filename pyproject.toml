@@ -42,4 +42,9 @@ archs = ["auto"]
 
 
 [tool.cibuildwheel.linux]
-before-all = "yum install -y rapidjson-devel python3-devel" # python3.11-pybind11"
+environment = { PATH="/opt/rh/gcc-toolset-13/root/usr/bin:$PATH" }
+
+before-all = [
+  "yum remove python3",
+  "yum install -y rapidjson-devel gcc-toolset-13-* python3.11-devel python3.11-pybind11",
+]
