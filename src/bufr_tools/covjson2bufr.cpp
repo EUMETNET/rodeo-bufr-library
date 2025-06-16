@@ -27,15 +27,16 @@
 #include "covjson2bufr.h"
 
 struct ret_bufr covjson2bufr(std::string covjson_str, std::string bufr_template,
-                             NorBufr *bufr) {
+                             NorBufr *bufr, bool time_now) {
   struct ret_bufr ret;
   if (bufr_template == "default")
-    return covjson2bufr_default(covjson_str, bufr);
+    return covjson2bufr_default(covjson_str, bufr, time_now);
   std::cerr << "Unknown BUFR template name: " << bufr_template << "\n";
   return ret;
 }
 
-struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr) {
+struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
+                                     bool time_now) {
 
   bool delete_bufr = false;
   if (bufr == nullptr) {
@@ -468,16 +469,18 @@ stream_end:
   bufr->encodeBufr();
 
   // Set Section1 datetime
-  time_t now = time(0);
-  struct tm curr_dt;
-  memset(&curr_dt, 0, sizeof(curr_dt));
-  gmtime_r(&now, &curr_dt);
-  bufr->setYear(curr_dt.tm_year + 1900);
-  bufr->setMonth(curr_dt.tm_mon + 1);
-  bufr->setDay(curr_dt.tm_mday);
-  bufr->setHour(curr_dt.tm_hour);
-  bufr->setMinute(curr_dt.tm_min);
-  bufr->setSecond(curr_dt.tm_sec);
+  if (time_now) {
+    time_t now = time(0);
+    struct tm curr_dt;
+    memset(&curr_dt, 0, sizeof(curr_dt));
+    gmtime_r(&now, &curr_dt);
+    bufr->setYear(curr_dt.tm_year + 1900);
+    bufr->setMonth(curr_dt.tm_mon + 1);
+    bufr->setDay(curr_dt.tm_mday);
+    bufr->setHour(curr_dt.tm_hour);
+    bufr->setMinute(curr_dt.tm_min);
+    bufr->setSecond(curr_dt.tm_sec);
+  }
 
   const uint8_t *rbe = bufr->toBuffer();
 
