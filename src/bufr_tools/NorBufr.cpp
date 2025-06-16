@@ -1323,8 +1323,8 @@ std::ostream &NorBufr::printDetail(std::ostream &os) {
 
   int subsetnum = 0;
   for (auto s : desc) {
-    os << "\n ===================================== S U B S E T " << subsetnum + 1
-       << " =====================================\n\n";
+    os << "\n ===================================== S U B S E T "
+       << subsetnum + 1 << " =====================================\n\n";
     for (auto v : s) {
       v.printDetail(os);
       DescriptorMeta *meta = v.getMeta();

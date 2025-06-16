@@ -14,8 +14,8 @@
 #include <string>
 
 #include "rapidjson/document.h"
-#include "rapidjson/prettywriter.h"
 #include "rapidjson/istreamwrapper.h"
+#include "rapidjson/prettywriter.h"
 
 #include "Oscar.h"
 #include "WSI.h"
