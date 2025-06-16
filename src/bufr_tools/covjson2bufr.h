@@ -18,9 +18,10 @@ struct val_lev {
 
 struct ret_bufr covjson2bufr(std::string covjson_str,
                              std::string bufr_template = "default",
-                             NorBufr *bufr = nullptr);
+                             NorBufr *bufr = nullptr, bool time_now = false);
 struct ret_bufr covjson2bufr_default(std::string covjson_str,
-                                     NorBufr *bufr = nullptr);
+                                     NorBufr *bufr = nullptr,
+                                     bool time_bow = false);
 struct val_lev
 find_standard_value(std::pair<std::string, std::map<std::string, double>> t,
                     std::string standard_name, std::string level,
