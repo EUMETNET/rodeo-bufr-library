@@ -10,6 +10,7 @@
 
 ifeq ($(CXX),)
 	CXX := g++
+endif
 #CXX := clang++
 CXXFLAGS := -c -Wall -Wextra -O2 -std=c++17 -fPIC
 LDFLAGS := -shared

@@ -41,9 +41,8 @@ manylinux-x86_64-image = "quay.io/pypa/manylinux_2_28_x86_64"
 
 [tool.cibuildwheel.linux]
 environment = { CXX="/opt/rh/gcc-toolset-13/root/usr/bin/c++" }
-repair-wheel-command =""
 skip = "*-musllinux*"
 
 before-all = [
-  "yum install -y rapidjson-devel gcc-toolset-13-* python3.11-devel python3.11-pybind11",
+  "yum install -y rapidjson-devel gcc-toolset-13-*",
 ]
