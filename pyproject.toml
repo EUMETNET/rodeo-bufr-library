@@ -37,14 +37,13 @@ bufr_tools = ["**.json", "**.txt", "**.csv"]
 
 [tool.cibuildwheel]
 build-frontend = "build"
-manylinux-x86_64-image = "manylinux_2_28"
-archs = ["auto"]
-
+manylinux-x86_64-image = "quay.io/pypa/manylinux_2_28_x86_64"
 
 [tool.cibuildwheel.linux]
-environment = { PATH="/opt/rh/gcc-toolset-13/root/usr/bin:$PATH" }
+environment = { CXX="/opt/rh/gcc-toolset-13/root/usr/bin/c++" }
+repair-wheel-command =""
+skip = "*-musllinux*"
 
 before-all = [
-  "yum remove python3",
   "yum install -y rapidjson-devel gcc-toolset-13-* python3.11-devel python3.11-pybind11",
 ]
