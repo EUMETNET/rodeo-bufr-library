@@ -8,7 +8,8 @@
 #
 
 
-CXX := g++
+ifeq ($(CXX),)
+	CXX := g++
 #CXX := clang++
 CXXFLAGS := -c -Wall -Wextra -O2 -std=c++17 -fPIC
 LDFLAGS := -shared

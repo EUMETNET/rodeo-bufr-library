@@ -17,8 +17,8 @@ jobs:
       matrix:
         os: [ubuntu-24.04]
         include:
-          - archs: auto
-            platfrom: auto
+          - archs: x86_64
+            platform: linux
 
     steps:
       - uses: actions/checkout@v4
