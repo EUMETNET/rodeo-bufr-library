@@ -27,7 +27,8 @@ LDFLAGS := -shared
 objs := Sections.o NorBufrIO.o Tables.o Descriptor.o NorBufr.o LogBuffer.o LogEntry.o
 eobjs := ESOHBufr.o WSI.o Oscar.o covjson2bufr.o
 
-all: bufrprint bufrenc esoh covjson2bufr_main
+#all: bufrprint bufrenc esoh covjson2bufr_main
+all: esoh
 
 esoh: bufresohmsg_py.so
 	cp bufresohmsg_py.so ./bufresohmsg_py$$(python3-config --extension-suffix)
