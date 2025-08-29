@@ -16,6 +16,13 @@
 #include <list>
 #include <vector>
 
+#if defined(_MSC_VER)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+typedef SIZE_T size_t;
+#include <Winsock2.h>
+#endif
+
 namespace NorBufrIO {
 
 uint64_t readBytes(std::istream &is, ssize_t size);
@@ -56,5 +63,14 @@ std::istream &getElement(std::istream &is, char *dest, const int size,
                          const char endch);
 
 } // namespace NorBufrIO
+
+#if defined(_MSC_VER)
+extern int gettimeofday(struct timeval *tp, struct timezone *tz);
+
+static char *strptime(const char *s, const char *format, struct tm *tm) {
+  // TODO: !!!! strptime
+  return 0;
+};
+#endif
 
 #endif

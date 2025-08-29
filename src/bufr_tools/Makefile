@@ -12,7 +12,14 @@ ifeq ($(CXX),)
 	CXX := g++
 endif
 #CXX := clang++
-CXXFLAGS := -c -Wall -Wextra -O2 -std=c++17 -fPIC
+
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	CXXFLAGS := -c -Wall -Wextra -O2 -std=c++17 -fPIC
+else
+	CXXFLAGS := /c /W3 /O2 /std:c++17 -IC:\temp\rapidjson\rapidjson-1.1.0\include
+endif
+
 LDFLAGS := -shared
 
 .PHONY: clean all esoh

@@ -2,10 +2,21 @@
 #define _LOG_ENTRY_H_
 
 #include <string>
+
+#if defined(_MSC_VER)
+#include <Winsock2.h>
+#else
 #include <sys/time.h>
+#endif
+
 #include <vector>
 
-enum LogLevel { UNKNOWN = 0, TRACE, DEBUG, INFO, WARN, ERROR, FATAL };
+#if defined(_MSC_VER)
+enum class LogLevel { UNKNOWN = 0, TRACE, DEBUG, INFO, WARN, ERROR_, FATAL };
+#else
+enum LogLevel { UNKNOWN = 0, TRACE, DEBUG, INFO, WARN, ERROR_, FATAL };
+#endif
+
 static const std::vector<std::string> LogLevelStr = {
     "Off", "Trace", "Debug", "Info", "Warning", "Error", "Fatal"};
 

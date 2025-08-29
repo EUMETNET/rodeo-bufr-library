@@ -18,8 +18,9 @@ LogEntry::LogEntry(std::string msg, LogLevel l, std::string mid,
 
 std::string LogEntry::toCsv(char delimiter) const {
   std::stringstream ss;
-  ss << entryTime() << delimiter << LogLevelStr[log_level] << delimiter
-     << module_id << delimiter << bufr_id << delimiter << log_msg << delimiter;
+  ss << entryTime() << delimiter << LogLevelStr[static_cast<int>(log_level)]
+     << delimiter << module_id << delimiter << bufr_id << delimiter << log_msg
+     << delimiter;
 
   return ss.str();
 }
@@ -37,7 +38,8 @@ std::string LogEntry::toJson() const {
   message["datetime"] = datetime;
 
   rapidjson::Value log_level_str;
-  log_level_str.SetString(LogLevelStr[log_level].c_str(), message_allocator);
+  log_level_str.SetString(LogLevelStr[static_cast<int>(log_level)].c_str(),
+                          message_allocator);
   message["loglevel"] = log_level_str;
 
   rapidjson::Value bufrid;
@@ -65,7 +67,11 @@ LogLevel LogEntry::getLogLevel() const { return log_level; }
 std::string LogEntry::entryTime() const {
 
   struct tm entry_tm;
+#if defined(_MSC_VER)
+  entry_tm = *(gmtime(reinterpret_cast<const time_t *const>(&(tv.tv_sec))));
+#else
   gmtime_r(&(tv.tv_sec), &entry_tm);
+#endif
 
   const int date_len = 50;
   char date_str[date_len];

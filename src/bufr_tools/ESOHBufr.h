@@ -12,6 +12,7 @@
 
 #include <list>
 #include <map>
+#include <sstream>
 #include <string>
 
 #include "rapidjson/document.h"
@@ -122,5 +123,11 @@ private:
 
 int64_t getTimeStamp(const char *env_time);
 uint64_t periodStrToSec(std::string p_str);
+
+#if defined(_MSC_VER)
+// light implementation of strptime, for win build
+// one format is supported: "%Y-%m-%dT%H:%M:%SZ"
+char *strptime_esoh(const char *s, const char *format, struct tm *tm);
+#endif
 
 #endif

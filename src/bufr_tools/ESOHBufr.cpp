@@ -102,7 +102,7 @@ std::list<std::string> ESOHBufr::msg() const {
 
   if (message.Parse(msg_template.c_str()).HasParseError()) {
     lb.addLogEntry(LogEntry("ESOH message tempate parsing Error!!!",
-                            LogLevel::ERROR, __func__, bufr_id));
+                            LogLevel::ERROR_, __func__, bufr_id));
     return ret;
   }
   rapidjson::Value &properties = message["properties"];
@@ -115,7 +115,7 @@ std::list<std::string> ESOHBufr::msg() const {
   {
     struct timeval tv;
     gettimeofday(&tv, 0);
-    const int date_len = 50;
+    const size_t date_len = 50;
     char date_str[date_len];
     size_t dl = NorBufrIO::strisotime(date_str, date_len, &tv);
     pubtime.SetString(date_str, static_cast<rapidjson::SizeType>(dl),
@@ -201,7 +201,7 @@ std::list<std::string> ESOHBufr::msg() const {
           // Check datetime early or late
           if (!timeInInterval(meas_datetime)) {
             time_t mdt = mktime(&meas_datetime);
-            const int cdt_len = 50;
+            const size_t cdt_len = 50;
             char cdt[50];
             NorBufrIO::strisotime(cdt, cdt_len, &mdt, false);
 
@@ -329,7 +329,7 @@ std::list<std::string> ESOHBufr::msg() const {
           case 1: {
             int wmo_block = 0;
             wmo_block = getValue(v, wmo_block);
-            if (wmo_block == std::numeric_limits<int>::max()) {
+            if (wmo_block == (std::numeric_limits<int>::max)()) {
               wmo_block = 0;
             }
             lb.addLogEntry(
@@ -341,7 +341,7 @@ std::list<std::string> ESOHBufr::msg() const {
             // Is next the WMO station number?
             if (*nexti == DescriptorId(1002, true)) {
               wmo_station = getValue(*nexti, wmo_block);
-              if (wmo_station == std::numeric_limits<int>::max()) {
+              if (wmo_station == (std::numeric_limits<int>::max)()) {
                 wmo_station = 0;
               }
               lb.addLogEntry(LogEntry("Found WMO Station number: " +
@@ -400,7 +400,7 @@ std::list<std::string> ESOHBufr::msg() const {
           case 125: {
             int wig_ser = 0;
             wig_ser = getValue(v, wig_ser);
-            if (wig_ser == std::numeric_limits<int>::max()) {
+            if (wig_ser == (std::numeric_limits<int>::max)()) {
               wig_ser = 0;
             }
             wigos_id.setWigosIdSeries(wig_ser);
@@ -410,7 +410,7 @@ std::list<std::string> ESOHBufr::msg() const {
           case 126: {
             int wig_iss_id = 0;
             wig_iss_id = getValue(v, wig_iss_id);
-            if (wig_iss_id == std::numeric_limits<int>::max()) {
+            if (wig_iss_id == (std::numeric_limits<int>::max)()) {
               wig_iss_id = 0;
             }
             wigos_id.setWigosIssuerId(wig_iss_id);
@@ -420,7 +420,7 @@ std::list<std::string> ESOHBufr::msg() const {
           case 127: {
             int wig_iss_num = 0;
             wig_iss_num = getValue(v, wig_iss_num);
-            if (wig_iss_num == std::numeric_limits<int>::max()) {
+            if (wig_iss_num == (std::numeric_limits<int>::max)()) {
               wig_iss_num = 0;
             }
             wigos_id.setWigosIssueNum(wig_iss_num);
@@ -461,7 +461,7 @@ std::list<std::string> ESOHBufr::msg() const {
           switch (v.y()) {
           case 1: {
             int raw_year = getValue(v, raw_year);
-            if (raw_year != std::numeric_limits<int>::max()) {
+            if (raw_year != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_year = raw_year - 1900;
               dateupdate = true;
               // set 01 of Jan: mktime() change protection
@@ -471,7 +471,7 @@ std::list<std::string> ESOHBufr::msg() const {
           }
           case 2: {
             int raw_mon = getValue(v, raw_mon);
-            if (raw_mon != std::numeric_limits<int>::max()) {
+            if (raw_mon != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_mon = raw_mon - 1;
               dateupdate = true;
             }
@@ -479,7 +479,7 @@ std::list<std::string> ESOHBufr::msg() const {
           }
           case 3: {
             int raw_day = getValue(v, raw_day);
-            if (raw_day != std::numeric_limits<int>::max()) {
+            if (raw_day != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_mday = raw_day;
               dateupdate = true;
             }
@@ -487,7 +487,7 @@ std::list<std::string> ESOHBufr::msg() const {
           }
           case 4: {
             int raw_hour = getValue(v, raw_hour);
-            if (raw_hour != std::numeric_limits<int>::max()) {
+            if (raw_hour != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_hour = raw_hour;
               dateupdate = true;
             }
@@ -495,7 +495,7 @@ std::list<std::string> ESOHBufr::msg() const {
           }
           case 5: {
             int raw_min = getValue(v, raw_min);
-            if (raw_min != std::numeric_limits<int>::max()) {
+            if (raw_min != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_min = raw_min;
               dateupdate = true;
             }
@@ -503,7 +503,7 @@ std::list<std::string> ESOHBufr::msg() const {
           }
           case 6: {
             int raw_sec = getValue(v, raw_sec);
-            if (raw_sec != std::numeric_limits<int>::max()) {
+            if (raw_sec != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_sec = raw_sec;
               dateupdate = true;
               // Save meas_datetime to meas_starttime
@@ -564,7 +564,7 @@ std::list<std::string> ESOHBufr::msg() const {
           case 86: // LONG TIME PERIOD OR DISPLACEMENT
           {
             int raw_time_disp = getValue(v, raw_time_disp);
-            if (raw_time_disp != std::numeric_limits<int>::max()) {
+            if (raw_time_disp != (std::numeric_limits<int>::max)()) {
               time_disp = raw_time_disp;
               dateupdate = true;
               period_beg = "PT";
@@ -581,7 +581,7 @@ std::list<std::string> ESOHBufr::msg() const {
                 (int_data_subcategory < 4 || int_data_subcategory > 7)) {
               int time_period = 0;
               time_period = getValue(v, time_period);
-              if (time_period == std::numeric_limits<int>::max()) {
+              if (time_period == (std::numeric_limits<int>::max)()) {
                 valid_period = false;
                 lb.addLogEntry(LogEntry(
                     "Missing BUFR time period: " + std::to_string(time_period) +
@@ -617,7 +617,7 @@ std::list<std::string> ESOHBufr::msg() const {
                       int time_period_start = 0;
                       time_period_start = getValue(*pi, time_period_start);
                       if (time_period_start !=
-                          std::numeric_limits<int>::max()) {
+                          (std::numeric_limits<int>::max)()) {
                         time_period = -(time_period - time_period_start);
                       }
                     }
@@ -996,7 +996,7 @@ std::list<std::string> ESOHBufr::msg() const {
               time_t start_datetime = 0;
               if (*ci == DescriptorId(4024, true)) {
                 period = getValue(*ci, period);
-                if (period == std::numeric_limits<int>::max())
+                if (period == (std::numeric_limits<int>::max)())
                   valid_period = false;
                 if (valid_period) {
                   start_datetime = mktime(&meas_datetime);
@@ -1031,7 +1031,7 @@ std::list<std::string> ESOHBufr::msg() const {
             int period = 0;
             if (*ci == DescriptorId(4024, true)) {
               period = getValue(*ci, period);
-              if (period != std::numeric_limits<int>::max()) {
+              if (period != (std::numeric_limits<int>::max)()) {
                 start_datetime = mktime(&meas_datetime);
                 start_datetime += period * 60 * 60;
                 period_beg = "PT";
@@ -1468,7 +1468,7 @@ bool ESOHBufr::setDateTime(struct tm *meas_datetime,
   rapidjson::Value &properties = message["properties"];
   rapidjson::Value &datetime = properties["datetime"];
 
-  const int date_len = 50;
+  const size_t date_len = 50;
   char date_str[date_len];
   struct timeval tv = {0, 0};
   tv.tv_sec = mktime(meas_datetime);
@@ -1497,7 +1497,7 @@ bool ESOHBufr::setStartDateTime(struct tm *start_meas_datetime,
   rapidjson::Value start_datetime;
   rapidjson::Value end_datetime;
 
-  const int date_len = 50;
+  const size_t date_len = 50;
   char date_str[date_len];
   struct timeval tv = {0, 0};
   tv.tv_sec = mktime(start_meas_datetime);
@@ -1565,7 +1565,7 @@ WSI ESOHBufr::genShadowWigosId(
       if (*di == DescriptorId("001101")) {
         int bufr_state_id = 0;
         bufr_state_id = getValue(*di, bufr_state_id);
-        if (bufr_state_id != std::numeric_limits<int>::max()) {
+        if (bufr_state_id != (std::numeric_limits<int>::max)()) {
           int iso_cc = bufrToIsocc(bufr_state_id);
           if (iso_cc) {
             // ss << iso_cc << "_";
@@ -1632,7 +1632,11 @@ int64_t getTimeStamp(const char *env_time) {
   if (env_time[strlen(env_time) - 1] == 'Z') {
     struct tm tm;
     memset(&tm, 0, sizeof(tm));
+#if defined(_MSC_VER)
+    strptime_esoh(env_time, "%Y-%m-%dT%H:%M:%SZ", &tm);
+#else
     strptime(env_time, "%Y-%m-%dT%H:%M:%SZ", &tm);
+#endif
     ret = mktime(&tm);
   } else {
     std::istringstream is(env_time);
@@ -1686,3 +1690,82 @@ uint64_t periodStrToSec(std::string p_str) {
   }
   return ret;
 }
+
+#if defined(_MSC_VER)
+
+char *strptime_esoh(const char *s, const char *format, struct tm *tm) {
+  // char * strptime_esoh(env_time, "%Y-%m-%dT%H:%M:%SZ", &tm) {
+
+  memset(tm, 0, sizeof(*tm));
+  std::string sup_format("%Y-%m-%dT%H:%M:%SZ");
+  std::string fmt(format);
+  if (fmt != sup_format) {
+    std::cerr << "strptime format error: " << fmt << "\n";
+    return 0;
+  }
+  std::string s_str(s);
+  if (s_str.length() < 20) {
+    std::cerr << "strptime len error: " << s_str.length() << " min 20 chars\n";
+    return const_cast<char *>(s);
+  }
+  // Year
+  int i = 0;
+  for (; i < 4; ++i) {
+    if (!std::isdigit(s[i]))
+      return (const_cast<char *>(s + i));
+  }
+  tm->tm_year = std::stoi(s_str.substr(i - 4, 4)) - 1900;
+  if (s[i] != '-')
+    return (const_cast<char *>(s + i));
+  // Month
+  for (i++; i < 7; ++i) {
+    if (!std::isdigit(s[i]))
+      return (const_cast<char *>(s + i));
+  }
+  tm->tm_mon = std::stoi(s_str.substr(i - 2, 2)) - 1;
+  if (s[i] != '-')
+    return (const_cast<char *>(s + i));
+  // Day
+  for (i++; i < 10; ++i) {
+    if (!std::isdigit(s[i]))
+      return (const_cast<char *>(s + i));
+  }
+  tm->tm_mday = std::stoi(s_str.substr(i - 2, 2));
+  if (tm->tm_mday < 1 || tm->tm_mday > 31)
+    return (const_cast<char *>(s + i));
+  if (s[i] != 'T')
+    return (const_cast<char *>(s + i));
+  // Hour
+  for (i++; i < 13; ++i) {
+    if (!std::isdigit(s[i]))
+      return (const_cast<char *>(s + i));
+  }
+  tm->tm_hour = std::stoi(s_str.substr(i - 2, 2));
+  if (tm->tm_hour < 0 || tm->tm_hour > 23)
+    return (const_cast<char *>(s + i));
+  if (s[i] != ':')
+    return (const_cast<char *>(s + i));
+  // Minute
+  for (i++; i < 16; ++i) {
+    if (!std::isdigit(s[i]))
+      return (const_cast<char *>(s + i));
+  }
+  tm->tm_min = std::stoi(s_str.substr(i - 2, 2));
+  if (tm->tm_min < 0 || tm->tm_min > 59)
+    return (const_cast<char *>(s + i));
+  if (s[i] != ':')
+    return (const_cast<char *>(s + i));
+  // Second
+  for (i++; i < 19; ++i) {
+    if (!std::isdigit(s[i]))
+      return (const_cast<char *>(s + i));
+  }
+  tm->tm_sec = std::stoi(s_str.substr(i - 2, 2));
+  if (tm->tm_sec < 0 || tm->tm_sec > 60)
+    return (const_cast<char *>(s + i));
+  if (s[i] != 'Z')
+    return (const_cast<char *>(s + i));
+  ++i;
+  return const_cast<char *>(s + i);
+}
+#endif

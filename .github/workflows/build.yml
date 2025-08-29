@@ -11,14 +11,21 @@ on:
       - main
 jobs:
   build_wheels:
-    name: Build wheels on ${{ matrix.os }}
+    name: Build wheels on ${{ matrix.os }} ${{ matrix.archs }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-24.04]
         include:
-          - archs: x86_64
+          - os: ubuntu-24.04
+            archs: x86_64
             platform: linux
+          - os: ubuntu-24.04
+            archs: i686
+            platform: linux
+          - os: windows-latest
+            archs: AMD64
+            platform: windows
+            bef_all_win: "powershell -Command \"Invoke-WebRequest -Uri 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -OutFile 'C:\\temp\\rapidjson.zip'; Expand-Archive -Path 'C:\\temp\\rapidjson.zip' -DestinationPath 'C:\\temp\\rapidjson\\'"
 
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +35,7 @@ jobs:
         env:
           CIBW_PLATFORM: ${{ matrix.platform }}
           CIBW_ARCHS: ${{ matrix.archs }}
+          CIBW_BEFORE_ALL_WINDOWS: ${{ matrix.bef_all_win }}
         # Can also be configured directly, using `with:`
         # with:
         #   package-dir: .
