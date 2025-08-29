@@ -12,7 +12,14 @@ ifeq ($(CXX),)
 	CXX := g++
 endif
 #CXX := clang++
-CXXFLAGS := -c -Wall -Wextra -O2 -std=c++17 -fPIC
+
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	CXXFLAGS := -c -Wall -Wextra -O2 -std=c++17 -fPIC
+else
+	CXXFLAGS := /c /W3 /O2 /std:c++17 -IC:\temp\rapidjson\rapidjson-1.1.0\include
+endif
+
 LDFLAGS := -shared
 
 .PHONY: clean all esoh
@@ -20,7 +27,8 @@ LDFLAGS := -shared
 objs := Sections.o NorBufrIO.o Tables.o Descriptor.o NorBufr.o LogBuffer.o LogEntry.o
 eobjs := ESOHBufr.o WSI.o Oscar.o covjson2bufr.o
 
-all: bufrprint bufrenc esoh covjson2bufr_main
+#all: bufrprint bufrenc esoh covjson2bufr_main
+all: esoh
 
 esoh: bufresohmsg_py.so
 	cp bufresohmsg_py.so ./bufresohmsg_py$$(python3-config --extension-suffix)
@@ -30,18 +38,6 @@ bufresohmsg_py.so: $(objs) bufresohmsg_py.o
 
 bufresohmsg_py.o: bufresohmsg_py.cpp bufresohmsg_py.h $(objs) $(eobjs)
 	$(CXX) $(CXXFLAGS) $$(python3 -m pybind11 --includes) -o bufresohmsg_py.o bufresohmsg_py.cpp
-
-bufresohmsg: bufresohmsg.o $(objs) $(eobjs)
-	$(CXX) $(objs) $(eobjs) bufresohmsg.o -o bufresohmsg
-
-bufrenc: bufrenc.o $(objs)
-	$(CXX) $(objs) bufrenc.o -o bufrenc
-
-covjson2bufr_main: covjson2bufr_main.o $(objs) covjson2bufr.o
-	$(CXX) $(objs) covjson2bufr.o covjson2bufr_main.o -o covjson2bufr_main
-
-bufrprint: bufrprint.o $(objs)
-	$(CXX) $(objs) bufrprint.o -o bufrprint
 
 $(eobjs): %.o: %.cpp %.h
 	$(CXX) $(CXXFLAGS) -o $@ $<

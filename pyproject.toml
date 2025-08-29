@@ -35,14 +35,28 @@ include-package-data = true
 [tool.setuptools.package-data]
 bufr_tools = ["**.json", "**.txt", "**.csv"]
 
+[tool.setuptools.exclude-package-data]
+bufr_tools = [
+  "bufresohmsg.cpp",
+  "bufrprint.cpp",
+  "covjson2bufr_main.cpp",
+  "bufrenc.cpp",
+]
+
 [tool.cibuildwheel]
 build-frontend = "build"
 manylinux-x86_64-image = "quay.io/pypa/manylinux_2_28_x86_64"
+manylinux-i686-image = "quay.io/pypa/manylinux_2_28_i686"
+
+[tool.cibuildwheel.windows]
 
 [tool.cibuildwheel.linux]
 environment = { CXX="/opt/rh/gcc-toolset-13/root/usr/bin/c++" }
 skip = "*-musllinux*"
 
 before-all = [
-  "yum install -y rapidjson-devel gcc-toolset-13-*",
+  "yum install -y gcc-toolset-13-*",
+  "curl -L -s -o /tmp/rapidjson.tar.gz https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.tar.gz",
+  "tar xvf /tmp/rapidjson.tar.gz -C /usr/  --strip-components=1  rapidjson-1.1.0/include",
+  "rm -f /tmp/rapidjson.tar.gz"
 ]

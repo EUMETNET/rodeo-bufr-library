@@ -191,8 +191,13 @@ void NorBufrIO::strPrintable(std::string &s) {
 
 ssize_t NorBufrIO::strisotime(char *date_str, size_t date_max,
                               const time_t *date, bool usec) {
-  const struct timeval tv = {.tv_sec = *date, .tv_usec = 0};
-  return (strisotime(date_str, date_max, &tv, usec));
+  // const struct timeval tv = {.tv_sec = *date, .tv_usec = 0};
+  struct timeval tv;
+  tv.tv_sec = *date;
+  tv.tv_usec = 0;
+
+  return (strisotime(date_str, date_max,
+                     const_cast<const struct timeval *>(&tv), usec));
 }
 
 ssize_t NorBufrIO::strisotime(char *date_str, size_t date_max,
@@ -205,7 +210,9 @@ ssize_t NorBufrIO::strisotime(char *date_str, size_t date_max,
     fmt = uformat;
   }
 
-  size_t dl = strftime(date_str, date_max, fmt, gmtime(&(date->tv_sec)));
+  size_t dl =
+      strftime(date_str, date_max, fmt,
+               gmtime(reinterpret_cast<const time_t *const>(&(date->tv_sec))));
 
   // Copy microseconds into the date char string
   if (usec && dl > 26) {

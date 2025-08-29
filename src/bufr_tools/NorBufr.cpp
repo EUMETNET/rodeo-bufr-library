@@ -12,6 +12,7 @@
 #include <cmath>
 #include <iomanip>
 #include <limits>
+#include <sstream>
 #include <stack>
 #include <string.h>
 #include <string>
@@ -106,8 +107,8 @@ uint64_t NorBufr::uncompressDescriptor(std::list<DescriptorId>::iterator &it,
 
       uint64_t val;
 
-      if (increment == std::numeric_limits<ssize_t>::max())
-        val = std::numeric_limits<uint64_t>::max();
+      if (increment == (std::numeric_limits<ssize_t>::max)())
+        val = (std::numeric_limits<uint64_t>::max)();
       else
         val = referenceNull + increment;
 
@@ -173,7 +174,7 @@ ssize_t NorBufr::extractDescriptors(int ss, ssize_t subsb) {
         ss << "Compressed: " << isCompressed() << " ";
         ss << "IT: " << std::dec << *it << " ";
         ss << "Subset: " << subsetNum();
-        lb.addLogEntry(LogEntry(ss.str(), LogLevel::ERROR, __func__, bufr_id));
+        lb.addLogEntry(LogEntry(ss.str(), LogLevel::ERROR_, __func__, bufr_id));
         return sb;
       }
     }
@@ -244,7 +245,7 @@ ssize_t NorBufr::extractDescriptors(int ss, ssize_t subsb) {
               ss << "IT: " << std::dec << *it << " ";
               ss << "Subset: " << subsetNum();
               lb.addLogEntry(
-                  LogEntry(ss.str(), LogLevel::ERROR, __func__, bufr_id));
+                  LogEntry(ss.str(), LogLevel::ERROR_, __func__, bufr_id));
               return sb;
             }
 
@@ -299,7 +300,7 @@ ssize_t NorBufr::extractDescriptors(int ss, ssize_t subsb) {
         ++it;
         if (it == DL.end()) {
           lb.addLogEntry(LogEntry("Delayed descriptor missing!",
-                                  LogLevel::ERROR, __func__, bufr_id));
+                                  LogLevel::ERROR_, __func__, bufr_id));
         }
         desc[ss].push_back(Descriptor(*it, sb));
         if (it->f() == 0 && it->x() == 31) {
@@ -313,7 +314,7 @@ ssize_t NorBufr::extractDescriptors(int ss, ssize_t subsb) {
               cd.setMeta(const_cast<DescriptorMeta *>(&(tabB->at(*it))));
             } else {
               lb.addLogEntry(LogEntry("REPEAT 0      2 ---->> ",
-                                      LogLevel::ERROR, __func__, bufr_id));
+                                      LogLevel::ERROR_, __func__, bufr_id));
               repeatnum = 0;
             }
           } else {
@@ -322,7 +323,7 @@ ssize_t NorBufr::extractDescriptors(int ss, ssize_t subsb) {
         } else {
           lb.addLogEntry(
               LogEntry("Delayed Descriprtor error: " + it->toString(),
-                       LogLevel::ERROR, __func__, bufr_id));
+                       LogLevel::ERROR_, __func__, bufr_id));
         }
       }
 
@@ -340,7 +341,7 @@ ssize_t NorBufr::extractDescriptors(int ss, ssize_t subsb) {
           if (repeatnum)
             lb.addLogEntry(LogEntry("Missing descriptors: " +
                                         std::to_string(descnum - 1 - i),
-                                    LogLevel::ERROR, __func__, bufr_id));
+                                    LogLevel::ERROR_, __func__, bufr_id));
           break;
         }
       }
@@ -447,7 +448,7 @@ ssize_t NorBufr::extractDescriptors(int ss, ssize_t subsb) {
 
       default:
         lb.addLogEntry(LogEntry("Not yet implemented: " + it->toString(),
-                                LogLevel::ERROR, __func__, bufr_id));
+                                LogLevel::ERROR_, __func__, bufr_id));
       }
 
       break;
@@ -562,7 +563,7 @@ double NorBufr::getValue(const Descriptor &d, double) const {
     uint64_t raw_value = NorBufrIO::getBitValue(
         d.startBit(), dm->datawidth(), !(d.f() == 0 && d.x() == 31), bitref);
 
-    if (raw_value == std::numeric_limits<uint64_t>::max())
+    if (raw_value == (std::numeric_limits<uint64_t>::max)())
       return (dvalue);
 
     dvalue = static_cast<double>(raw_value);
@@ -585,7 +586,7 @@ uint64_t NorBufr::getBitValue(const Descriptor &d, uint64_t) const {
     value = NorBufrIO::getBitValue(d.startBit(), dm->datawidth(),
                                    !(d.f() == 0 && d.x() == 31), bitref);
 
-    if (value == std::numeric_limits<uint64_t>::max())
+    if (value == (std::numeric_limits<uint64_t>::max)())
       return (value);
   }
 
@@ -594,13 +595,13 @@ uint64_t NorBufr::getBitValue(const Descriptor &d, uint64_t) const {
 
 int NorBufr::getValue(const Descriptor &d, int) const {
   const DescriptorMeta *dm = d.getMeta();
-  int value = std::numeric_limits<int>::max();
+  int value = (std::numeric_limits<int>::max)();
 
   if (dm) {
     const std::vector<bool> &bitref = (isCompressed() ? ucbits : bits);
     uint64_t raw_value = NorBufrIO::getBitValue(
         d.startBit(), dm->datawidth(), !(d.f() == 0 && d.x() == 31), bitref);
-    if (raw_value == std::numeric_limits<uint64_t>::max())
+    if (raw_value == (std::numeric_limits<uint64_t>::max)())
       return (value);
     value = static_cast<int>(raw_value);
     if (dm->reference())
@@ -628,7 +629,7 @@ std::string NorBufr::getValue(const Descriptor &d, std::string,
         uint64_t c = NorBufrIO::getBitValue(d.startBit() + i, 8, true, bitref);
         if (c)
           ret += static_cast<char>(c);
-        if (std::numeric_limits<uint64_t>::max() != c)
+        if ((std::numeric_limits<uint64_t>::max)() != c)
           missing = false;
       }
       if (missing)
@@ -639,7 +640,7 @@ std::string NorBufr::getValue(const Descriptor &d, std::string,
     uint64_t raw_value = NorBufrIO::getBitValue(
         d.startBit(), dm->datawidth(), !(d.f() == 0 && d.x() == 31), bitref);
 
-    if (raw_value == std::numeric_limits<uint64_t>::max())
+    if (raw_value == (std::numeric_limits<uint64_t>::max)())
       return ("MISSING");
 
     if (d.f() == 0 && d.x() == 31)
@@ -671,7 +672,7 @@ std::string NorBufr::getValue(const Descriptor &d, std::string,
   return ret;
 }
 
-uint64_t NorBufr::fromBuffer(char *ext_buf, u_int64_t ext_buf_pos,
+uint64_t NorBufr::fromBuffer(char *ext_buf, uint64_t ext_buf_pos,
                              uint64_t ext_buf_size) {
   clear();
   if (buffer) {
@@ -693,7 +694,7 @@ uint64_t NorBufr::fromBuffer(char *ext_buf, u_int64_t ext_buf_pos,
   }
 
   // Section0 length
-  uint64_t slen = 8;
+  const uint64_t slen = 8;
   uint8_t sec0[slen];
   if (ext_buf_pos + n + slen < ext_buf_size) {
     memcpy(sec0, ext_buf + ext_buf_pos + n, slen);
@@ -785,7 +786,7 @@ std::istream &operator>>(std::istream &is, NorBufr &bufr) {
   is.seekg(static_cast<std::streampos>(n), std::ios_base::beg);
 
   // Section0 length
-  int slen = 8;
+  const int slen = 8;
   uint8_t sec0[slen];
   is.read(reinterpret_cast<char *>(sec0), slen);
 
@@ -804,7 +805,7 @@ std::istream &operator>>(std::istream &is, NorBufr &bufr) {
 
   if (rchar != bufr.len - slen) {
     bufr.lb.addLogEntry(
-        LogEntry("Reading Error", LogLevel::ERROR, __func__, bufr.bufr_id));
+        LogEntry("Reading Error", LogLevel::ERROR_, __func__, bufr.bufr_id));
     bufr.len = rchar + slen - 1;
   }
 
@@ -848,17 +849,17 @@ bool NorBufr::setSections(int slen) {
             LogEntry("BUFR loaded", LogLevel::DEBUG, __func__, bufr_id));
       } else {
         lb.addLogEntry(
-            LogEntry("Corrupt Section4", LogLevel::ERROR, __func__, bufr_id));
+            LogEntry("Corrupt Section4", LogLevel::ERROR_, __func__, bufr_id));
         return false;
       }
     } else {
-      lb.addLogEntry(LogEntry("Section3 size error, skip", LogLevel::ERROR,
+      lb.addLogEntry(LogEntry("Section3 size error, skip", LogLevel::ERROR_,
                               __func__, bufr_id));
       return false;
     }
   } else {
     lb.addLogEntry(LogEntry("Section3 load error, skip Section4",
-                            LogLevel::ERROR, __func__, bufr_id));
+                            LogLevel::ERROR_, __func__, bufr_id));
     return false;
   }
 
@@ -879,7 +880,7 @@ long NorBufr::checkBuffer() {
         if (si == 4) {
           lb.addLogEntry(
               LogEntry("Found new BUFR sequence at:" + std::to_string(i - 4),
-                       LogLevel::ERROR, __func__, bufr_id));
+                       LogLevel::ERROR_, __func__, bufr_id));
           offset = i - len - 4;
           len = i - 4;
           break;
@@ -894,7 +895,7 @@ long NorBufr::checkBuffer() {
         ei++;
         if (ei == 4 && i != len - 1) {
           lb.addLogEntry(LogEntry("Found end sequence at:" + std::to_string(i),
-                                  LogLevel::ERROR, __func__, bufr_id));
+                                  LogLevel::ERROR_, __func__, bufr_id));
           offset = i - len;
         }
       } else
@@ -1340,7 +1341,7 @@ std::ostream &NorBufr::printDetail(std::ostream &os) {
           uint64_t cval =
               NorBufrIO::getBitValue(v.startBit(), meta->datawidth(), true,
                                      (isCompressed() ? ucbits : bits));
-          if (std::numeric_limits<uint64_t>::max() != cval) {
+          if ((std::numeric_limits<uint64_t>::max)() != cval) {
             os << cval;
           }
           os << "]";
@@ -1411,7 +1412,7 @@ std::ostream &operator<<(std::ostream &os, NorBufr &bufr) {
           uint64_t cval = NorBufrIO::getBitValue(
               v.startBit(), meta->datawidth(), true,
               (bufr.isCompressed() ? bufr.ucbits : bufr.bits));
-          if (std::numeric_limits<uint64_t>::max() != cval) {
+          if ((std::numeric_limits<uint64_t>::max)() != cval) {
             os << cval;
           }
           os << "]";

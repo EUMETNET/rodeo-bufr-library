@@ -473,7 +473,12 @@ stream_end:
     time_t now = time(0);
     struct tm curr_dt;
     memset(&curr_dt, 0, sizeof(curr_dt));
+#if defined(_MSC_VER)
+    curr_dt = *(gmtime(reinterpret_cast<const time_t *const>(&now)));
+#else
     gmtime_r(&now, &curr_dt);
+#endif
+
     bufr->setYear(curr_dt.tm_year + 1900);
     bufr->setMonth(curr_dt.tm_mon + 1);
     bufr->setDay(curr_dt.tm_mday);

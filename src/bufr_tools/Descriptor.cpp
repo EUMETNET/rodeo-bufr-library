@@ -8,6 +8,7 @@
  */
 
 #include <iomanip>
+#include <sstream>
 
 #include "Descriptor.h"
 
