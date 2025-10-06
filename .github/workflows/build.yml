@@ -74,6 +74,6 @@ jobs:
           path: dist
           merge-multiple: true
 
-      - uses: pypa/gh-action-pypi-publish@release/v1.12.4
+      - uses: pypa/gh-action-pypi-publish@release/v1.13.0
         with:
           repository-url: https://test.pypi.org/legacy/
