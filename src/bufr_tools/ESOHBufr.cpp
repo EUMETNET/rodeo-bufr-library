@@ -780,7 +780,7 @@ std::list<std::string> ESOHBufr::msg() const {
         }
         case 11: // Wind
         {
-          if (v.y() == 1 || v.y() == 2) // WIND SPEED, WIND DIRECTION
+          if (v.y() == 1 || v.y() == 2 || v.y() == 41 || v.y() == 43) // WIND SPEED, WIND DIRECTION, GUST
           {
             if (!sensor_level_active && getDataCategory() <= 1) {
               sensor_level_active = 1;
