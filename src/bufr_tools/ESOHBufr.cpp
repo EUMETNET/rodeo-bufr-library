@@ -817,6 +817,15 @@ std::list<std::string> ESOHBufr::msg() const {
             ret.push_back(addMessage(ci, subset_message, sensor_level_active,
                                      sensor_level, "point"));
           }
+          // Total precipitation
+          if (v.y() == 11) {
+            if (!sensor_level_active && getDataCategory() <= 1) {
+              sensor_level_active = 1;
+              sensor_level = 2.0;
+            }
+            ret.push_back(addMessage(ci, subset_message, sensor_level_active,
+                                     sensor_level, "point"));
+          }
 
           break;
         }
