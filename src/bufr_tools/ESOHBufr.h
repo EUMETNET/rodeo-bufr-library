@@ -29,6 +29,8 @@ static std::map<DescriptorId, std::pair<std::string, std::string>> cf_names = {
 
     {DescriptorId(11001, true), {"wind_from_direction", "degree"}},
     {DescriptorId(11002, true), {"wind_speed", "m s-1"}},
+    {DescriptorId(11043, true), {"wind_gust_from_direction", "degree"}},
+    {DescriptorId(11041, true), {"wind_speed_of_gust", "m s-1"}},
 
     {DescriptorId(12001, true), {"air_temperature", "K"}},
     {DescriptorId(12004, true), {"air_temperature", "K"}},

@@ -35,13 +35,12 @@ ESOHBufr::ESOHBufr() {
             \"datetime\" : \"null\", \
             \"Conventions\" : \"Default BUFR Conventions\", \
             \"summary\" : \"Default Summary\", \
-            \"license\" : \"http//spdx.org/licenses/CC-BY-4.0(CC-BY-4.0)\", \
+            \"license\" : \"https://creativecommons.org/licenses/by/4.0/\", \
             \"naming_authority\" : \"no.met\", \
             \"level\" : 0.0, \
             \"hamsl\" : 0, \
             \"function\": \"point\", \
             \"period\": \"PT0S\", \
-            \"period_int\": 0, \
             \"platform\" : \"\", \
             \"platform_name\" : \"\", \
             \"content\" : { \
@@ -164,7 +163,8 @@ std::list<std::string> ESOHBufr::msg() const {
     for (std::list<Descriptor>::const_iterator ci = s.begin(); ci != s.end();
          ++ci) {
       if (sensor_level_active) {
-        sensor_level_active--;
+        if (ci->f() == 0 && (ci->x() != 4 && ci->x() != 31))
+          sensor_level_active--;
       } else {
         sensor_level = 0.0;
       }
@@ -781,7 +781,8 @@ std::list<std::string> ESOHBufr::msg() const {
         }
         case 11: // Wind
         {
-          if (v.y() == 1 || v.y() == 2) // WIND SPEED, WIND DIRECTION
+          if (v.y() == 1 || v.y() == 2 || v.y() == 41 ||
+              v.y() == 43) // WIND SPEED, WIND DIRECTION, GUST
           {
             if (!sensor_level_active && getDataCategory() <= 1) {
               sensor_level_active = 1;
@@ -810,6 +811,15 @@ std::list<std::string> ESOHBufr::msg() const {
         case 13: // Humidity
         {
           if (v.y() == 3) {
+            if (!sensor_level_active && getDataCategory() <= 1) {
+              sensor_level_active = 1;
+              sensor_level = 2.0;
+            }
+            ret.push_back(addMessage(ci, subset_message, sensor_level_active,
+                                     sensor_level, "point"));
+          }
+          // Total precipitation
+          if (v.y() == 11) {
             if (!sensor_level_active && getDataCategory() <= 1) {
               sensor_level_active = 1;
               sensor_level = 2.0;
@@ -1481,7 +1491,7 @@ bool ESOHBufr::setDateTime(struct tm *meas_datetime,
     properties["period"].SetString(period_str.c_str(), message_allocator);
 
     uint64_t period_int = periodStrToSec(period_str);
-    properties["period_int"].SetUint64(period_int);
+    // properties["period_int"].SetUint64(period_int);
   }
 
   return true;
@@ -1516,7 +1526,7 @@ bool ESOHBufr::setStartDateTime(struct tm *start_meas_datetime,
     properties["period"].SetString(period_str.c_str(), message_allocator);
 
     uint64_t period_int = periodStrToSec(period_str);
-    properties["period_int"].SetUint64(period_int);
+    // properties["period_int"].SetUint64(period_int);
   }
 
   return true;
