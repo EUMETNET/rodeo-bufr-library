@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm", "pybind11~=2.11.1", "build"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "bufr-tools"
+name = "rodeo-bufr-tools"
 description = "Tools for working with JSON-BUFR conversion in the E-SOH proejct."
 readme = "README.md"
 requires-python = ">=3.11"
