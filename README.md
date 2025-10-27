@@ -21,7 +21,7 @@ The library suports [ECMWF ecCodes](https://confluence.ecmwf.int/display/ECC), [
 
 Create virtual environment
 ```shell
-python3 -m venv bufr-venv 
+python3 -m venv bufr-venv
 ```
 Activate
 ```shell
