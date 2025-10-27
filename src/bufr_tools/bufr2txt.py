@@ -2,7 +2,7 @@ import os
 import sys
 
 from bufr_tools.getenvvalue import getBufrTableDir, getOscarDumpPath
-from bufr_tools.getenvvalue import getPackeRootDir
+from bufr_tools.getenvvalue import getPackageRootDir
 
 
 from bufr_tools.bufresohmsg_py import bufrprint_py  # noqa: E402
@@ -13,7 +13,7 @@ from bufr_tools.bufresohmsg_py import init_oscar_py  # noqa: E402
 
 BUFR_TABLE_DIR = getBufrTableDir()
 OSCAR_DUMP = getOscarDumpPath()
-RODEO_BUFR_DIR = getPackeRootDir()
+RODEO_BUFR_DIR = getPackageRootDir()
 
 init_bufrtables_py(BUFR_TABLE_DIR)
 init_oscar_py(OSCAR_DUMP)
