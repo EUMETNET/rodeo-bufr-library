@@ -41,6 +41,10 @@ include-package-data = true
 [tool.setuptools.package-data]
 bufr_tools = ["**.json", "**.txt", "**.csv"]
 
+[tool.setuptools_scm]
+write_to = "src/bufr_tools/_version.py" # Optional: writes version to a file
+
+
 [tool.setuptools.exclude-package-data]
 bufr_tools = [
   "bufresohmsg.cpp",
