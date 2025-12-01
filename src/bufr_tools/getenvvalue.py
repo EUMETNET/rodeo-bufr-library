@@ -52,7 +52,7 @@ def getRadarCFDir() -> str:
     return getPackageRootDir() + "/data/radar/radar_cf.py"
 
 
-def geBufrRadarTableDir() -> str:
+def getBufrRadarTableDir() -> str:
     """
     Get BUFR table directory from environment variable or from package.
     """
