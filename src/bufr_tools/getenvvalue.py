@@ -57,4 +57,3 @@ def geBufrRadarTableDir() -> str:
     Get BUFR table directory from environment variable or from package.
     """
     return os.getenv("BUFR_TABLE_DIR", getPackageRootDir() + "/data/tables/opera/")
-
