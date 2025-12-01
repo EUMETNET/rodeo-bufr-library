@@ -18,7 +18,7 @@ from bufr_tools.bufresohmsg_py import init_bufr_schema_py  # noqa: E402
 from bufr_tools.bufresohmsg_py import init_bufrtables_py  # noqa: E402
 from bufr_tools.bufresohmsg_py import init_oscar_py  # noqa: E402
 from bufr_tools.bufresohmsg_py import init_radar_cf_py  # noqa: E402
-from data.radar.radar_cf import radar_cf  # noqa: E402
+from bufr_tools.radar_cf import radar_cf  # noqa: E402
 
 ESOH_SCHEMA = getEsohSchema()
 BUFR_TABLE_DIR = getBufrRadarTableDir()
