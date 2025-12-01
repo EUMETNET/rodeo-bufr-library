@@ -22,7 +22,6 @@
 #include "Oscar.h"
 #include "WSI.h"
 
-// Default BUFR-CF map
 static std::map<DescriptorId, std::pair<std::string, std::string>> cf_names = {
     {DescriptorId(10004, true), {"air_pressure", "Pa"}},
     {DescriptorId(10051, true), {"air_pressure_at_mean_sea_level", "Pa"}},
@@ -63,14 +62,54 @@ static std::map<DescriptorId, std::pair<std::string, std::string>> cf_names = {
     {DescriptorId(22043, true), {"sea_water_temperature", "K"}},
     {DescriptorId(22045, true), {"sea_water_temperature", "K"}},
 
-    {DescriptorId(25006, true), {"radar_estimated_precipitation_rate", "mm/h"}},
-    {DescriptorId(321008, true),
-     {"radar_equivalent_reflectivity_factor_h", "dBz"}}};
+    {DescriptorId(25006, true), {"RATE", "mm/h"}},
+    {DescriptorId(321008, true), {"DBZH", "dBz"}}};
 
 static std::string default_shadow_wigos("0-0-0-");
 
 static std::list<std::pair<char, char>> repl_chars = {
     {' ', '_'}, {'-', '_'}, {'\'', '_'}};
+
+struct naming_auth_type {
+  std::string naming_auth;
+  std::list<int> centre_list;
+  int cty;
+  int cc;
+};
+
+static std::map<std::string, naming_auth_type> naming_auth_map = {
+    {"at", {"at.austrocontrol", {224}, 602, 40}},
+    {"be", {"be.meteo", {227}, 605, 56}},
+    {"ch", {"ch.meteoswiss", {215}, 644, 756}},
+    {"cy", {"cy.gov.moa.dom", {230}, 609, 196}},
+    {"cz", {"cz.chmi", {89}, 610, 203}},
+    {"de", {"de.dwd", {78, 79}, 616, 276}},
+    {"dk", {"dk.dmi", {94}, 611, 208}},
+    {"ee", {"ee.envir", {231}, 612, 233}},
+    {"es", {"es.aemet", {214}, 642, 724}},
+    {"eu", {"eu.eumetnet", {247}, 0, 0}},
+    {"fi", {"fi.fmi", {86}, 613, 246}},
+    {"fr", {"fr.meteo", {84, 85}, 614, 250}},
+    {"gr", {"gr.hnms", {96}, 617, 300}},
+    {"hr", {"hr.dhz.cirus", {221}, 608, 191}},
+    {"hu", {"hu.met", {218}, 618, 348}},
+    {"ie", {"ie.met", {233}, 602, 372}},
+    {"il", {"il.gov.ims", {234}, 621, 376}},
+    {"is", {"is.vedur", {213}, 619, 352}},
+    {"lt", {"lt.meteo", {238}, 627, 440}},
+    {"lv", {"lv.lvgmc", {236}, 625, 428}},
+    {"md", {"md.gov.meteo", {246}, 0, 498}},
+    {"mt", {"mt", {240}, 629, 470}},
+    {"nl", {"nl.knmi", {99}, 632, 528}},
+    {"no", {"no.met", {88}, 633, 578}},
+    {"pl", {"pl.imgw", {220}, 634, 616}},
+    {"pt", {"pt.ipma", {212}, 635, 620}},
+    {"ro", {"ro.meteoromania", {242}, 637, 642}},
+    {"rs", {"rs.gov.hidmet", {87}, 639, 688}},
+    {"se", {"se.smhi", {82, 83}, 643, 752}},
+    {"si", {"si.gov", {219}, 641, 705}},
+    {"sk", {"sk.shmu", {217}, 640, 703}},
+    {"uk", {"uk.gov.metoffice", {74, 75}, 649, 826}}};
 
 class ESOHBufr : public NorBufr {
 
@@ -81,7 +120,9 @@ public:
   void setMsgTemplate(std::string);
   bool setShadowWigos(std::string);
   void setShadowWigos(const WSI &wsi);
+  WSI getShadowWigos() { return shadow_wigos; };
   void setRadarCFMap(std::map<std::string, std::string> &);
+  std::string getNamingAuthority(int c = 0) const;
 
 private:
   std::string addMessage(std::list<Descriptor>::const_iterator ci,
@@ -98,7 +139,11 @@ private:
   bool setPlatformName(std::string v, rapidjson::Document &message,
                        bool force = true) const;
   bool setPlatform(std::string v, rapidjson::Document &message) const;
-  bool setRadarMeta(std::string v, rapidjson::Document &message) const;
+  bool setRadarMeta(std::string n, std::string v,
+                    rapidjson::Document &message) const;
+  bool setRadarMeta(std::string n, int v, rapidjson::Document &message) const;
+  bool setRadarMeta(std::string n, double v,
+                    rapidjson::Document &message) const;
   bool setLocation(double lat, double lon, double hei,
                    rapidjson::Document &) const;
   bool updateLocation(double loc, std::string loc_label,

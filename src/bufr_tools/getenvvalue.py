@@ -28,6 +28,13 @@ def getEnvValue(val_name: str, default_suffix: str = "") -> str:
     return val
 
 
+def geBufrRadarTableDir() -> str:
+    """
+    Get BUFR table directory from environment variable or from package.
+    """
+    return os.getenv("BUFR_TABLE_DIR", getPackageRootDir() + "/data/tables/opera/")
+
+
 def getBufrTableDir() -> str:
     """
     Get BUFR table directory from environment variable or default path.
@@ -46,3 +53,7 @@ def getOscarDumpPath() -> str:
 
 def getEsohSchema() -> str:
     return getPackageRootDir() + "/data/schemas/bufr_to_e_soh_message.json"
+
+
+def getRadarCFDir() -> str:
+    return getPackageRootDir() + "/data/radar/radar_cf.py"

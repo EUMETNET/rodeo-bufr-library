@@ -36,10 +36,10 @@ ESOHBufr::ESOHBufr() {
             \"Conventions\" : \"Default BUFR Conventions\", \
             \"summary\" : \"Default Summary\", \
             \"license\" : \"https://creativecommons.org/licenses/by/4.0/\", \
-            \"naming_authority\" : \"no.met\", \
+            \"naming_authority\" : \"eumetnet.eu\", \
             \"level\" : 0.0, \
             \"hamsl\" : 0, \
-            \"function\": \"point\", \
+            \"function\": \"scan\", \
             \"period\": \"PT0S\", \
             \"platform\" : \"\", \
             \"platform_name\" : \"\", \
@@ -48,7 +48,7 @@ ESOHBufr::ESOHBufr() {
                 \"standard_name\": \"\", \
                 \"unit\": \"\", \
                 \"size\": 0, \
-                \"value\": \"\"} \
+                \"value\": \"%\"} \
              }, \
         \"links\" : [ \
             { \
@@ -68,6 +68,21 @@ void ESOHBufr::setMsgTemplate(std::string s) {
   if (s.size()) {
     msg_template = s;
   }
+}
+
+std::string ESOHBufr::getNamingAuthority(int cn) const {
+  std::string ret;
+  if (!cn)
+    cn = centre;
+  for (auto na : naming_auth_map) {
+    for (auto c : na.second.centre_list) {
+      if (c == cn) {
+        ret = na.second.naming_auth;
+        return ret;
+      }
+    }
+  }
+  return ret;
 }
 
 void ESOHBufr::setRadarCFMap(std::map<std::string, std::string> &rcf) {
@@ -124,8 +139,14 @@ std::list<std::string> ESOHBufr::msg() const {
   // Radar default value unit
   if (data_category == 6) {
     properties["content"]["unit"] = "%";
-    if (properties.HasMember("radar_meta"))
-      setRadarMeta("'format': 'BUFR'", message);
+    properties.AddMember("format", "BUFR", message_allocator);
+
+    std::string na = getNamingAuthority();
+    if (na.size()) {
+      if (properties.HasMember("naming_authority")) {
+        properties["naming_authority"].SetString(na.c_str(), message_allocator);
+      }
+    }
   }
   // subsets
   int subsetnum = 0;
@@ -149,6 +170,8 @@ std::list<std::string> ESOHBufr::msg() const {
     std::string radar_cf;
 
     WSI wigos_id;
+
+    std::string radar_func("scan");
 
     rapidjson::Document subset_message;
     subset_message.CopyFrom(message, subset_message.GetAllocator());
@@ -185,7 +208,7 @@ std::list<std::string> ESOHBufr::msg() const {
         if (value_str == "MISSING" && (v != DescriptorId(30196, true)))
           break;
 
-        if (v.x() >= 10 && v.x() != 29 && (v.x() != 30 || v.y() < 100) &&
+        if (v.x() >= 10 && v.x() != 29 && (v.x() == 30 && v.y() > 100) &&
             !(v.x() == 22 && (v.y() == 55 || v.y() == 56 || v.y() == 67)) &&
             v.x() != 25 && v.x() != 31 && v.x() != 35 && !platform_check) {
           // Check datetime
@@ -223,16 +246,13 @@ std::list<std::string> ESOHBufr::msg() const {
                 hei = 0.0;
               setLocation(lat, lon, hei, subset_message);
               if (cor_lat.size() == 4 && cor_lon.size() == 4) {
-                std::string corner_coords =
-                    "'UL_lat': " + std::to_string(cor_lat[0]);
-                corner_coords += ", 'UL_lon': " + std::to_string(cor_lon[0]);
-                corner_coords += ", 'UR_lat': " + std::to_string(cor_lat[1]);
-                corner_coords += ", 'UR_lon': " + std::to_string(cor_lon[1]);
-                corner_coords += ", 'LR_lat': " + std::to_string(cor_lat[2]);
-                corner_coords += ", 'LR_lon': " + std::to_string(cor_lon[2]);
-                corner_coords += ", 'LL_lat': " + std::to_string(cor_lat[3]);
-                corner_coords += ", 'LL_lon': " + std::to_string(cor_lon[3]);
-                setRadarMeta(corner_coords, subset_message);
+                setRadarMeta("UL_lon", cor_lon[0], subset_message);
+                setRadarMeta("UR_lat", cor_lat[1], subset_message);
+                setRadarMeta("UR_lon", cor_lon[1], subset_message);
+                setRadarMeta("LR_lat", cor_lat[2], subset_message);
+                setRadarMeta("LR_lon", cor_lon[2], subset_message);
+                setRadarMeta("LL_lat", cor_lat[3], subset_message);
+                setRadarMeta("LL_lon", cor_lon[3], subset_message);
               }
             }
           }
@@ -299,6 +319,7 @@ std::list<std::string> ESOHBufr::msg() const {
                 std::string wid = wigos_id.getWigosLocalId();
                 std::size_t upos = wid.find("_");
                 if (wid.substr(0, 7) == "ORG_247") {
+                  wigos_id = shadow_wigos;
                   wid = "OPERA";
                   wigos_id.setWigosLocalId(wid);
                   setPlatformName(wid, subset_message, true);
@@ -668,7 +689,8 @@ std::list<std::string> ESOHBufr::msg() const {
             } else {
               // Pixel size
               if (v.y() == 33) {
-                setRadarMeta("'xscale': " + value_str, subset_message);
+                double xscale = getValue(v, 0.0);
+                setRadarMeta("xscale", xscale, subset_message);
               }
             }
           } // other observations
@@ -700,7 +722,8 @@ std::list<std::string> ESOHBufr::msg() const {
             } else {
               // Pixel size
               if (v.y() == 33) {
-                setRadarMeta("'yscale': " + value_str, subset_message);
+                double yscale = getValue(v, 0.0);
+                setRadarMeta("yscale", yscale, subset_message);
               }
             }
           } // other observations
@@ -850,14 +873,18 @@ std::list<std::string> ESOHBufr::msg() const {
             radar_cf = cf_names[*ci].first;
             break;
           }
-          case 7:
+          case 7: {
             // q_str = "RATE";
-            setRadarMeta("'zr_a': " + value_str, subset_message);
+            double zr_a = getValue(v, 0.0);
+            setRadarMeta("zr_a", zr_a, subset_message);
             break;
-          case 8:
+          }
+          case 8: {
             // q_str = "RATE";
-            setRadarMeta("'zr_b': " + value_str, subset_message);
+            double zr_b = getValue(v, 0.0);
+            setRadarMeta("zr_b", zr_b, subset_message);
             break;
+          }
           default:
             break;
           }
@@ -873,7 +900,7 @@ std::list<std::string> ESOHBufr::msg() const {
         case 29: // Map data
         {
           if (v.y() == 205) { // proj init string
-            setRadarMeta("'projdef': '" + NorBufrIO::strTrim(value_str) + "'",
+            setRadarMeta("projdef", NorBufrIO::strTrim(value_str),
                          subset_message);
           }
           break;
@@ -884,11 +911,13 @@ std::list<std::string> ESOHBufr::msg() const {
           // Type of product
           switch (v.y()) {
           case 21: {
-            setRadarMeta("'ysize': " + value_str, subset_message);
+            int ysize = getValue(v, 0);
+            setRadarMeta("ysize", ysize, subset_message);
             break;
           }
           case 22: {
-            setRadarMeta("'xsize': " + value_str, subset_message);
+            int xsize = getValue(v, 0);
+            setRadarMeta("xsize", xsize, subset_message);
             break;
           }
           case 31: {
@@ -896,13 +925,14 @@ std::list<std::string> ESOHBufr::msg() const {
             image_type = getValue(v, image_type);
             switch (image_type) {
             case 0:
-              setRadarMeta("'product': 'PPI'", subset_message);
+              setRadarMeta("product", "PPI", subset_message);
               break;
             case 1:
-              setRadarMeta("'product': 'COMP'", subset_message);
+              setRadarMeta("product", "COMP", subset_message);
+              radar_func = "comp";
               break;
             case 2:
-              setRadarMeta("'product': 'CAPPI'", subset_message);
+              setRadarMeta("product", "CAPPI", subset_message);
               break;
             }
             break;
@@ -928,15 +958,20 @@ std::list<std::string> ESOHBufr::msg() const {
             case 255:
               q_str = "QIND";
               break;
-              // case 90: 'SCAN'
-              // case  1: 'COMP'
+            case 90: //'SCAN'
+              radar_func = "scan";
+              break;
+            case 1: //'COMP'
+              radar_func = "comp";
+              break;
             }
             if (q_str.size()) {
               if (std::find(quantity_list.begin(), quantity_list.end(),
                             q_str) == quantity_list.end()) {
                 quantity_list.push_back(q_str);
               }
-              radar_cf = radar_cf_map.at(q_str);
+              // radar_cf = radar_cf_map.at(q_str);
+              radar_cf = q_str;
             }
             break;
           }
@@ -1104,7 +1139,8 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           }
-          radar_cf = radar_cf_map.at(q_str);
+          // radar_cf = radar_cf_map.at(q_str);
+          radar_cf = q_str;
           if (std::find(quantity_list.begin(), quantity_list.end(), q_str) ==
               quantity_list.end()) {
             quantity_list.push_back(q_str);
@@ -1146,7 +1182,7 @@ std::list<std::string> ESOHBufr::msg() const {
             }
             level_list.push_back(sensor_level);
             ret.push_back(addMessage(ci, subset_message, sensor_level_active,
-                                     sensor_level, "point", &radar_mdatetime,
+                                     sensor_level, radar_func, &radar_mdatetime,
                                      period_str, radar_cf, "0"));
             break;
           }
@@ -1221,20 +1257,20 @@ std::list<std::string> ESOHBufr::msg() const {
       if (rad_key == "OPERA")
         obj_key += "COMP/";
       obj_key += rad_key + "@" + date_file_key + data_key;
-      if (mm["properties"].HasMember("content")) {
-        if (mm["properties"]["content"].HasMember("data_link") &&
-            data_category == 6 && local_data_subcategory == 20) {
-          rapidjson::Value &dl = mm["properties"]["content"]["data_link"];
-          dl.SetString(obj_key.c_str(), mm_allocator);
-        } else {
-          rapidjson::Value dl;
-          dl.SetString(obj_key.c_str(), mm_allocator);
-          if (data_category == 6 && local_data_subcategory == 20) {
-            mm["properties"]["content"].AddMember("data_link", dl,
-                                                  mm_allocator);
-          }
-        }
-      }
+
+      rapidjson::Value link_item(rapidjson::kObjectType);
+      link_item.AddMember("rel", "items", mm_allocator);
+      rapidjson::Value href;
+      href.SetString(obj_key.c_str(), mm_allocator);
+      link_item.AddMember("href", href, mm_allocator);
+      rapidjson::Value len;
+      len.SetInt64(obj_key.size());
+      link_item.AddMember("length", len, mm_allocator);
+      link_item.AddMember("title", "Direct link to the data", mm_allocator);
+      link_item.AddMember("type", "application/x-bufr", mm_allocator);
+
+      rapidjson::Value &links = mm["links"];
+      links.PushBack(link_item, mm_allocator);
     }
     rapidjson::StringBuffer sb;
     rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
@@ -1353,35 +1389,83 @@ bool ESOHBufr::setPlatform(std::string value,
   return true;
 }
 
-bool ESOHBufr::setRadarMeta(std::string value,
+bool ESOHBufr::setRadarMeta(std::string name, std::string value,
                             rapidjson::Document &message) const {
 
-  rapidjson::Value radar_meta;
+  rapidjson::Value radar_meta_name;
+  rapidjson::Value radar_meta_value;
   rapidjson::Document::AllocatorType &message_allocator =
       message.GetAllocator();
   rapidjson::Value &message_properties = message["properties"];
-  std::cerr << "MEGVAN ?\n";
   if (message_properties.HasMember("radar_meta")) {
-    std::string curr_meta = message_properties["radar_meta"].GetString();
-    std::string set_meta;
-    if (curr_meta.length()) {
-      set_meta = std::string(curr_meta, 0, curr_meta.length() - 1);
-      set_meta += ", " + value + "}";
+    rapidjson::Value &radar_meta = message_properties["radar_meta"];
+    radar_meta_name.SetString(name.c_str(), message_allocator);
+    radar_meta_value.SetString(value.c_str(), message_allocator);
+    if (radar_meta.HasMember(radar_meta_name)) {
+      radar_meta[radar_meta_name] = radar_meta_value;
     } else {
-      set_meta = "{ " + value + "}";
-    }
-    radar_meta.SetString(set_meta.c_str(), message_allocator);
-    if (message_properties.HasMember("radar_meta")) {
-      message_properties["radar_meta"] = radar_meta;
-    } else {
-      message_properties.AddMember("radar_meta", radar_meta, message_allocator);
+      radar_meta.AddMember(radar_meta_name, radar_meta_value,
+                           message_allocator);
     }
     return true;
   } else {
     lb.addLogEntry(
         LogEntry("radar_meta is missing", LogLevel::INFO, __func__, bufr_id));
   }
-  std::cerr << "MEGVAN ? NINCS\n";
+
+  return false;
+}
+
+bool ESOHBufr::setRadarMeta(std::string name, int value,
+                            rapidjson::Document &message) const {
+
+  rapidjson::Value radar_meta_name;
+  rapidjson::Value radar_meta_value;
+  rapidjson::Document::AllocatorType &message_allocator =
+      message.GetAllocator();
+  rapidjson::Value &message_properties = message["properties"];
+  if (message_properties.HasMember("radar_meta")) {
+    rapidjson::Value &radar_meta = message_properties["radar_meta"];
+    radar_meta_name.SetString(name.c_str(), message_allocator);
+    radar_meta_value.SetInt(value);
+    if (radar_meta.HasMember(radar_meta_name)) {
+      radar_meta[radar_meta_name] = radar_meta_value;
+    } else {
+      radar_meta.AddMember(radar_meta_name, radar_meta_value,
+                           message_allocator);
+    }
+    return true;
+  } else {
+    lb.addLogEntry(
+        LogEntry("radar_meta is missing", LogLevel::INFO, __func__, bufr_id));
+  }
+
+  return false;
+}
+
+bool ESOHBufr::setRadarMeta(std::string name, double value,
+                            rapidjson::Document &message) const {
+
+  rapidjson::Value radar_meta_name;
+  rapidjson::Value radar_meta_value;
+  rapidjson::Document::AllocatorType &message_allocator =
+      message.GetAllocator();
+  rapidjson::Value &message_properties = message["properties"];
+  if (message_properties.HasMember("radar_meta")) {
+    rapidjson::Value &radar_meta = message_properties["radar_meta"];
+    radar_meta_name.SetString(name.c_str(), message_allocator);
+    radar_meta_value.SetDouble(value);
+    if (radar_meta.HasMember(radar_meta_name)) {
+      radar_meta[radar_meta_name] = radar_meta_value;
+    } else {
+      radar_meta.AddMember(radar_meta_name, radar_meta_value,
+                           message_allocator);
+    }
+    return true;
+  } else {
+    lb.addLogEntry(
+        LogEntry("radar_meta is missing", LogLevel::INFO, __func__, bufr_id));
+  }
 
   return false;
 }
@@ -1432,7 +1516,7 @@ bool ESOHBufr::setLocation(double lat, double lon, double hei,
     rapidjson::Value location(rapidjson::kObjectType);
     location.AddMember("lat", lat, message_allocator);
     location.AddMember("lon", lon, message_allocator);
-    location.AddMember("hei", hei, message_allocator);
+    // location.AddMember("hei", hei, message_allocator);
     geometry.AddMember("coordinates", location, message_allocator);
   } else {
     rapidjson::Value location(rapidjson::kObjectType);
@@ -1490,8 +1574,8 @@ bool ESOHBufr::setDateTime(struct tm *meas_datetime,
   if (period_str.size()) {
     properties["period"].SetString(period_str.c_str(), message_allocator);
 
-    uint64_t period_int = periodStrToSec(period_str);
-    // properties["period_int"].SetUint64(period_int);
+    // uint64_t period_int = periodStrToSec(period_str);
+    //  properties["period_int"].SetUint64(period_int);
   }
 
   return true;
@@ -1525,8 +1609,8 @@ bool ESOHBufr::setStartDateTime(struct tm *start_meas_datetime,
   if (period_str.size()) {
     properties["period"].SetString(period_str.c_str(), message_allocator);
 
-    uint64_t period_int = periodStrToSec(period_str);
-    // properties["period_int"].SetUint64(period_int);
+    // uint64_t period_int = periodStrToSec(period_str);
+    //  properties["period_int"].SetUint64(period_int);
   }
 
   return true;

@@ -8,15 +8,16 @@
         "metadata_id": "metatata_id",
         "datetime": "null",
         "Conventions": "CF-1.8",
-        "summary": "Observation data from GTS network.",
+        "summary": "European weather radar data products.",
         "license": "https://creativecommons.org/licenses/by/4.0/",
-        "naming_authority": "no.met",
+        "naming_authority": "eu.eumetnet",
         "level": "0.0",
         "hamsl": 0,
         "function": "point",
         "period": "PT0S",
         "platform": "",
         "platform_name": "",
+        "radar_meta": {},
         "content": {
             "encoding": "utf-8",
             "standard_name": "",
@@ -27,16 +28,22 @@
     },
     "links": [
         {
-            "href": "https:/eumetnet.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "EUMETNET"
+        "rel": "related",
+        "href": "https://www.eumetnet.eu/observations/observations-data-sharing-2/",
+        "type": "text/html",
+        "title": "Documentation related to EUMETNET data sharing"
         },
         {
-            "href": "https://observations.meteogate.eu/",
-            "rel": "canonical",
-            "type": "text/html",
-            "title": "E-SOH"
+        "rel": "related",
+        "href": "https://www.eumetnet.eu/about-us-2/members-partners/",
+        "type": "text/html",
+        "title": "List of EUMETNET Members"
+        },
+        {
+        "href": "https://creativecommons.org/licenses/by/4.0/",
+        "rel": "license",
+        "title": "Creative Commons BY 4.0 licence",
+        "type": "text/html"
         }
     ]
 }

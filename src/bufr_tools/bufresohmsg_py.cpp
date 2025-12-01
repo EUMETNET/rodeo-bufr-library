@@ -92,8 +92,8 @@ bool norbufr_init_bufrtables(std::string tables_dir) {
           if (entry.path().filename().string().substr(0, 9) == "localtabb" ||
               entry.path().filename().string().substr(0, 8) == "bufrtabb") {
             TableB tb_e(entry.path().string());
-            struct vc_struct vc =
-                get_versioncentre_from_table_filename(entry.path().string());
+            struct vc_struct vc = get_versioncentre_from_table_filename(
+                entry.path().filename().string());
             if (entry.path().filename().string().substr(0, 9) != "localtabb") {
               tb[vc.version] = tb_e;
             } else {
@@ -139,8 +139,8 @@ bool norbufr_init_bufrtables(std::string tables_dir) {
         if (entry.path().filename().string().substr(0, 9) == "localtabd" ||
             entry.path().filename().string().substr(0, 8) == "bufrtabd") {
           TableD td_e(entry.path().string());
-          struct vc_struct vc =
-              get_versioncentre_from_table_filename(entry.path().string());
+          struct vc_struct vc = get_versioncentre_from_table_filename(
+              entry.path().filename().string());
           if (entry.path().filename().string().substr(0, 9) != "localtabd") {
             td[vc.version] = td_e;
           } else {
