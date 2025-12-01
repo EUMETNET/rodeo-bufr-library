@@ -28,22 +28,22 @@
     },
     "links": [
         {
-        "rel": "related",
-        "href": "https://www.eumetnet.eu/observations/observations-data-sharing-2/",
-        "type": "text/html",
-        "title": "Documentation related to EUMETNET data sharing"
+            "rel": "related",
+            "href": "https://www.eumetnet.eu/observations/observations-data-sharing-2/",
+            "type": "text/html",
+            "title": "Documentation related to EUMETNET data sharing"
         },
         {
-        "rel": "related",
-        "href": "https://www.eumetnet.eu/about-us-2/members-partners/",
-        "type": "text/html",
-        "title": "List of EUMETNET Members"
+            "rel": "related",
+            "href": "https://www.eumetnet.eu/about-us-2/members-partners/",
+            "type": "text/html",
+            "title": "List of EUMETNET Members"
         },
         {
-        "href": "https://creativecommons.org/licenses/by/4.0/",
-        "rel": "license",
-        "title": "Creative Commons BY 4.0 licence",
-        "type": "text/html"
+            "href": "https://creativecommons.org/licenses/by/4.0/",
+            "rel": "license",
+            "title": "Creative Commons BY 4.0 licence",
+            "type": "text/html"
         }
     ]
 }

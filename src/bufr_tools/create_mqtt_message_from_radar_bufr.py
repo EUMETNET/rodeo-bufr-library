@@ -4,7 +4,7 @@ import os
 import sys
 
 from bufr_tools.getenvvalue import (
-    getBufrTableDir,
+    getBufrRadarTableDir,
     getOscarDumpPath,
     getEsohSchema,
     getPackageRootDir,
