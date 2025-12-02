@@ -18,6 +18,7 @@ from bufr_tools.bufresohmsg_py import init_bufr_schema_py  # noqa: E402
 from bufr_tools.bufresohmsg_py import init_bufrtables_py  # noqa: E402
 from bufr_tools.bufresohmsg_py import init_oscar_py  # noqa: E402
 from bufr_tools.bufresohmsg_py import init_radar_cf_py  # noqa: E402
+from bufr_tools.bufresohmsg_py import bufr_sdwigos_py  # noqa: E402
 from bufr_tools.radar_cf import radar_cf  # noqa: E402
 
 ESOH_SCHEMA = getEsohSchema()
@@ -31,6 +32,7 @@ init_bufrtables_py(BUFR_TABLE_DIR)
 init_bufr_schema_py(ESOH_SCHEMA)
 init_oscar_py(OSCAR_DUMP)
 init_radar_cf_py(radar_cf)
+bufr_sdwigos_py("0-20010-0-0")
 
 
 def build_all_json_payloads_from_radar_bufr(bufr_content: object) -> list[dict]:
