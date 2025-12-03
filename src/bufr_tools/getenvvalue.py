@@ -56,4 +56,7 @@ def getBufrRadarTableDir() -> str:
     """
     Get BUFR table directory from environment variable or from package.
     """
+    radar_table_dir = os.getenv("BUFR_TABLE_DIR")
+    print(f"TABLE ENV >>>{radar_table_dir}<<<")
+    print("OPERA DIR: {0}".format(getPackageRootDir() + "/data/tables/opera/"))
     return os.getenv("BUFR_TABLE_DIR", getPackageRootDir() + "/data/tables/opera/")
