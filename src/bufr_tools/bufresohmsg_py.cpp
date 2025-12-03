@@ -77,12 +77,12 @@ bool norbufr_init_bufrtables(std::string tables_dir) {
       if (entry.path().filename() == "BUFRCREX_TableB_en.txt") {
         TableB tb_e(entry.path().string());
         tb[0] = tb_e;
-        std::cerr << "WMO tableB: " << entry.path().string() << "\n";
+        // std::cerr << "WMO tableB: " << entry.path().string() << "\n";
       } else {
         // WMO table C file
         if (entry.path().filename() == "BUFRCREX_CodeFlag_en.txt") {
           TableC tc_e(entry.path().string());
-          std::cerr << "Load WMO C table" << entry.path().string() << "\n";
+          // std::cerr << "Load WMO C table" << entry.path().string() << "\n";
           if (tc.size()) {
             tc[0] += tc_e;
           } else
@@ -92,8 +92,8 @@ bool norbufr_init_bufrtables(std::string tables_dir) {
           if (entry.path().filename().string().substr(0, 9) == "localtabb" ||
               entry.path().filename().string().substr(0, 8) == "bufrtabb") {
             TableB tb_e(entry.path().string());
-            struct vc_struct vc =
-                get_versioncentre_from_table_filename(entry.path().string());
+            struct vc_struct vc = get_versioncentre_from_table_filename(
+                entry.path().filename().string());
             if (entry.path().filename().string().substr(0, 9) != "localtabb") {
               tb[vc.version] = tb_e;
             } else {
@@ -133,14 +133,14 @@ bool norbufr_init_bufrtables(std::string tables_dir) {
       if (entry.path().filename() == "BUFR_TableD_en.txt") {
         TableD td_e(entry.path().string());
         td[0] = td_e;
-        std::cerr << "WMO tableD: " << entry.path().string() << "\n";
+        // std::cerr << "WMO tableD: " << entry.path().string() << "\n";
       } else {
         // OPERA table D files
         if (entry.path().filename().string().substr(0, 9) == "localtabd" ||
             entry.path().filename().string().substr(0, 8) == "bufrtabd") {
           TableD td_e(entry.path().string());
-          struct vc_struct vc =
-              get_versioncentre_from_table_filename(entry.path().string());
+          struct vc_struct vc = get_versioncentre_from_table_filename(
+              entry.path().filename().string());
           if (entry.path().filename().string().substr(0, 9) != "localtabd") {
             td[vc.version] = td_e;
           } else {
