@@ -58,5 +58,7 @@ def getBufrRadarTableDir() -> str:
     """
     radar_table_dir = os.getenv("BUFR_TABLE_DIR")
     print(f"TABLE ENV >>>{radar_table_dir}<<<")
-    print("OPERA DIR: {0}".format(getPackageRootDir() + "/data/tables/opera/"))
-    return os.getenv("BUFR_TABLE_DIR", getPackageRootDir() + "/data/tables/opera/")
+    if radar_table_dir is None or len(radar_table_dir) < 2:
+        radar_table_dir = getPackageRootDir() + "/data/tables/opera/"
+    print(f"TABLE DIR >>>{radar_table_dir}<<<")
+    return radar_table_dir
