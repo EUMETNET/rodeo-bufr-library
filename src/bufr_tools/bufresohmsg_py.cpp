@@ -166,12 +166,21 @@ bool norbufr_update_bufrtables(std::string tables_dir) {
 }
 
 bool norbufr_init_oscar(std::string oscardb_dir) {
+  if (oscar.size())
+    return false;
+  bool ret = oscar.addStation(oscardb_dir.c_str());
+  return ret;
+}
+
+bool norbufr_update_oscar(std::string oscardb_dir) {
   bool ret = oscar.addStation(oscardb_dir.c_str());
   return ret;
 }
 
 bool norbufr_init_schema_template(std::string schema_path) {
 
+  if (bufr_input_schema.size())
+    return false;
   if (schema_path.size()) {
     std::string def_msg;
     std::ifstream msgTemplate(schema_path.c_str(), std::ios_base::in);
@@ -186,6 +195,11 @@ bool norbufr_init_schema_template(std::string schema_path) {
   }
 
   return true;
+}
+
+bool norbufr_update_schema_template(std::string schema_path) {
+  bufr_input_schema = "";
+  return norbufr_init_schema_template(schema_path);
 }
 
 std::list<std::string> norbufr_bufresohmsg(std::string fname) {
@@ -396,6 +410,13 @@ std::string norbufr_bufrprint(std::string fname) {
 }
 
 bool norbufr_init_radar_cf(std::map<std::string, std::string> cf_py) {
+  if (radar_cf_st.size())
+    return false;
+  radar_cf_st = cf_py;
+  return true;
+}
+
+bool norbufr_update_radar_cf(std::map<std::string, std::string> cf_py) {
   radar_cf_st = cf_py;
   return true;
 }
@@ -422,10 +443,16 @@ PYBIND11_MODULE(bufresohmsg_py, m) {
   m.def("bufrlog_clear_py", &norbufr_log_clear, "Clear log messages list");
 
   m.def("init_oscar_py", &norbufr_init_oscar, "Init OSCAR db");
+  m.def("update_oscar_py", &norbufr_update_oscar,
+        "Update OSCAR db, even if exists");
   m.def("init_bufr_schema_py", &norbufr_init_schema_template,
         "Init BUFR schema");
+  m.def("init_bufr_schema_py", &norbufr_update_schema_template,
+        "Update BUFR schema, even if exists");
   m.def("bufr_sdwigos_py", &norbufr_set_default_wigos,
         "Set default shadow WIGOS Id");
   m.def("init_radar_cf_py", &norbufr_init_radar_cf,
         "Get Radar CF names from api/radar_cf.py");
+  m.def("update_radar_cf_py", &norbufr_update_radar_cf,
+        "Update Radar CF names from api/radar_cf.py, even if exists");
 }
