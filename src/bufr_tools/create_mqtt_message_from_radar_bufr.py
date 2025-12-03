@@ -49,6 +49,9 @@ def build_all_json_payloads_from_radar_bufr(bufr_content: object) -> list[dict]:
     ---
     """
     ret_str = []
+    print(f"BUFR_TABLE_DIR: {BUFR_TABLE_DIR}")
+    print(f"ESOH_SCHEMA {ESOH_SCHEMA}")
+    print(f"OSCAR_DUMP: {OSCAR_DUMP}")
 
     msg_str_list = bufresohmsgmem_py(bufr_content, len(bufr_content))
 

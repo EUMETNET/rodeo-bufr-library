@@ -44,6 +44,7 @@ vc_struct get_versioncentre_from_table_filename(std::string filename) {
 }
 
 bool norbufr_init_bufrtables(std::string tables_dir) {
+  std::cerr << "INIT BUFR TABLES: " << tables_dir << "\n";
 
   if (tb.size() || tc.size() || td.size())
     return false;
@@ -159,6 +160,7 @@ bool norbufr_init_bufrtables(std::string tables_dir) {
 }
 
 bool norbufr_update_bufrtables(std::string tables_dir) {
+  std::cerr << "UPDATE BUFR TABLES: " << tables_dir << "\n";
   tb.clear();
   tc.clear();
   td.clear();
@@ -172,6 +174,7 @@ bool norbufr_init_oscar(std::string oscardb_dir) {
 
 bool norbufr_init_schema_template(std::string schema_path) {
 
+  std::cerr << "INIT SCHEMA: " << schema_path << "\n";
   if (schema_path.size()) {
     std::string def_msg;
     std::ifstream msgTemplate(schema_path.c_str(), std::ios_base::in);
