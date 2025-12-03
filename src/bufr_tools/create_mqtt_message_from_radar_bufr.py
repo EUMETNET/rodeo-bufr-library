@@ -11,7 +11,6 @@ from bufr_tools.getenvvalue import (
     getRadarCFDir,
 )
 
-
 from bufr_tools.bufresohmsg_py import bufresohmsgmem_py  # noqa: E402
 from bufr_tools.bufresohmsg_py import bufrlog_clear_py  # noqa: E402
 from bufr_tools.bufresohmsg_py import init_bufr_schema_py  # noqa: E402
@@ -26,7 +25,6 @@ BUFR_TABLE_DIR = getBufrRadarTableDir()
 OSCAR_DUMP = getOscarDumpPath()
 RODEO_BUFR_DIR = getPackageRootDir()
 RADAR_CF_DIR = getRadarCFDir()
-
 
 init_bufrtables_py(BUFR_TABLE_DIR)
 init_bufr_schema_py(ESOH_SCHEMA)
@@ -49,9 +47,6 @@ def build_all_json_payloads_from_radar_bufr(bufr_content: object) -> list[dict]:
     ---
     """
     ret_str = []
-    print(f"BUFR_TABLE_DIR: {BUFR_TABLE_DIR}")
-    print(f"ESOH_SCHEMA {ESOH_SCHEMA}")
-    print(f"OSCAR_DUMP: {OSCAR_DUMP}")
 
     msg_str_list = bufresohmsgmem_py(bufr_content, len(bufr_content))
 

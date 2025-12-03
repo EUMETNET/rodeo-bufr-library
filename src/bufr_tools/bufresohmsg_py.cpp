@@ -44,7 +44,6 @@ vc_struct get_versioncentre_from_table_filename(std::string filename) {
 }
 
 bool norbufr_init_bufrtables(std::string tables_dir) {
-  std::cerr << "INIT BUFR TABLES: " << tables_dir << "\n";
 
   if (tb.size() || tc.size() || td.size())
     return false;
@@ -78,12 +77,12 @@ bool norbufr_init_bufrtables(std::string tables_dir) {
       if (entry.path().filename() == "BUFRCREX_TableB_en.txt") {
         TableB tb_e(entry.path().string());
         tb[0] = tb_e;
-        std::cerr << "WMO tableB: " << entry.path().string() << "\n";
+        // std::cerr << "WMO tableB: " << entry.path().string() << "\n";
       } else {
         // WMO table C file
         if (entry.path().filename() == "BUFRCREX_CodeFlag_en.txt") {
           TableC tc_e(entry.path().string());
-          std::cerr << "Load WMO C table" << entry.path().string() << "\n";
+          // std::cerr << "Load WMO C table" << entry.path().string() << "\n";
           if (tc.size()) {
             tc[0] += tc_e;
           } else
@@ -134,7 +133,7 @@ bool norbufr_init_bufrtables(std::string tables_dir) {
       if (entry.path().filename() == "BUFR_TableD_en.txt") {
         TableD td_e(entry.path().string());
         td[0] = td_e;
-        std::cerr << "WMO tableD: " << entry.path().string() << "\n";
+        // std::cerr << "WMO tableD: " << entry.path().string() << "\n";
       } else {
         // OPERA table D files
         if (entry.path().filename().string().substr(0, 9) == "localtabd" ||
@@ -160,7 +159,6 @@ bool norbufr_init_bufrtables(std::string tables_dir) {
 }
 
 bool norbufr_update_bufrtables(std::string tables_dir) {
-  std::cerr << "UPDATE BUFR TABLES: " << tables_dir << "\n";
   tb.clear();
   tc.clear();
   td.clear();
@@ -174,7 +172,6 @@ bool norbufr_init_oscar(std::string oscardb_dir) {
 
 bool norbufr_init_schema_template(std::string schema_path) {
 
-  std::cerr << "INIT SCHEMA: " << schema_path << "\n";
   if (schema_path.size()) {
     std::string def_msg;
     std::ifstream msgTemplate(schema_path.c_str(), std::ios_base::in);
