@@ -26,11 +26,13 @@ OSCAR_DUMP = getOscarDumpPath()
 RODEO_BUFR_DIR = getPackageRootDir()
 RADAR_CF_DIR = getRadarCFDir()
 
-init_bufrtables_py(BUFR_TABLE_DIR)
-init_bufr_schema_py(ESOH_SCHEMA)
-init_oscar_py(OSCAR_DUMP)
-init_radar_cf_py(radar_cf)
+itabl = init_bufrtables_py(BUFR_TABLE_DIR)
+ischema = init_bufr_schema_py(ESOH_SCHEMA)
+ioscar = init_oscar_py(OSCAR_DUMP)
+iradar_cf = init_radar_cf_py(radar_cf)
 bufr_sdwigos_py("0-20010-0-0")
+
+print(f"INIT table: {itabl}, schema: {ischema}, oscar: {ioscar}, radar_cf: {iradar_cf}")
 
 
 def build_all_json_payloads_from_radar_bufr(bufr_content: object) -> list[dict]:
