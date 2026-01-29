@@ -10,7 +10,7 @@
         "Conventions": "CF-1.8",
         "summary": "Observation data from GTS network.",
         "license": "https://creativecommons.org/licenses/by/4.0/",
-        "naming_authority": "no.met",
+        "naming_authority": "eu.eumetnet",
         "level": "0.0",
         "hamsl": 0,
         "function": "point",
