@@ -36,8 +36,7 @@ def getBufrTableDir() -> str:
     if OPERA_RADAR_BUFR == "TRUE" or OPERA_RADAR_BUFR == "YES":
         return getBufrRadarTableDir()
     else:
-        return os.getenv("BUFR_TABLE_DIR",
-                         "/usr/share/eccodes/definitions/bufr/tables/0/wmo/")
+        return os.getenv("BUFR_TABLE_DIR", "/usr/share/eccodes/definitions/bufr/tables/0/wmo/")
 
 
 def getPackageRootDir() -> str:
