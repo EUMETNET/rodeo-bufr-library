@@ -375,6 +375,9 @@ std::string norbufr_bufrprint(std::string fname) {
 
   std::stringstream ret;
 
+  TableB ltb;
+  TableD ltd;
+
   std::ifstream bufrFile(fname.c_str(),
                          std::ios_base::in | std::ios_base::binary);
 
@@ -384,21 +387,59 @@ std::string norbufr_bufrprint(std::string fname) {
 
     if (bufrFile >> *bufr) {
 
-      bufr->setTableB(
-          &tb.at(bufr->getVersionMaster() &&
-                         tb.find(bufr->getVersionMaster()) != tb.end()
-                     ? bufr->getVersionMaster()
-                     : tb.rbegin()->first));
+      int tb_index = -1;
+      if (tb.size()) {
+        tb_index = tb.rbegin()->first;
+        if (tb.find(bufr->getVersionMaster()) != tb.end())
+          tb_index = bufr->getVersionMaster();
+        bufr->setTableB(&tb.at(tb_index));
+
+        int tbl_index_loc = -1;
+        int tbl_index_cen = -1;
+        if (tbl.size()) {
+          tbl_index_loc = bufr->getVersionLocal();
+          tbl_index_cen = bufr->getCentre();
+          auto tbl_it = tbl.find(tbl_index_loc);
+          if (tbl_it != tbl.end()) {
+            if (tbl[tbl_index_loc].find(tbl_index_cen) !=
+                tbl[tbl_index_loc].end()) {
+              ltb = tb[tb_index];
+              ltb += tbl[tbl_index_loc][tbl_index_cen];
+              bufr->setTableB(&ltb);
+            }
+          }
+        }
+
+        int td_index = -1;
+        if (td.size()) {
+          td_index = td.rbegin()->first;
+          if (td.find(bufr->getVersionMaster()) != td.end())
+            td_index = bufr->getVersionMaster();
+          bufr->setTableD(&td.at(td_index));
+
+          int tdl_index_loc = -1;
+          int tdl_index_cen = -1;
+          if (tdl.size()) {
+            tdl_index_loc = bufr->getVersionLocal();
+            tdl_index_cen = bufr->getCentre();
+            auto tdl_it = tdl.find(tdl_index_loc);
+            if (tdl_it != tdl.end()) {
+              if (tdl[tdl_index_loc].find(tdl_index_cen) !=
+                  tdl[tdl_index_loc].end()) {
+                ltd = td[td_index];
+                ltd += tdl[tdl_index_loc][tdl_index_cen];
+                bufr->setTableD(&ltd);
+              }
+            }
+          }
+        }
+      }
+
       bufr->setTableC(
           &tc.at(bufr->getVersionMaster() &&
                          tc.find(bufr->getVersionMaster()) != tc.end()
                      ? bufr->getVersionMaster()
                      : tc.rbegin()->first));
-      bufr->setTableD(
-          &td.at(bufr->getVersionMaster() &&
-                         td.find(bufr->getVersionMaster()) != td.end()
-                     ? bufr->getVersionMaster()
-                     : td.rbegin()->first));
 
       bufr->extractDescriptors();
 
