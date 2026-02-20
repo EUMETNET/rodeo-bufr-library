@@ -53,7 +53,10 @@ msg = bufr2txt.bufr2text(bufr_file_name)
 print(msg)
 
 ```
-
+Note: For OPERA RADAR dump
+```shell
+export OPERA_RADAR_BUFR=YES
+```
 ### Create E-SOH message(s)
 
 Print E-SOH message
