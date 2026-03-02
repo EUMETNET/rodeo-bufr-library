@@ -17,7 +17,7 @@ exclude_files_from_build = [
 common_extra_compile_args = []
 linux_extra_compile_args = ["--std=c++17"]
 windows_extra_compile_args = ["-IC:\\temp\\rapidjson\\rapidjson-1.1.0\\include", "/std:c++17"]
-macos__extra_compile_args = [f"-I{os.getenv("GITHUB_WORKSPACE")}/include", "--std=c++17"]
+macos__extra_compile_args = [f"-I{os.getenv('GITHUB_WORKSPACE')}/include", "--std=c++17"]
 if sys.platform == "win32":
     extra_compile_args_for_extension = common_extra_compile_args + windows_extra_compile_args
 elif sys.platfrom == "darwin":
