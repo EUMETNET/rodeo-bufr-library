@@ -70,3 +70,10 @@ before-all = [
   "tar xvf /tmp/rapidjson.tar.gz -C /usr/  --strip-components=1  rapidjson-1.1.0/include",
   "rm -f /tmp/rapidjson.tar.gz"
 ]
+
+[tool.cibuildwheel.macos]
+
+before-all = [
+    "brew install rapidjson"
+]
+
