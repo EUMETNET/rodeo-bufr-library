@@ -1311,7 +1311,7 @@ bool ESOHBufr::addContent(const Descriptor &v, std::string cf_name,
     mvalue.SetString(value_str.c_str(), message_allocator);
   }
   content["value"] = mvalue;
-  content["size"] = value_str.size();
+  content["size"].SetString(std::to_string(value_str.size()).c_str(), message_allocator);
   content["standard_name"].SetString(cf_name.c_str(), message_allocator);
   if (meta) {
     if (meta->unit() == "CODE TABLE") {
