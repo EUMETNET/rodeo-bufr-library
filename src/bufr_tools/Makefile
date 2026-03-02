@@ -16,7 +16,7 @@ endif
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
 	CXXFLAGS := -c -Wall -Wextra -O2 -std=c++17 -fPIC
-else ifeq ($(uname -m), arm64)
+else ifeq ($(UNAME_S),Darwin)
 	CXXFLAGS := -c -Wall -Wextra -O2 -std=c++17 -fPIC -I/tmp/rapidjson/rapidjson-1.1.0/include
 else
 	CXXFLAGS := /c /W3 /O2 /std:c++17 -IC:\temp\rapidjson\rapidjson-1.1.0\include
