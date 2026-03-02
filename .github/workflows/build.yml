@@ -24,7 +24,9 @@ jobs:
             archs: AMD64
             platform: windows
             bef_all_win: "powershell -Command \"Invoke-WebRequest -Uri 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -OutFile 'C:\\temp\\rapidjson.zip'; Expand-Archive -Path 'C:\\temp\\rapidjson.zip' -DestinationPath 'C:\\temp\\rapidjson\\'"
-          - os: macos-11
+          - os: macos-26
+            archs: arm64
+          - os: macos-15
             archs: arm64
 
     steps:
