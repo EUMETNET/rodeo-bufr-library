@@ -3,6 +3,7 @@ from pybind11.setup_helpers import Pybind11Extension
 from setuptools import setup
 from glob import glob
 import sys
+import os
 
 # __version__ = "0.0.1"
 

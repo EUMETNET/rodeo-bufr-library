@@ -215,7 +215,7 @@ bool TableB::readOPERA(std::string filename) {
   clear();
   std::ifstream is(filename.c_str());
   if (!is.good()) {
-    std::cerr << "ERROR: Read WMO TableB problem: " << filename << std::endl;
+    std::cerr << "ERROR: Read OPERA TableB problem: " << filename << std::endl;
     return false;
   }
   const int linesize = 4096;

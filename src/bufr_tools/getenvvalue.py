@@ -46,3 +46,17 @@ def getOscarDumpPath() -> str:
 
 def getEsohSchema() -> str:
     return getPackageRootDir() + "/data/schemas/bufr_to_e_soh_message.json"
+
+
+def getRadarCFDir() -> str:
+    return getPackageRootDir() + "/data/radar/radar_cf.py"
+
+
+def getBufrRadarTableDir() -> str:
+    """
+    Get BUFR table directory from environment variable or from package.
+    """
+    radar_table_dir = os.getenv("BUFR_TABLE_DIR")
+    if radar_table_dir is None or len(radar_table_dir) < 2:
+        radar_table_dir = getPackageRootDir() + "/data/tables/opera/"
+    return radar_table_dir

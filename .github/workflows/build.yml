@@ -41,6 +41,7 @@ jobs:
           CIBW_ARCHS: ${{ matrix.archs }}
           CIBW_BEFORE_ALL_WINDOWS: ${{ matrix.bef_all_win }}
           CIBW_BEFORE_ALL_MACOS: ${{ matrix.bef_all_macos }}
+          CIBE_ARCHS_MACOS: ${{ matrix.archs }}
         # Can also be configured directly, using `with:`
         # with:
         #   package-dir: .
