@@ -75,7 +75,7 @@ before-all = [
 
 before-all = [
   "curl -L -s -o /tmp/rapidjson.tar.gz https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.tar.gz",
-  "tar xvf /tmp/rapidjson.tar.gz -C /{GITHUB_WORKSPACE}/  --strip-components=1  rapidjson-1.1.0/include",
+  "tar xvf /tmp/rapidjson.tar.gz -C $GITHUB_WORKSPACE  --strip-components=1  rapidjson-1.1.0/include",
   "rm -f /tmp/rapidjson.tar.gz"
 ]
 
