@@ -451,8 +451,6 @@ std::list<std::string> ESOHBufr::msg() const {
         {
           bool dateupdate = false;
           int time_disp = 0;
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
           switch (v.y()) {
           case 1: {
             int raw_year = getValue_i(v);
@@ -569,7 +567,6 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           }
-#pragma GCC diagnostic pop
           if (period_update) {
             bool valid_period = true;
             if (data_category != 2 ||
@@ -1487,7 +1484,7 @@ bool ESOHBufr::setDateTime(struct tm *meas_datetime,
   if (period_str.size()) {
     properties["period"].SetString(period_str.c_str(), message_allocator);
 
-    uint64_t period_int = periodStrToSec(period_str);
+    // uint64_t period_int = periodStrToSec(period_str);
     // properties["period_int"].SetUint64(period_int);
   }
 
@@ -1522,7 +1519,7 @@ bool ESOHBufr::setStartDateTime(struct tm *start_meas_datetime,
   if (period_str.size()) {
     properties["period"].SetString(period_str.c_str(), message_allocator);
 
-    uint64_t period_int = periodStrToSec(period_str);
+    // uint64_t period_int = periodStrToSec(period_str);
     // properties["period_int"].SetUint64(period_int);
   }
 
@@ -1604,8 +1601,10 @@ void ESOHBufr::initTimeInterval() {
                    str_dynamictime.begin(), ::tolower);
     std::istringstream is(str_dynamictime);
     is >> std::boolalpha >> dynamictime;
-    lb.addLogEntry(LogEntry("Set Dynamic time:" + dynamictime, LogLevel::DEBUG,
-                            __func__, bufr_id));
+    lb.addLogEntry(
+        LogEntry("Set Dynamic time: " +
+                     (dynamictime ? std::string("True") : std::string("False")),
+                 LogLevel::DEBUG, __func__, bufr_id));
   }
   if (const char *env_lotime = std::getenv("LOTIME")) {
     lotime = getTimeStamp(env_lotime);
