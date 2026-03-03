@@ -900,7 +900,7 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           case 196: {
-            uint8_t rad_prod_type = static_cast<uint8_t> (getValue_i(v));
+            uint8_t rad_prod_type = static_cast<uint8_t>(getValue_i(v));
             std::string q_str;
             switch (rad_prod_type) {
             case 0:
@@ -957,7 +957,10 @@ std::list<std::string> ESOHBufr::msg() const {
             double sensor_hei = 0.0;
             if (*ci == DescriptorId(7032, true)) {
               sensor_hei = getValue_d(*ci);
-              // Height update ???
+              if (!std::isnan(sensor_hei)) {
+                sensor_level_active = 1;
+                sensor_level = sensor_hei;
+              }
             }
 
             ++ci;
@@ -984,7 +987,10 @@ std::list<std::string> ESOHBufr::msg() const {
             double sensor_hei = 0.0;
             if (*ci == DescriptorId(7032, true)) {
               sensor_hei = getValue_d(*ci);
-              // Height update ???
+              if (!std::isnan(sensor_hei)) {
+                sensor_level_active = 1;
+                sensor_level = sensor_hei;
+              }
             }
 
             ++ci; // [ 1 02 002 ]
