@@ -34,11 +34,10 @@ public:
   void setTableDir(std::string s);
   ssize_t extractDescriptors(int ss = 0, ssize_t subsb = 0);
   bool saveBuffer(std::string) const;
-  double getValue(const Descriptor &d, double v) const;
+  double getValue_d(const Descriptor &d) const;
   uint64_t getBitValue(const Descriptor &d, uint64_t v) const;
-  int getValue(const Descriptor &d, int v) const;
-  std::string getValue(const Descriptor &d, std::string s,
-                       bool with_unit = true) const;
+  int getValue_i(const Descriptor &d) const;
+  std::string getValue_s(const Descriptor &d, bool with_unit = true) const;
   void setTableB(TableB *tb) { tabB = tb; }
   void setTableC(TableC *tc) { tabC = tc; }
   void setTableD(TableD *td) { tabD = td; }

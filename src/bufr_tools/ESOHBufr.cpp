@@ -176,7 +176,7 @@ std::list<std::string> ESOHBufr::msg() const {
       switch (v.f()) {
       case 0: // Element Descriptors
       {
-        std::string value_str = getValue(v, std::string(), false);
+        std::string value_str = getValue_s(v, false);
         NorBufrIO::strPrintable(value_str);
         lb.addLogEntry(LogEntry("Element Descriotor value: " + value_str,
                                 LogLevel::TRACE, __func__, bufr_id));
@@ -327,8 +327,7 @@ std::list<std::string> ESOHBufr::msg() const {
           switch (v.y()) {
           // WMO block and station ID
           case 1: {
-            int wmo_block = 0;
-            wmo_block = getValue(v, wmo_block);
+            int wmo_block = getValue_i(v);
             if (wmo_block == (std::numeric_limits<int>::max)()) {
               wmo_block = 0;
             }
@@ -340,7 +339,7 @@ std::list<std::string> ESOHBufr::msg() const {
             int wmo_station = 0;
             // Is next the WMO station number?
             if (*nexti == DescriptorId(1002, true)) {
-              wmo_station = getValue(*nexti, wmo_block);
+              wmo_station = getValue_i(*nexti);
               if (wmo_station == (std::numeric_limits<int>::max)()) {
                 wmo_station = 0;
               }
@@ -375,8 +374,7 @@ std::list<std::string> ESOHBufr::msg() const {
           }
           case 101: // STATE IDENTIFIER
           {
-            int bufr_state_id = 0;
-            bufr_state_id = getValue(v, bufr_state_id);
+            int bufr_state_id = getValue_i(v);
             lb.addLogEntry(
                 LogEntry("Found state Id:" + std::to_string(bufr_state_id),
                          LogLevel::DEBUG, __func__, bufr_id));
@@ -398,8 +396,7 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           case 125: {
-            int wig_ser = 0;
-            wig_ser = getValue(v, wig_ser);
+            int wig_ser = getValue_i(v);
             if (wig_ser == (std::numeric_limits<int>::max)()) {
               wig_ser = 0;
             }
@@ -408,8 +405,7 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           case 126: {
-            int wig_iss_id = 0;
-            wig_iss_id = getValue(v, wig_iss_id);
+            int wig_iss_id = getValue_i(v);
             if (wig_iss_id == (std::numeric_limits<int>::max)()) {
               wig_iss_id = 0;
             }
@@ -418,8 +414,7 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           case 127: {
-            int wig_iss_num = 0;
-            wig_iss_num = getValue(v, wig_iss_num);
+            int wig_iss_num = getValue_i(v);
             if (wig_iss_num == (std::numeric_limits<int>::max)()) {
               wig_iss_num = 0;
             }
@@ -444,7 +439,7 @@ std::list<std::string> ESOHBufr::msg() const {
         case 2: {
           switch (v.y()) {
           case 135: { // Radar Antenna elevation
-            sensor_level = getValue(v, sensor_level);
+            sensor_level = getValue_d(v);
             sensor_level_active = 12; // active for next 12 descriptors
             break;
           }
@@ -460,7 +455,7 @@ std::list<std::string> ESOHBufr::msg() const {
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
           switch (v.y()) {
           case 1: {
-            int raw_year = getValue(v, raw_year);
+            int raw_year = getValue_i(v);
             if (raw_year != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_year = raw_year - 1900;
               dateupdate = true;
@@ -470,7 +465,7 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           case 2: {
-            int raw_mon = getValue(v, raw_mon);
+            int raw_mon = getValue_i(v);
             if (raw_mon != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_mon = raw_mon - 1;
               dateupdate = true;
@@ -478,7 +473,7 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           case 3: {
-            int raw_day = getValue(v, raw_day);
+            int raw_day = getValue_i(v);
             if (raw_day != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_mday = raw_day;
               dateupdate = true;
@@ -486,7 +481,7 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           case 4: {
-            int raw_hour = getValue(v, raw_hour);
+            int raw_hour = getValue_i(v);
             if (raw_hour != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_hour = raw_hour;
               dateupdate = true;
@@ -494,7 +489,7 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           case 5: {
-            int raw_min = getValue(v, raw_min);
+            int raw_min = getValue_i(v);
             if (raw_min != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_min = raw_min;
               dateupdate = true;
@@ -502,7 +497,7 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           case 6: {
-            int raw_sec = getValue(v, raw_sec);
+            int raw_sec = getValue_i(v);
             if (raw_sec != (std::numeric_limits<int>::max)()) {
               meas_datetime.tm_sec = raw_sec;
               dateupdate = true;
@@ -563,7 +558,7 @@ std::list<std::string> ESOHBufr::msg() const {
           }
           case 86: // LONG TIME PERIOD OR DISPLACEMENT
           {
-            int raw_time_disp = getValue(v, raw_time_disp);
+            int raw_time_disp = getValue_i(v);
             if (raw_time_disp != (std::numeric_limits<int>::max)()) {
               time_disp = raw_time_disp;
               dateupdate = true;
@@ -579,8 +574,7 @@ std::list<std::string> ESOHBufr::msg() const {
             bool valid_period = true;
             if (data_category != 2 ||
                 (int_data_subcategory < 4 || int_data_subcategory > 7)) {
-              int time_period = 0;
-              time_period = getValue(v, time_period);
+              int time_period = getValue_i(v);
               if (time_period == (std::numeric_limits<int>::max)()) {
                 valid_period = false;
                 lb.addLogEntry(LogEntry(
@@ -614,8 +608,7 @@ std::list<std::string> ESOHBufr::msg() const {
                     auto pi = ci;
                     pi--;
                     if (*pi == *ci) {
-                      int time_period_start = 0;
-                      time_period_start = getValue(*pi, time_period_start);
+                      int time_period_start = getValue_i(*pi);
                       if (time_period_start !=
                           (std::numeric_limits<int>::max)()) {
                         time_period = -(time_period - time_period_start);
@@ -663,7 +656,7 @@ std::list<std::string> ESOHBufr::msg() const {
           // radar
           if (data_category == 6 && local_data_subcategory == 20) {
             if (v.y() <= 16) {
-              double clat = getValue(v, clat);
+              double clat = getValue_d(v);
               cor_lat.push_back(clat);
             } else {
               // Pixel size
@@ -674,7 +667,7 @@ std::list<std::string> ESOHBufr::msg() const {
           } // other observations
           else {
             if (v.y() <= 2) {
-              lat = getValue(v, lat);
+              lat = getValue_d(v);
               LogEntry("Set latitude: " + std::to_string(lat), LogLevel::DEBUG,
                        __func__, bufr_id);
               if (!std::isnan(lat)) {
@@ -682,7 +675,7 @@ std::list<std::string> ESOHBufr::msg() const {
               }
             }
             if (v.y() == 12 || v.y() == 15 || v.y() == 16) {
-              double lat_disp = getValue(v, 0.0);
+              double lat_disp = getValue_d(v);
               if (!std::isnan(lat_disp)) {
                 updateLocation(lat + lat_disp, "lat", subset_message);
               }
@@ -695,7 +688,7 @@ std::list<std::string> ESOHBufr::msg() const {
           // radar
           if (data_category == 6 && local_data_subcategory == 20) {
             if (v.y() <= 16) {
-              double clon = getValue(v, clon);
+              double clon = getValue_d(v);
               cor_lon.push_back(clon);
             } else {
               // Pixel size
@@ -706,7 +699,7 @@ std::list<std::string> ESOHBufr::msg() const {
           } // other observations
           else {
             if (v.y() <= 2) {
-              lon = getValue(v, lon);
+              lon = getValue_d(v);
               LogEntry("Set longitude: " + std::to_string(lon), LogLevel::DEBUG,
                        __func__, bufr_id);
               if (!std::isnan(lon)) {
@@ -714,7 +707,7 @@ std::list<std::string> ESOHBufr::msg() const {
               }
             }
             if (v.y() == 12 || v.y() == 15 || v.y() == 16) {
-              double lon_disp = getValue(v, 0.0);
+              double lon_disp = getValue_d(v);
               if (!std::isnan(lon_disp)) {
                 updateLocation(lon + lon_disp, "lon", subset_message);
               }
@@ -725,15 +718,15 @@ std::list<std::string> ESOHBufr::msg() const {
         case 7: // Height
         {
           if (v.y() == 1 || v.y() == 2 || v.y() == 7 || v.y() == 30) {
-            hei = getValue(v, hei);
+            hei = getValue_d(v);
           }
           if (v.y() == 10) // Flight level, TODO: conversion?
           {
-            hei = getValue(v, hei);
+            hei = getValue_d(v);
           }
           if (v.y() == 62) // Depth below sea/water surface
           {
-            hei = -getValue(v, hei);
+            hei = -getValue_d(v);
           }
           if (!std::isnan(hei)) {
             setLocation(lat, lon, hei, subset_message);
@@ -742,7 +735,7 @@ std::list<std::string> ESOHBufr::msg() const {
           // 32: // Height of sensor above ground
           // 33: // Height of sensor above water
           if (v.y() == 31 || v.y() == 32 || v.y() == 33) {
-            sensor_level = getValue(v, sensor_level);
+            sensor_level = getValue_d(v);
             if (getDataCategory() <= 1 && !std::isnan(sensor_level)) {
               sensor_level_active = 2;
             }
@@ -771,7 +764,7 @@ std::list<std::string> ESOHBufr::msg() const {
           }
           if (v.y() == 9) // Geopotential height, TODO: unit conversion?
           {
-            double gpm = getValue(v, 0.0);
+            double gpm = getValue_d(v);
             if (!std::isnan(gpm)) {
               updateLocation(gpm, "hei", subset_message);
             }
@@ -892,8 +885,7 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           case 31: {
-            int image_type = 0;
-            image_type = getValue(v, image_type);
+            int image_type = getValue_i(v);
             switch (image_type) {
             case 0:
               setRadarMeta("'product': 'PPI'", subset_message);
@@ -908,8 +900,7 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           case 196: {
-            uint8_t rad_prod_type = 0xff;
-            rad_prod_type = getValue(v, rad_prod_type);
+            uint8_t rad_prod_type = static_cast<uint8_t> (getValue_i(v));
             std::string q_str;
             switch (rad_prod_type) {
             case 0:
@@ -965,14 +956,14 @@ std::list<std::string> ESOHBufr::msg() const {
             ++ci;
             double sensor_hei = 0.0;
             if (*ci == DescriptorId(7032, true)) {
-              sensor_hei = getValue(*ci, sensor_hei);
+              sensor_hei = getValue_d(*ci);
               // Height update ???
             }
 
             ++ci;
             double precip = 0.0;
             if (*ci == DescriptorId(13023, true)) {
-              precip = getValue(*ci, precip);
+              precip = getValue_d(*ci);
               if (!std::isnan(precip)) {
                 time_t start_datetime = 0;
                 start_datetime = mktime(&meas_datetime);
@@ -992,7 +983,7 @@ std::list<std::string> ESOHBufr::msg() const {
             ++ci;
             double sensor_hei = 0.0;
             if (*ci == DescriptorId(7032, true)) {
-              sensor_hei = getValue(*ci, sensor_hei);
+              sensor_hei = getValue_d(*ci);
               // Height update ???
             }
 
@@ -1005,7 +996,7 @@ std::list<std::string> ESOHBufr::msg() const {
               bool valid_period = true;
               time_t start_datetime = 0;
               if (*ci == DescriptorId(4024, true)) {
-                period = getValue(*ci, period);
+                period = getValue_i(*ci);
                 if (period == (std::numeric_limits<int>::max)())
                   valid_period = false;
                 if (valid_period) {
@@ -1022,7 +1013,7 @@ std::list<std::string> ESOHBufr::msg() const {
 
               ++ci;
               if (valid_period && *ci == DescriptorId(13011, true)) {
-                precip = getValue(*ci, precip);
+                precip = getValue_d(*ci);
                 if (!std::isnan(precip)) {
                   ret.push_back(addMessage(ci, subset_message,
                                            sensor_level_active, sensor_level,
@@ -1040,7 +1031,7 @@ std::list<std::string> ESOHBufr::msg() const {
             ++ci;
             int period = 0;
             if (*ci == DescriptorId(4024, true)) {
-              period = getValue(*ci, period);
+              period = getValue_i(*ci);
               if (period != (std::numeric_limits<int>::max)()) {
                 start_datetime = mktime(&meas_datetime);
                 start_datetime += period * 60 * 60;
@@ -1058,7 +1049,7 @@ std::list<std::string> ESOHBufr::msg() const {
                 DescriptorId(14002, true)) // [ 0 14 002 ] LONG-WAVE RADIATION,
                                            // INTEGRATED OVER PERIOD SPECIFIED
             {
-              long_wave = getValue(*ci, long_wave);
+              long_wave = getValue_d(*ci);
               if (!std::isnan(long_wave)) {
                 ret.push_back(addMessage(ci, subset_message,
                                          sensor_level_active, sensor_level,
@@ -1072,7 +1063,7 @@ std::list<std::string> ESOHBufr::msg() const {
                 DescriptorId(14004, true)) // [ 0 14 004 ] SHORT-WAVE RADIATION,
                                            // INTEGRATED OVER PERIOD SPECIFIED
             {
-              short_wave = getValue(*ci, short_wave);
+              short_wave = getValue_d(*ci);
               if (!std::isnan(short_wave)) {
                 ret.push_back(addMessage(ci, subset_message,
                                          sensor_level_active, sensor_level,
@@ -1261,9 +1252,9 @@ bool ESOHBufr::addDescriptor(
 
   rapidjson::Value mvalue;
   if (meta->unit() == "Numeric") {
-    mvalue.SetUint64(std::stoi(getValue(v, std::string(), false)));
+    mvalue.SetUint64(std::stoi(getValue_s(v, false)));
   } else {
-    std::string tmp_value = (getValue(v, std::string(), false));
+    std::string tmp_value = (getValue_s(v, false));
     std::string value = NorBufrIO::strTrim(tmp_value);
     mvalue.SetString(value.c_str(), message_allocator);
   }
@@ -1304,7 +1295,7 @@ bool ESOHBufr::addContent(const Descriptor &v, std::string cf_name,
   }
   rapidjson::Value mvalue;
   std::string value_str =
-      force_value.size() ? force_value : getValue(v, std::string(), false);
+      force_value.size() ? force_value : getValue_s(v, false);
   if (meta && meta->unit() == "Numeric" && !force_value.size()) {
     mvalue.SetUint64(std::stoi(value_str));
   } else {
@@ -1573,8 +1564,7 @@ WSI ESOHBufr::genShadowWigosId(
   for (std::list<Descriptor>::const_iterator di = s.begin(); di != ci; ++di) {
     if (di->f() == 0 && di->x() == 1) {
       if (*di == DescriptorId("001101")) {
-        int bufr_state_id = 0;
-        bufr_state_id = getValue(*di, bufr_state_id);
+        int bufr_state_id = getValue_i(*di);
         if (bufr_state_id != (std::numeric_limits<int>::max)()) {
           int iso_cc = bufrToIsocc(bufr_state_id);
           if (iso_cc) {
@@ -1583,7 +1573,7 @@ WSI ESOHBufr::genShadowWigosId(
           }
         }
       } else {
-        localv = getValue(*di, localv, false);
+        localv = getValue_s(*di, false);
         if (localv != "MISSING") {
           ss << NorBufrIO::strTrim(localv) << "_";
         }
