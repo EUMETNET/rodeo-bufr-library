@@ -8,7 +8,7 @@
         "metadata_id": "metatata_id",
         "datetime": "null",
         "Conventions": "CF-1.8",
-        "summary": "European weather radar data products.",
+        "summary": "Observation data from GTS network.",
         "license": "https://creativecommons.org/licenses/by/4.0/",
         "naming_authority": "eu.eumetnet",
         "level": "0.0",
@@ -17,7 +17,6 @@
         "period": "PT0S",
         "platform": "",
         "platform_name": "",
-        "radar_meta": {},
         "content": {
             "encoding": "utf-8",
             "standard_name": "",

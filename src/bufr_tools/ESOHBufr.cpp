@@ -39,7 +39,7 @@ ESOHBufr::ESOHBufr() {
             \"naming_authority\" : \"eumetnet.eu\", \
             \"level\" : 0.0, \
             \"hamsl\" : 0, \
-            \"function\": \"scan\", \
+            \"function\": \"point\", \
             \"period\": \"PT0S\", \
             \"platform\" : \"\", \
             \"platform_name\" : \"\", \
@@ -48,7 +48,7 @@ ESOHBufr::ESOHBufr() {
                 \"standard_name\": \"\", \
                 \"unit\": \"\", \
                 \"size\": 0, \
-                \"value\": \"%\"} \
+                \"value\": \"\"} \
              }, \
         \"links\" : [ \
             { \
@@ -138,8 +138,10 @@ std::list<std::string> ESOHBufr::msg() const {
   properties.AddMember("pubtime", pubtime, message_allocator);
   // Radar default value unit
   if (data_category == 6) {
+    properties["summary"].SetString("European weather radar data products.", message_allocator);
     properties["content"]["unit"] = "%";
     properties.AddMember("format", "BUFR", message_allocator);
+    properties.AddMember("radar_meta", {}, message_allocator);
 
     std::string na = getNamingAuthority();
     if (na.size()) {
