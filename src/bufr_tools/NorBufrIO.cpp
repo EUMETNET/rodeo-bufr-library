@@ -210,7 +210,13 @@ ssize_t NorBufrIO::strisotime(char *date_str, size_t date_max,
     fmt = uformat;
   }
 
+#if defined(_MSC_VER)
+  size_t dl =
+      strftime(date_str, date_max, fmt,
+               gmtime(reinterpret_cast<const time_t *const>(&(date->tv_sec))));
+#else
   size_t dl = strftime(date_str, date_max, fmt, gmtime(&(date->tv_sec)));
+#endif
 
   // Copy microseconds into the date char string
   if (usec && dl > 26) {
