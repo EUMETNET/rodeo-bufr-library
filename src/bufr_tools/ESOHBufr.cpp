@@ -97,6 +97,14 @@ std::list<std::string> ESOHBufr::msg() const {
   std::list<std::string> ret;
 
   // For the data_link
+  bool OPERA_RADAR_BUFR = false;
+  if (const char *env_opera_radar_bufr = std::getenv("OPERA_RADAR_BUFR")) {
+    std::string str_opera_radar_bufr(env_opera_radar_bufr);
+    std::transform(str_opera_radar_bufr.begin(), str_opera_radar_bufr.end(),
+                   str_opera_radar_bufr.begin(), ::tolower);
+    if (str_opera_radar_bufr == "true")
+      OPERA_RADAR_BUFR = true;
+  }
   std::list<double> level_list;
   std::list<std::string> quantity_list;
   std::string data_bucket_link;
@@ -1194,6 +1202,9 @@ std::list<std::string> ESOHBufr::msg() const {
   subset_end:
     subsetnum++;
   }
+
+  if (!OPERA_RADAR_BUFR)
+    return ret;
 
   auto ret2 = ret;
   ret.clear();
