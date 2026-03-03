@@ -19,7 +19,7 @@ windows_extra_compile_args = [
     "-IC:\\temp\\rapidjson\\rapidjson-1.1.0\\include",
     "/std:c++17",
 ]
-macos_extra_compile_args = ["-I/tmp/include/rapidjson-1.1.0", "--std=c++17"]
+macos_extra_compile_args = ["-I/tmp/rapidjson-1.1.0/include", "--std=c++17"]
 
 if sys.platform == "win32":
     extra_compile_args_for_extension = common_extra_compile_args + windows_extra_compile_args
