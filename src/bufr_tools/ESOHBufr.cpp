@@ -475,8 +475,6 @@ std::list<std::string> ESOHBufr::msg() const {
         {
           bool dateupdate = false;
           int time_disp = 0;
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
           switch (v.y()) {
           case 1: {
             int raw_year = getIntValue(v);
@@ -593,7 +591,6 @@ std::list<std::string> ESOHBufr::msg() const {
             break;
           }
           }
-#pragma GCC diagnostic pop
           if (period_update) {
             bool valid_period = true;
             if (data_category != 2 ||
@@ -996,7 +993,10 @@ std::list<std::string> ESOHBufr::msg() const {
             double sensor_hei = 0.0;
             if (*ci == DescriptorId(7032, true)) {
               sensor_hei = getDoubleValue(*ci);
-              // Height update ???
+              if (!std::isnan(sensor_hei)) {
+                sensor_level_active = 1;
+                sensor_level = sensor_hei;
+              }
             }
 
             ++ci;
@@ -1023,7 +1023,10 @@ std::list<std::string> ESOHBufr::msg() const {
             double sensor_hei = 0.0;
             if (*ci == DescriptorId(7032, true)) {
               sensor_hei = getDoubleValue(*ci);
-              // Height update ???
+              if (!std::isnan(sensor_hei)) {
+                sensor_level_active = 1;
+                sensor_level = sensor_hei;
+              }
             }
 
             ++ci; // [ 1 02 002 ]
