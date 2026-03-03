@@ -48,9 +48,31 @@ Install BUFR table files:
 
 ### Dump BUFR content
 ```python
-from bufr_tools import bufr2tx
-msg = bufr2txt.bufr2text(bufr_file_name)
-print(msg)
+# Dump BUFR file(s)
+
+import os
+import sys
+
+from bufr_tools import bufr2txt
+
+if __name__ == "__main__":
+
+    msg = ""
+
+    if len(sys.argv) > 1:
+        for i, file_name in enumerate(sys.argv[1:]):
+            if os.path.exists(file_name):
+                msg = bufr2txt.bufr2text(file_name)
+                print(msg)
+                print(file_name)
+            else:
+                print("File not exists: {0}".format(file_name))
+                exit(1)
+    else:
+        print(f"Usage: python3 {sys.argv[0]} <bufr_file1> <bufr_file2> ...", file=sys.stderr)
+        sys.exit(1)
+
+    sys.exit(0)
 
 ```
 
@@ -58,12 +80,62 @@ print(msg)
 
 Print E-SOH message
 ```python
-import create_mqtt_message_from_bufr
-msg = create_mqtt_message_from_bufr.bufr2mqtt(bufr_file_name)
-for m in msg:
-  print(m)
+# Extract BUFR file(s) to E-SOH ingest json format
+
+import os
+import sys
+
+from bufr_tools import create_mqtt_message_from_bufr
+
+if __name__ == "__main__":
+
+    msg = ""
+
+    if len(sys.argv) > 1:
+        for i, file_name in enumerate(sys.argv[1:]):
+            if os.path.exists(file_name):
+                msg = create_mqtt_message_from_bufr.bufr2mqtt(file_name)
+                for m in msg:
+                    print("======")
+                    print(m)
+            else:
+                print("File not exists: {0}".format(file_name))
+                exit(1)
+    else:
+        print(f"Usage: python3 {sys.argv[0]} <bufr_file1> <bufr_file2> ...", file=sys.stderr)
+        sys.exit(1)
+
+    sys.exit(0)
 
 ```
 
-#### Encode BUFR content from Coverage json
-TBD
+### Encode BUFR content from Coverage json
+```python
+# Convert E-SOH coverage json to BUFR format
+
+import os
+import sys
+
+from bufr_tools import covjson2bufr
+
+if __name__ == "__main__":
+    bufr_schema = "default"
+
+    if len(sys.argv) > 1:
+        for i, file_name in enumerate(sys.argv):
+            if i > 0:
+                if os.path.exists(file_name):
+                    with open(file_name, "rb") as file:
+                        coverage_str = file.read()
+                        bufr_content = covjson2bufr.covjson2bufr(coverage_str, bufr_schema)
+                        with open("test_out.bufr", "wb") as file:
+                            file.write(bufr_content)
+                else:
+                    print("File not exists: {0}".format(file_name))
+                    exit(1)
+    else:
+        print("Usage: python3 covjson2bufr.py coverage.json")
+
+    exit(0)
+
+```
