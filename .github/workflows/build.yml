@@ -20,7 +20,7 @@ jobs:
           - os: ubuntu-24.04
             archs: i686
             platform: linux
-          - os: ubuntu-24.04
+          - os: ubuntu-24.04-arm
             archs: aarch64
           - os: windows-latest
             archs: AMD64
@@ -28,8 +28,10 @@ jobs:
             bef_all_win: "powershell -Command \"Invoke-WebRequest -Uri 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -OutFile 'C:\\temp\\rapidjson.zip'; Expand-Archive -Path 'C:\\temp\\rapidjson.zip' -DestinationPath 'C:\\temp\\rapidjson\\'"
           - os: macos-26
             archs: arm64
+            bef_all_macos: "curl -LJ 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -o '/tmp/rapidjson.zip'; unzip '/tmp/rapidjson.zip' -d '/tmp'"
           - os: macos-15
             archs: arm64
+            bef_all_macos: "curl -LJ 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -o '/tmp/rapidjson.zip'; unzip '/tmp/rapidjson.zip' -d '/tmp'"
 
     steps:
       - uses: actions/checkout@v4
@@ -40,6 +42,7 @@ jobs:
           CIBW_PLATFORM: ${{ matrix.platform }}
           CIBW_ARCHS: ${{ matrix.archs }}
           CIBW_BEFORE_ALL_WINDOWS: ${{ matrix.bef_all_win }}
+          CIBW_BEFORE_ALL_MACOS: ${{ matrix.bef_all_macos }}
           CIBE_ARCHS_MACOS: ${{ matrix.archs }}
         # Can also be configured directly, using `with:`
         # with:

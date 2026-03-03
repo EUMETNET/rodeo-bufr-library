@@ -554,7 +554,7 @@ DescriptorMeta *NorBufr::addMeta(DescriptorMeta *dm) {
   }
 }
 
-double NorBufr::getValue(const Descriptor &d, double) const {
+double NorBufr::getDoubleValue(const Descriptor &d) const {
   const DescriptorMeta *dm = d.getMeta();
   double dvalue = std::numeric_limits<double>::quiet_NaN();
 
@@ -593,7 +593,7 @@ uint64_t NorBufr::getBitValue(const Descriptor &d, uint64_t) const {
   return value;
 }
 
-int NorBufr::getValue(const Descriptor &d, int) const {
+int NorBufr::getIntValue(const Descriptor &d) const {
   const DescriptorMeta *dm = d.getMeta();
   int value = (std::numeric_limits<int>::max)();
 
@@ -614,8 +614,7 @@ int NorBufr::getValue(const Descriptor &d, int) const {
   return value;
 }
 
-std::string NorBufr::getValue(const Descriptor &d, std::string,
-                              bool with_unit) const {
+std::string NorBufr::getStrValue(const Descriptor &d, bool with_unit) const {
   std::string ret;
   const DescriptorMeta *dm = d.getMeta();
 
@@ -1265,14 +1264,14 @@ void NorBufr::print(DescriptorId df, std::string filter,
     if (it != desc[i].end()) {
       // std::cerr << " Desc match :" << getValue(*it,std::string(),false) << ":
       // ";
-      if (getValue(*it, std::string(), false) == filter) {
+      if (getStrValue(*it, false) == filter) {
         // std::cerr << " Filter match " ;
         auto dvit = std::find(it, desc[i].end(), dv);
         if (dvit != desc[i].end()) {
           std::string dt(asctime(&bufr_time));
           dt.erase(std::remove(dt.begin(), dt.end(), '\n'), dt.end());
           std::cout << dt << " " << df << "=" << filter << " => " << dv << "="
-                    << getValue(*dvit, std::string()) << "\n";
+                    << getStrValue(*dvit) << "\n";
         }
       }
     }
@@ -1284,7 +1283,7 @@ void NorBufr::printValue(DescriptorId df) const {
     // std::cerr << "Find subset: " << i << "\n";
     auto it = std::find(desc[i].begin(), desc[i].end(), df);
     if (it != desc[i].end()) {
-      std::string v = getValue(*it, std::string(), false);
+      std::string v = getStrValue(*it, false);
       if (v.size())
         std::cout << v << " ";
     }
@@ -1333,7 +1332,7 @@ std::ostream &NorBufr::printDetail(std::ostream &os) {
         os << " [sb: " << v.startBit() << "] ";
         // New Reference value in the name string
         if (meta->unit() != "Reference")
-          os << getValue(v, std::string());
+          os << getStrValue(v);
 
         if (meta->unit().find("CODE TABLE") != std::string::npos ||
             meta->unit().find("FLAG TABLE") != std::string::npos) {
@@ -1404,7 +1403,7 @@ std::ostream &operator<<(std::ostream &os, NorBufr &bufr) {
       if (meta) {
         // New Reference value in the name string
         if (meta->unit() != "Reference")
-          os << "\t" << bufr.getValue(v, std::string());
+          os << "\t" << bufr.getStrValue(v);
 
         if (meta->unit().find("CODE TABLE") != std::string::npos ||
             meta->unit().find("FLAG TABLE") != std::string::npos) {
