@@ -20,6 +20,8 @@ jobs:
           - os: ubuntu-24.04
             archs: i686
             platform: linux
+          - os: ubuntu-24.04
+            archs: aarch64
           - os: windows-latest
             archs: AMD64
             platform: windows
