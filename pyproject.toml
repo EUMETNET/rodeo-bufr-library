@@ -8,13 +8,8 @@ description = "Tools for working with JSON-BUFR conversion in the E-SOH proejct.
 readme = "README.md"
 requires-python = ">=3.11"
 dynamic = ["version"]
-authors = [
-    {name = "Istvan Sebök"}
-]
-maintainers = [
-    {name = "Istavn Sebök"},
-    {name = "Amund Isaksen"}
-]
+authors = [{ name = "Istvan Sebök" }]
+maintainers = [{ name = "Istavn Sebök" }, { name = "Amund Isaksen" }]
 classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.11",
@@ -60,24 +55,20 @@ manylinux-i686-image = "quay.io/pypa/manylinux_2_28_i686"
 
 [tool.cibuildwheel.windows]
 
+
 [tool.cibuildwheel.linux]
-environment = { CXX="/opt/rh/gcc-toolset-13/root/usr/bin/c++" }
+environment = { CXX = "/opt/rh/gcc-toolset-13/root/usr/bin/c++" }
 skip = "*-musllinux*"
 
 before-all = [
   "yum install -y gcc-toolset-13-*",
   "curl -L -s -o /tmp/rapidjson.tar.gz https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.tar.gz",
   "tar xvf /tmp/rapidjson.tar.gz -C /usr/  --strip-components=1  rapidjson-1.1.0/include",
-  "rm -f /tmp/rapidjson.tar.gz"
+  "rm -f /tmp/rapidjson.tar.gz",
 ]
 
 [tool.cibuildwheel.macos]
-environment = { CXX_INCLUDE_PATH="${GITHUB_WORKSPACE/include/}:$CXX_INCLUDE_PATH" }
 before-all = [
-  "curl -L -s -o /tmp/rapidjson.tar.gz https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.tar.gz",
-  "tar xvf /tmp/rapidjson.tar.gz -C $GITHUB_WORKSPACE  --strip-components=1  rapidjson-1.1.0/include/",
-  "rm -f /tmp/rapidjson.tar.gz",
-  "ls $GITHUB_WORKSPACE",
-  "pwd"
+  "curl -LJ 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -o '/tmp/rapidjson.zip'",
+  "unzip '/tmp/rapidjson.zip' -d '/tmp'",
 ]
-
