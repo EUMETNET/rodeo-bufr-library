@@ -210,14 +210,16 @@ ssize_t NorBufrIO::strisotime(char *date_str, size_t date_max,
     fmt = uformat;
   }
 
-  size_t dl =
-      strftime(date_str, date_max, fmt,
-               gmtime(reinterpret_cast<const time_t *const>(&(date->tv_sec))));
+  size_t dl = strftime(date_str, date_max, fmt, gmtime(&(date->tv_sec)));
 
   // Copy microseconds into the date char string
   if (usec && dl > 26) {
     char usec[8];
-    sprintf(usec, "%06ld", date->tv_usec);
+#if defined(__APPLE__)
+    snprintf(usec, 7, "%06d", date->tv_usec);
+#else
+    snprintf(usec, 7, "%06ld", date->tv_usec);
+#endif
     memcpy(date_str + 20, usec, 6);
   }
 

@@ -1345,7 +1345,7 @@ bool ESOHBufr::addContent(const Descriptor &v, std::string cf_name,
     mvalue.SetString(value_str.c_str(), message_allocator);
   }
   content["value"] = mvalue;
-  content["size"] = value_str.size();
+  content["size"].SetInt(value_str.size());
   content["standard_name"].SetString(cf_name.c_str(), message_allocator);
   if (meta) {
     if (meta->unit() == "CODE TABLE") {
@@ -1573,7 +1573,7 @@ bool ESOHBufr::setDateTime(struct tm *meas_datetime,
     properties["period"].SetString(period_str.c_str(), message_allocator);
 
     // uint64_t period_int = periodStrToSec(period_str);
-    //  properties["period_int"].SetUint64(period_int);
+    // properties["period_int"].SetUint64(period_int);
   }
 
   return true;
@@ -1608,7 +1608,7 @@ bool ESOHBufr::setStartDateTime(struct tm *start_meas_datetime,
     properties["period"].SetString(period_str.c_str(), message_allocator);
 
     // uint64_t period_int = periodStrToSec(period_str);
-    //  properties["period_int"].SetUint64(period_int);
+    // properties["period_int"].SetUint64(period_int);
   }
 
   return true;
@@ -1689,8 +1689,10 @@ void ESOHBufr::initTimeInterval() {
                    str_dynamictime.begin(), ::tolower);
     std::istringstream is(str_dynamictime);
     is >> std::boolalpha >> dynamictime;
-    lb.addLogEntry(LogEntry("Set Dynamic time:" + dynamictime, LogLevel::DEBUG,
-                            __func__, bufr_id));
+    lb.addLogEntry(
+        LogEntry("Set Dynamic time: " +
+                     (dynamictime ? std::string("True") : std::string("False")),
+                 LogLevel::DEBUG, __func__, bufr_id));
   }
   if (const char *env_lotime = std::getenv("LOTIME")) {
     lotime = getTimeStamp(env_lotime);
