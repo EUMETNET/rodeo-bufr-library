@@ -22,6 +22,9 @@ struct ret_bufr covjson2bufr(std::string covjson_str,
 struct ret_bufr covjson2bufr_default(std::string covjson_str,
                                      NorBufr *bufr = nullptr,
                                      bool time_bow = false);
+
+bool encoding_coverage(rapidjson::Value::ConstValueIterator it, std::string wigosId);
+
 struct val_lev
 find_standard_value(std::pair<std::string, std::map<std::string, double>> t,
                     std::string standard_name, std::string level,
