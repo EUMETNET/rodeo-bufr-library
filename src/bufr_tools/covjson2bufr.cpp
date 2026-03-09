@@ -51,7 +51,7 @@ struct ret_bufr covjson2bufr(std::string covjson_str, std::string bufr_template,
 }
 
 bool encoding_coverage(rapidjson::Value::ConstValueIterator it,
-                      std::string wigosId) {
+                       std::string wigosId) {
 
   for (rapidjson::Value::ConstMemberIterator cov_it = it->MemberBegin();
        cov_it != it->MemberEnd(); ++cov_it) {
