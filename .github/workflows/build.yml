@@ -10,9 +10,9 @@ on:
 jobs:
   build_wheels:
     name: Build wheels on ${{ matrix.os }} ${{ matrix.archs }}
-    max-parallel: 1
     runs-on: ${{ matrix.os }}
     strategy:
+      max-parallel: 1
       matrix:
         include:
           - os: ubuntu-24.04
