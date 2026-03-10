@@ -219,7 +219,7 @@ std::list<std::string> ESOHBufr::msg() const {
         if (value_str == "MISSING" && (v != DescriptorId(30196, true)))
           break;
 
-        if (v.x() >= 10 && v.x() != 29 && (v.x() == 30 && v.y() > 100) &&
+        if (v.x() >= 10 && v.x() != 29 && (v.x() != 30 || v.y() < 100) &&
             !(v.x() == 22 && (v.y() == 55 || v.y() == 56 || v.y() == 67)) &&
             v.x() != 25 && v.x() != 31 && v.x() != 35 && !platform_check) {
           // Check datetime
