@@ -26,13 +26,103 @@
 
 #include "covjson2bufr.h"
 
+// meas[rodeo:wigosId][time][parameter] = value
+std::map<std::string, std::map<std::string, std::map<std::string, double>>>
+    meas;
+
+// unit_str[rodeo:wigosId][parameter] = unit
+std::map<std::string, std::map<std::string, std::string>> unit;
+
+// geo_loc[rodeo:wigosId][axis_x] = latitude
+// geo_loc[rodeo:wigosId][axis_y] = longitude
+std::map<std::string, std::map<std::string, double>> geo_loc;
+
 struct ret_bufr covjson2bufr(std::string covjson_str, std::string bufr_template,
                              NorBufr *bufr, bool time_now) {
   struct ret_bufr ret;
+  meas.clear();
+  geo_loc.clear();
+  unit.clear();
+
   if (bufr_template == "default")
     return covjson2bufr_default(covjson_str, bufr, time_now);
   std::cerr << "Unknown BUFR template name: " << bufr_template << "\n";
   return ret;
+}
+
+bool encoding_coverage(rapidjson::Value::ConstValueIterator it,
+                       std::string wigosId) {
+
+  for (rapidjson::Value::ConstMemberIterator cov_it = it->MemberBegin();
+       cov_it != it->MemberEnd(); ++cov_it) {
+
+    if (!strcmp(cov_it->name.GetString(), "type")) {
+      if (strcmp(cov_it->value.GetString(), "Coverage")) {
+        std::cerr << "WARNING: Unknown coverage type: "
+                  << cov_it->value.GetString() << "[Coverage]\n";
+        continue;
+      } else {
+        // COVERAGE type OK
+        continue;
+      }
+    }
+
+    double axis_x;
+    double axis_y;
+    std::vector<std::string> axis_t;
+
+    if (!strcmp(cov_it->name.GetString(), "domain")) {
+      if (cov_it->value.HasMember("type") &&
+          cov_it->value["type"] == "Domain") {
+
+        if (cov_it->value.HasMember("domainType") &&
+            cov_it->value["domainType"] == "PointSeries") {
+
+          axis_x = cov_it->value["axes"]["x"]["values"][0].GetDouble();
+          axis_y = cov_it->value["axes"]["y"]["values"][0].GetDouble();
+          geo_loc[wigosId]["lat"] = axis_x;
+          geo_loc[wigosId]["lon"] = axis_y;
+
+          // Units
+          std::map<std::string, std::string> unit_str;
+          if (it->HasMember("parameters")) {
+            for (rapidjson::Value::ConstMemberIterator par_it =
+                     ((*it)["parameters"]).MemberBegin();
+                 par_it != ((*it)["parameters"]).MemberEnd(); ++par_it) {
+
+              std::string param_name = par_it->name.GetString();
+              std::string unit_str =
+                  par_it->value["unit"]["label"]["en"].GetString();
+              unit[wigosId][param_name] = unit_str;
+            }
+          }
+
+          int t_index = 0;
+          for (rapidjson::Value::ConstValueIterator tit =
+                   cov_it->value["axes"]["t"]["values"].Begin();
+               tit != cov_it->value["axes"]["t"]["values"].End(); ++tit) {
+
+            axis_t.push_back(tit->GetString());
+            if (it->HasMember("ranges")) {
+
+              for (rapidjson::Value::ConstMemberIterator rng_it =
+                       ((*it)["ranges"]).MemberBegin();
+                   rng_it != ((*it)["ranges"]).MemberEnd(); ++rng_it) {
+                double dvalue = rng_it->value["values"][t_index].GetDouble();
+
+                std::string standard_name = rng_it->name.GetString();
+                meas[wigosId][tit->GetString()][standard_name] = dvalue;
+              }
+            }
+
+            ++t_index;
+          }
+        }
+      }
+    }
+  }
+
+  return true;
 }
 
 struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
@@ -53,94 +143,27 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
     return ret;
   }
 
-  // meas[rodeo:wigosId][time][parameter] = value
-  std::map<std::string, std::map<std::string, std::map<std::string, double>>>
-      meas;
-
-  // unit_str[rodeo:wigosId][parameter] = unit
-  std::map<std::string, std::map<std::string, std::string>> unit;
-
-  // geo_loc[rodeo:wigosId][axis_x] = latitude
-  // geo_loc[rodeo:wigosId][axis_y] = longitude
-  std::map<std::string, std::map<std::string, double>> geo_loc;
+  std::string wigosId;
 
   if (covjson.HasMember("coverages") && covjson["coverages"].IsArray()) {
     for (rapidjson::Value::ConstValueIterator it = covjson["coverages"].Begin();
          it != covjson["coverages"].End(); ++it) {
 
-      std::string wigosId;
       if (it->HasMember("metocean:wigosId")) {
         wigosId = (*it)["metocean:wigosId"].GetString();
       }
+      encoding_coverage(it, wigosId);
+    }
+  } else {
+    if (covjson.HasMember("type") && covjson["type"] == "Coverage") {
+      if (covjson.HasMember("metocean:wigosId")) {
+        wigosId = covjson["metocean:wigosId"].GetString();
 
-      for (rapidjson::Value::ConstMemberIterator cov_it = it->MemberBegin();
-           cov_it != it->MemberEnd(); ++cov_it) {
-
-        if (!strcmp(cov_it->name.GetString(), "type")) {
-          if (strcmp(cov_it->value.GetString(), "Coverage")) {
-            std::cerr << "WARNING: Unknown coverage type: "
-                      << cov_it->value.GetString() << "[Coverage]\n";
-            continue;
-          } else {
-            // COVERAGE type OK
-            continue;
-          }
-        }
-
-        double axis_x;
-        double axis_y;
-        std::vector<std::string> axis_t;
-
-        if (!strcmp(cov_it->name.GetString(), "domain")) {
-          if (cov_it->value.HasMember("type") &&
-              cov_it->value["type"] == "Domain") {
-
-            if (cov_it->value.HasMember("domainType") &&
-                cov_it->value["domainType"] == "PointSeries") {
-
-              axis_x = cov_it->value["axes"]["x"]["values"][0].GetDouble();
-              axis_y = cov_it->value["axes"]["y"]["values"][0].GetDouble();
-              geo_loc[wigosId]["lat"] = axis_x;
-              geo_loc[wigosId]["lon"] = axis_y;
-
-              // Units
-              std::map<std::string, std::string> unit_str;
-              if (it->HasMember("parameters")) {
-                for (rapidjson::Value::ConstMemberIterator par_it =
-                         ((*it)["parameters"]).MemberBegin();
-                     par_it != ((*it)["parameters"]).MemberEnd(); ++par_it) {
-
-                  std::string param_name = par_it->name.GetString();
-                  std::string unit_str =
-                      par_it->value["unit"]["label"]["en"].GetString();
-                  unit[wigosId][param_name] = unit_str;
-                }
-              }
-
-              int t_index = 0;
-              for (rapidjson::Value::ConstValueIterator tit =
-                       cov_it->value["axes"]["t"]["values"].Begin();
-                   tit != cov_it->value["axes"]["t"]["values"].End(); ++tit) {
-
-                axis_t.push_back(tit->GetString());
-                if (it->HasMember("ranges")) {
-
-                  for (rapidjson::Value::ConstMemberIterator rng_it =
-                           ((*it)["ranges"]).MemberBegin();
-                       rng_it != ((*it)["ranges"]).MemberEnd(); ++rng_it) {
-                    double dvalue =
-                        rng_it->value["values"][t_index].GetDouble();
-
-                    std::string standard_name = rng_it->name.GetString();
-                    meas[wigosId][tit->GetString()][standard_name] = dvalue;
-                  }
-                }
-
-                ++t_index;
-              }
-            }
-          }
-        }
+        rapidjson::Value rjarray(rapidjson::kArrayType);
+        rapidjson::Document::AllocatorType &allocator = covjson.GetAllocator();
+        rjarray.PushBack(covjson, allocator);
+        rapidjson::Value::ConstValueIterator it = rjarray.Begin();
+        encoding_coverage(it, wigosId);
       }
     }
   }
