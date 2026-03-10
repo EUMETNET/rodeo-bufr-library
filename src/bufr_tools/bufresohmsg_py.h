@@ -48,6 +48,7 @@ std::list<std::string> norbufr_log();
 void norbufr_log_clear();
 
 bool norbufr_init_oscar(std::string oscardb_dir);
+std::string oscar_wigos_find(std::string wigosId);
 bool norbufr_init_schema_template(std::string schema_path);
 void norbufr_set_default_wigos(std::string s);
 
