@@ -26,7 +26,7 @@ jobs:
           - os: windows-latest
             archs: AMD64
             platform: windows
-            bef_all_win: "powershell -Command \"Invoke-WebRequest -Uri 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -OutFile 'C:\\temp\\rapidjson.zip'; Expand-Archive -Path 'C:\\temp\\rapidjson.zip' -DestinationPath 'C:\\temp\\rapidjson\\' ; powershell -Command \"Invoke-WebRequest -Uri 'https://github.com/pypa/get-virtualenv/blob/20.32.0/public/virtualenv.pyz?raw=true'  -OutFile 'C:\\Users\\runneradmin\\AppData\Local\\pypa\\cibuildwheel\\Cache\\virtualenv-20.32.0.pyz' "
+            bef_all_win: "powershell -Command \"Invoke-WebRequest -Uri 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -OutFile 'C:\\temp\\rapidjson.zip'; Expand-Archive -Path 'C:\\temp\\rapidjson.zip' -DestinationPath 'C:\\temp\\rapidjson\\' ; powershell -Command \"Invoke-WebRequest -Uri 'https://github.com/pypa/get-virtualenv/blob/20.32.0/public/virtualenv.pyz?raw=true'  -OutFile 'C:\\Users\\runneradmin\\AppData\\Local\\pypa\\cibuildwheel\\Cache\\virtualenv-20.32.0.pyz' "
           - os: macos-15
             archs: arm64
             bef_all_macos: "curl -LJ 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -o '/tmp/rapidjson.zip'; unzip '/tmp/rapidjson.zip' -d '/tmp' ; curl -L -o /Users/runner/Library/Caches/cibuildwheel/virtualenv-20.32.0.pyz 'https://github.com/pypa/get-virtualenv/raw/20.32.0/public/virtualenv.pyz?raw=true'"
