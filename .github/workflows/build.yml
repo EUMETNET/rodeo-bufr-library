@@ -29,10 +29,10 @@ jobs:
       #      bef_all_win: "powershell -Command \"Invoke-WebRequest -Uri 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -OutFile 'C:\\temp\\rapidjson.zip'; Expand-Archive -Path 'C:\\temp\\rapidjson.zip' -DestinationPath 'C:\\temp\\rapidjson\\'"
           - os: macos-26
             archs: arm64
-            bef_all_macos: "curl -LJ 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -o '/tmp/rapidjson.zip'; unzip '/tmp/rapidjson.zip' -d '/tmp'"
+            bef_all_macos: "curl -LJ 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -o '/tmp/rapidjson.zip'; unzip '/tmp/rapidjson.zip' -d '/tmp' && sleep 60"
           - os: macos-15
             archs: arm64
-            bef_all_macos: "curl -LJ 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -o '/tmp/rapidjson.zip'; unzip '/tmp/rapidjson.zip' -d '/tmp'"
+            bef_all_macos: "curl -LJ 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -o '/tmp/rapidjson.zip'; unzip '/tmp/rapidjson.zip' -d '/tmp' && sleep 60"
 
     steps:
       - uses: actions/checkout@v4
