@@ -168,6 +168,9 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
     }
   }
 
+  std::set<std::string> params_prec;
+  std::set<std::string> params_temp;
+
   int subsets = 0;
   // Count subsets
   for (auto w = meas.begin(); w != meas.end(); ++w) {
@@ -181,8 +184,29 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
         std::cerr << " unit: " << unit[w->first][s->first] << "\n";
       }
       */
+      auto params_prec_m =
+          find_parameter_names(*t, "precipitation_amount", "", "sum", "");
+      params_prec.merge(params_prec_m);
+
+      auto params_max_m =
+          find_parameter_names(*t, "air_temperature", "", "maximum", "");
+      params_temp.merge(params_max_m);
+
+      auto params_min_m =
+          find_parameter_names(*t, "air_temperature", "", "minimum", "");
+      params_temp.merge(params_min_m);
     }
   }
+
+  params_prec.erase("PT1D");
+  params_prec.erase("PT24H");
+
+  std::vector<std::string> params_pa;
+  if (params_prec.size()) {
+    params_pa.assign(params_prec.begin(), params_prec.end());
+  }
+
+  std::vector<std::string> params(params_temp.begin(), params_temp.end());
 
   int test_max_subset = 30000;
   bufr->setSubset(subsets);
@@ -352,13 +376,6 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
 
       // Extreme temperature data: [0 07 032] [0 04 024] [0 12 111] [0 04 024]
       // [0 12 112] Instead of 3 02 041, because time unit is hour
-      auto params_max =
-          find_parameter_names(*t, "air_temperature", "", "maximum", "");
-      auto params_min =
-          find_parameter_names(*t, "air_temperature", "", "minimum", "");
-
-      params_max.merge(params_min);
-      std::vector<std::string> params(params_max.begin(), params_max.end());
 
       if (!subsets) {
         bufr->addDescriptor("105000");
@@ -515,6 +532,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       bufr->addValue("MISSING"); // MAXIMUM WIND GUST DIRECTION
       bufr->addValue("MISSING"); // MAXIMUM WIND GUST SPEED
 
+#ifdef PREC_OLD
+
       if (!subsets) {
         bufr->addDescriptor("302040");
       }
@@ -543,6 +562,7 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
 
       bufr->addValue(-12);
       bufr->addValue(prec12_value);
+#endif
 
       if (!subsets) {
         bufr->addDescriptor("101002");
@@ -598,6 +618,68 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       bufr->addValue("MISSING");
       bufr->addValue("MISSING");
       bufr->addValue("MISSING");
+
+      if (!subsets) {
+        bufr->addDescriptor("103000");
+        bufr->addDescriptor("031001");
+      }
+
+      if (params_pa.size()) {
+        bufr->addValue(params_pa.size());
+        // for (int i = 0; i < params_pa.size(); ++i) {
+        for (int i = 0; i < params_pa.size(); ++i) {
+
+          std::string prec_amount_value = "MISSING";
+
+          struct val_lev prec_amount = find_standard_value(
+              *t, "precipitation_amount", "", "sum", params_pa[i]);
+          if (prec_amount.level.size()) {
+            prec24_sensor_level = prec_amount.level;
+            if (!std::isnan(prec_amount.value)) {
+              prec_amount_value = std::to_string(prec_amount.value);
+            }
+          }
+
+          int period = periodstr_to_int(params_pa[i]) / 60;
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("007032");
+          }
+          bufr->addValue(prec24_sensor_level); // 0 07 032 Height of sensor
+                                               // above local ground
+          if (!subsets && !i) {
+            bufr->addDescriptor("004025");
+          }
+          bufr->addValue(period); // 0 04 024 Time period or displacement
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("013011");
+          }
+          bufr->addValue(
+              prec_amount_value); // 0 13 011 Total precipitation/total water
+                                  // equivalent
+        }
+
+      } else {
+
+        bufr->addValue(1);
+
+        if (!subsets) {
+          bufr->addDescriptor("007032");
+        }
+        bufr->addValue("MISSING"); // 0 07 032 Height of sensor above
+                                   // local ground
+        if (!subsets) {
+          bufr->addDescriptor("004025");
+        }
+        bufr->addValue("MISSING"); // 0 04 024 Time period or displacement
+
+        if (!subsets) {
+          bufr->addDescriptor("013011");
+        }
+        bufr->addValue(
+            "MISSING"); // 0 13 011 Total precipitation/total water equivalent
+      }
 
       // END of FIRST SUBSET, subset end indicator
       if (!subsets) {
