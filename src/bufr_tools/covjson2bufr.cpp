@@ -350,6 +350,130 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       bufr->addValue("MISSING"); // cloud base hei
       bufr->addValue("MISSING"); // cloud top description
 
+      // Extreme temperature data: [0 07 032] [0 04 024] [0 12 111] [0 04 024]
+      // [0 12 112] Instead of 3 02 041, because time unit is hour
+      auto params_max =
+          find_parameter_names(*t, "air_temperature", "", "maximum", "");
+      auto params_min =
+          find_parameter_names(*t, "air_temperature", "", "minimum", "");
+
+      params_max.merge(params_min);
+      std::vector<std::string> params(params_max.begin(), params_max.end());
+
+      if (!subsets) {
+        bufr->addDescriptor("105000");
+        bufr->addDescriptor("031001");
+      }
+
+      if (params.size()) {
+        bufr->addValue(params.size());
+
+        for (int i = 0; i < params.size(); ++i) {
+
+          std::string temp_max_value = "MISSING";
+          std::string temp_min_value = "MISSING";
+
+          struct val_lev temp_max = find_standard_value(
+              *t, "air_temperature", "", "maximum", params[i]);
+          if (temp_max.level.size()) {
+            temp_sensor_level = temp_max.level;
+            if (!std::isnan(temp_max.value)) {
+              double kelvin_value = unit[w->first]["air_temperature"] == "K"
+                                        ? temp_max.value
+                                        : temp_max.value + 273.16;
+              temp_max_value = std::to_string(kelvin_value);
+            }
+          }
+
+          int period = periodstr_to_int(params[i]) / 60;
+          if (!subsets && !i) {
+            bufr->addDescriptor("007032");
+          }
+          bufr->addValue(temp_sensor_level); // 0 07 032 Height of sensor above
+                                             // local ground
+          if (!subsets && !i) {
+            bufr->addDescriptor("004025");
+          }
+
+          bufr->addValue(period); // 0 04 024 Time period or displacement
+          if (!subsets && !i) {
+            bufr->addDescriptor("012111");
+          }
+          bufr->addValue(temp_max_value); // 0 12 111 Maximum temperature, at
+                                          // height and over period specified
+
+          struct val_lev temp_min = find_standard_value(
+              *t, "air_temperature", "", "minimum", params[i]);
+          if (temp_min.level.size()) {
+            temp_sensor_level = temp_min.level;
+            if (!std::isnan(temp_min.value)) {
+              double kelvin_value = unit[w->first]["air_temperature"] == "K"
+                                        ? temp_min.value
+                                        : temp_min.value + 273.16;
+              temp_min_value = std::to_string(kelvin_value);
+            }
+          }
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("004025");
+          }
+          bufr->addValue(period); // 0 04 024 Time period or displacement
+          if (!subsets && !i) {
+            bufr->addDescriptor("012112");
+          }
+          bufr->addValue(temp_min_value); // 0 12 112 Minimum temperature, at
+                                          // height and over period specified
+        }
+      } else {
+        // Encoding one with missing data
+
+        bufr->addValue(1);
+
+        if (!subsets) {
+          bufr->addDescriptor("007032");
+        }
+        bufr->addValue("MISSING"); // 0 07 032 Height of sensor above
+                                   // local ground
+        if (!subsets) {
+          bufr->addDescriptor("004025");
+        }
+        bufr->addValue("MISSING"); // 0 04 024 Time period or displacement
+
+        if (!subsets) {
+          bufr->addDescriptor("012111");
+        }
+        bufr->addValue("MISSING"); // 0 12 111 Maximum temperature, at height
+                                   // and over period specified
+
+        if (!subsets) {
+          bufr->addDescriptor("004025");
+        }
+        bufr->addValue("MISSING"); // 0 04 024 Time period or displacement
+
+        if (!subsets) {
+          bufr->addDescriptor("012112");
+        }
+        bufr->addValue("MISSING"); // 0 12 112 Minimum temperature, at height
+                                   // and over period specified
+      }
+
+      /*
+
+      struct val_lev temp_max =
+          find_standard_value(*t, "air_temperature", "", "maximum", "PT10M");
+      if (temp_max.level.size()) {
+        temp_sensor_level = temp_max.level;
+        if (!std::isnan(temp_max.value)) {
+          double kelvin_value = unit[w->first]["air_temperature"] == "K"
+                                    ? temp_max.value
+                                    : temp_max.value + 273.16;
+          temp_value = std::to_string(kelvin_value);
+          std::cout << temp_value << "[" << temp_max.value << "] ";
+        }
+      }
+
+      */
+
       // WIND
       if (!subsets) {
         bufr->addDescriptor("302042");
@@ -565,4 +689,63 @@ find_standard_value(std::pair<std::string, std::map<std::string, double>> t,
   }
 
   return ret;
+}
+
+std::set<std::string>
+find_parameter_names(std::pair<std::string, std::map<std::string, double>> t,
+                     std::string standard_name, std::string level,
+                     std::string method, std::string period) {
+
+  std::set<std::string> ret;
+
+  auto range = t.second.begin();
+  // while ( range != t.second.end()) {
+  do {
+    range = std::find_if(
+        range, t.second.end(),
+        [standard_name, method,
+         period](const std::pair<std::string, double> &tt) -> bool {
+          size_t ci = tt.first.rfind(':');
+          bool retr =
+              (tt.first.substr(0, standard_name.size()) == standard_name &&
+               tt.first.substr(ci - method.size() - period.size() - 1,
+                               method.size() + 2) == (":" + method + ":"));
+          return retr;
+        });
+    if (range != t.second.end()) {
+      std::string param_name = range->first.substr(range->first.rfind(':') + 1);
+      ret.insert(param_name);
+      range++;
+    }
+  } while (range != t.second.end());
+
+  return ret;
+}
+
+int periodstr_to_int(std::string pstr) {
+  int ret = 0;
+  if (pstr.size()) {
+    if (pstr.substr(0, 2) != "PT") {
+      std::cout << "Unknown period: " << pstr << "\n";
+    } else {
+      int period = stoi(pstr.substr(2, -1));
+      switch (pstr.back()) {
+      case 'S':
+        ret = period;
+        break;
+      case 'M':
+        ret = period * 60;
+        break;
+      case 'H':
+        ret = period * 60 * 60;
+        break;
+      case 'D':
+        ret = period * 60 * 60 * 24;
+        break;
+      default:
+        std::cout << "Unknown period unit:" << pstr << "\n";
+      }
+    }
+  }
+  return -ret;
 }
