@@ -497,72 +497,95 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       }
 
       std::string wind_speed_value = "MISSING";
-      std::string wind_sensor_level = "MISSING";
-      struct val_lev wind_s =
-          find_standard_value(*t, "wind_speed", "", "point", "PT10M");
-      if (wind_s.level.size()) {
-        wind_sensor_level = wind_s.level;
-        if (!std::isnan(wind_s.value)) {
-          wind_speed_value = std::to_string(wind_s.value);
-        }
-      }
       std::string wind_dir_value = "MISSING";
-      struct val_lev wind_d =
-          find_standard_value(*t, "wind_from_direction", "", "point", "PT10M");
-      if (wind_d.level.size()) {
-        if (!std::isnan(wind_d.value)) {
-          wind_dir_value = std::to_string(wind_d.value);
+      std::string wind_period_value = "MISSING";
+      std::string wind_sensor_level = "MISSING";
+
+      auto params_wind_s =
+          find_parameter_names(*t, "wind_speed", "", "point", "");
+
+      std::vector<std::string> params_wind(params_wind_s.begin(),
+                                           params_wind_s.end());
+
+      if (params_wind.size()) {
+        struct val_lev wind_speed =
+            find_standard_value(*t, "wind_speed", "", "point", params_wind[0]);
+        struct val_lev wind_dir = find_standard_value(
+            *t, "wind_from_direction", "", "point", params_wind[0]);
+
+        if (wind_speed.level.size()) {
+          wind_sensor_level = wind_speed.level;
+          if (!std::isnan(wind_speed.value)) {
+            wind_speed_value = std::to_string(wind_speed.value);
+          }
+        }
+
+        if (wind_dir.level.size()) {
+          // wind_sensor_level = wind_dir.level;
+          if (!std::isnan(wind_dir.value)) {
+            wind_dir_value = std::to_string(wind_dir.value);
+          }
+        }
+        int period = periodstr_to_int(params_wind[0]) / 60;
+        wind_period_value = std::to_string(period);
+      }
+
+      std::vector<std::string> wind_gust_speed_value = {"MISSING", "MISSING"};
+      std::vector<std::string> wind_gust_dir_value = {"MISSING", "MISSING"};
+      std::vector<std::string> wind_gust_period = {"MISSING", "MISSING"};
+
+      auto params_wind_gust_s =
+          find_parameter_names(*t, "wind_speed_of_gust", "", "point", "");
+
+      std::vector<std::string> params_wind_gust(params_wind_gust_s.begin(),
+                                                params_wind_gust_s.end());
+      if (params_wind_gust.size()) {
+
+        int wind_guest_count =
+            std::min(2, static_cast<int>(params_wind.size()));
+        for (int i = 0; i < wind_guest_count; ++i) {
+
+          struct val_lev wind_gust_speed = find_standard_value(
+              *t, "wind_speed_of_gust", "", "point", params_wind_gust[i]);
+
+          if (wind_gust_speed.level.size()) {
+            if (!std::isnan(wind_gust_speed.value)) {
+              wind_gust_speed_value[i] = std::to_string(wind_gust_speed.value);
+            }
+          }
+
+          if (params_wind_gust.size() >= i) {
+            struct val_lev wind_gust_dir =
+                find_standard_value(*t, "wind_gust_from_direction", "", "point",
+                                    params_wind_gust[i]);
+
+            if (wind_gust_dir.level.size()) {
+              if (!std::isnan(wind_gust_dir.value)) {
+                wind_gust_dir_value[i] = std::to_string(wind_gust_dir.value);
+              }
+            }
+          }
+          int period = periodstr_to_int(params_wind_gust[i]) / 60;
+          wind_gust_period[i] = std::to_string(period);
         }
       }
 
       bufr->addValue(wind_sensor_level); // HEIGHT OF SENSOR ABOVE LOCAL GROUND
       bufr->addValue("MISSING"); // TYPE OF INSTRUMENTATION FOR WIND MEASUREMENT
       bufr->addValue("MISSING"); // TIME SIGNIFICANCE
-      bufr->addValue("MISSING"); // TIME PERIOD OR DISPLACEMENT
-      bufr->addValue(wind_dir_value);   // WIND DIRECTION
-      bufr->addValue(wind_speed_value); // WIND SPEED
-      bufr->addValue("MISSING");        // TIME SIGNIFICANCE
+      bufr->addValue(wind_period_value); // TIME PERIOD OR DISPLACEMENT
+      bufr->addValue(wind_dir_value);    // WIND DIRECTION
+      bufr->addValue(wind_speed_value);  // WIND SPEED
+      bufr->addValue("MISSING");         // TIME SIGNIFICANCE
 
       // repeat
-      bufr->addValue("MISSING"); // TIME PERIOD OR DISPLACEMEN
-      bufr->addValue("MISSING"); // MAXIMUM WIND GUST DIRECTION
-      bufr->addValue("MISSING"); // MAXIMUM WIND GUST SPEED
+      bufr->addValue(wind_gust_period[0]);      // TIME PERIOD OR DISPLACEMEN
+      bufr->addValue(wind_gust_dir_value[0]);   // MAXIMUM WIND GUST DIRECTION
+      bufr->addValue(wind_gust_speed_value[0]); // MAXIMUM WIND GUST SPEED
 
-      bufr->addValue("MISSING"); // TIME PERIOD OR DISPLACEMEN
-      bufr->addValue("MISSING"); // MAXIMUM WIND GUST DIRECTION
-      bufr->addValue("MISSING"); // MAXIMUM WIND GUST SPEED
-
-#ifdef PREC_OLD
-
-      if (!subsets) {
-        bufr->addDescriptor("302040");
-      }
-
-      std::string prec1_value = "MISSING";
-      std::string prec12_value = "MISSING";
-      struct val_lev prec1 =
-          find_standard_value(*t, "precipitation_amount", "", "sum", "PT1H");
-      if (prec1.level.size()) {
-        if (!std::isnan(prec1.value)) {
-          prec1_value = std::to_string(prec1.value);
-        }
-      }
-      struct val_lev prec12 =
-          find_standard_value(*t, "precipitation_amount", "", "sum", "PT12H");
-      if (prec12.level.size()) {
-        if (!std::isnan(prec12.value)) {
-          prec12_value = std::to_string(prec12.value);
-        }
-      }
-
-      bufr->addValue(prec24_sensor_level);
-
-      bufr->addValue(-1);
-      bufr->addValue(prec1_value);
-
-      bufr->addValue(-12);
-      bufr->addValue(prec12_value);
-#endif
+      bufr->addValue(wind_gust_period[1]);      // TIME PERIOD OR DISPLACEMEN
+      bufr->addValue(wind_gust_dir_value[1]);   // MAXIMUM WIND GUST DIRECTION
+      bufr->addValue(wind_gust_speed_value[1]); // MAXIMUM WIND GUST SPEED
 
       if (!subsets) {
         bufr->addDescriptor("101002");
