@@ -15,9 +15,9 @@ jobs:
       max-parallel: 3
       matrix:
         include:
-          - os: macos-26
-            archs: arm64
-            bef_all_macos: "curl -LJ 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -o '/tmp/rapidjson.zip'; unzip '/tmp/rapidjson.zip' -d '/tmp' ; curl -L -o /Users/runner/Library/Caches/cibuildwheel/virtualenv-20.32.0.pyz 'https://github.com/pypa/get-virtualenv/raw/20.32.0/public/virtualenv.pyz?raw=true'"
+        #  - os: macos-26
+        #    archs: arm64
+        #    bef_all_macos: "curl -LJ 'https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.zip' -o '/tmp/rapidjson.zip'; unzip '/tmp/rapidjson.zip' -d '/tmp' ; curl -L -o /Users/runner/Library/Caches/cibuildwheel/virtualenv-20.32.0.pyz 'https://github.com/pypa/get-virtualenv/raw/20.32.0/public/virtualenv.pyz?raw=true'"
           - os: ubuntu-24.04
             archs: x86_64
             platform: linux
