@@ -542,7 +542,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       if (params_wind_gust.size()) {
 
         int wind_guest_count =
-            std::min(2, static_cast<int>(params_wind.size()));
+            params_wind.size() < 2 ? static_cast<int>(params_wind.size()) : 2;
+
         for (int i = 0; i < wind_guest_count; ++i) {
 
           struct val_lev wind_gust_speed = find_standard_value(
