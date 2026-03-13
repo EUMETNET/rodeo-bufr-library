@@ -2,6 +2,7 @@
 #define _COVJSON2BUFR_H_
 
 #include <map>
+#include <set>
 #include <string>
 
 #include "NorBufr.h"
@@ -30,5 +31,12 @@ struct val_lev
 find_standard_value(std::pair<std::string, std::map<std::string, double>> t,
                     std::string standard_name, std::string level,
                     std::string method, std::string period);
+
+std::set<std::string>
+find_parameter_names(std::pair<std::string, std::map<std::string, double>> t,
+                     std::string standard_name, std::string level,
+                     std::string method, std::string period);
+
+int periodstr_to_int(std::string);
 
 #endif

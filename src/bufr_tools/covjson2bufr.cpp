@@ -168,6 +168,9 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
     }
   }
 
+  std::set<std::string> params_prec;
+  std::set<std::string> params_temp;
+
   int subsets = 0;
   // Count subsets
   for (auto w = meas.begin(); w != meas.end(); ++w) {
@@ -181,8 +184,29 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
         std::cerr << " unit: " << unit[w->first][s->first] << "\n";
       }
       */
+      auto params_prec_m =
+          find_parameter_names(*t, "precipitation_amount", "", "sum", "");
+      params_prec.merge(params_prec_m);
+
+      auto params_max_m =
+          find_parameter_names(*t, "air_temperature", "", "maximum", "");
+      params_temp.merge(params_max_m);
+
+      auto params_min_m =
+          find_parameter_names(*t, "air_temperature", "", "minimum", "");
+      params_temp.merge(params_min_m);
     }
   }
+
+  params_prec.erase("PT1D");
+  params_prec.erase("PT24H");
+
+  std::vector<std::string> params_pa;
+  if (params_prec.size()) {
+    params_pa.assign(params_prec.begin(), params_prec.end());
+  }
+
+  std::vector<std::string> params(params_temp.begin(), params_temp.end());
 
   int test_max_subset = 30000;
   bufr->setSubset(subsets);
@@ -350,75 +374,218 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       bufr->addValue("MISSING"); // cloud base hei
       bufr->addValue("MISSING"); // cloud top description
 
+      // Extreme temperature data: [0 07 032] [0 04 024] [0 12 111] [0 04 024]
+      // [0 12 112] Instead of 3 02 041, because time unit is hour
+
+      if (!subsets) {
+        bufr->addDescriptor("105000");
+        bufr->addDescriptor("031001");
+      }
+
+      if (params.size()) {
+        bufr->addValue(params.size());
+
+        for (int i = 0; i < params.size(); ++i) {
+
+          std::string temp_max_value = "MISSING";
+          std::string temp_min_value = "MISSING";
+
+          struct val_lev temp_max = find_standard_value(
+              *t, "air_temperature", "", "maximum", params[i]);
+          if (temp_max.level.size()) {
+            temp_sensor_level = temp_max.level;
+            if (!std::isnan(temp_max.value)) {
+              double kelvin_value = unit[w->first]["air_temperature"] == "K"
+                                        ? temp_max.value
+                                        : temp_max.value + 273.16;
+              temp_max_value = std::to_string(kelvin_value);
+            }
+          }
+
+          int period = periodstr_to_int(params[i]) / 60;
+          if (!subsets && !i) {
+            bufr->addDescriptor("007032");
+          }
+          bufr->addValue(temp_sensor_level); // 0 07 032 Height of sensor above
+                                             // local ground
+          if (!subsets && !i) {
+            bufr->addDescriptor("004025");
+          }
+
+          bufr->addValue(period); // 0 04 024 Time period or displacement
+          if (!subsets && !i) {
+            bufr->addDescriptor("012111");
+          }
+          bufr->addValue(temp_max_value); // 0 12 111 Maximum temperature, at
+                                          // height and over period specified
+
+          struct val_lev temp_min = find_standard_value(
+              *t, "air_temperature", "", "minimum", params[i]);
+          if (temp_min.level.size()) {
+            temp_sensor_level = temp_min.level;
+            if (!std::isnan(temp_min.value)) {
+              double kelvin_value = unit[w->first]["air_temperature"] == "K"
+                                        ? temp_min.value
+                                        : temp_min.value + 273.16;
+              temp_min_value = std::to_string(kelvin_value);
+            }
+          }
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("004025");
+          }
+          bufr->addValue(period); // 0 04 024 Time period or displacement
+          if (!subsets && !i) {
+            bufr->addDescriptor("012112");
+          }
+          bufr->addValue(temp_min_value); // 0 12 112 Minimum temperature, at
+                                          // height and over period specified
+        }
+      } else {
+        // Encoding one with missing data
+
+        bufr->addValue(1);
+
+        if (!subsets) {
+          bufr->addDescriptor("007032");
+        }
+        bufr->addValue("MISSING"); // 0 07 032 Height of sensor above
+                                   // local ground
+        if (!subsets) {
+          bufr->addDescriptor("004025");
+        }
+        bufr->addValue("MISSING"); // 0 04 024 Time period or displacement
+
+        if (!subsets) {
+          bufr->addDescriptor("012111");
+        }
+        bufr->addValue("MISSING"); // 0 12 111 Maximum temperature, at height
+                                   // and over period specified
+
+        if (!subsets) {
+          bufr->addDescriptor("004025");
+        }
+        bufr->addValue("MISSING"); // 0 04 024 Time period or displacement
+
+        if (!subsets) {
+          bufr->addDescriptor("012112");
+        }
+        bufr->addValue("MISSING"); // 0 12 112 Minimum temperature, at height
+                                   // and over period specified
+      }
+
+      /*
+
+      struct val_lev temp_max =
+          find_standard_value(*t, "air_temperature", "", "maximum", "PT10M");
+      if (temp_max.level.size()) {
+        temp_sensor_level = temp_max.level;
+        if (!std::isnan(temp_max.value)) {
+          double kelvin_value = unit[w->first]["air_temperature"] == "K"
+                                    ? temp_max.value
+                                    : temp_max.value + 273.16;
+          temp_value = std::to_string(kelvin_value);
+          std::cout << temp_value << "[" << temp_max.value << "] ";
+        }
+      }
+
+      */
+
       // WIND
       if (!subsets) {
         bufr->addDescriptor("302042");
       }
 
       std::string wind_speed_value = "MISSING";
-      std::string wind_sensor_level = "MISSING";
-      struct val_lev wind_s =
-          find_standard_value(*t, "wind_speed", "", "point", "PT10M");
-      if (wind_s.level.size()) {
-        wind_sensor_level = wind_s.level;
-        if (!std::isnan(wind_s.value)) {
-          wind_speed_value = std::to_string(wind_s.value);
-        }
-      }
       std::string wind_dir_value = "MISSING";
-      struct val_lev wind_d =
-          find_standard_value(*t, "wind_from_direction", "", "point", "PT10M");
-      if (wind_d.level.size()) {
-        if (!std::isnan(wind_d.value)) {
-          wind_dir_value = std::to_string(wind_d.value);
+      std::string wind_period_value = "MISSING";
+      std::string wind_sensor_level = "MISSING";
+
+      auto params_wind_s =
+          find_parameter_names(*t, "wind_speed", "", "point", "");
+
+      std::vector<std::string> params_wind(params_wind_s.begin(),
+                                           params_wind_s.end());
+
+      if (params_wind.size()) {
+        struct val_lev wind_speed =
+            find_standard_value(*t, "wind_speed", "", "point", params_wind[0]);
+        struct val_lev wind_dir = find_standard_value(
+            *t, "wind_from_direction", "", "point", params_wind[0]);
+
+        if (wind_speed.level.size()) {
+          wind_sensor_level = wind_speed.level;
+          if (!std::isnan(wind_speed.value)) {
+            wind_speed_value = std::to_string(wind_speed.value);
+          }
+        }
+
+        if (wind_dir.level.size()) {
+          // wind_sensor_level = wind_dir.level;
+          if (!std::isnan(wind_dir.value)) {
+            wind_dir_value = std::to_string(wind_dir.value);
+          }
+        }
+        int period = periodstr_to_int(params_wind[0]) / 60;
+        wind_period_value = std::to_string(period);
+      }
+
+      std::vector<std::string> wind_gust_speed_value = {"MISSING", "MISSING"};
+      std::vector<std::string> wind_gust_dir_value = {"MISSING", "MISSING"};
+      std::vector<std::string> wind_gust_period = {"MISSING", "MISSING"};
+
+      auto params_wind_gust_s =
+          find_parameter_names(*t, "wind_speed_of_gust", "", "point", "");
+
+      std::vector<std::string> params_wind_gust(params_wind_gust_s.begin(),
+                                                params_wind_gust_s.end());
+      if (params_wind_gust.size()) {
+
+        int wind_guest_count =
+            std::min(2, static_cast<int>(params_wind.size()));
+        for (int i = 0; i < wind_guest_count; ++i) {
+
+          struct val_lev wind_gust_speed = find_standard_value(
+              *t, "wind_speed_of_gust", "", "point", params_wind_gust[i]);
+
+          if (wind_gust_speed.level.size()) {
+            if (!std::isnan(wind_gust_speed.value)) {
+              wind_gust_speed_value[i] = std::to_string(wind_gust_speed.value);
+            }
+          }
+
+          if (params_wind_gust.size() >= i) {
+            struct val_lev wind_gust_dir =
+                find_standard_value(*t, "wind_gust_from_direction", "", "point",
+                                    params_wind_gust[i]);
+
+            if (wind_gust_dir.level.size()) {
+              if (!std::isnan(wind_gust_dir.value)) {
+                wind_gust_dir_value[i] = std::to_string(wind_gust_dir.value);
+              }
+            }
+          }
+          int period = periodstr_to_int(params_wind_gust[i]) / 60;
+          wind_gust_period[i] = std::to_string(period);
         }
       }
 
       bufr->addValue(wind_sensor_level); // HEIGHT OF SENSOR ABOVE LOCAL GROUND
       bufr->addValue("MISSING"); // TYPE OF INSTRUMENTATION FOR WIND MEASUREMENT
       bufr->addValue("MISSING"); // TIME SIGNIFICANCE
-      bufr->addValue("MISSING"); // TIME PERIOD OR DISPLACEMENT
-      bufr->addValue(wind_dir_value);   // WIND DIRECTION
-      bufr->addValue(wind_speed_value); // WIND SPEED
-      bufr->addValue("MISSING");        // TIME SIGNIFICANCE
+      bufr->addValue(wind_period_value); // TIME PERIOD OR DISPLACEMENT
+      bufr->addValue(wind_dir_value);    // WIND DIRECTION
+      bufr->addValue(wind_speed_value);  // WIND SPEED
+      bufr->addValue("MISSING");         // TIME SIGNIFICANCE
 
       // repeat
-      bufr->addValue("MISSING"); // TIME PERIOD OR DISPLACEMEN
-      bufr->addValue("MISSING"); // MAXIMUM WIND GUST DIRECTION
-      bufr->addValue("MISSING"); // MAXIMUM WIND GUST SPEED
+      bufr->addValue(wind_gust_period[0]);      // TIME PERIOD OR DISPLACEMEN
+      bufr->addValue(wind_gust_dir_value[0]);   // MAXIMUM WIND GUST DIRECTION
+      bufr->addValue(wind_gust_speed_value[0]); // MAXIMUM WIND GUST SPEED
 
-      bufr->addValue("MISSING"); // TIME PERIOD OR DISPLACEMEN
-      bufr->addValue("MISSING"); // MAXIMUM WIND GUST DIRECTION
-      bufr->addValue("MISSING"); // MAXIMUM WIND GUST SPEED
-
-      if (!subsets) {
-        bufr->addDescriptor("302040");
-      }
-
-      std::string prec1_value = "MISSING";
-      std::string prec12_value = "MISSING";
-      struct val_lev prec1 =
-          find_standard_value(*t, "precipitation_amount", "", "sum", "PT1H");
-      if (prec1.level.size()) {
-        if (!std::isnan(prec1.value)) {
-          prec1_value = std::to_string(prec1.value);
-        }
-      }
-      struct val_lev prec12 =
-          find_standard_value(*t, "precipitation_amount", "", "sum", "PT12H");
-      if (prec12.level.size()) {
-        if (!std::isnan(prec12.value)) {
-          prec12_value = std::to_string(prec12.value);
-        }
-      }
-
-      bufr->addValue(prec24_sensor_level);
-
-      bufr->addValue(-1);
-      bufr->addValue(prec1_value);
-
-      bufr->addValue(-12);
-      bufr->addValue(prec12_value);
+      bufr->addValue(wind_gust_period[1]);      // TIME PERIOD OR DISPLACEMEN
+      bufr->addValue(wind_gust_dir_value[1]);   // MAXIMUM WIND GUST DIRECTION
+      bufr->addValue(wind_gust_speed_value[1]); // MAXIMUM WIND GUST SPEED
 
       if (!subsets) {
         bufr->addDescriptor("101002");
@@ -474,6 +641,68 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       bufr->addValue("MISSING");
       bufr->addValue("MISSING");
       bufr->addValue("MISSING");
+
+      if (!subsets) {
+        bufr->addDescriptor("103000");
+        bufr->addDescriptor("031001");
+      }
+
+      if (params_pa.size()) {
+        bufr->addValue(params_pa.size());
+        // for (int i = 0; i < params_pa.size(); ++i) {
+        for (int i = 0; i < params_pa.size(); ++i) {
+
+          std::string prec_amount_value = "MISSING";
+
+          struct val_lev prec_amount = find_standard_value(
+              *t, "precipitation_amount", "", "sum", params_pa[i]);
+          if (prec_amount.level.size()) {
+            prec24_sensor_level = prec_amount.level;
+            if (!std::isnan(prec_amount.value)) {
+              prec_amount_value = std::to_string(prec_amount.value);
+            }
+          }
+
+          int period = periodstr_to_int(params_pa[i]) / 60;
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("007032");
+          }
+          bufr->addValue(prec24_sensor_level); // 0 07 032 Height of sensor
+                                               // above local ground
+          if (!subsets && !i) {
+            bufr->addDescriptor("004025");
+          }
+          bufr->addValue(period); // 0 04 024 Time period or displacement
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("013011");
+          }
+          bufr->addValue(
+              prec_amount_value); // 0 13 011 Total precipitation/total water
+                                  // equivalent
+        }
+
+      } else {
+
+        bufr->addValue(1);
+
+        if (!subsets) {
+          bufr->addDescriptor("007032");
+        }
+        bufr->addValue("MISSING"); // 0 07 032 Height of sensor above
+                                   // local ground
+        if (!subsets) {
+          bufr->addDescriptor("004025");
+        }
+        bufr->addValue("MISSING"); // 0 04 024 Time period or displacement
+
+        if (!subsets) {
+          bufr->addDescriptor("013011");
+        }
+        bufr->addValue(
+            "MISSING"); // 0 13 011 Total precipitation/total water equivalent
+      }
 
       // END of FIRST SUBSET, subset end indicator
       if (!subsets) {
@@ -565,4 +794,63 @@ find_standard_value(std::pair<std::string, std::map<std::string, double>> t,
   }
 
   return ret;
+}
+
+std::set<std::string>
+find_parameter_names(std::pair<std::string, std::map<std::string, double>> t,
+                     std::string standard_name, std::string level,
+                     std::string method, std::string period) {
+
+  std::set<std::string> ret;
+
+  auto range = t.second.begin();
+  // while ( range != t.second.end()) {
+  do {
+    range = std::find_if(
+        range, t.second.end(),
+        [standard_name, method,
+         period](const std::pair<std::string, double> &tt) -> bool {
+          size_t ci = tt.first.rfind(':');
+          bool retr =
+              (tt.first.substr(0, standard_name.size()) == standard_name &&
+               tt.first.substr(ci - method.size() - period.size() - 1,
+                               method.size() + 2) == (":" + method + ":"));
+          return retr;
+        });
+    if (range != t.second.end()) {
+      std::string param_name = range->first.substr(range->first.rfind(':') + 1);
+      ret.insert(param_name);
+      range++;
+    }
+  } while (range != t.second.end());
+
+  return ret;
+}
+
+int periodstr_to_int(std::string pstr) {
+  int ret = 0;
+  if (pstr.size()) {
+    if (pstr.substr(0, 2) != "PT") {
+      std::cout << "Unknown period: " << pstr << "\n";
+    } else {
+      int period = stoi(pstr.substr(2, -1));
+      switch (pstr.back()) {
+      case 'S':
+        ret = period;
+        break;
+      case 'M':
+        ret = period * 60;
+        break;
+      case 'H':
+        ret = period * 60 * 60;
+        break;
+      case 'D':
+        ret = period * 60 * 60 * 24;
+        break;
+      default:
+        std::cout << "Unknown period unit:" << pstr << "\n";
+      }
+    }
+  }
+  return -ret;
 }
