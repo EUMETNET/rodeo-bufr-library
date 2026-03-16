@@ -824,13 +824,19 @@ std::list<std::string> ESOHBufr::msg() const {
         }
         case 12: // Temperature
         {
-          if (v.y() == 1 || v.y() == 101 || v.y() == 3 || v.y() == 103) {
+          if (v.y() == 1 || v.y() == 101 || v.y() == 3 || v.y() == 103 ||
+              v.y() == 111 || v.y() == 112) {
             if (!sensor_level_active && getDataCategory() <= 1) {
               sensor_level_active = 1;
               sensor_level = 2.0;
             }
+            std::string function = "point";
+            if (v.y() == 111)
+              function = "maximum";
+            if (v.y() == 112)
+              function = "minimum";
             ret.push_back(addMessage(ci, subset_message, sensor_level_active,
-                                     sensor_level, "point"));
+                                     sensor_level, function));
           }
 
           break;

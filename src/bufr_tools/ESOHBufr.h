@@ -39,6 +39,8 @@ static std::map<DescriptorId, std::pair<std::string, std::string>> cf_names = {
     {DescriptorId(12006, true), {"dew_point_temperature", "K"}},
     {DescriptorId(12103, true), {"dew_point_temperature", "K"}},
     {DescriptorId(12106, true), {"dew_point_temperature", "K"}},
+    {DescriptorId(12111, true), {"air_temperature", "K"}},
+    {DescriptorId(12112, true), {"air_temperature", "K"}},
 
     {DescriptorId(13003, true), {"relative_humidity", "%"}},
 
