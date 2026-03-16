@@ -57,7 +57,7 @@ static std::map<DescriptorId, std::pair<std::string, std::string>> cf_names = {
       "W s m-2"}},
     {DescriptorId(14012, true),
      {"integral_wrt_time_of_surface_net_downward_longwave_flux", "W s m-2"}},
-    {DescriptorId(14013, true),
+    {DescriptorId(14014, true),
      {"integral_wrt_time_of_surface_net_downward_shortwave_flux", "W s m-2"}},
 
     {DescriptorId(22042, true), {"sea_water_temperature", "K"}},
