@@ -859,7 +859,7 @@ std::list<std::string> ESOHBufr::msg() const {
               sensor_level = 2.0;
             }
             ret.push_back(addMessage(ci, subset_message, sensor_level_active,
-                                     sensor_level, "point"));
+                                     sensor_level, "sum"));
           }
 
           break;
