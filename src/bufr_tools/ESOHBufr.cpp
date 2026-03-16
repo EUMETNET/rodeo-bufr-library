@@ -196,12 +196,14 @@ std::list<std::string> ESOHBufr::msg() const {
     // for( auto v : s )
     for (std::list<Descriptor>::const_iterator ci = s.begin(); ci != s.end();
          ++ci) {
-      if (sensor_level_active) {
-        if (ci->f() == 0 && (ci->x() != 4 && ci->x() != 31))
-          sensor_level_active--;
-      } else {
-        sensor_level = 0.0;
-      }
+      /*
+  if (sensor_level_active) {
+    if (ci->f() == 0 && (ci->x() != 4 && ci->x() != 31))
+      sensor_level_active--;
+  } else {
+    sensor_level = 0.0;
+  }
+    */
       period_update = false;
       auto v = *ci;
       lb.addLogEntry(LogEntry("ESOH Descriptor: " + v.toString(),
@@ -769,6 +771,8 @@ std::list<std::string> ESOHBufr::msg() const {
             sensor_level = getDoubleValue(v);
             if (getDataCategory() <= 1 && !std::isnan(sensor_level)) {
               sensor_level_active = 2;
+            } else {
+              sensor_level_active = 0;
             }
           }
 
