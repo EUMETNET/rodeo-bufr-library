@@ -565,6 +565,13 @@ std::list<std::string> ESOHBufr::msg() const {
             period_beg = "PT";
             period_end = "H";
             period_update = true;
+            auto pi = ci;
+            pi--;
+            // CI: current descriptor, period end(in minutes)
+            // PI: previous descriptor, period start(in minutes)
+            if (*pi == *ci) {
+              start_end_period = true;
+            }
             break;
           }
           case 75:   // Short time period or displacement
