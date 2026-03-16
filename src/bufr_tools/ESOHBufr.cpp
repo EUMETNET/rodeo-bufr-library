@@ -1130,6 +1130,18 @@ std::list<std::string> ESOHBufr::msg() const {
 
             break;
           }
+          case 83: // [ 3 02 083 ] First-order statistics of P, W, T, U data =>
+                   // skip
+          {
+            ++ci; // [ 0 04 025 ] Time period or displacement
+            ++ci; // [ 0 08 023 ] First-order statistics
+            ++ci; // [ 0 10 004 ] Pressure
+            ++ci; // [ 0 11 001 ] Wind direction
+            ++ci; // [ 0 11 002 ] Wind speed
+            ++ci; // [ 0 12 101 ] Temperature/air temperature
+            ++ci; // [ 0 13 003 ] Relative humidity
+            ++ci; // [ 0 08 023 ] First-order statistics
+          }
           }
           break;
         }
