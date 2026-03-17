@@ -170,6 +170,7 @@ std::list<std::string> ESOHBufr::msg() const {
     std::vector<double> cor_lat;
     std::vector<double> cor_lon;
     double sensor_level = 0.0;
+    double barometer_level = 0.0;
     char sensor_level_active = 0;
     std::string period_str;
     std::string period_beg;
@@ -775,8 +776,19 @@ std::list<std::string> ESOHBufr::msg() const {
           // 32: // Height of sensor above ground
           // 33: // Height of sensor above water
           if (v.y() == 31 || v.y() == 32 || v.y() == 33) {
-            sensor_level = getDoubleValue(v);
-            if (getDataCategory() <= 1 && !std::isnan(sensor_level)) {
+            double sl = getDoubleValue(v);
+            if (getDataCategory() <= 1 && !std::isnan(sl)) {
+              switch (v.y()) {
+              case 31:
+                barometer_level = sl;
+                break;
+              case 32:
+                sensor_level = sl;
+                break;
+              case 33:
+                if (!sensor_level_active)
+                  sensor_level = sl;
+              }
               sensor_level_active = 2;
             } else {
               sensor_level_active = 0;
@@ -790,8 +802,12 @@ std::list<std::string> ESOHBufr::msg() const {
           if (v.y() == 4 ||
               v.y() == 51) // PRESSURE, PRESSURE REDUCED TO MEAN SEA LEVEL
           {
+            double sl = sensor_level;
+            if (!std::isnan(hei) && barometer_level) {
+              sl = barometer_level - hei;
+            }
             auto ins_msg = addMessage(ci, subset_message, sensor_level_active,
-                                      sensor_level, "point");
+                                      sl, "point");
             if (std::find(ret.begin(), ret.end(), ins_msg) != ret.end()) {
               lb.addLogEntry(LogEntry(
                   "Non uniq value: " + v.toString() +
