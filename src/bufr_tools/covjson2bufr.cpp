@@ -69,6 +69,7 @@ bool encoding_coverage(rapidjson::Value::ConstValueIterator it,
 
     double axis_x;
     double axis_y;
+    double axis_z;
     std::vector<std::string> axis_t;
 
     if (!strcmp(cov_it->name.GetString(), "domain")) {
@@ -80,8 +81,10 @@ bool encoding_coverage(rapidjson::Value::ConstValueIterator it,
 
           axis_x = cov_it->value["axes"]["x"]["values"][0].GetDouble();
           axis_y = cov_it->value["axes"]["y"]["values"][0].GetDouble();
+          axis_z = cov_it->value["axes"]["z"]["values"][0].GetDouble();
           geo_loc[wigosId]["lat"] = axis_x;
           geo_loc[wigosId]["lon"] = axis_y;
+          geo_loc[wigosId]["hei"] = axis_z;
 
           // Units
           std::map<std::string, std::string> unit_str;
@@ -239,9 +242,9 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
 
       bufr->addValue(geo_loc[w->first]["lat"]); // Latitude
       bufr->addValue(geo_loc[w->first]["lon"]); // Longitude
+      bufr->addValue(geo_loc[w->first]["hei"]); // Height of station
 
-      bufr->addValue("MISSING"); // Height of station
-      bufr->addValue("MISSING"); // Height if arometer
+      bufr->addValue("MISSING"); // Height of arometer
 
       if (!subsets) {
         bufr->addDescriptor("302031");
