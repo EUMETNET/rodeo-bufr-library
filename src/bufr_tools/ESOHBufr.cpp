@@ -872,6 +872,55 @@ std::list<std::string> ESOHBufr::msg() const {
           break;
         }
 
+        case 14: // Radiation
+        {
+
+          switch (v.y()) {
+          case 2: {
+            double long_wave = 0.0;
+            long_wave = getDoubleValue(*ci);
+            if (!std::isnan(long_wave)) {
+              // See [ 3 97 092 ] where double [ 0 14 002 ]
+              // maximum and minimum represents direction
+              std::string function = long_wave > 0 ? "maximum" : "minimum";
+              ret.push_back(addMessage(ci, subset_message, sensor_level_active,
+                                       sensor_level, function));
+            }
+            break;
+          }
+          case 4: {
+            double short_wave = 0.0;
+            short_wave = getDoubleValue(*ci);
+            if (!std::isnan(short_wave)) {
+              // maximum and minimum represents direction
+              std::string function = short_wave > 0 ? "maximum" : "minimum";
+              ret.push_back(addMessage(ci, subset_message, sensor_level_active,
+                                       sensor_level, function));
+            }
+            break;
+          }
+          case 12: {
+            double net_long_wave = 0.0;
+            net_long_wave = getDoubleValue(*ci);
+            if (!std::isnan(net_long_wave)) {
+              ret.push_back(addMessage(ci, subset_message, sensor_level_active,
+                                       sensor_level, "sum"));
+            }
+            break;
+          }
+          case 14: {
+            double net_short_wave = 0.0;
+            net_short_wave = getDoubleValue(*ci);
+            if (!std::isnan(net_short_wave)) {
+              ret.push_back(addMessage(ci, subset_message, sensor_level_active,
+                                       sensor_level, "sum"));
+            }
+            break;
+          }
+          }
+          break;
+        }
+
         case 22: // Oceanographic
         {
 
