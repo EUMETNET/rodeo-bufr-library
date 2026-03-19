@@ -173,6 +173,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
 
   std::set<std::string> params_prec;
   std::set<std::string> params_temp;
+  std::set<std::string> params_rad;
+  std::set<std::string> params_rad_minmax;
 
   int subsets = 0;
   // Count subsets
@@ -198,6 +200,42 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       auto params_min_m =
           find_parameter_names(*t, "air_temperature", "", "minimum", "");
       params_temp.merge(params_min_m);
+
+      auto params_ldrad_sum = find_parameter_names(
+          *t, "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
+          "", "sum", "");
+      params_rad.merge(params_ldrad_sum);
+      auto params_ldrad_min = find_parameter_names(
+          *t, "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
+          "", "minimum", "");
+      params_rad_minmax.merge(params_ldrad_min);
+      auto params_ldrad_max = find_parameter_names(
+          *t, "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
+          "", "maximum", "");
+      params_rad_minmax.merge(params_ldrad_max);
+
+      auto params_sdrad_sum = find_parameter_names(
+          *t, "",
+          "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
+          "sum", "");
+      params_rad.merge(params_sdrad_sum);
+      auto params_sdrad_min = find_parameter_names(
+          *t, "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
+          "", "minimum", "");
+      params_rad_minmax.merge(params_sdrad_min);
+      auto params_sdrad_max = find_parameter_names(
+          *t, "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
+          "", "maximum", "");
+      params_rad_minmax.merge(params_sdrad_max);
+
+      auto params_nlrad_sum = find_parameter_names(
+          *t, "", "integral_wrt_time_of_surface_net_downward_longwave_flux",
+          "sum", "");
+      params_rad.merge(params_nlrad_sum);
+      auto params_nsrad_sum = find_parameter_names(
+          *t, "", "integral_wrt_time_of_surface_net_downward_shortwave_flux",
+          "sum", "");
+      params_rad.merge(params_nsrad_sum);
     }
   }
 
@@ -210,6 +248,10 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
   }
 
   std::vector<std::string> params(params_temp.begin(), params_temp.end());
+
+  std::vector<std::string> params_rd(params_rad.begin(), params_rad.end());
+  std::vector<std::string> params_rd_mm(params_rad_minmax.begin(),
+                                        params_rad_minmax.end());
 
   int test_max_subset = 30000;
   bufr->setSubset(subsets);
@@ -591,60 +633,181 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       bufr->addValue(wind_gust_dir_value[1]);   // MAXIMUM WIND GUST DIRECTION
       bufr->addValue(wind_gust_speed_value[1]); // MAXIMUM WIND GUST SPEED
 
-      if (!subsets) {
-        bufr->addDescriptor("101002");
-        // bufr->addDescriptor("031001");
-      }
+      if (params_rd.size()) {
+        if (!subsets) {
+          bufr->addDescriptor("105000");
+          bufr->addDescriptor("031001");
+        }
+        bufr->addValue(params_rd.size());
 
-      // bufr->addValue(2); // DELAYED DESCRIPTOR REPLICATION FACTOR
+        for (int i = 0; i < params_rd.size(); ++i) {
+          std::string ldrad_value = "MISSING";
+          std::string sdrad_value = "MISSING";
+          std::string nlrad_value = "MISSING";
+          std::string nsrad_value = "MISSING";
+          std::string rad_sensor_level;
 
-      if (!subsets) {
-        bufr->addDescriptor("302045");
-      }
+          struct val_lev ldrad_sum = find_standard_value(
+              *t,
+              "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
+              "", "sum", params_rd[i]);
 
-      // LONG-WAVE RADIATION PT1H
-      std::string ldrad1_value = "MISSING";
-      // LONG-WAVE RADIATION PT12H
-      std::string ldrad24_value = "MISSING";
+          if (ldrad_sum.level.size()) {
+            rad_sensor_level = ldrad_sum.level;
+            if (!std::isnan(ldrad_sum.value)) {
+              ldrad_value = std::to_string(ldrad_sum.value);
+            }
+          }
 
-      struct val_lev ldrad24 = find_standard_value(
-          *t, "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
-          "", "sum", "PT24H");
-      if (ldrad24.level.size()) {
-        if (!std::isnan(ldrad24.value)) {
-          ldrad24_value = std::to_string(ldrad24.value);
+          int period = periodstr_to_int(params_rd[i]) / 60;
+
+          struct val_lev sdrad_sum = find_standard_value(
+              *t, "",
+              "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
+              "sum", params_rd[i]);
+
+          if (sdrad_sum.level.size()) {
+            if (!std::isnan(sdrad_sum.value)) {
+              sdrad_value = std::to_string(sdrad_sum.value);
+            }
+          }
+
+          struct val_lev nlrad_sum = find_standard_value(
+              *t, "", "integral_wrt_time_of_surface_net_downward_longwave_flux",
+              "sum", params_rd[i]);
+
+          if (nlrad_sum.level.size()) {
+            if (!std::isnan(nlrad_sum.value)) {
+              nlrad_value = std::to_string(nlrad_sum.value);
+            }
+          }
+
+          struct val_lev nsrad_sum = find_standard_value(
+              *t, "",
+              "integral_wrt_time_of_surface_net_downward_shortwave_flux", "sum",
+              params_rd[i]);
+
+          if (nsrad_sum.level.size()) {
+            if (!std::isnan(nsrad_sum.value)) {
+              nsrad_value = std::to_string(nsrad_sum.value);
+            }
+          }
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("004025");
+          }
+          bufr->addValue(period); // 0 04 024 Time period or displacement
+          if (!subsets && !i) {
+            bufr->addDescriptor("014002");
+          }
+          bufr->addValue(ldrad_value);
+          if (!subsets && !i) {
+            bufr->addDescriptor("014004");
+          }
+          bufr->addValue(sdrad_value);
+          if (!subsets && !i) {
+            bufr->addDescriptor("014012");
+          }
+          bufr->addValue(nlrad_value);
+          if (!subsets && !i) {
+            bufr->addDescriptor("014014");
+          }
+          bufr->addValue(nsrad_value);
         }
       }
 
-      struct val_lev ldrad1 = find_standard_value(
-          *t, "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
-          "", "sum", "PT1H");
-      if (ldrad1.level.size()) {
-        if (!std::isnan(ldrad1.value)) {
-          ldrad1_value = std::to_string(ldrad1.value);
+      if (params_rd_mm.size()) {
+        std::cerr << "NEW\n";
+        if (!subsets) {
+          bufr->addDescriptor("105000");
+          bufr->addDescriptor("031001");
+        }
+        bufr->addValue(params_rd_mm.size());
+
+        for (int i = 0; i < params_rd_mm.size(); ++i) {
+
+          std::string ldrad_min_value = "MISSING";
+          std::string ldrad_max_value = "MISSING";
+          std::string sdrad_min_value = "MISSING";
+          std::string sdrad_max_value = "MISSING";
+          std::string rad_sensor_level = "MISSING";
+
+          int period = periodstr_to_int(params_rd_mm[i]) / 60;
+
+          // Budapestnel behalucinalja a valtozokat
+          struct val_lev ldrad_min = find_standard_value(
+              *t,
+              "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
+              "", "minimum", params_rd_mm[i]);
+
+          if (ldrad_min.level.size()) {
+            // rad_sensor_level = ldrad_min.level;
+            if (!std::isnan(ldrad_min.value)) {
+              ldrad_min_value = std::to_string(ldrad_min.value);
+              std::cerr << "MIN: " << ldrad_min_value << " ";
+            }
+          }
+
+          struct val_lev ldrad_max = find_standard_value(
+              *t,
+              "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
+              "", "maximum", params_rd_mm[i]);
+
+          if (ldrad_max.level.size()) {
+            if (!std::isnan(ldrad_max.value)) {
+              ldrad_max_value = std::to_string(ldrad_max.value);
+              std::cerr << "MAX: " << ldrad_max_value << "\n";
+            }
+          }
+
+          struct val_lev sdrad_min = find_standard_value(
+              *t, "",
+              "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
+              "minimum", params_rd_mm[i]);
+
+          if (sdrad_min.level.size()) {
+            if (!std::isnan(sdrad_min.value)) {
+              sdrad_min_value = std::to_string(sdrad_min.value);
+            }
+          }
+
+          struct val_lev sdrad_max = find_standard_value(
+              *t, "",
+              "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
+              "maximum", params_rd_mm[i]);
+
+          if (sdrad_max.level.size()) {
+            if (!std::isnan(sdrad_max.value)) {
+              sdrad_max_value = std::to_string(sdrad_max.value);
+            }
+          }
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("004025");
+          }
+          bufr->addValue(period); // 0 04 025 Time period or displacement
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("014002");
+          }
+          bufr->addValue(ldrad_max_value);
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("014002");
+          }
+          bufr->addValue(ldrad_min_value);
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("014004");
+          }
+          bufr->addValue(sdrad_max_value);
+
+          if (!subsets && !i) {
+            bufr->addDescriptor("014004");
+          }
+          bufr->addValue(sdrad_min_value);
         }
       }
-
-      bufr->addValue(-1);           // TIME PERIOD OR DISPLACEMENT
-      bufr->addValue(ldrad1_value); // LONG-WAVE RADIATION INTEGRATED OVER 1H
-      bufr->addValue(
-          "MISSING"); // SHORT-WAVE RADIATION, INTEGRATED OVER PERIOD SPECIFIED
-      bufr->addValue(
-          "MISSING"); // NET RADIATION, INTEGRATED OVER PERIOD SPECIFIED
-      bufr->addValue("MISSING"); // GLOBAL SOLAR RADIATION (HIGH ACCURACY),
-                                 // INTEGRATED OVER PERIOD SPECIFIED
-      bufr->addValue("MISSING"); //  DIFFUSE SOLAR RADIATION (HIGH ACCURACY),
-                                 //  INTEGRATED OVER PERIOD SPECIFIED
-      bufr->addValue("MISSING"); // DIRECT SOLAR RADIATION (HIGH ACCURACY),
-                                 // INTEGRATED OVER PERIOD SPECIFIED
-
-      bufr->addValue(-24);           // TIME PERIOD OR DISPLACEMENT
-      bufr->addValue(ldrad24_value); // LONG-WAVE RADIATION INTEGRATED OVER 12H
-      bufr->addValue("MISSING");
-      bufr->addValue("MISSING");
-      bufr->addValue("MISSING");
-      bufr->addValue("MISSING");
-      bufr->addValue("MISSING");
 
       if (!subsets) {
         bufr->addDescriptor("103000");
