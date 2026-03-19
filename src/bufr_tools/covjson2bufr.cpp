@@ -180,6 +180,7 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
   std::set<std::string> params_rad_minmax;
 
   bool include_wind = false;
+  bool include_pressure = false;
 
   int subsets = 0;
   // Count subsets
@@ -245,6 +246,16 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
           include_wind = true;
         }
       }
+      // Check pressure values
+      if (!include_pressure) {
+        auto params_press =
+            find_parameter_names(*t, "air_pressure", "", "point", "PT0S");
+        auto params_press_msl = find_parameter_names(
+            *t, "air_pressure_at_mean_sea_level", "", "point", "PT0S");
+        if (params_press.size() || params_press_msl.size()) {
+          include_pressure = true;
+        }
+      }
     }
   }
 
@@ -295,43 +306,46 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       bufr->addValue(geo_loc[w->first]["lon"]); // Longitude
       bufr->addValue(geo_loc[w->first]["hei"]); // Height of station
 
-      bufr->addValue("MISSING"); // Height of arometer
+      bufr->addValue("MISSING"); // Height of barometer
 
-      if (!subsets) {
-        bufr->addDescriptor("302031");
-      }
-
-      std::string press_value = "MISSING";
-      struct val_lev press =
-          find_standard_value(*t, "air_pressure", "", "point", "PT0S");
-      if (press.level.size()) {
-        if (!std::isnan(press.value)) {
-          if (unit[w->first]["air_pressure:0.0:point:PT0S"] == "hPa") {
-            press.value *= 100;
-          }
-          press_value = std::to_string(press.value);
+      // Pressure
+      if (include_pressure) {
+        if (!subsets) {
+          bufr->addDescriptor("302031");
         }
-      }
-      bufr->addValue(press_value);
 
-      std::string press_msl_value = "MISSING";
-      struct val_lev press_msl = find_standard_value(
-          *t, "air_pressure_at_mean_sea_level", "", "point", "PT0S");
-      if (press_msl.level.size()) {
-        if (!std::isnan(press_msl.value)) {
-          if (unit[w->first]["air_pressure:0.0:point:PT0S"] == "hPa") {
-            press_msl.value *= 100;
+        std::string press_value = "MISSING";
+        struct val_lev press =
+            find_standard_value(*t, "air_pressure", "", "point", "PT0S");
+        if (press.level.size()) {
+          if (!std::isnan(press.value)) {
+            if (unit[w->first]["air_pressure:0.0:point:PT0S"] == "hPa") {
+              press.value *= 100;
+            }
+            press_value = std::to_string(press.value);
           }
-          press_msl_value = std::to_string(press_msl.value);
         }
-      }
-      bufr->addValue(press_msl_value);
+        bufr->addValue(press_value);
 
-      bufr->addValue("MISSING"); // 3-HOUR PRESSURE CHANGE
-      bufr->addValue("MISSING"); // CHARACTERISTIC OF PRESSURE TENDENCY
-      bufr->addValue("MISSING"); // 24-HOUR PRESSURE CHANGE
-      bufr->addValue("MISSING"); // PRESSURE
-      bufr->addValue("MISSING"); // GEOPOTENTIAL HEIGHT
+        std::string press_msl_value = "MISSING";
+        struct val_lev press_msl = find_standard_value(
+            *t, "air_pressure_at_mean_sea_level", "", "point", "PT0S");
+        if (press_msl.level.size()) {
+          if (!std::isnan(press_msl.value)) {
+            if (unit[w->first]["air_pressure:0.0:point:PT0S"] == "hPa") {
+              press_msl.value *= 100;
+            }
+            press_msl_value = std::to_string(press_msl.value);
+          }
+        }
+        bufr->addValue(press_msl_value);
+
+        bufr->addValue("MISSING"); // 3-HOUR PRESSURE CHANGE
+        bufr->addValue("MISSING"); // CHARACTERISTIC OF PRESSURE TENDENCY
+        bufr->addValue("MISSING"); // 24-HOUR PRESSURE CHANGE
+        bufr->addValue("MISSING"); // PRESSURE
+        bufr->addValue("MISSING"); // GEOPOTENTIAL HEIGHT
+      }
 
       // Temperature
       if (!subsets) {
