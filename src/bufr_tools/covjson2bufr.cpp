@@ -81,7 +81,10 @@ bool encoding_coverage(rapidjson::Value::ConstValueIterator it,
 
           axis_x = cov_it->value["axes"]["x"]["values"][0].GetDouble();
           axis_y = cov_it->value["axes"]["y"]["values"][0].GetDouble();
-          axis_z = cov_it->value["axes"]["z"]["values"][0].GetDouble();
+          if (cov_it->value["axes"].HasMember("z")) {
+            axis_z = cov_it->value["axes"]["z"]["values"][0].GetDouble();
+          } else
+            axis_z = 0.0;
           geo_loc[wigosId]["lat"] = axis_x;
           geo_loc[wigosId]["lon"] = axis_y;
           geo_loc[wigosId]["hei"] = axis_z;
