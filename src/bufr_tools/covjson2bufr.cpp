@@ -425,12 +425,11 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       // Extreme temperature data: [0 07 032] [0 04 024] [0 12 111] [0 04 024]
       // [0 12 112] Instead of 3 02 041, because time unit is hour
 
-      if (!subsets) {
-        bufr->addDescriptor("105000");
-        bufr->addDescriptor("031001");
-      }
-
       if (params.size()) {
+        if (!subsets) {
+          bufr->addDescriptor("105000");
+          bufr->addDescriptor("031001");
+        }
         bufr->addValue(params.size());
 
         for (int i = 0; i < params.size(); ++i) {
@@ -489,37 +488,6 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
           bufr->addValue(temp_min_value); // 0 12 112 Minimum temperature, at
                                           // height and over period specified
         }
-      } else {
-        // Encoding one with missing data
-
-        bufr->addValue(1);
-
-        if (!subsets) {
-          bufr->addDescriptor("007032");
-        }
-        bufr->addValue("MISSING"); // 0 07 032 Height of sensor above
-                                   // local ground
-        if (!subsets) {
-          bufr->addDescriptor("004025");
-        }
-        bufr->addValue("MISSING"); // 0 04 024 Time period or displacement
-
-        if (!subsets) {
-          bufr->addDescriptor("012111");
-        }
-        bufr->addValue("MISSING"); // 0 12 111 Maximum temperature, at height
-                                   // and over period specified
-
-        if (!subsets) {
-          bufr->addDescriptor("004025");
-        }
-        bufr->addValue("MISSING"); // 0 04 024 Time period or displacement
-
-        if (!subsets) {
-          bufr->addDescriptor("012112");
-        }
-        bufr->addValue("MISSING"); // 0 12 112 Minimum temperature, at height
-                                   // and over period specified
       }
 
       /*
