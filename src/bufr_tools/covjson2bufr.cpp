@@ -688,7 +688,6 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       }
 
       if (params_rd_mm.size()) {
-        std::cerr << "NEW\n";
         if (!subsets) {
           bufr->addDescriptor("105000");
           bufr->addDescriptor("031001");
@@ -715,7 +714,6 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
             // rad_sensor_level = ldrad_min.level;
             if (!std::isnan(ldrad_min.value)) {
               ldrad_min_value = std::to_string(ldrad_min.value);
-              std::cerr << "MIN: " << ldrad_min_value << " ";
             }
           }
 
@@ -727,7 +725,6 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
           if (ldrad_max.level.size()) {
             if (!std::isnan(ldrad_max.value)) {
               ldrad_max_value = std::to_string(ldrad_max.value);
-              std::cerr << "MAX: " << ldrad_max_value << "\n";
             }
           }
 
@@ -780,12 +777,11 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
         }
       }
 
-      if (!subsets) {
-        bufr->addDescriptor("103000");
-        bufr->addDescriptor("031001");
-      }
-
       if (params_pa.size()) {
+        if (!subsets) {
+          bufr->addDescriptor("103000");
+          bufr->addDescriptor("031001");
+        }
         bufr->addValue(params_pa.size());
         // for (int i = 0; i < params_pa.size(); ++i) {
         for (int i = 0; i < params_pa.size(); ++i) {
@@ -820,26 +816,6 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
               prec_amount_value); // 0 13 011 Total precipitation/total water
                                   // equivalent
         }
-
-      } else {
-
-        bufr->addValue(1);
-
-        if (!subsets) {
-          bufr->addDescriptor("007032");
-        }
-        bufr->addValue("MISSING"); // 0 07 032 Height of sensor above
-                                   // local ground
-        if (!subsets) {
-          bufr->addDescriptor("004025");
-        }
-        bufr->addValue("MISSING"); // 0 04 024 Time period or displacement
-
-        if (!subsets) {
-          bufr->addDescriptor("013011");
-        }
-        bufr->addValue(
-            "MISSING"); // 0 13 011 Total precipitation/total water equivalent
       }
 
       // END of FIRST SUBSET, subset end indicator
