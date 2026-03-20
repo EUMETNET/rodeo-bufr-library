@@ -181,6 +181,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
 
   bool include_wind = false;
   bool include_pressure = false;
+  bool include_temp_hum_synop = false;
+  bool include_visibility = false;
 
   int subsets = 0;
   // Count subsets
@@ -212,11 +214,9 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
           *t, "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
           "", "maximum", "");
       params_rad_minmax.merge(params_ldrad_max);
-
       auto params_sdrad_sum = find_parameter_names(
-          *t, "",
-          "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
-          "sum", "");
+          *t, "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
+          "", "sum", "");
       params_rad.merge(params_sdrad_sum);
       auto params_sdrad_min = find_parameter_names(
           *t, "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
@@ -228,11 +228,11 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       params_rad_minmax.merge(params_sdrad_max);
 
       auto params_nlrad_sum = find_parameter_names(
-          *t, "", "integral_wrt_time_of_surface_net_downward_longwave_flux",
+          *t, "integral_wrt_time_of_surface_net_downward_longwave_flux", "",
           "sum", "");
       params_rad.merge(params_nlrad_sum);
       auto params_nsrad_sum = find_parameter_names(
-          *t, "", "integral_wrt_time_of_surface_net_downward_shortwave_flux",
+          *t, "integral_wrt_time_of_surface_net_downward_shortwave_flux", "",
           "sum", "");
       params_rad.merge(params_nsrad_sum);
 
@@ -256,11 +256,23 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
           include_pressure = true;
         }
       }
+
+      // Check temperature, humidity synop values for [ 3 02 032 ]
+      if (!include_temp_hum_synop) {
+
+        auto params_temp =
+            find_parameter_names(*t, "air_temperature", "", "point", "");
+        auto params_dew = find_parameter_names(*t, "dew_point_temperature", "",
+                                               "point", "PT0S");
+        auto params_hum =
+            find_parameter_names(*t, "relative_humidity", "", "point", "PT0S");
+
+        if (params_temp.size() || params_dew.size() || params_hum.size()) {
+          include_temp_hum_synop = true;
+        }
+      }
     }
   }
-
-  params_prec.erase("PT1D");
-  params_prec.erase("PT24H");
 
   std::vector<std::string> params_pa;
   if (params_prec.size()) {
@@ -317,26 +329,22 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
         std::string press_value = "MISSING";
         struct val_lev press =
             find_standard_value(*t, "air_pressure", "", "point", "PT0S");
-        if (press.level.size()) {
-          if (!std::isnan(press.value)) {
-            if (unit[w->first]["air_pressure:0.0:point:PT0S"] == "hPa") {
-              press.value *= 100;
-            }
-            press_value = std::to_string(press.value);
+        if (!std::isnan(press.value)) {
+          if (unit[w->first]["air_pressure:0.0:point:PT0S"] == "hPa") {
+            press.value *= 100;
           }
+          press_value = std::to_string(press.value);
         }
         bufr->addValue(press_value);
 
         std::string press_msl_value = "MISSING";
         struct val_lev press_msl = find_standard_value(
             *t, "air_pressure_at_mean_sea_level", "", "point", "PT0S");
-        if (press_msl.level.size()) {
-          if (!std::isnan(press_msl.value)) {
-            if (unit[w->first]["air_pressure:0.0:point:PT0S"] == "hPa") {
-              press_msl.value *= 100;
-            }
-            press_msl_value = std::to_string(press_msl.value);
+        if (!std::isnan(press_msl.value)) {
+          if (unit[w->first]["air_pressure:0.0:point:PT0S"] == "hPa") {
+            press_msl.value *= 100;
           }
+          press_msl_value = std::to_string(press_msl.value);
         }
         bufr->addValue(press_msl_value);
 
@@ -348,99 +356,65 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       }
 
       // Temperature
-      if (!subsets) {
-        bufr->addDescriptor("302035");
-      }
+      if (include_temp_hum_synop) {
+        if (!subsets) {
+          bufr->addDescriptor("302032");
+        }
 
-      std::string temp_value = "MISSING";
-      std::string temp_sensor_level = "MISSING";
+        std::string temp_value = "MISSING";
+        std::string temp_sensor_level = "MISSING";
 
-      struct val_lev temp =
-          find_standard_value(*t, "air_temperature", "", "point", "PT0S");
-      if (temp.level.size()) {
-        temp_sensor_level = temp.level;
+        struct val_lev temp =
+            find_standard_value(*t, "air_temperature", "", "point", "PT0S");
+        if (std::isnan(temp.value)) {
+          for (int j = 10; j > 1; --j) {
+            std::string period_str = "PT" + std::to_string(j) + "M";
+            temp = find_standard_value(*t, "air_temperature", "", "point",
+                                       period_str);
+            if (!std::isnan(temp.value)) {
+              break;
+            }
+          }
+        }
         if (!std::isnan(temp.value)) {
+          temp_sensor_level = temp.level;
           double kelvin_value = unit[w->first]["air_temperature"] == "K"
                                     ? temp.value
                                     : temp.value + 273.16;
           temp_value = std::to_string(kelvin_value);
         }
-      }
 
-      bufr->addValue(temp_sensor_level);
-      bufr->addValue(temp_value);
+        bufr->addValue(temp_sensor_level);
+        bufr->addValue(temp_value);
 
-      std::string dew_value = "MISSING";
-      struct val_lev dew =
-          find_standard_value(*t, "dew_point_temperature", "", "point", "PT0S");
-      if (dew.level.size()) {
+        std::string dew_value = "MISSING";
+        struct val_lev dew = find_standard_value(*t, "dew_point_temperature",
+                                                 "", "point", "PT0S");
         if (!std::isnan(dew.value)) {
           double kelvin_value = unit[w->first]["dew_point_temperature"] == "K"
                                     ? dew.value
                                     : dew.value + 273.16;
           dew_value = std::to_string(kelvin_value);
         }
-      }
-      bufr->addValue(dew_value);
+        bufr->addValue(dew_value);
 
-      std::string hum_value = "MISSING";
-      struct val_lev hum =
-          find_standard_value(*t, "relative_humidity", "", "point", "PT0S");
-      if (hum.level.size()) {
+        std::string hum_value = "MISSING";
+        struct val_lev hum =
+            find_standard_value(*t, "relative_humidity", "", "point", "PT0S");
         if (!std::isnan(hum.value)) {
           hum_value = std::to_string(hum.value);
         }
+        bufr->addValue(hum_value);
       }
-      bufr->addValue(hum_value);
-
-      // visibility
-      bufr->addValue("MISSING"); // visibility sensor height
-      bufr->addValue("MISSING"); // visibility
-
-      // 24-H precipitation
-      std::string prec24_value = "MISSING";
-      std::string prec24_sensor_level = "MISSING";
-      struct val_lev prec24 =
-          find_standard_value(*t, "precipitation_amount", "", "sum", "PT24H");
-      if (prec24.level.size()) {
-        if (prec24.level != 0.0)
-          prec24_sensor_level = prec24.level;
-        if (!std::isnan(prec24.value)) {
-          prec24_value = std::to_string(prec24.value);
+      if (include_visibility) {
+        // visibility
+        if (!subsets) {
+          bufr->addDescriptor("302033");
         }
+
+        bufr->addValue("MISSING"); // visibility sensor height
+        bufr->addValue("MISSING"); // Horizontal visibility
       }
-      bufr->addValue(prec24_sensor_level);
-      bufr->addValue(prec24_value);
-
-      // Ceilometer sensor heigth
-      bufr->addValue("MISSING"); // cloud sensor hei
-
-      // Cloud layers
-      bufr->addValue("MISSING"); // cloud cover total
-      bufr->addValue("MISSING"); // vertical significant
-      bufr->addValue("MISSING"); // cloud amiount
-      bufr->addValue("MISSING"); // cloud base hei
-      bufr->addValue("MISSING"); // cloud type
-      bufr->addValue("MISSING"); // cloud type
-      bufr->addValue("MISSING"); // cloud type
-
-      bufr->addValue(1); // DELAYED DESCRIPTOR REPLICATION FACTOR
-
-      bufr->addValue("MISSING"); // vertical significant
-      bufr->addValue("MISSING"); // cloud amiount
-      bufr->addValue("MISSING"); // cloud type
-      bufr->addValue("MISSING"); // cloud base hei
-
-      if (!subsets) {
-        bufr->addDescriptor("302036");
-      }
-      bufr->addValue(1); // DELAYED DESCRIPTOR REPLICATION FACTOR
-
-      bufr->addValue("MISSING"); // vertical significant
-      bufr->addValue("MISSING"); // cloud amiount
-      bufr->addValue("MISSING"); // cloud type
-      bufr->addValue("MISSING"); // cloud base hei
-      bufr->addValue("MISSING"); // cloud top description
 
       // Extreme temperature data: [0 07 032] [0 04 024] [0 12 111] [0 04 024]
       // [0 12 112] Instead of 3 02 041, because time unit is hour
@@ -456,17 +430,16 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
 
           std::string temp_max_value = "MISSING";
           std::string temp_min_value = "MISSING";
+          std::string temp_sensor_level = "MISSING";
 
           struct val_lev temp_max = find_standard_value(
               *t, "air_temperature", "", "maximum", params[i]);
-          if (temp_max.level.size()) {
+          if (!std::isnan(temp_max.value)) {
             temp_sensor_level = temp_max.level;
-            if (!std::isnan(temp_max.value)) {
-              double kelvin_value = unit[w->first]["air_temperature"] == "K"
-                                        ? temp_max.value
-                                        : temp_max.value + 273.16;
-              temp_max_value = std::to_string(kelvin_value);
-            }
+            double kelvin_value = unit[w->first]["air_temperature"] == "K"
+                                      ? temp_max.value
+                                      : temp_max.value + 273.16;
+            temp_max_value = std::to_string(kelvin_value);
           }
 
           int period = periodstr_to_int(params[i]) / 60;
@@ -488,14 +461,12 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
 
           struct val_lev temp_min = find_standard_value(
               *t, "air_temperature", "", "minimum", params[i]);
-          if (temp_min.level.size()) {
+          if (!std::isnan(temp_min.value)) {
             temp_sensor_level = temp_min.level;
-            if (!std::isnan(temp_min.value)) {
-              double kelvin_value = unit[w->first]["air_temperature"] == "K"
-                                        ? temp_min.value
-                                        : temp_min.value + 273.16;
-              temp_min_value = std::to_string(kelvin_value);
-            }
+            double kelvin_value = unit[w->first]["air_temperature"] == "K"
+                                      ? temp_min.value
+                                      : temp_min.value + 273.16;
+            temp_min_value = std::to_string(kelvin_value);
           }
 
           if (!subsets && !i) {
@@ -532,18 +503,12 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
           struct val_lev wind_dir = find_standard_value(
               *t, "wind_from_direction", "", "point", params_wind[0]);
 
-          if (wind_speed.level.size()) {
+          if (!std::isnan(wind_speed.value)) {
             wind_sensor_level = wind_speed.level;
-            if (!std::isnan(wind_speed.value)) {
-              wind_speed_value = std::to_string(wind_speed.value);
-            }
+            wind_speed_value = std::to_string(wind_speed.value);
           }
-
-          if (wind_dir.level.size()) {
-            // wind_sensor_level = wind_dir.level;
-            if (!std::isnan(wind_dir.value)) {
-              wind_dir_value = std::to_string(wind_dir.value);
-            }
+          if (!std::isnan(wind_dir.value)) {
+            wind_dir_value = std::to_string(wind_dir.value);
           }
           int period = periodstr_to_int(params_wind[0]) / 60;
           wind_period_value = std::to_string(period);
@@ -568,24 +533,18 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
             struct val_lev wind_gust_speed = find_standard_value(
                 *t, "wind_speed_of_gust", "", "point", params_wind_gust[i]);
 
-            if (wind_gust_speed.level.size()) {
-              if (!std::isnan(wind_gust_speed.value)) {
-                wind_gust_speed_value[i] =
-                    std::to_string(wind_gust_speed.value);
-              }
+            if (!std::isnan(wind_gust_speed.value)) {
+              wind_gust_speed_value[i] = std::to_string(wind_gust_speed.value);
             }
 
-            if (params_wind_gust.size() >= i) {
-              struct val_lev wind_gust_dir =
-                  find_standard_value(*t, "wind_gust_from_direction", "",
-                                      "point", params_wind_gust[i]);
+            struct val_lev wind_gust_dir =
+                find_standard_value(*t, "wind_gust_from_direction", "", "point",
+                                    params_wind_gust[i]);
 
-              if (wind_gust_dir.level.size()) {
-                if (!std::isnan(wind_gust_dir.value)) {
-                  wind_gust_dir_value[i] = std::to_string(wind_gust_dir.value);
-                }
-              }
+            if (!std::isnan(wind_gust_dir.value)) {
+              wind_gust_dir_value[i] = std::to_string(wind_gust_dir.value);
             }
+
             int period = periodstr_to_int(params_wind_gust[i]) / 60;
             wind_gust_period[i] = std::to_string(period);
           }
@@ -610,6 +569,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
         bufr->addValue(wind_gust_dir_value[1]);   // MAXIMUM WIND GUST DIRECTION
         bufr->addValue(wind_gust_speed_value[1]); // MAXIMUM WIND GUST SPEED
       }
+
+      // Radiation
       if (params_rd.size()) {
         if (!subsets) {
           bufr->addDescriptor("105000");
@@ -629,45 +590,36 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
               "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
               "", "sum", params_rd[i]);
 
-          if (ldrad_sum.level.size()) {
+          if (!std::isnan(ldrad_sum.value)) {
             rad_sensor_level = ldrad_sum.level;
-            if (!std::isnan(ldrad_sum.value)) {
-              ldrad_value = std::to_string(ldrad_sum.value);
-            }
+            ldrad_value = std::to_string(ldrad_sum.value);
           }
 
           int period = periodstr_to_int(params_rd[i]) / 60;
 
           struct val_lev sdrad_sum = find_standard_value(
-              *t, "",
+              *t,
               "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
-              "sum", params_rd[i]);
+              "", "sum", params_rd[i]);
 
-          if (sdrad_sum.level.size()) {
-            if (!std::isnan(sdrad_sum.value)) {
-              sdrad_value = std::to_string(sdrad_sum.value);
-            }
+          if (!std::isnan(sdrad_sum.value)) {
+            sdrad_value = std::to_string(sdrad_sum.value);
           }
 
           struct val_lev nlrad_sum = find_standard_value(
-              *t, "", "integral_wrt_time_of_surface_net_downward_longwave_flux",
+              *t, "integral_wrt_time_of_surface_net_downward_longwave_flux", "",
               "sum", params_rd[i]);
 
-          if (nlrad_sum.level.size()) {
-            if (!std::isnan(nlrad_sum.value)) {
-              nlrad_value = std::to_string(nlrad_sum.value);
-            }
+          if (!std::isnan(nlrad_sum.value)) {
+            nlrad_value = std::to_string(nlrad_sum.value);
           }
 
           struct val_lev nsrad_sum = find_standard_value(
-              *t, "",
-              "integral_wrt_time_of_surface_net_downward_shortwave_flux", "sum",
-              params_rd[i]);
+              *t, "integral_wrt_time_of_surface_net_downward_shortwave_flux",
+              "", "sum", params_rd[i]);
 
-          if (nsrad_sum.level.size()) {
-            if (!std::isnan(nsrad_sum.value)) {
-              nsrad_value = std::to_string(nsrad_sum.value);
-            }
+          if (!std::isnan(nsrad_sum.value)) {
+            nsrad_value = std::to_string(nsrad_sum.value);
           }
 
           if (!subsets && !i) {
@@ -697,6 +649,7 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
         }
       }
 
+      // Radiation 2
       if (params_rd_mm.size()) {
         if (!subsets) {
           bufr->addDescriptor("105000");
@@ -719,11 +672,9 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
               "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
               "", "minimum", params_rd_mm[i]);
 
-          if (ldrad_min.level.size()) {
-            // rad_sensor_level = ldrad_min.level;
-            if (!std::isnan(ldrad_min.value)) {
-              ldrad_min_value = std::to_string(ldrad_min.value);
-            }
+          // rad_sensor_level = ldrad_min.level;
+          if (!std::isnan(ldrad_min.value)) {
+            ldrad_min_value = std::to_string(ldrad_min.value);
           }
 
           struct val_lev ldrad_max = find_standard_value(
@@ -731,10 +682,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
               "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
               "", "maximum", params_rd_mm[i]);
 
-          if (ldrad_max.level.size()) {
-            if (!std::isnan(ldrad_max.value)) {
-              ldrad_max_value = std::to_string(ldrad_max.value);
-            }
+          if (!std::isnan(ldrad_max.value)) {
+            ldrad_max_value = std::to_string(ldrad_max.value);
           }
 
           struct val_lev sdrad_min = find_standard_value(
@@ -742,10 +691,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
               "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
               "minimum", params_rd_mm[i]);
 
-          if (sdrad_min.level.size()) {
-            if (!std::isnan(sdrad_min.value)) {
-              sdrad_min_value = std::to_string(sdrad_min.value);
-            }
+          if (!std::isnan(sdrad_min.value)) {
+            sdrad_min_value = std::to_string(sdrad_min.value);
           }
 
           struct val_lev sdrad_max = find_standard_value(
@@ -753,10 +700,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
               "integral_wrt_time_of_surface_downwelling_shortwave_flux_in_air",
               "maximum", params_rd_mm[i]);
 
-          if (sdrad_max.level.size()) {
-            if (!std::isnan(sdrad_max.value)) {
-              sdrad_max_value = std::to_string(sdrad_max.value);
-            }
+          if (!std::isnan(sdrad_max.value)) {
+            sdrad_max_value = std::to_string(sdrad_max.value);
           }
 
           if (!subsets && !i) {
@@ -803,14 +748,13 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
         for (int i = 0; i < params_pa.size(); ++i) {
 
           std::string prec_amount_value = "MISSING";
+          std::string prec_sensor_level = "MISSING";
 
           struct val_lev prec_amount = find_standard_value(
               *t, "precipitation_amount", "", "sum", params_pa[i]);
-          if (prec_amount.level.size()) {
-            prec24_sensor_level = prec_amount.level;
-            if (!std::isnan(prec_amount.value)) {
-              prec_amount_value = std::to_string(prec_amount.value);
-            }
+          if (!std::isnan(prec_amount.value)) {
+            prec_sensor_level = prec_amount.level;
+            prec_amount_value = std::to_string(prec_amount.value);
           }
 
           int period = periodstr_to_int(params_pa[i]) / 60;
@@ -818,8 +762,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
           if (!subsets && !i) {
             bufr->addDescriptor("007032");
           }
-          bufr->addValue(prec24_sensor_level); // 0 07 032 Height of sensor
-                                               // above local ground
+          bufr->addValue(prec_sensor_level); // 0 07 032 Height of sensor
+                                             // above local ground
           if (!subsets && !i) {
             bufr->addDescriptor("004025");
           }
@@ -829,8 +773,8 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
             bufr->addDescriptor("013011");
           }
           bufr->addValue(
-              prec_amount_value); // 0 13 011 Total precipitation/total water
-                                  // equivalent
+              prec_amount_value); // 0 13 011 Total precipitation/total
+                                  // water equivalent
         }
       }
 
