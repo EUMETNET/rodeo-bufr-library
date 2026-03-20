@@ -314,6 +314,20 @@ std::list<std::string> ESOHBufr::msg() const {
                   }
                 }
               }
+              // Alt platform names
+              if (st_value.HasMember("wigosStationIdentifiers")) {
+                const rapidjson::Value &st_array =
+                    st_value["wigosStationIdentifiers"];
+                if (st_array.IsArray()) {
+                  for (auto &st : st_array.GetArray()) {
+                    std::string alt_platform =
+                        st["wigosStationIdentifier"].GetString();
+                    if (!st["primary"].GetBool()) {
+                      addAltPlatform(alt_platform, subset_message);
+                    }
+                  }
+                }
+              }
             }
           }
           // Missing mandatory geolocation values. Skip this subset
@@ -1508,6 +1522,24 @@ bool ESOHBufr::setPlatform(std::string value,
   } else {
     message_properties.AddMember("platform", platform, message_allocator);
   }
+  return true;
+}
+
+bool ESOHBufr::addAltPlatform(std::string value,
+                              rapidjson::Document &message) const {
+
+  rapidjson::Value add_platform;
+  rapidjson::Document::AllocatorType &message_allocator =
+      message.GetAllocator();
+  rapidjson::Value &message_properties = message["properties"];
+
+  add_platform.SetString(value.c_str(), message_allocator);
+  if (!message_properties.HasMember("alt_platforms")) {
+    rapidjson::Value alt_platforms(rapidjson::kArrayType);
+    message_properties.AddMember("alt_platforms", alt_platforms,
+                                 message_allocator);
+  }
+  message_properties["alt_platforms"].PushBack(add_platform, message_allocator);
   return true;
 }
 

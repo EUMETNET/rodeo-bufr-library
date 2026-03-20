@@ -141,6 +141,7 @@ private:
   bool setPlatformName(std::string v, rapidjson::Document &message,
                        bool force = true) const;
   bool setPlatform(std::string v, rapidjson::Document &message) const;
+  bool addAltPlatform(std::string v, rapidjson::Document &message) const;
   bool setRadarMeta(std::string n, std::string v,
                     rapidjson::Document &message) const;
   bool setRadarMeta(std::string n, int v, rapidjson::Document &message) const;
