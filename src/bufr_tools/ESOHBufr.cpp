@@ -218,6 +218,13 @@ std::list<std::string> ESOHBufr::msg() const {
         lb.addLogEntry(LogEntry("Element Descriotor value: " + value_str,
                                 LogLevel::TRACE, __func__, bufr_id));
 
+        // Reset sensor height if [ 0 07 032] missing
+        if (v == DescriptorId(7032, true) and value_str == "MISSING") {
+          sensor_level_active = 0;
+          sensor_level = 0.0;
+          break;
+        }
+
         // Opera radar [ 0 30 196 ] missing value is valid, means QIND
         if (value_str == "MISSING" && (v != DescriptorId(30196, true)))
           break;
@@ -792,6 +799,7 @@ std::list<std::string> ESOHBufr::msg() const {
               sensor_level_active = 2;
             } else {
               sensor_level_active = 0;
+              sensor_level = 0.0;
             }
           }
 
@@ -1086,6 +1094,9 @@ std::list<std::string> ESOHBufr::msg() const {
               if (!std::isnan(sensor_hei)) {
                 sensor_level_active = 1;
                 sensor_level = sensor_hei;
+              } else {
+                sensor_level_active = 0;
+                sensor_level = 0.0;
               }
             }
 

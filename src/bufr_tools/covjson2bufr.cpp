@@ -443,6 +443,19 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
           }
 
           int period = periodstr_to_int(params[i]) / 60;
+
+          struct val_lev temp_min = find_standard_value(
+              *t, "air_temperature", "", "minimum", params[i]);
+          if (!std::isnan(temp_min.value)) {
+            if (temp_sensor_level == "MISSING") {
+              temp_sensor_level = temp_min.level;
+            }
+            double kelvin_value = unit[w->first]["air_temperature"] == "K"
+                                      ? temp_min.value
+                                      : temp_min.value + 273.16;
+            temp_min_value = std::to_string(kelvin_value);
+          }
+
           if (!subsets && !i) {
             bufr->addDescriptor("007032");
           }
@@ -458,16 +471,6 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
           }
           bufr->addValue(temp_max_value); // 0 12 111 Maximum temperature, at
                                           // height and over period specified
-
-          struct val_lev temp_min = find_standard_value(
-              *t, "air_temperature", "", "minimum", params[i]);
-          if (!std::isnan(temp_min.value)) {
-            temp_sensor_level = temp_min.level;
-            double kelvin_value = unit[w->first]["air_temperature"] == "K"
-                                      ? temp_min.value
-                                      : temp_min.value + 273.16;
-            temp_min_value = std::to_string(kelvin_value);
-          }
 
           if (!subsets && !i) {
             bufr->addDescriptor("004025");
@@ -570,10 +573,11 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
         bufr->addValue(wind_gust_speed_value[1]); // MAXIMUM WIND GUST SPEED
       }
 
+      std::string rad_sensor_level = "MISSING";
       // Radiation
       if (params_rd.size()) {
         if (!subsets) {
-          bufr->addDescriptor("105000");
+          bufr->addDescriptor("106000");
           bufr->addDescriptor("031001");
         }
         bufr->addValue(params_rd.size());
@@ -583,7 +587,6 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
           std::string sdrad_value = "MISSING";
           std::string nlrad_value = "MISSING";
           std::string nsrad_value = "MISSING";
-          std::string rad_sensor_level;
 
           struct val_lev ldrad_sum = find_standard_value(
               *t,
@@ -603,6 +606,9 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
               "", "sum", params_rd[i]);
 
           if (!std::isnan(sdrad_sum.value)) {
+            if (rad_sensor_level == "MISSING") {
+              rad_sensor_level = sdrad_sum.level;
+            }
             sdrad_value = std::to_string(sdrad_sum.value);
           }
 
@@ -611,6 +617,9 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
               "sum", params_rd[i]);
 
           if (!std::isnan(nlrad_sum.value)) {
+            if (rad_sensor_level == "MISSING") {
+              rad_sensor_level = nlrad_sum.level;
+            }
             nlrad_value = std::to_string(nlrad_sum.value);
           }
 
@@ -619,9 +628,17 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
               "", "sum", params_rd[i]);
 
           if (!std::isnan(nsrad_sum.value)) {
+            if (rad_sensor_level == "MISSING") {
+              rad_sensor_level = nsrad_sum.level;
+            }
             nsrad_value = std::to_string(nsrad_sum.value);
           }
 
+          if (!subsets && !i) {
+            bufr->addDescriptor("007032");
+          }
+          bufr->addValue(
+              rad_sensor_level); // 0 07 032 Height of sensor above local ground
           if (!subsets && !i) {
             bufr->addDescriptor("004025");
           }
@@ -652,7 +669,7 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
       // Radiation 2
       if (params_rd_mm.size()) {
         if (!subsets) {
-          bufr->addDescriptor("105000");
+          bufr->addDescriptor("106000");
           bufr->addDescriptor("031001");
         }
         bufr->addValue(params_rd_mm.size());
@@ -672,8 +689,10 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
               "integral_wrt_time_of_surface_downwelling_longwave_flux_in_air",
               "", "minimum", params_rd_mm[i]);
 
-          // rad_sensor_level = ldrad_min.level;
           if (!std::isnan(ldrad_min.value)) {
+            if (rad_sensor_level == "MISSING") {
+              rad_sensor_level = ldrad_min.level;
+            }
             ldrad_min_value = std::to_string(ldrad_min.value);
           }
 
@@ -683,6 +702,9 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
               "", "maximum", params_rd_mm[i]);
 
           if (!std::isnan(ldrad_max.value)) {
+            if (rad_sensor_level == "MISSING") {
+              rad_sensor_level = ldrad_max.level;
+            }
             ldrad_max_value = std::to_string(ldrad_max.value);
           }
 
@@ -693,6 +715,9 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
 
           if (!std::isnan(sdrad_min.value)) {
             sdrad_min_value = std::to_string(sdrad_min.value);
+            if (rad_sensor_level == "MISSING") {
+              rad_sensor_level = sdrad_min.level;
+            }
           }
 
           struct val_lev sdrad_max = find_standard_value(
@@ -702,7 +727,15 @@ struct ret_bufr covjson2bufr_default(std::string covjson_str, NorBufr *bufr,
 
           if (!std::isnan(sdrad_max.value)) {
             sdrad_max_value = std::to_string(sdrad_max.value);
+            if (rad_sensor_level == "MISSING") {
+              rad_sensor_level = ldrad_max.level;
+            }
           }
+          if (!subsets && !i) {
+            bufr->addDescriptor("007032");
+          }
+          bufr->addValue(
+              rad_sensor_level); // 0 07 032 Height of sensor above local ground
 
           if (!subsets && !i) {
             bufr->addDescriptor("004025");
