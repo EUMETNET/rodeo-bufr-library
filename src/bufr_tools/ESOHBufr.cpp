@@ -306,6 +306,14 @@ std::list<std::string> ESOHBufr::msg() const {
                   }
                 }
               }
+              if (std::isnan(hei)) {
+                if (st_value.HasMember("elevation")) {
+                  if (st_value["elevation"].IsDouble()) {
+                    hei = st_value["elevation"].GetDouble();
+                    setLocation(lat, lon, hei, subset_message);
+                  }
+                }
+              }
             }
           }
           // Missing mandatory geolocation values. Skip this subset
