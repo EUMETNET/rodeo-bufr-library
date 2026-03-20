@@ -76,7 +76,8 @@ std::string ESOHBufr::getNamingAuthority(int cn) const {
     cn = centre;
   for (auto na : naming_auth_map) {
     for (auto c : na.second.centre_list) {
-      if (c == cn) {
+      if (c == cn &&
+          (!na.second.dat_cat || na.second.dat_cat == data_category)) {
         ret = na.second.naming_auth;
         return ret;
       }
@@ -151,14 +152,14 @@ std::list<std::string> ESOHBufr::msg() const {
     properties["content"]["unit"] = "%";
     properties.AddMember("format", "BUFR", message_allocator);
     properties.AddMember("radar_meta", {}, message_allocator);
-
-    std::string na = getNamingAuthority();
-    if (na.size()) {
-      if (properties.HasMember("naming_authority")) {
-        properties["naming_authority"].SetString(na.c_str(), message_allocator);
-      }
+  }
+  std::string na = getNamingAuthority(centre);
+  if (na.size()) {
+    if (properties.HasMember("naming_authority")) {
+      properties["naming_authority"].SetString(na.c_str(), message_allocator);
     }
   }
+
   // subsets
   int subsetnum = 0;
   for (auto s : desc) {
