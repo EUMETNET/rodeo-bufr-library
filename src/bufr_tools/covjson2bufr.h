@@ -34,7 +34,7 @@ find_standard_value(std::map<std::string, double>::iterator beg,
                     std::string standard_name, std::string level,
                     std::string method, std::string period);
 
-                    std::vector<struct val_lev>
+std::vector<struct val_lev>
 find_standard_value(std::pair<std::string, std::map<std::string, double>> t,
                     std::string standard_name, std::string level,
                     std::string method, std::string period);
