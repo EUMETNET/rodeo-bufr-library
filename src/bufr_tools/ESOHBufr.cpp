@@ -220,7 +220,7 @@ std::list<std::string> ESOHBufr::msg() const {
                                 LogLevel::TRACE, __func__, bufr_id));
 
         // Reset sensor height if [ 0 07 032] missing
-        if ((v == DescriptorId(7032, true)) and (value_str == "MISSING")) {
+        if ((v == DescriptorId(7032, true)) && (value_str == "MISSING")) {
           sensor_level_active = 0;
           sensor_level = 0.0;
           break;
