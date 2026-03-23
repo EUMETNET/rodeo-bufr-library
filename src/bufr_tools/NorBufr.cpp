@@ -971,7 +971,7 @@ uint64_t NorBufr::encodeSubsets(std::istream &is) {
           if (ref != 0) {
             dvalue -= ref;
           }
-          value = dvalue;
+          value = std::lround(dvalue);
         }
         Section4::setValue(value, it->second[0]);
         add_subset_size += it->second[0];
@@ -1050,7 +1050,7 @@ bool NorBufr::encodeDescriptor(DescriptorId D, std::istream &is, int level,
           if (tabB->at(D).reference() != 0)
             dvalue -= tabB->at(D).reference();
         }
-        uint64_t value = dvalue;
+        uint64_t value = std::lround(dvalue);
         Section4::setValue(value, tabB->at(D).datawidth() + enc_mod_datawidth);
         std::vector<int> datamod;
         datamod.push_back(tabB->at(D).datawidth() + enc_mod_datawidth);

@@ -76,7 +76,8 @@ std::string ESOHBufr::getNamingAuthority(int cn) const {
     cn = centre;
   for (auto na : naming_auth_map) {
     for (auto c : na.second.centre_list) {
-      if (c == cn) {
+      if (c == cn &&
+          (!na.second.dat_cat || na.second.dat_cat == data_category)) {
         ret = na.second.naming_auth;
         return ret;
       }
@@ -151,14 +152,14 @@ std::list<std::string> ESOHBufr::msg() const {
     properties["content"]["unit"] = "%";
     properties.AddMember("format", "BUFR", message_allocator);
     properties.AddMember("radar_meta", {}, message_allocator);
-
-    std::string na = getNamingAuthority();
-    if (na.size()) {
-      if (properties.HasMember("naming_authority")) {
-        properties["naming_authority"].SetString(na.c_str(), message_allocator);
-      }
+  }
+  std::string na = getNamingAuthority(centre);
+  if (na.size()) {
+    if (properties.HasMember("naming_authority")) {
+      properties["naming_authority"].SetString(na.c_str(), message_allocator);
     }
   }
+
   // subsets
   int subsetnum = 0;
   for (auto s : desc) {
@@ -170,6 +171,7 @@ std::list<std::string> ESOHBufr::msg() const {
     std::vector<double> cor_lat;
     std::vector<double> cor_lon;
     double sensor_level = 0.0;
+    double barometer_level = 0.0;
     char sensor_level_active = 0;
     std::string period_str;
     std::string period_beg;
@@ -196,12 +198,14 @@ std::list<std::string> ESOHBufr::msg() const {
     // for( auto v : s )
     for (std::list<Descriptor>::const_iterator ci = s.begin(); ci != s.end();
          ++ci) {
-      if (sensor_level_active) {
-        if (ci->f() == 0 && (ci->x() != 4 && ci->x() != 31))
-          sensor_level_active--;
-      } else {
-        sensor_level = 0.0;
-      }
+      /*
+  if (sensor_level_active) {
+    if (ci->f() == 0 && (ci->x() != 4 && ci->x() != 31))
+      sensor_level_active--;
+  } else {
+    sensor_level = 0.0;
+  }
+    */
       period_update = false;
       auto v = *ci;
       lb.addLogEntry(LogEntry("ESOH Descriptor: " + v.toString(),
@@ -214,6 +218,13 @@ std::list<std::string> ESOHBufr::msg() const {
         NorBufrIO::strPrintable(value_str);
         lb.addLogEntry(LogEntry("Element Descriotor value: " + value_str,
                                 LogLevel::TRACE, __func__, bufr_id));
+
+        // Reset sensor height if [ 0 07 032] missing
+        if ((v == DescriptorId(7032, true)) && (value_str == "MISSING")) {
+          sensor_level_active = 0;
+          sensor_level = 0.0;
+          break;
+        }
 
         // Opera radar [ 0 30 196 ] missing value is valid, means QIND
         if (value_str == "MISSING" && (v != DescriptorId(30196, true)))
@@ -293,6 +304,28 @@ std::list<std::string> ESOHBufr::msg() const {
                   if (st_value["longitude"].IsDouble()) {
                     lon = st_value["longitude"].GetDouble();
                     setLocation(lat, lon, hei, subset_message);
+                  }
+                }
+              }
+              if (std::isnan(hei)) {
+                if (st_value.HasMember("elevation")) {
+                  if (st_value["elevation"].IsDouble()) {
+                    hei = st_value["elevation"].GetDouble();
+                    setLocation(lat, lon, hei, subset_message);
+                  }
+                }
+              }
+              // Alt platform names
+              if (st_value.HasMember("wigosStationIdentifiers")) {
+                const rapidjson::Value &st_array =
+                    st_value["wigosStationIdentifiers"];
+                if (st_array.IsArray()) {
+                  for (auto &st : st_array.GetArray()) {
+                    std::string alt_platform =
+                        st["wigosStationIdentifier"].GetString();
+                    if (!st["primary"].GetBool()) {
+                      addAltPlatform(alt_platform, subset_message);
+                    }
                   }
                 }
               }
@@ -563,6 +596,13 @@ std::list<std::string> ESOHBufr::msg() const {
             period_beg = "PT";
             period_end = "H";
             period_update = true;
+            auto pi = ci;
+            pi--;
+            // CI: current descriptor, period end(in minutes)
+            // PI: previous descriptor, period start(in minutes)
+            if (*pi == *ci) {
+              start_end_period = true;
+            }
             break;
           }
           case 75:   // Short time period or displacement
@@ -766,9 +806,23 @@ std::list<std::string> ESOHBufr::msg() const {
           // 32: // Height of sensor above ground
           // 33: // Height of sensor above water
           if (v.y() == 31 || v.y() == 32 || v.y() == 33) {
-            sensor_level = getDoubleValue(v);
-            if (getDataCategory() <= 1 && !std::isnan(sensor_level)) {
+            double sl = getDoubleValue(v);
+            if (getDataCategory() <= 1 && !std::isnan(sl)) {
+              switch (v.y()) {
+              case 31:
+                barometer_level = sl;
+                break;
+              case 32:
+                sensor_level = sl;
+                break;
+              case 33:
+                if (!sensor_level_active)
+                  sensor_level = sl;
+              }
               sensor_level_active = 2;
+            } else {
+              sensor_level_active = 0;
+              sensor_level = 0.0;
             }
           }
 
@@ -779,8 +833,12 @@ std::list<std::string> ESOHBufr::msg() const {
           if (v.y() == 4 ||
               v.y() == 51) // PRESSURE, PRESSURE REDUCED TO MEAN SEA LEVEL
           {
+            double sl = sensor_level;
+            if (!std::isnan(hei) && barometer_level) {
+              sl = barometer_level - hei;
+            }
             auto ins_msg = addMessage(ci, subset_message, sensor_level_active,
-                                      sensor_level, "point");
+                                      sl, "point");
             if (std::find(ret.begin(), ret.end(), ins_msg) != ret.end()) {
               lb.addLogEntry(LogEntry(
                   "Non uniq value: " + v.toString() +
@@ -820,13 +878,19 @@ std::list<std::string> ESOHBufr::msg() const {
         }
         case 12: // Temperature
         {
-          if (v.y() == 1 || v.y() == 101 || v.y() == 3 || v.y() == 103) {
+          if (v.y() == 1 || v.y() == 101 || v.y() == 3 || v.y() == 103 ||
+              v.y() == 111 || v.y() == 112) {
             if (!sensor_level_active && getDataCategory() <= 1) {
               sensor_level_active = 1;
               sensor_level = 2.0;
             }
+            std::string function = "point";
+            if (v.y() == 111)
+              function = "maximum";
+            if (v.y() == 112)
+              function = "minimum";
             ret.push_back(addMessage(ci, subset_message, sensor_level_active,
-                                     sensor_level, "point"));
+                                     sensor_level, function));
           }
 
           break;
@@ -849,9 +913,58 @@ std::list<std::string> ESOHBufr::msg() const {
               sensor_level = 2.0;
             }
             ret.push_back(addMessage(ci, subset_message, sensor_level_active,
-                                     sensor_level, "point"));
+                                     sensor_level, "sum"));
           }
 
+          break;
+        }
+
+        case 14: // Radiation
+        {
+
+          switch (v.y()) {
+          case 2: {
+            double long_wave = 0.0;
+            long_wave = getDoubleValue(*ci);
+            if (!std::isnan(long_wave)) {
+              // See [ 3 97 092 ] where double [ 0 14 002 ]
+              // maximum and minimum represents direction
+              std::string function = long_wave > 0 ? "maximum" : "minimum";
+              ret.push_back(addMessage(ci, subset_message, sensor_level_active,
+                                       sensor_level, function));
+            }
+            break;
+          }
+          case 4: {
+            double short_wave = 0.0;
+            short_wave = getDoubleValue(*ci);
+            if (!std::isnan(short_wave)) {
+              // maximum and minimum represents direction
+              std::string function = short_wave > 0 ? "maximum" : "minimum";
+              ret.push_back(addMessage(ci, subset_message, sensor_level_active,
+                                       sensor_level, function));
+            }
+            break;
+          }
+          case 12: {
+            double net_long_wave = 0.0;
+            net_long_wave = getDoubleValue(*ci);
+            if (!std::isnan(net_long_wave)) {
+              ret.push_back(addMessage(ci, subset_message, sensor_level_active,
+                                       sensor_level, "sum"));
+            }
+            break;
+          }
+          case 14: {
+            double net_short_wave = 0.0;
+            net_short_wave = getDoubleValue(*ci);
+            if (!std::isnan(net_short_wave)) {
+              ret.push_back(addMessage(ci, subset_message, sensor_level_active,
+                                       sensor_level, "sum"));
+            }
+            break;
+          }
+          }
           break;
         }
 
@@ -1004,6 +1117,9 @@ std::list<std::string> ESOHBufr::msg() const {
               if (!std::isnan(sensor_hei)) {
                 sensor_level_active = 1;
                 sensor_level = sensor_hei;
+              } else {
+                sensor_level_active = 0;
+                sensor_level = 0.0;
               }
             }
 
@@ -1129,6 +1245,18 @@ std::list<std::string> ESOHBufr::msg() const {
                   // INTEGRATED OVER PERIOD SPECIFIED
 
             break;
+          }
+          case 83: // [ 3 02 083 ] First-order statistics of P, W, T, U data =>
+                   // skip
+          {
+            ++ci; // [ 0 04 025 ] Time period or displacement
+            ++ci; // [ 0 08 023 ] First-order statistics
+            ++ci; // [ 0 10 004 ] Pressure
+            ++ci; // [ 0 11 001 ] Wind direction
+            ++ci; // [ 0 11 002 ] Wind speed
+            ++ci; // [ 0 12 101 ] Temperature/air temperature
+            ++ci; // [ 0 13 003 ] Relative humidity
+            ++ci; // [ 0 08 023 ] First-order statistics
           }
           }
           break;
@@ -1395,6 +1523,24 @@ bool ESOHBufr::setPlatform(std::string value,
   } else {
     message_properties.AddMember("platform", platform, message_allocator);
   }
+  return true;
+}
+
+bool ESOHBufr::addAltPlatform(std::string value,
+                              rapidjson::Document &message) const {
+
+  rapidjson::Value add_platform;
+  rapidjson::Document::AllocatorType &message_allocator =
+      message.GetAllocator();
+  rapidjson::Value &message_properties = message["properties"];
+
+  add_platform.SetString(value.c_str(), message_allocator);
+  if (!message_properties.HasMember("alt_platforms")) {
+    rapidjson::Value alt_platforms(rapidjson::kArrayType);
+    message_properties.AddMember("alt_platforms", alt_platforms,
+                                 message_allocator);
+  }
+  message_properties["alt_platforms"].PushBack(add_platform, message_allocator);
   return true;
 }
 

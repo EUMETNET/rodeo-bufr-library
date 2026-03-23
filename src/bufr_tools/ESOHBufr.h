@@ -39,6 +39,8 @@ static std::map<DescriptorId, std::pair<std::string, std::string>> cf_names = {
     {DescriptorId(12006, true), {"dew_point_temperature", "K"}},
     {DescriptorId(12103, true), {"dew_point_temperature", "K"}},
     {DescriptorId(12106, true), {"dew_point_temperature", "K"}},
+    {DescriptorId(12111, true), {"air_temperature", "K"}},
+    {DescriptorId(12112, true), {"air_temperature", "K"}},
 
     {DescriptorId(13003, true), {"relative_humidity", "%"}},
 
@@ -55,7 +57,7 @@ static std::map<DescriptorId, std::pair<std::string, std::string>> cf_names = {
       "W s m-2"}},
     {DescriptorId(14012, true),
      {"integral_wrt_time_of_surface_net_downward_longwave_flux", "W s m-2"}},
-    {DescriptorId(14013, true),
+    {DescriptorId(14014, true),
      {"integral_wrt_time_of_surface_net_downward_shortwave_flux", "W s m-2"}},
 
     {DescriptorId(22042, true), {"sea_water_temperature", "K"}},
@@ -75,41 +77,47 @@ struct naming_auth_type {
   std::list<int> centre_list;
   int cty;
   int cc;
+  int dat_cat;
 };
 
 static std::map<std::string, naming_auth_type> naming_auth_map = {
-    {"at", {"at.austrocontrol", {224}, 602, 40}},
-    {"be", {"be.meteo", {227}, 605, 56}},
-    {"ch", {"ch.meteoswiss", {215}, 644, 756}},
-    {"cy", {"cy.gov.moa.dom", {230}, 609, 196}},
-    {"cz", {"cz.chmi", {89}, 610, 203}},
-    {"de", {"de.dwd", {78, 79}, 616, 276}},
-    {"dk", {"dk.dmi", {94}, 611, 208}},
-    {"ee", {"ee.envir", {231}, 612, 233}},
-    {"es", {"es.aemet", {214}, 642, 724}},
-    {"eu", {"eu.eumetnet", {247}, 0, 0}},
-    {"fi", {"fi.fmi", {86}, 613, 246}},
-    {"fr", {"fr.meteo", {84, 85}, 614, 250}},
-    {"gr", {"gr.hnms", {96}, 617, 300}},
-    {"hr", {"hr.dhz.cirus", {221}, 608, 191}},
-    {"hu", {"hu.met", {218}, 618, 348}},
-    {"ie", {"ie.met", {233}, 602, 372}},
-    {"il", {"il.gov.ims", {234}, 621, 376}},
-    {"is", {"is.vedur", {213}, 619, 352}},
-    {"lt", {"lt.meteo", {238}, 627, 440}},
-    {"lv", {"lv.lvgmc", {236}, 625, 428}},
-    {"md", {"md.gov.meteo", {246}, 0, 498}},
-    {"mt", {"mt", {240}, 629, 470}},
-    {"nl", {"nl.knmi", {99}, 632, 528}},
-    {"no", {"no.met", {88}, 633, 578}},
-    {"pl", {"pl.imgw", {220}, 634, 616}},
-    {"pt", {"pt.ipma", {212}, 635, 620}},
-    {"ro", {"ro.meteoromania", {242}, 637, 642}},
-    {"rs", {"rs.gov.hidmet", {87}, 639, 688}},
-    {"se", {"se.smhi", {82, 83}, 643, 752}},
-    {"si", {"si.gov", {219}, 641, 705}},
-    {"sk", {"sk.shmu", {217}, 640, 703}},
-    {"uk", {"uk.gov.metoffice", {74, 75}, 649, 826}}};
+    {"at", {"at.austrocontrol", {224}, 602, 40, 6}}, // Radar
+    {"at", {"at.geosphere", {224}, 602, 40, 0}},
+    {"be", {"be.meteo", {227}, 605, 56, 0}},
+    {"ch", {"ch.meteoswiss", {215}, 644, 756, 0}},
+    {"cy", {"cy.gov.moa", {230}, 609, 196, 0}},
+    {"cz", {"cz.chmi", {89}, 610, 203, 0}},
+    {"de", {"de.dwd", {78, 79}, 616, 276, 0}},
+    {"dk", {"dk.dmi", {94}, 611, 208, 0}},
+    {"ee", {"ee.envir", {231}, 612, 233, 6}}, // Radar
+    {"ee", {"ee.emhi", {231}, 612, 233, 0}},
+    {"es", {"es.aemet", {214}, 642, 724, 0}},
+    {"eu", {"eu.eumetnet", {247}, 0, 0, 0}},
+    {"fi", {"fi.fmi", {86}, 613, 246, 0}},
+    {"fr", {"fr.meteo", {84, 85}, 614, 250, 0}},
+    {"gr", {"gr.hnms", {96}, 617, 300, 0}},
+    {"hr", {"hr.meteo.hr", {221}, 608, 191, 0}},
+    {"hu", {"hu.met", {218}, 618, 348, 0}},
+    {"ie", {"ie.met", {233}, 602, 372, 0}},
+    {"il", {"il.gov.ims", {234}, 621, 376, 0}},
+    {"is", {"is.vedur", {213}, 619, 352, 0}},
+    {"lt", {"lt.meteo", {238}, 627, 440, 0}},
+    {"lu", {"lu.meteolux", {239}, 628, 442, 0}},
+    {"lv", {"lv.lvgmc", {236}, 625, 428, 0}},
+    {"md", {"md.gov.meteo", {246}, 636, 498, 0}},
+    {"me", {"me.co.meteo", {248}, 631, 499, 0}},
+    {"mk", {"mk.gov.uhmr", {244}, 646, 807, 0}},
+    {"mt", {"mt", {240}, 629, 470, 0}},
+    {"nl", {"nl.knmi", {99}, 632, 528, 0}},
+    {"no", {"no.met", {88}, 633, 578, 0}},
+    {"pl", {"pl.imgw", {220}, 634, 616, 0}},
+    {"pt", {"pt.ipma", {212}, 635, 620, 0}},
+    {"ro", {"ro.meteoromania", {242}, 637, 642, 0}},
+    {"rs", {"rs.gov.hidmet", {87}, 639, 688, 0}},
+    {"se", {"se.smhi", {82, 83}, 643, 752, 0}},
+    {"si", {"si.gov.arso.meteo", {219}, 641, 705, 0}},
+    {"sk", {"sk.shmu", {217}, 640, 703, 0}},
+    {"uk", {"uk.gov.metoffice", {74, 75}, 649, 826, 0}}};
 
 class ESOHBufr : public NorBufr {
 
@@ -139,6 +147,7 @@ private:
   bool setPlatformName(std::string v, rapidjson::Document &message,
                        bool force = true) const;
   bool setPlatform(std::string v, rapidjson::Document &message) const;
+  bool addAltPlatform(std::string v, rapidjson::Document &message) const;
   bool setRadarMeta(std::string n, std::string v,
                     rapidjson::Document &message) const;
   bool setRadarMeta(std::string n, int v, rapidjson::Document &message) const;
