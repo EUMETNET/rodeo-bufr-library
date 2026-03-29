@@ -170,6 +170,17 @@ bool norbufr_init_oscar(std::string oscardb_dir) {
   return ret;
 }
 
+std::string oscar_wigos_find(std::string wigosId) {
+  std::string ret;
+  std::string found_wid;
+
+  found_wid = oscar.findWigosId(wigosId);
+  if (found_wid.size()) {
+    ret = oscar.to_string(found_wid);
+  }
+  return ret;
+}
+
 bool norbufr_init_schema_template(std::string schema_path) {
 
   if (schema_path.size()) {
@@ -422,6 +433,7 @@ PYBIND11_MODULE(bufresohmsg_py, m) {
   m.def("bufrlog_clear_py", &norbufr_log_clear, "Clear log messages list");
 
   m.def("init_oscar_py", &norbufr_init_oscar, "Init OSCAR db");
+  m.def("oscar_wigos_find_py", &oscar_wigos_find, "Search WigosId in OSCAR db");
   m.def("init_bufr_schema_py", &norbufr_init_schema_template,
         "Init BUFR schema");
   m.def("bufr_sdwigos_py", &norbufr_set_default_wigos,
