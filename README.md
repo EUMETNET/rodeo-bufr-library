@@ -75,7 +75,10 @@ if __name__ == "__main__":
     sys.exit(0)
 
 ```
-
+Note: For OPERA RADAR dump
+```shell
+export OPERA_RADAR_BUFR=YES
+```
 ### Create E-SOH message(s)
 
 Print E-SOH message

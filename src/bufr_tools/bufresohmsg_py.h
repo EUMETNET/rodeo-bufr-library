@@ -48,8 +48,11 @@ std::list<std::string> norbufr_log();
 void norbufr_log_clear();
 
 bool norbufr_init_oscar(std::string oscardb_dir);
+bool norbufr_update_oscar(std::string oscardb_dir);
 bool norbufr_init_schema_template(std::string schema_path);
+bool norbufr_update_schema_template(std::string schema_path);
 void norbufr_set_default_wigos(std::string s);
 
 bool norbufr_init_radar_cf(std::map<std::string, std::string>);
+bool norbufr_update_radar_cf(std::map<std::string, std::string>);
 #endif

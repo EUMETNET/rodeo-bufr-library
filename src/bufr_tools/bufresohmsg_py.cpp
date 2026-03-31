@@ -166,12 +166,21 @@ bool norbufr_update_bufrtables(std::string tables_dir) {
 }
 
 bool norbufr_init_oscar(std::string oscardb_dir) {
+  if (oscar.size())
+    return false;
+  bool ret = oscar.addStation(oscardb_dir.c_str());
+  return ret;
+}
+
+bool norbufr_update_oscar(std::string oscardb_dir) {
   bool ret = oscar.addStation(oscardb_dir.c_str());
   return ret;
 }
 
 bool norbufr_init_schema_template(std::string schema_path) {
 
+  if (bufr_input_schema.size())
+    return false;
   if (schema_path.size()) {
     std::string def_msg;
     std::ifstream msgTemplate(schema_path.c_str(), std::ios_base::in);
@@ -186,6 +195,11 @@ bool norbufr_init_schema_template(std::string schema_path) {
   }
 
   return true;
+}
+
+bool norbufr_update_schema_template(std::string schema_path) {
+  bufr_input_schema = "";
+  return norbufr_init_schema_template(schema_path);
 }
 
 std::list<std::string> norbufr_bufresohmsg(std::string fname) {
@@ -361,6 +375,9 @@ std::string norbufr_bufrprint(std::string fname) {
 
   std::stringstream ret;
 
+  TableB ltb;
+  TableD ltd;
+
   std::ifstream bufrFile(fname.c_str(),
                          std::ios_base::in | std::ios_base::binary);
 
@@ -370,21 +387,59 @@ std::string norbufr_bufrprint(std::string fname) {
 
     if (bufrFile >> *bufr) {
 
-      bufr->setTableB(
-          &tb.at(bufr->getVersionMaster() &&
-                         tb.find(bufr->getVersionMaster()) != tb.end()
-                     ? bufr->getVersionMaster()
-                     : tb.rbegin()->first));
+      int tb_index = -1;
+      if (tb.size()) {
+        tb_index = tb.rbegin()->first;
+        if (tb.find(bufr->getVersionMaster()) != tb.end())
+          tb_index = bufr->getVersionMaster();
+        bufr->setTableB(&tb.at(tb_index));
+
+        int tbl_index_loc = -1;
+        int tbl_index_cen = -1;
+        if (tbl.size()) {
+          tbl_index_loc = bufr->getVersionLocal();
+          tbl_index_cen = bufr->getCentre();
+          auto tbl_it = tbl.find(tbl_index_loc);
+          if (tbl_it != tbl.end()) {
+            if (tbl[tbl_index_loc].find(tbl_index_cen) !=
+                tbl[tbl_index_loc].end()) {
+              ltb = tb[tb_index];
+              ltb += tbl[tbl_index_loc][tbl_index_cen];
+              bufr->setTableB(&ltb);
+            }
+          }
+        }
+
+        int td_index = -1;
+        if (td.size()) {
+          td_index = td.rbegin()->first;
+          if (td.find(bufr->getVersionMaster()) != td.end())
+            td_index = bufr->getVersionMaster();
+          bufr->setTableD(&td.at(td_index));
+
+          int tdl_index_loc = -1;
+          int tdl_index_cen = -1;
+          if (tdl.size()) {
+            tdl_index_loc = bufr->getVersionLocal();
+            tdl_index_cen = bufr->getCentre();
+            auto tdl_it = tdl.find(tdl_index_loc);
+            if (tdl_it != tdl.end()) {
+              if (tdl[tdl_index_loc].find(tdl_index_cen) !=
+                  tdl[tdl_index_loc].end()) {
+                ltd = td[td_index];
+                ltd += tdl[tdl_index_loc][tdl_index_cen];
+                bufr->setTableD(&ltd);
+              }
+            }
+          }
+        }
+      }
+
       bufr->setTableC(
           &tc.at(bufr->getVersionMaster() &&
                          tc.find(bufr->getVersionMaster()) != tc.end()
                      ? bufr->getVersionMaster()
                      : tc.rbegin()->first));
-      bufr->setTableD(
-          &td.at(bufr->getVersionMaster() &&
-                         td.find(bufr->getVersionMaster()) != td.end()
-                     ? bufr->getVersionMaster()
-                     : td.rbegin()->first));
 
       bufr->extractDescriptors();
 
@@ -396,6 +451,13 @@ std::string norbufr_bufrprint(std::string fname) {
 }
 
 bool norbufr_init_radar_cf(std::map<std::string, std::string> cf_py) {
+  if (radar_cf_st.size())
+    return false;
+  radar_cf_st = cf_py;
+  return true;
+}
+
+bool norbufr_update_radar_cf(std::map<std::string, std::string> cf_py) {
   radar_cf_st = cf_py;
   return true;
 }
@@ -422,10 +484,16 @@ PYBIND11_MODULE(bufresohmsg_py, m) {
   m.def("bufrlog_clear_py", &norbufr_log_clear, "Clear log messages list");
 
   m.def("init_oscar_py", &norbufr_init_oscar, "Init OSCAR db");
+  m.def("update_oscar_py", &norbufr_update_oscar,
+        "Update OSCAR db, even if exists");
   m.def("init_bufr_schema_py", &norbufr_init_schema_template,
         "Init BUFR schema");
+  m.def("init_bufr_schema_py", &norbufr_update_schema_template,
+        "Update BUFR schema, even if exists");
   m.def("bufr_sdwigos_py", &norbufr_set_default_wigos,
         "Set default shadow WIGOS Id");
   m.def("init_radar_cf_py", &norbufr_init_radar_cf,
         "Get Radar CF names from api/radar_cf.py");
+  m.def("update_radar_cf_py", &norbufr_update_radar_cf,
+        "Update Radar CF names from api/radar_cf.py, even if exists");
 }
